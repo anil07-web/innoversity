@@ -29,8 +29,6 @@ maven_job:
     - v1.0.1
     - v1.0.2
     - v1.0.3
-  tags:
-    - docker-executor
 
 maven_build:
   stage: package
@@ -41,9 +39,6 @@ maven_build:
     - v1.0.1
     - v1.0.2
     - v1.0.3
-  tags:
-    - docker-executor
-
 
   artifacts:
     paths:
@@ -57,9 +52,6 @@ code_coverage:
     - v1.0.1
     - v1.0.2
     - v1.0.3
-  tags:
-    - docker-executor
-
 
   script:
     - "mvn clean test"
@@ -69,6 +61,3 @@ code_coverage:
   artifacts:
     paths:
       - target/site/jacoco/
-
-
-
