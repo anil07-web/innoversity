@@ -1,0 +1,9 @@
+.container-fluid{
+    height: 100vh;
+    background-image: linear-gradient(to left, rgba(248, 69, 99, 0.849) , rgb(198, 189, 245));
+}
+.register{
+    margin-left: 10%;
+    padding-top: 30px;
+    color: rgb(20, 20, 26);
+}
