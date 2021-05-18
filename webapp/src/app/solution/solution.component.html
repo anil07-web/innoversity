@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form #uploadsolution="ngForm" (ngSubmit)="onsubmit(uploadsolution)">
+                <div class="mt-2">
+                    <input type="text" #solvedBy="ngModel" name="solvedBy" required class="form-control"  class="form-control" [(ngModel)]="innovator.solvedBy" placeholder="Solved By">
+                    <div class="text-danger" *ngIf="solvedBy.dirty && solvedBy.errors?.required"> 
+                    Please enter the details
+                </div>
+                </div>
+                <div class="mt-2">
+                    <input type="text" #challengeName="ngModel" name="challengeName" required class="form-control"  class="form-control" [(ngModel)]="innovator.challengeName" placeholder="Challenge Name">
+                    <div class="text-danger" *ngIf="challengeName.dirty && challengeName.errors?.required"> 
+                        Please enter the details
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <input type="text" #challengeDescription="ngModel" name="challengeDescription" required class="form-control"  class="form-control" [(ngModel)]="innovator.challengeDescription" placeholder="Challenge Description">
+                    <div class="text-danger" *ngIf="challengeDescription.dirty && challengeDescription.errors?.required"> 
+                        Please enter the details
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <input type="text" #solution="ngModel" name="solution"  class="form-control" required class="form-control" [(ngModel)]="innovator.solution" placeholder="Provide Solution">
+                    <div class="text-danger" *ngIf="solution.dirty && solution.errors?.required"> 
+                        Please enter the details
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <input type="text" #briefDescofSolution="ngModel" name="briefDescofSolution" required class="form-control"  class="form-control" [(ngModel)]="innovator.briefDescofSolution" placeholder="Brief desc of Solution">
+                    <div class="text-danger" *ngIf="briefDescofSolution.dirty && briefDescofSolution.errors?.required"> 
+                        Please enter the details
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <button class="btn btn-secondary">Submit</button>
+                </div>
+            </form>
+    </div>
+
+</div>
