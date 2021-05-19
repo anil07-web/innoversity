@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
     <div class="register">
         <h2>Registration form</h2>
     </div>
@@ -23,10 +24,24 @@
                         Password is required
                     </div>
                 </div>
+
+
+                <div class="mt-2">
+                    <ng-multiselect-dropdown formControlName="domain" class="form-control"
+                        [placeholder]="'Interested Domain'" [settings]="dropdownSettings" [data]="dropdownList"
+                        [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
+                    </ng-multiselect-dropdown>
+
+                </div>
+
+
+
+
                 <div class="mt-2">
                     <button class="btn btn-success">Register</button>
                 </div>
             </form>
         </div>
     </div>
+
 </div>
