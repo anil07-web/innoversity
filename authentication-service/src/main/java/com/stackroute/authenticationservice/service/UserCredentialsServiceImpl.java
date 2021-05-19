@@ -1,5 +1,6 @@
 package com.stackroute.authenticationservice.service;
 
+import com.stackroute.authenticationservice.exception.UserNotFoundException;
 import com.stackroute.authenticationservice.model.UserCredentials;
 import com.stackroute.authenticationservice.repository.UserCredentialsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,15 @@ public class UserCredentialsServiceImpl implements UserCredentialsService{
     @Autowired
     public UserCredentialsServiceImpl(UserCredentialsRepository userCredentialsRepository) {
         this.userCredentialsRepository = userCredentialsRepository;
+    }
+
+    @Override
+    public UserCredentials findByEmailandPassword(String email, String password) throws UserNotFoundException {
+        UserCredentials authUser=userCredentialsRepository.findByEmailAndPassword(email,password);
+        if(authUser==null){
+            throw new UserNotFoundException("Invalid Id and password");
+        }
+        return authUser;
     }
 
     @Override
