@@ -25,4 +25,18 @@
 }
 #contact img{
     height: 100pt;
+    margin-right: 5pt;
+}
+.container1{
+    height: 20rem;
+    background-color:rgb(190, 66, 66);
+    color:rgb(140, 190, 180);
+}
+.footer{
+    height: 40pt;
+    margin-top: 10pt;
+    background-color: brown;
+    text-align: center;
+    color: cyan;
+    padding-top: 7pt;
 }
