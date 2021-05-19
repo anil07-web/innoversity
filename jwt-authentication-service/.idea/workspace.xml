@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="da4f3f0d-3bb0-447f-9cff-2fb222c318de" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-service/src/main/java/com/stackroute/ServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-service/src/main/java/com/stackroute/config/FilterConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-service/src/main/java/com/stackroute/controller/ServiceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-service/src/main/java/com/stackroute/filter/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-service/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/AuthenticationServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/bootstrap/UserCredentialsBootstrap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/config/JWTTokenGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/config/JWTTokenGeneratorImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/controller/UserCredentialsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/exception/UserNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/model/UserCredentials.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/repository/UserCredentialsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/service/UserCredentialsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/java/com/stackroute/authenticationservice/service/UserCredentialsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authentication-service/src/test/java/com/stackroute/authenticationservice/AuthenticationServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/src/main/java/com/stackroute/authenticationservice/AuthenticationServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/src/main/java/com/stackroute/authenticationservice/controller/UserCredentialsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/src/main/java/com/stackroute/authenticationservice/model/UserCredentials.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/src/main/java/com/stackroute/authenticationservice/repository/UserCredentialsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/src/main/java/com/stackroute/authenticationservice/service/UserCredentialsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/src/main/java/com/stackroute/authenticationservice/service/UserCredentialsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication-service/src/test/java/com/stackroute/authenticationservice/AuthenticationServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapp/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/angular.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1sjfgt3Hi8pg4KJgrRwfCYtPvSI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app-service" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PGP FULL STACK\PROJECT\innoversity\jwt-authentication-service\app-service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.AuthenticationServiceApplication">
+    <configuration name="AuthenticationServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.stackroute.authenticationservice.AuthenticationServiceApplication" />
+      <module name="authentication-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.stackroute.authenticationservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.stackroute.ServiceApplication" />
+      <module name="app-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.stackroute.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AuthenticationServiceApplication" />
+        <item itemvalue="Application.ServiceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="da4f3f0d-3bb0-447f-9cff-2fb222c318de" name="Default Changelist" comment="" />
+      <created>1621391035777</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621391035777</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
