@@ -12,21 +12,26 @@ export class RegistrationComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
-  // registerForm: FormGroup;
+  registerForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
-
-  public registerForm = this.fb.group({
+   initForm() {
+   this.registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
-    email: ['', [Validators.required]],
+    email: ['', [Validators.required,Validators.email]],
     password: ['', [Validators.required]],
-    domain: ['', [Validators.required]]
+    domain: ['', [Validators.required]],
+    city: ['', [Validators.required]],
+    picture: ['', [Validators.required]],
+    gender: ['',[Validators.required]]
+
 
   });
+}
 
 
   ngOnInit(): void {
-    // this.initForm();
+    this.initForm();
     this.dropdownList = this.getData();
     this.dropdownSettings = {
       singleSelection: false,
@@ -54,6 +59,9 @@ export class RegistrationComponent implements OnInit {
   get email() { return this.registerForm.get('email') }
   get password() { return this.registerForm.get('password') }
   get domain() { return this.registerForm.get('domain') }
+  get city() { return this.registerForm.get('city') }
+  get picture() { return this.registerForm.get('picture') }
+  get gender() { return this.registerForm.get('gender') }
 
   getData(): Array<any> {
     return [
@@ -68,4 +76,16 @@ export class RegistrationComponent implements OnInit {
     ];
   }
 
+
+  url="./assets/banner1.webp";
+  onSelectFile(e){
+    if(e.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.url=event.target.result;
+      }
+      // console.log(e.target.files);
+    }
+  }
 }
