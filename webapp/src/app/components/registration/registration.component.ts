@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { User } from 'src/app/models/user';
+import { RegistrationService } from 'src/app/services/registration.service';
 
 
 @Component({
@@ -14,14 +16,14 @@ export class RegistrationComponent implements OnInit {
   dropdownSettings = {};
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private service : RegistrationService) { }
    initForm() {
    this.registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
     email: ['', [Validators.required,Validators.email]],
-    password: ['', [Validators.required]],
-    domain: ['', [Validators.required]],
+    password: ['', [Validators.required]],  
     city: ['', [Validators.required]],
+    domain: ['', [Validators.required]],
     picture: ['', [Validators.required]],
     gender: ['',[Validators.required]]
 
@@ -54,6 +56,21 @@ export class RegistrationComponent implements OnInit {
       alert('Forms is invalid');
     }
   }
+
+     
+
+  // onSubmit() {
+  //   if (this.registerForm.valid) {
+  //     this.service.registerUser(this.registerForm.value).subscribe(data=>{
+  //       console.log("Registeration successful");
+  //       console.log(this.registerForm.value);
+  //     }
+      
+  //     )
+  //   } else {
+  //     console.log("form invalid");
+  //   }
+  // }
 
   get username() { return this.registerForm.get('username') }
   get email() { return this.registerForm.get('email') }
