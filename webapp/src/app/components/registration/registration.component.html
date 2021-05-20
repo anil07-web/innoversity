@@ -4,6 +4,7 @@
     </span>
     <div class="register">
         <h2>Registration form</h2>
+        <div class="text-success">{{msg}}</div>
     </div>
     <div class="row">
         <div class="col-md-4 offset-md-4">
@@ -38,7 +39,7 @@
                         [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
                     </ng-multiselect-dropdown>
                     <div class="text-danger" *ngIf="domain?.invalid">
-                        domain is required
+                        Domain is required
                     </div>
                 </div>
                 <div class="mt-4">
