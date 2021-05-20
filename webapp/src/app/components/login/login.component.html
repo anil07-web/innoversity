@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <h2 id="login-heading">Login</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <form #loginform="ngForm" (ngSubmit)="addUserCredentials(loginform)">
+          <div class="mt-2">
+            <input type="text" name="email" #email="ngModel" class="form-control" [(ngModel)]="login.email" placeholder="Enter your mail id">
+            <div class="text-danger" *ngIf="email.dirty && email.invalid">
+              Username is required
+            </div>
+          </div>
+          <div class="mt-2">
+            <input name="password" type="password" #password="ngModel" class="form-control" [(ngModel)]="login.password" placeholder="Enter your password">
+            <div class="text-danger" *ngIf="password.dirty && password.invalid">
+              Password is required
+            </div>
+          </div>
+          <div class="mt-2">
+            <button id="btnLogin" class="btn btn-secondary">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

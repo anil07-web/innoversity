@@ -24,6 +24,8 @@
     <modules>
         <module>eureka-server</module>
         <module>spring-cloud-gateway</module>
+        <module>authentication-service</module>
+        <module>registration-service</module>
     </modules>
     <dependencies>
 

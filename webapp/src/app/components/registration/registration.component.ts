@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegistrationService } from 'src/app/services/registration.service';
+
 
 @Component({
   selector: 'app-registration',
@@ -7,27 +9,80 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+  registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
-  public registerForm = this.fb.group({
+  constructor(private fb: FormBuilder,private service : RegistrationService) { }
+   initForm() {
+   this.registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
-    email: ['', [Validators.required]],
-    password: ['', [Validators.required]]
+    email: ['', [Validators.required,Validators.email]],
+    password: ['', [Validators.required]],
+    city: ['', [Validators.required]],
+    domain: ['', [Validators.required]],
+    picture: ['', [Validators.required]],
+    gender: ['',[Validators.required]]
   });
+}
+
+
   ngOnInit(): void {
+    this.initForm();
+    this.dropdownList = ["Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+
+    };
   }
 
+  onItemSelect($event) {
+
+  }
+
+  
+
+
+  msg:any;
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+      this.service.registerUser(this.registerForm.value).subscribe(data => {
+        this.msg="You are registered !";
+        // console.log(this.registerForm.value);
+      }
+
+      )
     } else {
-      alert('Forms is invalid');
+      console.log("form is invalid");
+      this.msg="Registeration unsuccessful";
     }
   }
+
 
   get username() { return this.registerForm.get('username') }
   get email() { return this.registerForm.get('email') }
   get password() { return this.registerForm.get('password') }
+  get domain() { return this.registerForm.get('domain') }
+  get city() { return this.registerForm.get('city') }
+  get picture() { return this.registerForm.get('picture') }
+  get gender() { return this.registerForm.get('gender') }
 
 
+
+  url = "./assets/banner1.webp";
+  onSelectFile(e) {
+    if (e.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      }
+      // console.log(e.target.files);
+    }
+  }
 }

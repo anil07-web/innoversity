@@ -8,21 +8,30 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
 import { HeaderComponent } from './header/header.component';
+import { LandingComponent } from './landing/landing.component';
+import { UploadchallengeComponent } from './components/uploadchallenge/uploadchallenge.component';
 import { SolutionComponent } from './solution/solution.component';
+import { LoginComponent } from './components/login/login.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent,
     HeaderComponent,
-    SolutionComponent
+    LandingComponent,
+    RegistrationComponent,
+    SolutionComponent,
+    UploadchallengeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

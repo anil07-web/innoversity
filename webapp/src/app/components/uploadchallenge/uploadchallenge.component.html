@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <form #contactform="ngForm" (ngSubmit)="onSubmit(contactform)">
+          <div class="mt-2">
+            <input type="text" #Challengername="ngModel" name="Challengername" required pattern="[a-zA-Z]{1,10}" class="form-control" [(ngModel)]="challenge.Challengername" placeholder="Challengername">
+            <div class="text-danger" *ngIf="Challengername.dirty && Challengername.errors?.required">
+              Challenger Name is required
+            </div>
+            <div class="text-danger" *ngIf="Challengername.dirty && Challengername.errors?.pattern">
+              Only alphabets are allowed in Challenger Name
+            </div>
+          </div>
+          <div class="mt-2">
+            <input type="text" #ChallengerTitle="ngModel" name="ChallengerTitle" required class="form-control" [(ngModel)]="challenge.ChallengerTitle" placeholder="Challenger Title">
+            <div class="text-danger" *ngIf="ChallengerTitle.dirty && ChallengerTitle.errors?.required">
+              Challenger Title is required
+            </div>
+          </div>
+          <div class="mt-2">
+            <input type="text" #ChallengerDomain="ngModel" name="ChallengerDomain" required class="form-control" [(ngModel)]="challenge.ChallengerDomain" placeholder="Challenger Domain">
+            <div class="text-danger" *ngIf="ChallengerDomain.dirty && ChallengerDomain.errors?.required">
+              Challenger Domain is required
+            </div>
+          </div>
+          <div class="mt-2">
+            <input type="text" #Abstract="ngModel" name="Abstract" required class="form-control" [(ngModel)]="challenge.Abstract" placeholder="Abstract">
+            <div class="text-danger" *ngIf="Abstract.dirty && Abstract.errors?.required">
+              Abstract is required
+            </div>
+          </div>
+          <div class="mt-2">
+            <input type="text" #Description="ngModel" name="Description" required class="form-control" [(ngModel)]="challenge.Description" placeholder="Description">
+            <div class="text-danger" *ngIf="Description.dirty && Description.errors?.required">
+                Description is required
+            </div>
+          </div>
+          <div class="mt-2">
+            <input type="text" #Rules="ngModel" name="Rules" required class="form-control" [(ngModel)]="challenge.Rules" placeholder="Rules">
+            <div class="text-danger" *ngIf="Rules.dirty && Rules.errors?.required">
+                Rules are required
+            </div>
+          </div>
+          <div class="mt-2">
+            <button class="btn btn-primary">Upload Challenge</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
