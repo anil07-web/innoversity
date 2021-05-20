@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { User } from 'src/app/models/user';
 import { RegistrationService } from 'src/app/services/registration.service';
 
 
@@ -16,25 +14,25 @@ export class RegistrationComponent implements OnInit {
   dropdownSettings = {};
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private service : RegistrationService) { }
-   initForm() {
-   this.registerForm = this.fb.group({
-    username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
-    email: ['', [Validators.required,Validators.email]],
-    password: ['', [Validators.required]],  
-    city: ['', [Validators.required]],
-    domain: ['', [Validators.required]],
-    picture: ['', [Validators.required]],
-    gender: ['',[Validators.required]]
+  constructor(private fb: FormBuilder, private service: RegistrationService) { }
+  initForm() {
+    this.registerForm = this.fb.group({
+      username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      domain: ['', [Validators.required]],
+      picture: ['', [Validators.required]],
+      gender: ['', [Validators.required]]
 
 
-  });
-}
+    });
+  }
 
 
   ngOnInit(): void {
     this.initForm();
-    this.dropdownList = this.getData();
+    this.dropdownList = ["Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
@@ -46,31 +44,33 @@ export class RegistrationComponent implements OnInit {
   }
 
   onItemSelect($event) {
-    // console.log($event);
-  }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-    } else {
-      alert('Forms is invalid');
-    }
   }
-
-     
 
   // onSubmit() {
   //   if (this.registerForm.valid) {
-  //     this.service.registerUser(this.registerForm.value).subscribe(data=>{
-  //       console.log("Registeration successful");
-  //       console.log(this.registerForm.value);
-  //     }
-      
-  //     )
+  //     console.log(this.registerForm.value);
   //   } else {
-  //     console.log("form invalid");
+  //     alert('Forms is invalid');
   //   }
   // }
+
+
+  msg:any;
+  onSubmit() {
+    if (this.registerForm.valid) {
+      this.service.registerUser(this.registerForm.value).subscribe(data => {
+        this.msg="You are registered !";
+        // console.log(this.registerForm.value);
+      }
+
+      )
+    } else {
+      console.log("form is invalid");
+      this.msg="Registeration unsuccessful";
+    }
+  }
+
 
   get username() { return this.registerForm.get('username') }
   get email() { return this.registerForm.get('email') }
@@ -80,27 +80,15 @@ export class RegistrationComponent implements OnInit {
   get picture() { return this.registerForm.get('picture') }
   get gender() { return this.registerForm.get('gender') }
 
-  getData(): Array<any> {
-    return [
-      { item_id: 1, item_text: 'Science' },
-      { item_id: 2, item_text: 'Engineering' },
-      { item_id: 3, item_text: 'Aerospace' },
-      { item_id: 4, item_text: 'Habitat' },
-      { item_id: 5, item_text: 'Electricity' },
-      { item_id: 6, item_text: 'Power Sources' },
-      { item_id: 7, item_text: 'Environment' }
-
-    ];
-  }
 
 
-  url="./assets/banner1.webp";
-  onSelectFile(e){
-    if(e.target.files){
+  url = "./assets/banner1.webp";
+  onSelectFile(e) {
+    if (e.target.files) {
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
-      reader.onload=(event:any)=>{
-        this.url=event.target.result;
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
       }
       // console.log(e.target.files);
     }
