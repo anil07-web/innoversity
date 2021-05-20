@@ -1,7 +1,6 @@
-package com.demo.Upload.Service.service;
+package com.stackroute.upload.service;
 
-import com.demo.Upload.Service.model.ChallengeUpload;
-
+import com.stackroute.upload.model.ChallengeUpload;
 
 
 public interface ChallengeService {

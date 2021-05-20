@@ -1,4 +1,4 @@
-package com.demo.Upload.Service.model;
+package com.stackroute.upload.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

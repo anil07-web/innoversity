@@ -1,4 +1,4 @@
-package com.demo.Upload.Service;
+package com.stackroute.upload;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
