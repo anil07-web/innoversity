@@ -1,17 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary p-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Innoversity</a>
+        <a class="navbar-brand" href="#"><i class="fas fa-brain"></i> Innoversity </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
-                <!-- <li class="nav-item">
-                    <a class="nav-link" routerLink="/">Dashboard</a>
-                </li> -->
+
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/contact/dashboard">Upload Challenge</a>
+                    <a class="nav-link" routerLink="#">Upload Challenge</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/movies">Upload Solution</a>
@@ -21,20 +19,22 @@
                 </li>
                 
                 <li class="nav-item ">
-                    <!-- <a class="nav-link" routerLink="/user">User</a> -->
+               
                     <input type="search" #name class="form-control rounded " placeholder="Search"/>
                     
                 </li>
                 <li class="nav-item  ml-1">
-                    <!-- <i class="fab fa-searchengin"></i> -->
+                 
                     <button class="btn btn-outline-info"(click)="----(name)"><i class="fab fa-searchengin"></i></button>
                 </li>
 
             </ul>
-            <ul class="navbar-nav float-right" *ngIf="!isLoggedIn">
+            <ul class="navbar-nav" id="login" *ngIf="!isLoggedIn">
                 <li class="nav-item">
                     <a href="#" class="nav-link">Login</a>
                 </li>
+
+                
                 <li class="nav-item">
                     <a href="#" class="nav-link">Register</a>
                 </li>
