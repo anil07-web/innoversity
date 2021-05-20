@@ -12,16 +12,28 @@ export class LoginComponent implements OnInit {
 
   constructor(private logindata: LoginService) { }
   public login=new Login;
+  public showPass:boolean=false;
+  public show:number=0;
   ngOnInit(): void {
   }
   addUserCredentials(form:NgForm){
     if(form.valid){
-      this.logindata.addUserCredentials(this.login).subscribe(data=>{
-        console.log(data);     
+      this.logindata.addUserCredentials(this.login).subscribe((data : any)=>{
+        console.log(data); 
+        localStorage.setItem('token', data?.token);   
+        localStorage.setItem('email',this.login?.email);
+         
       });
       }
       else{
         alert('Please fix the errors!!');
       }
-  }
+    }
+    public showPassword(){
+      if(this.show%2==0)
+          this.showPass=true;
+      else
+        this.showPass=false;
+      this.show++;
+    }
 }

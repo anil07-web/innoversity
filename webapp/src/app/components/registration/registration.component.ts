@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+<<<<<<< HEAD
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+=======
 import { RegistrationService } from 'src/app/services/registration.service';
+>>>>>>> dbfb3b21f59bef1d4262cc26a9aad1cf374641dc
 
 
 @Component({

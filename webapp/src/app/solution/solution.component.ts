@@ -10,6 +10,7 @@ import { SolutionService } from '../services/solution.service';
 })
 export class SolutionComponent implements OnInit {
   public innovator=new InnovatorProperties;
+  public challenge="Smart Helmet";
   constructor(private service:SolutionService) { }
 
   ngOnInit(): void {
@@ -17,7 +18,8 @@ export class SolutionComponent implements OnInit {
   onsubmit(form:NgForm){
     if(form.valid){
     this.service.addDetails(this.innovator).subscribe(data=>{
-      // console.log(data);     
+     
+      alert('Data stored successfuully');   
     });
     }
     else{
