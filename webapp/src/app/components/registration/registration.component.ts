@@ -21,13 +21,11 @@ export class RegistrationComponent implements OnInit {
    this.registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
     email: ['', [Validators.required,Validators.email]],
-    password: ['', [Validators.required]],  
+    password: ['', [Validators.required]],
     city: ['', [Validators.required]],
     domain: ['', [Validators.required]],
     picture: ['', [Validators.required]],
     gender: ['',[Validators.required]]
-
-
   });
 }
 
@@ -57,7 +55,7 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-     
+
 
   // onSubmit() {
   //   if (this.registerForm.valid) {
@@ -65,7 +63,7 @@ export class RegistrationComponent implements OnInit {
   //       console.log("Registeration successful");
   //       console.log(this.registerForm.value);
   //     }
-      
+
   //     )
   //   } else {
   //     console.log("form invalid");

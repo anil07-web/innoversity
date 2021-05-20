@@ -29,13 +29,13 @@
 }
 .container1{
     height: 20rem;
-    background-color:rgb(190, 66, 66);
+    background-color:rgb(51, 52, 124);
     color:rgb(140, 190, 180);
 }
 .footer{
     height: 40pt;
     margin-top: 10pt;
-    background-color: brown;
+    background-color: rgb(127, 175, 207);
     text-align: center;
     color: cyan;
     padding-top: 7pt;
