@@ -14,20 +14,18 @@ export class RegistrationComponent implements OnInit {
   dropdownSettings = {};
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: RegistrationService) { }
-  initForm() {
-    this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      domain: ['', [Validators.required]],
-      picture: ['', [Validators.required]],
-      gender: ['', [Validators.required]]
-
-
-    });
-  }
+  constructor(private fb: FormBuilder,private service : RegistrationService) { }
+   initForm() {
+   this.registerForm = this.fb.group({
+    username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
+    email: ['', [Validators.required,Validators.email]],
+    password: ['', [Validators.required]],
+    city: ['', [Validators.required]],
+    domain: ['', [Validators.required]],
+    picture: ['', [Validators.required]],
+    gender: ['',[Validators.required]]
+  });
+}
 
 
   ngOnInit(): void {
@@ -47,13 +45,7 @@ export class RegistrationComponent implements OnInit {
 
   }
 
-  // onSubmit() {
-  //   if (this.registerForm.valid) {
-  //     console.log(this.registerForm.value);
-  //   } else {
-  //     alert('Forms is invalid');
-  //   }
-  // }
+  
 
 
   msg:any;
