@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { UploadchallengeComponent } from './components/uploadchallenge/uploadchallenge.component';
 import { SolutionComponent } from './solution/solution.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SolutionComponent } from './solution/solution.component';
     RegistrationComponent,
     HeaderComponent,
     SolutionComponent,
-    UploadchallengeComponent
+    UploadchallengeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
