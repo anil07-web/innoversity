@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Goblin+One&family=Rubik:ital,wght@0,300;0,500;1,300;1,400&display=swap');
+#login{
+    position: absolute;
+    right: 0;
+}
+.navbar-brand{
+    font-family: 'Goblin One', cursive;
+}
