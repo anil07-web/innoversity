@@ -38,7 +38,7 @@
           <div class="mt-2">
             <input type="text" #Rules="ngModel" name="Rules" required class="form-control" [(ngModel)]="challenge.Rules" placeholder="Rules">
             <div class="text-danger" *ngIf="Rules.dirty && Rules.errors?.required">
-                Rules is required
+                Rules are required
             </div>
           </div>
           <div class="mt-2">
