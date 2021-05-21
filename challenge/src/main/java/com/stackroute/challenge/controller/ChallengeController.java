@@ -22,7 +22,7 @@ public class ChallengeController {
     public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challenge)
     {
         UUID uuid=UUID.randomUUID();
-        challenge.setId(uuid);
+        challenge.setChallengeId(uuid);
         Challenge savedChallenge=challengeService.save(challenge);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
