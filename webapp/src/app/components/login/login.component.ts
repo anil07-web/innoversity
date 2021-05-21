@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   public login=new Login;
   public showPass:boolean=false;
   public show:number=0;
+  public loggedIn:boolean=false;
   ngOnInit(): void {
   }
   addUserCredentials(form:NgForm){
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
         console.log(data); 
         localStorage.setItem('token', data?.token);   
         localStorage.setItem('email',this.login?.email);
-         
+         this.loggedIn=true;
       });
       }
       else{
