@@ -7,12 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ChallengeServiceImpl implements ChallengeService {
-//    private ChallengeRespository challengeRespository;
-//
-//    @Autowired
-//    public ChallengeServiceImpl(ChallengeRespository challengeRespository) {
-//        this.challengeRespository = challengeRespository;
-//    }
+
 
     @Autowired
     ChallengeRespository challengeRespository;

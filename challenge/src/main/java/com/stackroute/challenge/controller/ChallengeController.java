@@ -10,26 +10,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@CrossOrigin(origins = "*")
 @RestController
-@CrossOrigin(origins="*")
 @RequestMapping("/api/v1")
 public class ChallengeController {
-//    private ChallengeServiceImpl challengeService;
-//
-//    @Autowired
-//    public ChallengeController(ChallengeServiceImpl challengeService) {
-//        this.challengeService = challengeService;
-//    }
+
 
     @Autowired
     ChallengeService challengeService;
 
-    @PostMapping("/challenge")
-    public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challengeUpload)
+    @PostMapping("/Challenge")
+    public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challenge)
     {
         UUID uuid=UUID.randomUUID();
-        challengeUpload.setId(uuid);
-        Challenge savedChallenge=challengeService.save(challengeUpload);
+        challenge.setId(uuid);
+        Challenge savedChallenge=challengeService.save(challenge);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
 }
