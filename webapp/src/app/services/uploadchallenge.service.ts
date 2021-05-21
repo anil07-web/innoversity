@@ -9,6 +9,6 @@ export class UploadchallengeService {
 
   constructor(private http: HttpClient) { }
   addChallenge(Challenge) {
-    return this.http.post( 'http://localhost:8084/api/v1/Challenge',Challenge);
+    return this.http.post( 'http://localhost:8095/api/v1/Challenge',Challenge);
   }
 }

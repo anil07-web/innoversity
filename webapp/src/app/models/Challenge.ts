@@ -1,9 +1,9 @@
 export class Challenge{
-    public challengername: string;
-    public challengertitle: string;
-    public challengerdomain: string;
+    public challengerName: string;
+    public challengeTitle: string;
+    public challengeDomain: string[];
     // public date:Date;
-    public Abstract: string;
+    public challengeAbstract: string;
     public description: string;
     public rules:string
   }

@@ -16,11 +16,11 @@ import java.util.UUID;
 @Document(collection = "challenge")
 public class Challenge {
     @Id
-    private UUID id;
-    private String challengername;
-    private String challengedomain;
-    private String challengetitle;
-    private String Abstract; //I make capital (Abstract) due to abstract keyword predefined in java
+    private UUID challengeId;
+    private String challengerName;
+    private String[] challengeDomain;
+    private String challengeTitle;
+    private String challengeAbstract; //I make capital (Abstract) due to abstract keyword predefined in java
     private String description;
     private String rules;
 }

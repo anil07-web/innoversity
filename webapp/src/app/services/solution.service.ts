@@ -8,6 +8,6 @@ export class SolutionService {
 
   constructor(private http:HttpClient) { }
   addDetails(innovator){
-    return this.http.post("http://localhost:8083/api/v1/solve",innovator);
+    return this.http.post("http://localhost:8900/api/v1/solve",innovator);
   }
 }
