@@ -20,7 +20,8 @@ public class Solution {
     @Id
     private UUID id;
     private String solution;
-    private String attachment;
+//    private String attachment;
+    private String solvedBy=" ";
     private String description;
     private String solStatus="Not reviewed";
     

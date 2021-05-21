@@ -1,33 +1,46 @@
-<app-header [isLoggedIn]="true"></app-header>
-<div class="container">
+<!-- <app-header [isLoggedIn]="true"></app-header> -->
+<app-header></app-header>
+<div class="container1">
+    <div class="main">
+        <div class="side">
+            <h1 class="sign-in-heading">Challenge details</h1>
+            <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
+                Perferendis aliquid error quidem, placeat nisi adipisci explicabo ab ducimus impedit commodi
+                reiciendis, voluptatem quos voluptatibus sunt dolores.</p>
+        </div>
     <div class="row">
-        <div class="col-md-4 offset-md-4">
+       
+        <img src="/assets/images/idea.svg" width="50%"  alt="">
+         
+        <div class="frm">
             <form #uploadsolution="ngForm" (ngSubmit)="onsubmit(uploadsolution)">
                 <div class="mt-2">
                    <p><strong>Challenge Name: {{challenge}}</strong></p>
                 </div>
-                <div class="mt-2">
-                    <input type="text" #solution="ngModel" name="solution"  class="form-control" required class="form-control" [(ngModel)]="innovator.solution" placeholder="Provide Solution">
+                <div  class="edit">
+                    <input type="text" #solution="ngModel" name="solution"  class="form-control" required  [(ngModel)]="innovator.solution" placeholder="Provide Solution">
                     <div class="text-danger" *ngIf="solution.dirty && solution.errors?.required"> 
                         Please enter the details
                     </div>
                 </div>
-                <div class="mt-2">
+                <!-- <div class="mt-2">
                     <input type="text" #attachment="ngModel" name="attachment" required class="form-control"  class="form-control" [(ngModel)]="innovator.attachment" placeholder="Provide Attachment">
                     <div class="text-danger" *ngIf="attachment.dirty && attachment.errors?.required"> 
                         Please enter the details
                     </div>
-                </div>
-                <div class="mt-2">
-                    <input type="text" #description="ngModel" name="description" required class="form-control"  class="form-control" [(ngModel)]="innovator.description" placeholder="Brief Desc of Solution">
+                </div> -->
+                <div  class="edit">
+                    <input type="text" #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" placeholder="Brief Desc of Solution">
                     <div class="text-danger" *ngIf="description.dirty && description.errors?.required"> 
                         Please enter the details
                     </div>
                 </div>
                 <div class="mt-2">
-                    <button class="btn btn-secondary">Submit</button>
+                    <button class="btnLogin" >Submit</button>
+                <p class="valid">{{isEdit}}</p>
                 </div>
             </form>
     </div>
     </div>
+</div>
 </div>
