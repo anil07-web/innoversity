@@ -14,15 +14,17 @@ export class LoginComponent implements OnInit {
   public login=new Login;
   public showPass:boolean=false;
   public show:number=0;
+  public invalid:string;
   ngOnInit(): void {
   }
   addUserCredentials(form:NgForm){
     if(form.valid){
       this.logindata.addUserCredentials(this.login).subscribe((data : any)=>{
-        console.log(data); 
+        console.log(data);
+        this.invalid=data?.token;
+        console.log(this.invalid);
         localStorage.setItem('token', data?.token);   
-        localStorage.setItem('email',this.login?.email);
-         
+        localStorage.setItem('email',this.login?.email); 
       });
       }
       else{
