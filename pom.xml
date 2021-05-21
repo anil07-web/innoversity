@@ -26,6 +26,7 @@
         <module>spring-cloud-gateway</module>
         <module>authentication-service</module>
         <module>registration-service</module>
+        <module>challenge</module>
     </modules>
     <dependencies>
 
