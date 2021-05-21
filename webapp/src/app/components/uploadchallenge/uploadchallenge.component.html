@@ -23,6 +23,14 @@
               Challenger Domain is required
             </div>
           </div>
+          <!-- <div class="mt-2">
+            <input type="date" #date="ngModel" name="date" required class="form-control" [(ngModel)]="challenge.date" placeholder="Date">
+            <div class="text-danger" *ngIf="date.dirty && date.errors?.required">
+              Date is required
+            </div>
+            </div> -->
+          
+          
           <div class="mt-2">
             <input type="text" #Abstract="ngModel" name="Abstract" required class="form-control" [(ngModel)]="challenge.Abstract" placeholder="Abstract">
             <div class="text-danger" *ngIf="Abstract.dirty && Abstract.errors?.required">

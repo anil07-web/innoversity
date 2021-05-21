@@ -2,7 +2,6 @@ package com.stackroute.challenge.controller;
 
 import com.stackroute.challenge.model.Challenge;
 import com.stackroute.challenge.service.ChallengeService;
-import com.stackroute.challenge.service.ChallengeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
