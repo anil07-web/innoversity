@@ -1,35 +1,39 @@
-<div class="container">
-    <div class="row mt-10" >
-      <div class="col-md-4 offset-md-4 ">
-        <h2 id="login-heading">Login</h2>
+ <div class="container">
+  <div class="main">
+      <div class="side">
+          <h1 class="sign-in-heading">Hello, Welcome to Innoversity</h1>
+          <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
+              Perferendis aliquid error quidem, placeat nisi adipisci explicabo ab ducimus impedit commodi
+              reiciendis, voluptatem quos voluptatibus sunt dolores.</p>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4 offset-md-4">
-        <form #loginform="ngForm" (ngSubmit)="addUserCredentials(loginform)">
-          <div class="mt-2">
-            <input type="text" name="email" #email="ngModel" class="form-control" [(ngModel)]="login.email" placeholder="Enter your mail id">
-            <div class="text-danger" *ngIf="email.dirty && email.invalid">
-              Username is required
+      <div class="sign-in">
+          <img src="assets/images/login.svg" width="40%" alt="">
+          <form class="sign-in-form" #loginform="ngForm" (ngSubmit)="addUserCredentials(loginform)">
+              <div class="form-group">
+                  <i class="far fa-envelope"></i>
+                  <input type="text" name="email" #email="ngModel"  class="form-control" [(ngModel)]="login.email" placeholder="Enter your mail id">
+                  <div class="text-danger" *ngIf="email.dirty && email.invalid">
+                    Mail id is required
+                  </div>
+                </div>
+              <div class="form-group">
+                <i class="fas fa-lock"></i>
+                  <input name="password" [type]="showPass?'text':'password'" #password="ngModel" class="form-control" [(ngModel)]="login.password" placeholder="Enter your password">
+                  <i class="fas fa-eye"></i>
+                  <div class="text-danger" *ngIf="password.dirty && password.invalid">
+                    Password is required
+                  </div>
+              </div>
+              <button class="btnLogin">Login</button>
+          </form>
+          <div class="forgot-link">
+              <div>Don't have an account? Don't worry
+                  <a href="#">Click here</a>
+              </div>
             </div>
-          </div>
-          <div class="mt-2 input-group" >
-            <input name="password" [type]="showPass?'text':'password'" #password="ngModel" class="form-control" [(ngModel)]="login.password" placeholder="Enter your password">
-            <button class="btn btn-secondary" (click)="showPassword()"><i class="fas fa-eye"></i></button>
-            <div class="text-danger" *ngIf="password.dirty && password.invalid">
-              Password is required
-            </div>
-          </div>
-          <div class="mt-2">
-            <button id="btnLogin" class="btn btn-secondary" routerLink="/dashboard">Login</button>
-          </div>
-        </form> 
-        <div class="text-center">Don't have an account? Don't Worry
-          <a routerLink="/registration">click here</a>
-        </div>
       </div>
-    </div>
   </div>
+  <!-- <app-header [isLoggedIn]="loggedIn"></app-header> -->
 
 
 
