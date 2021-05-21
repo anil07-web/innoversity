@@ -27,11 +27,9 @@ export class UploadchallengeComponent implements OnInit {
     };
   }
   onSubmit(form: NgForm) {
-    if (form.valid) {
-      this.service.addChallenge(this.challenge).subscribe(data => {
-       
-      });
-    } 
+    
+      // this.service.addChallenge(this.challenge).subscribe(data => {});
+      console.log(this.challenge);
   }
   onItemSelect($event) {
 
