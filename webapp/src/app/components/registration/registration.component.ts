@@ -46,8 +46,7 @@ export class RegistrationComponent implements OnInit {
 
   }
 
-  
-
+ 
 
   msg:any;
   onSubmit() {
@@ -75,6 +74,14 @@ export class RegistrationComponent implements OnInit {
 
 
 
+
+  
+  public mystyle = {
+    fontSize:"30px",
+    fontStyle:"italic"
+  }
+
+
   url = "./assets/banner1.webp";
   onSelectFile(e) {
     if (e.target.files) {
@@ -83,7 +90,40 @@ export class RegistrationComponent implements OnInit {
       reader.onload = (event: any) => {
         this.url = event.target.result;
       }
-      // console.log(e.target.files);
     }
   }
+
+
+
+
+
+
+
+
+  selectedFile: File;
+  base64Data: any;
+  message: string;
+  imageName: any;
+  public onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+  }
+  onUpload() {
+    console.log(this.selectedFile);
+    
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+  
+  //   this.httpClient.post('http://localhost:8080/image/upload', uploadImageData, { observe: 'response' })
+  //     .subscribe((response) => {
+  //       if (response.status === 200) {
+  //         this.message = 'Image uploaded successfully';
+  //       } else {
+  //         this.message = 'Image not uploaded successfully';
+  //       }
+  //     }
+  //     );
+  }
+
+
+
 }

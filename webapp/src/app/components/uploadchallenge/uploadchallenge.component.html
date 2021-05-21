@@ -4,23 +4,23 @@
       <div class="col-md-4 offset-md-4">
         <form #contactform="ngForm" (ngSubmit)="onSubmit(contactform)">
           <div class="mt-2">
-            <input type="text" #Challengername="ngModel" name="Challengername" required pattern="[a-zA-Z]{1,10}" class="form-control" [(ngModel)]="challenge.Challengername" placeholder="Challengername">
-            <div class="text-danger" *ngIf="Challengername.dirty && Challengername.errors?.required">
+            <input type="text" #challengername="ngModel" name="challengername" required pattern="[a-zA-Z]{1,10}" class="form-control" [(ngModel)]="challenge.challengername" placeholder="Challenger Name">
+            <div class="text-danger" *ngIf="challengername.dirty && challengername.errors?.required">
               Challenger Name is required
             </div>
-            <div class="text-danger" *ngIf="Challengername.dirty && Challengername.errors?.pattern">
+            <div class="text-danger" *ngIf="challengername.dirty && challengername.errors?.pattern">
               Only alphabets are allowed in Challenger Name
             </div>
           </div>
           <div class="mt-2">
-            <input type="text" #ChallengerTitle="ngModel" name="ChallengerTitle" required class="form-control" [(ngModel)]="challenge.ChallengerTitle" placeholder="Challenger Title">
-            <div class="text-danger" *ngIf="ChallengerTitle.dirty && ChallengerTitle.errors?.required">
+            <input type="text" #challengertitle="ngModel" name="challengertitle" required class="form-control" [(ngModel)]="challenge.challengertitle" placeholder="Challenger Title">
+            <div class="text-danger" *ngIf="challengertitle.dirty && challengertitle.errors?.required">
               Challenger Title is required
             </div>
           </div>
           <div class="mt-2">
-            <input type="text" #ChallengerDomain="ngModel" name="ChallengerDomain" required class="form-control" [(ngModel)]="challenge.ChallengerDomain" placeholder="Challenger Domain">
-            <div class="text-danger" *ngIf="ChallengerDomain.dirty && ChallengerDomain.errors?.required">
+            <input type="text" #challengerdomain="ngModel" name="challengerdomain" required class="form-control" [(ngModel)]="challenge.challengerdomain" placeholder="Challenger Domain">
+            <div class="text-danger" *ngIf="challengerdomain.dirty && challengerdomain.errors?.required">
               Challenger Domain is required
             </div>
           </div>
@@ -31,14 +31,14 @@
             </div>
           </div>
           <div class="mt-2">
-            <input type="text" #Description="ngModel" name="Description" required class="form-control" [(ngModel)]="challenge.Description" placeholder="Description">
-            <div class="text-danger" *ngIf="Description.dirty && Description.errors?.required">
+            <input type="text" #description="ngModel" name="description" required class="form-control" [(ngModel)]="challenge.description" placeholder="Description">
+            <div class="text-danger" *ngIf="description.dirty && description.errors?.required">
                 Description is required
             </div>
           </div>
           <div class="mt-2">
-            <input type="text" #Rules="ngModel" name="Rules" required class="form-control" [(ngModel)]="challenge.Rules" placeholder="Rules">
-            <div class="text-danger" *ngIf="Rules.dirty && Rules.errors?.required">
+            <input type="text" #rules="ngModel" name="rules" required class="form-control" [(ngModel)]="challenge.rules" placeholder="Rules">
+            <div class="text-danger" *ngIf="rules.dirty && rules.errors?.required">
                 Rules are required
             </div>
           </div>

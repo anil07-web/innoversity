@@ -18,12 +18,10 @@ export class UploadchallengeComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.service.addChallenge(this.challenge).subscribe(data => {
-        
+        alert('Data stored successfuully'); 
       });
     } else {
-      // if (form.form.controls.firstname.invalid) {
-      //   form.form.controls.firstname.markAsDirty();
-      // }
+      
       alert('Please fix the errors');
     }
   }

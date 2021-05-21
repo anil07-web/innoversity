@@ -18,10 +18,10 @@ import java.util.UUID;
 public class Challenge {
     @Id
     private UUID id;
-    private String Challengername;
-    private String Challengedomain;
-    private String ChallengeTitle;
-    private String Abstract;
-    private String Description;
-    private String Rules;
+    private String challengername;
+    private String challengedomain;
+    private String challengetitle;
+    private String Abstract; //I make capital (Abstract) due to abstract keyword predefined in java
+    private String description;
+    private String rules;
 }
