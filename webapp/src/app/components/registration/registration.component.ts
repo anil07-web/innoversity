@@ -53,13 +53,12 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.valid) {
       this.service.registerUser(this.registerForm.value).subscribe(data => {
         this.msg="You are registered !";
-        // console.log(this.registerForm.value);
       }
 
       )
     } else {
       console.log("form is invalid");
-      this.msg="Registeration unsuccessful";
+      this.msg="Registeration unsuccessful !";
     }
   }
 
@@ -77,7 +76,7 @@ export class RegistrationComponent implements OnInit {
 
   
   public mystyle = {
-    fontSize:"30px",
+    fontSize:"20px",
     fontStyle:"italic"
   }
 
@@ -91,37 +90,6 @@ export class RegistrationComponent implements OnInit {
         this.url = event.target.result;
       }
     }
-  }
-
-
-
-
-
-
-
-
-  selectedFile: File;
-  base64Data: any;
-  message: string;
-  imageName: any;
-  public onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-  }
-  onUpload() {
-    console.log(this.selectedFile);
-    
-    const uploadImageData = new FormData();
-    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-  
-  //   this.httpClient.post('http://localhost:8080/image/upload', uploadImageData, { observe: 'response' })
-  //     .subscribe((response) => {
-  //       if (response.status === 200) {
-  //         this.message = 'Image uploaded successfully';
-  //       } else {
-  //         this.message = 'Image not uploaded successfully';
-  //       }
-  //     }
-  //     );
   }
 
 

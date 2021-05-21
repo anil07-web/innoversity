@@ -1,15 +1,89 @@
-.container-fluid{
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    box-sizing: border-box;
+} */
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
-    background-image: linear-gradient(to left, rgba(180, 20, 95, 0.849) , rgb(243, 252, 125));
-}
-.register{
-    margin-left: 10%;
-    padding-top: 30px;
-    color: rgb(27, 27, 24);
+    width: 100%;
+    background: url("src/assets/images/background.jpg");
+    background-size:cover;
 }
 
-.img{
-   margin-left: 80%;
-   margin-top: 10%;
+.main {
+    width: 70%;
+    height: 80vh;
+    box-shadow: 0px 10px 20px 1px rgb(136, 135, 135);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
+.side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(22, 119, 175);
+    padding: 20px;
+    color: white;
+}
+
+
+.register-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.register-in-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    margin-bottom: 15px;
+    height: 42px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+}
+
+
+.btnRegister {
+    width: 120px;
+    height: 40px;
+    background-color: rgb(240, 24, 107);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btnRegister:hover {
+    width: 180px;
+}
+
+.form-control {
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgb(240, 24, 107);
+    outline: none;
+}
