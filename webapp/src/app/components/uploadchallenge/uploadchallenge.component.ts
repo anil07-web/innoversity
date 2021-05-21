@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Challenge } from 'src/app/models/Challenge';
 import { UploadchallengeService } from 'src/app/services/uploadchallenge.service';
 
@@ -12,8 +12,9 @@ export class UploadchallengeComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
+  uploadChallenge: FormGroup;
   public challenge = new Challenge;
-  constructor(private service:UploadchallengeService) { }
+  constructor(private fb:FormBuilder,private service:UploadchallengeService) { }
 
   ngOnInit(): void {
     this.dropdownList = ["Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
@@ -26,12 +27,29 @@ export class UploadchallengeComponent implements OnInit {
 
     };
   }
-  onSubmit(form: NgForm) {
-    
-      // this.service.addChallenge(this.challenge).subscribe(data => {});
+  initForm() {
+    this.uploadChallenge = this.fb.group({
+     challengerName: [''],
+     challengeTitle: ['' ],
+     challengeDomain: [''],
+     challengeAbstract: [''],
+     description: [''],
+     rules: ['']
+   });
+ }
+  onSubmit( ){
+   
+    // this.service.addChallenge(this.challenge).subscribe(data => {});
       console.log(this.challenge);
   }
   onItemSelect($event) {
 
   }
+  get challengeName() { return this.uploadChallenge.get('challengeName') }
+  get challengeTitle() { return this.uploadChallenge.get('challengeTitle') }
+  get challengeDomain() { return this.uploadChallenge.get('challengeDomain') }
+  get challengeAbstract() { return this.uploadChallenge.get('challengeAbstract') }
+  get description() { return this.uploadChallenge.get('description') }
+  get rules() { return this.uploadChallenge.get('rules') }
+  
 }
