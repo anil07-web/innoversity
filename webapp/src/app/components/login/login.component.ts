@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   public showPass:boolean=false;
   public show:number=0;
   public invalid:string;
+  public loggedIn:boolean=false;
   ngOnInit(): void {
   }
   addUserCredentials(form:NgForm){
