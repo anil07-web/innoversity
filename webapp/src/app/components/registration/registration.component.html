@@ -4,7 +4,7 @@
     </span>
     <div class="register">
         <h2>Registration form</h2>
-        <div class="text-success">{{msg}}</div>
+        <div [ngStyle]= "mystyle" class="text-success">{{msg}}</div>
     </div>
     <div class="row">
         <div class="col-md-4 offset-md-4">
@@ -77,4 +77,30 @@
             </form>
         </div>
     </div>
+
+
+
+    <div class="container row">
+        <div class="col-md-12">
+            <h1>Upload Image</h1>
+        </div>
+    </div>
+    <div class="container row">
+        <div class="col-md-6">
+            <input type="file" (change)="onFileChanged($event)">
+        </div>
+        <div class="col-md-6">
+            <input type="button" (click)="onUpload()" value="upload">
+        </div>
+    </div>
+    <hr />
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=message>{{message}}</div>
+        </div>
+    </div>
+
+
+
+    
 </div>
