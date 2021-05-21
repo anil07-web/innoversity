@@ -1,4 +1,4 @@
-package com.demo.Upload.Service;
+package com.stackroute.upload;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

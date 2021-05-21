@@ -1,7 +1,6 @@
-package com.demo.Upload.Service.controller;
-import com.demo.Upload.Service.model.ChallengeUpload;
-import com.demo.Upload.Service.service.ChallengeService;
-import lombok.Value;
+package com.stackroute.upload.controller;
+import com.stackroute.upload.model.ChallengeUpload;
+import com.stackroute.upload.service.ChallengeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +14,15 @@ import java.util.UUID;
 @RequestMapping("/api/v1")
 public class FilesController {
 
-     private ChallengeService challengeService;
+     private ChallengeServiceImpl challengeService;
 
     @Autowired
-    public FilesController(ChallengeService challengeService) {
+    public FilesController(ChallengeServiceImpl challengeService) {
         this.challengeService=challengeService;
     }
 
     @PostMapping("/challenge")
-    public ResponseEntity<ChallengeUpload> saveChallenge( @RequestBody ChallengeUpload challengeUpload)
+    public ResponseEntity<ChallengeUpload> saveChallenge(@RequestBody ChallengeUpload challengeUpload)
     {
         UUID uuid=UUID.randomUUID();
         challengeUpload.setId(uuid);
