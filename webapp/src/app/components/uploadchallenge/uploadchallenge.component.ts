@@ -21,7 +21,6 @@ export class UploadchallengeComponent implements OnInit {
         alert('Data stored successfuully'); 
       });
     } else {
-      
       alert('Please fix the errors');
     }
   }

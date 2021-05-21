@@ -4,13 +4,13 @@
       <div class="col-md-4 offset-md-4">
         <form #contactform="ngForm" (ngSubmit)="onSubmit(contactform)">
           <div class="mt-2">
-            <input type="text" #challengername="ngModel" name="challengername" required pattern="[a-zA-Z]{1,10}" class="form-control" [(ngModel)]="challenge.challengername" placeholder="Challenger Name">
+            <input type="text" #challengername="ngModel" name="challengername" required class="form-control" [(ngModel)]="challenge.challengername" placeholder="Challenger Name">
             <div class="text-danger" *ngIf="challengername.dirty && challengername.errors?.required">
               Challenger Name is required
             </div>
-            <div class="text-danger" *ngIf="challengername.dirty && challengername.errors?.pattern">
+            <!-- <div class="text-danger" *ngIf="challengername.dirty && challengername.errors?.pattern">
               Only alphabets are allowed in Challenger Name
-            </div>
+            </div> -->
           </div>
           <div class="mt-2">
             <input type="text" #challengertitle="ngModel" name="challengertitle" required class="form-control" [(ngModel)]="challenge.challengertitle" placeholder="Challenger Title">
