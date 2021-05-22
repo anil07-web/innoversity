@@ -6,21 +6,29 @@
     box-sizing: border-box;
 }
 
+.main-container {
+    background: url("/assets/images/logo3.jpg") top/cover;
+    width: 100%;
+    min-height: 100vh;
+  }
+
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     width: 100%;
-    background-size: cover;
+    background-size: auto;
 }
 
 .main {
-    width: 70%;
+    width: 80%;
     height: 80vh;
     box-shadow: 0px 10px 20px 1px rgb(136, 135, 135);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-left: 10%;
+    background-color: beige;
 }
 
 .side {
@@ -90,4 +98,5 @@
 
 .forgot-link{
     margin-top: 20px;
+    align-items: center;
 }

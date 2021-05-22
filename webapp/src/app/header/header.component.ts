@@ -1,4 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,27 @@ import { Component,Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   @Input()
   public isLoggedIn;
+
+  email: String;
+  loggedInUser: String;
   ngOnInit(): void {
+    if (this.isLoggedIn) {
+      this.email=localStorage.getItem("userName");
+      const splitUsername = this.email.split("@");
+      this.loggedInUser = splitUsername[0];
+      console.log("Logged in user:", this.loggedInUser);
+    }
+    
+  }
+
+  toDashboard() {
+    console.log("go to dashboard...")
+    if(this.isLoggedIn) {
+      this.router.navigateByUrl("/dashboard");
+    }
   }
 
 }

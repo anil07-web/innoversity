@@ -6,3 +6,7 @@
 .navbar-brand{
     font-family: 'Goblin One', cursive;
 }
+
+.nav-item {
+    padding-right: 2%;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Login } from 'src/app/models/Login';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -10,12 +11,13 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private logindata: LoginService) { }
+  constructor(private logindata: LoginService, private router: Router) { }
   public login=new Login;
   public showPass:boolean=false;
   public show:number=0;
   public invalid:string;
   public loggedIn:boolean=false;
+  showAlert: boolean = false;
   ngOnInit(): void {
   }
   addUserCredentials(form:NgForm){
@@ -24,8 +26,15 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this.invalid=data?.token;
         console.log(this.invalid);
+        this.router.navigateByUrl("/dashboard");
         localStorage.setItem('token', data?.token);   
-        localStorage.setItem('email',this.login?.email); 
+        localStorage.setItem('userName',data?.userName); 
+      },
+      (error)=> {
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 1500);
       });
       }
       else{
@@ -38,5 +47,9 @@ export class LoginComponent implements OnInit {
       else
         this.showPass=false;
       this.show++;
+    }
+
+    lock() {
+      console.log("here is the lock");
     }
 }

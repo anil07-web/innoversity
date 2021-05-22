@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { RegistrationService } from 'src/app/services/registration.service';
 
@@ -14,8 +15,11 @@ export class RegistrationComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
   registerForm: FormGroup;
+  showPassword: boolean = false;
 
-  constructor(private fb: FormBuilder,private service : RegistrationService) { }
+
+  constructor(private fb: FormBuilder,private service : RegistrationService,
+              private router: Router) { }
    initForm() {
    this.registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.pattern("^[a-zA-Z ]+$")]],
@@ -53,7 +57,8 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.valid) {
       this.service.registerUser(this.registerForm.value).subscribe(data => {
         this.msg="You are registered !";
-      }
+        this.router.navigateByUrl("/login");
+        }
 
       )
     } else {
@@ -90,6 +95,10 @@ export class RegistrationComponent implements OnInit {
         this.url = event.target.result;
       }
     }
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
 
