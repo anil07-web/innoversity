@@ -1,0 +1,51 @@
+ <div class="main-container d-flex flex-wrap p-5">
+   <div class="main">
+     <div class="side">
+       <h1 class="sign-in-heading">Hello, Welcome to Innoversity</h1>
+       <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
+         Perferendis aliquid error quidem, placeat nisi adipisci explicabo ab ducimus impedit commodi
+         reiciendis, voluptatem quos voluptatibus sunt dolores.</p>
+     </div>
+     <div class="sign-in">
+       <div class="alert alert-danger animate__animated animate__slideInDown" *ngIf="showAlert" role="alert">
+         Not Authorized!
+       </div>
+       <img src="assets/images/login.svg" width="40%" alt="">
+       <form class="sign-in-form" #loginform="ngForm" (ngSubmit)="addUserCredentials(loginform)">
+         <div class="form-group">
+           <i class="far fa-envelope"></i>
+           <input type="text" name="email" #email="ngModel" class="form-control" [(ngModel)]="login.email"
+             placeholder="Enter your mail id">
+           <div class="text-danger" *ngIf="email.dirty && email.invalid">
+             Mail id is required
+           </div>
+         </div>
+         <div class="form-group">
+           <i class="fas fa-lock" (click)="lock()"></i>
+           <input name="password" [type]="showPass?'text':'password'" #password="ngModel" class="form-control"
+             [(ngModel)]="login.password" placeholder="Enter your password">
+           <div class="text-danger" *ngIf="password.dirty && password.invalid">
+             Password is required
+           </div>
+         </div>
+         <button class="btnLogin">Login</button>
+       </form>
+       <div class="forgot-link">
+         <div>Don't have an account? Don't worry
+           <a href="/registration">Register here</a>
+         </div>
+         <div>Have you visited your landing page
+           <a href="/">Click here</a>
+         </div>
+       </div>
+     </div>
+   </div>
+   <!-- <app-header [isLoggedIn]="loggedIn"></app-header> -->
+
+
+
+
+   <!--
+  username
+dashboard
+showpassword -->
