@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Challenge } from 'src/app/models/Challenge';
 import { UploadchallengeService } from 'src/app/services/uploadchallenge.service';
 
@@ -37,7 +38,8 @@ export class UploadchallengeComponent implements OnInit {
      challengeDomain: [''],
      challengeAbstract: [''],
      description: [''],
-     rules: ['']
+     rules: [''],
+     htmlContent:['']
    });
  }
   onSubmit( ){
@@ -57,4 +59,32 @@ export class UploadchallengeComponent implements OnInit {
   get description() { return this.uploadChallenge.get('description') }
   get rules() { return this.uploadChallenge.get('rules') }
   
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+      spellcheck: true,
+      height: 'auto',
+      minHeight: '0',
+      maxHeight: '100',
+      width: 'auto',
+      minWidth: '0',
+      enableToolbar: true,
+      showToolbar: false,
+      placeholder: 'Enter  Challenge description here...',
+      defaultParagraphSeparator: '',
+      defaultFontName: 'Times New Roman',
+      defaultFontSize: '12',
+      fonts: [
+        {class: 'arial', name: 'Arial'},
+        {class: 'times-new-roman', name: 'Times New Roman'},
+        {class: 'calibri', name: 'Calibri'},
+        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+      ],
+    
+    sanitize: true,
+    toolbarPosition:'top',
+    toolbarHiddenButtons: [
+      ['bold', 'italic'],
+      ['fontSize']
+    ]
+};
 }
