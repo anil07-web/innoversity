@@ -20,6 +20,7 @@ import { UploadchallengeComponent } from './components/uploadchallenge/uploadcha
 import { SolutionComponent } from './solution/solution.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SolutionComponent,
     UploadchallengeComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SolutionAnalysisComponent
   ],
   imports: [
     BrowserModule,

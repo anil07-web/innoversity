@@ -1,19 +1,61 @@
 {
-  "posts": [
+  "recommended": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "Smart helmet",
+      "description": "to provide all the mandotory safety requirements in this helmet",
+      "domain":"health",
+      "expireDate":"2/7/2021",
+      "id": 1
+    },
+    {
+      
+      "title": "Smart helmet",
+      "description": "to provide all the mandotory safety requirements in this helmet",
+      "domain":"health",
+      "expireDate":"2/7/2021",
+      "id": 2
     }
   ],
-  "comments": [
+  "challenge": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "Smart helmet",
+      "description": "to provide all the mandotory safety requirements in this helmet",
+      "domain":"Health",
+      "expireDate":"3/7/2021",
+      "id": 1
+    },
+    {
+      
+      "title": "Smart helmet",
+      "description": "to provide all the mandotory safety requirements in this helmet",
+      "domain":"Science",
+      "expireDate":"3/7/2021",
+      "id": 2
+    },
+    {
+      
+      "title": "Smart helmet",
+      "description": "to provide all the mandotory safety requirements in this helmet",
+      "domain":"Engineering",
+      "expireDate":"3/7/2021",
+      "id": 3
+    },
+    {
+      
+      "title": "Smart helmet",
+      "description": "to provide all the mandotory safety requirements in this helmet",
+      "domain":"Engineering",
+      "expireDate":"3/7/2021",
+      "id": 4
+    },
+    {
+      
+      "title": "Smart helmet",
+      "description": "to provide all the mandotory safety requirements in this helmet",
+      "domain":"Aerospace",
+      "expireDate":"3/7/2021",
+      "id": 5
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+
+  ]
 }

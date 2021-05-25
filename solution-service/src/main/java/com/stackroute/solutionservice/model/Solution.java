@@ -24,5 +24,4 @@ public class Solution {
     private String solvedBy=" ";
     private String description;
     private String solStatus="Not reviewed";
-    
 }
