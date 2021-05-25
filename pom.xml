@@ -28,6 +28,7 @@
         <module>registration-service</module>
         <module>challenge</module>
         <module>recommendation-service</module>
+        <module>search-service</module>
     </modules>
     <dependencies>
 
