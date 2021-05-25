@@ -9,14 +9,18 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-
-
+import { AngularEditorModule } from "@kolkov/angular-editor";
+import { MatFormFieldModule} from "@angular/material/form-field";
+import { MatDatepickerModule} from "@angular/material/datepicker";
+import { MatInputModule } from "@angular/material/input";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { UploadchallengeComponent } from './components/uploadchallenge/uploadchallenge.component';
 import { SolutionComponent } from './solution/solution.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 
 
 @NgModule({
@@ -28,7 +32,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SolutionComponent,
     UploadchallengeComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SolutionAnalysisComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
-  
+    AngularEditorModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    MatInputModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
