@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "*")
@@ -25,6 +26,9 @@ public class SolutionController {
     solution.setId(uuid);
         Solution savedDetails =solutionService.saveDetails(solution);
         return new ResponseEntity<>(savedDetails, HttpStatus.CREATED);
-
+    }
+    @GetMapping("/getsolution")
+    public ResponseEntity<List<Solution>> getAllUsers(){
+        return new ResponseEntity<List<Solution>>((List<Solution>)solutionService.getAllUsers(),HttpStatus.OK);
     }
 }
