@@ -5,6 +5,8 @@ import com.stackroute.solutionservice.repository.SolutionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SoultionServiceImpl implements SolutionService {
     private SolutionRepo solutionRepo;
@@ -17,6 +19,11 @@ public class SoultionServiceImpl implements SolutionService {
     @Override
     public Solution saveDetails(Solution solution) {
         return solutionRepo.save(solution);
+    }
+
+    @Override
+    public List<Solution> getAllUsers() {
+        return (List<Solution>) solutionRepo.findAll();
     }
 
 }
