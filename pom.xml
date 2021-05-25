@@ -27,6 +27,7 @@
         <module>authentication-service</module>
         <module>registration-service</module>
         <module>challenge</module>
+        <module>search-service</module>
     </modules>
     <dependencies>
 
