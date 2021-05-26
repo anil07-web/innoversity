@@ -13,7 +13,7 @@ export class DashboardService {
     return this.http.get('http://localhost:3000/recommended');
   }
   getChallenge()  {
-    return this.http.get('http://localhost:3000/challenge');
+    return this.http.get('http://localhost:8095/api/v1/Challenges');
   }
-
+  
 }
