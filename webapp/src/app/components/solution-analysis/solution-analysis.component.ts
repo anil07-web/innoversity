@@ -11,6 +11,7 @@ export class SolutionAnalysisComponent implements OnInit {
 
   constructor(private service : SolutionAnalysisService) { }
 
+  public solutionDetails;
   ngOnInit(): void {
     this.getSolution();
   }
@@ -18,6 +19,7 @@ export class SolutionAnalysisComponent implements OnInit {
   getSolution(){
     this.service.getSolution().subscribe(data=>{
       console.log(data);
+      this.solutionDetails=data;
     });
   }
 }
