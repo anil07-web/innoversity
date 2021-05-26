@@ -41,15 +41,15 @@
           <input type="textarea" formControlName="challengeArtifacts" class="form-control" placeholder="Artifacts">
       
         </div>
-      <div class="mt-2">
+      <div class="input-group mt-2">
         <input [owlDateTime]="dt2" class="form-control" placeholder="Challenge Expiration Date">
         <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span>
        <owl-date-time #dt2></owl-date-time>
       </div>
        
         <div class="mt-2">
-          <input type="text" class="form-control" formControlName="prize"  placeholder="Reward Prize" >
-          <button (click)="pay(20)" class="btn btn-primary btn-block">Pay $20</button>
+          <input type="number" #amt class="form-control" formControlName="prize" [(ngModel)]="amnt"  placeholder="Reward Prize" >
+          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay ${{amnt}}</button>
         </div>
        
        
