@@ -21,6 +21,7 @@ public class Challenge {
     private UUID challengeId;
     private String challengerName;
     private String[] challengeDomain;
+<<<<<<< HEAD
     private String challengeTitle;
     private String challengeAbstract; //I make capital (Abstract) due to abstract keyword predefined in java
     private String description;
@@ -30,4 +31,10 @@ public class Challenge {
     Date date =new Date();
 
 
+=======
+//    private String challengeTitle;
+//    private String challengeAbstract; //I make capital (Abstract) due to abstract keyword predefined in java
+//    private String description;
+//    private String rules;
+>>>>>>> 239ff5da0d4de9df270ae7365be3b0bf8ab697d3
 }

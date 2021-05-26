@@ -1,11 +1,10 @@
-package com.stackroute.registrationservice.service;
+package com.stackroute.challenge.service;
 
-import com.stackroute.registrationservice.model.User;
+import com.stackroute.challenge.model.Challenge;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-/*This is the producer class of rabbitmq which send the user data to the consumer through queue*/
 
 @Service
 public class RabbitMqSender {
@@ -23,10 +22,11 @@ public class RabbitMqSender {
     @Value("${spring.rabbitmq.routingkey}")
     String routingKey;
 
-    /*This method sends the user data along with routing key to the queue.*/
-    public void send(User user) {
-        System.out.println("User sent:"+user);
-        rabbitTemplate.convertAndSend(exchange, routingKey, user);
+    /*This method sends the challenge data along with routing key to the queue.*/
+    public void send(Challenge challenge) {
+        System.out.println("Challenge sent:"+challenge);
+        rabbitTemplate.convertAndSend(exchange, routingKey, challenge);
     }
+
 
 }

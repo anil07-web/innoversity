@@ -9,6 +9,6 @@ export class SolutionAnalysisService {
   constructor(private http:HttpClient) { }
 
   getSolution(){
-    return this.http.get("http://localhost:8900/api/v1/getsolution");
+    return this.http.get('http://localhost:8900/api/v1/getsolution');
   }
 }

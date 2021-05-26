@@ -107,8 +107,6 @@ pay(amount: any) {
     key: 'pk_test_51Itz8xSEYEK3dxaT6Wxv2YqSd5P57ZM40EWFx2j9uUIes3FqIzrw6j3ihg1iMozBLQv4isCoCw8wx4750he7t65D00h7ccJVas',
     locale: 'auto',
     token: function (token: any) {
-      // You can access the token ID with `token.id`.
-      // Get the token ID to your server-side code for use.
       console.log(token.id)
       alert('Token Created!!');
       

@@ -18,42 +18,42 @@
   ],
   "challenge": [
     {
-      "title": "Smart helmet",
+      "challengeTitle": "Smart helmet",
       "description": "to provide all the mandotory safety requirements in this helmet",
-      "domain":"Health",
-      "expireDate":"3/7/2021",
+      "challengeDomain":["Environment","Habitat"],
+      "expiryDate":"3/7/2021",
       "id": 1
     },
     {
       
-      "title": "Smart helmet",
+      "challengeTitle": "Smart helmet",
       "description": "to provide all the mandotory safety requirements in this helmet",
-      "domain":"Science",
-      "expireDate":"3/7/2021",
+      "challengeDomain":["Habitat","Science"],
+      "expiryDate":"3/7/2021",
       "id": 2
     },
     {
       
-      "title": "Smart helmet",
+      "challengeTitle": "Smart helmet",
       "description": "to provide all the mandotory safety requirements in this helmet",
-      "domain":"Engineering",
-      "expireDate":"3/7/2021",
+      "challengeDomain":["Health","Aerospace"],
+      "expiryDate":"3/7/2021",
       "id": 3
     },
     {
       
-      "title": "Smart helmet",
+      "challengeTitle": "Smart helmet",
       "description": "to provide all the mandotory safety requirements in this helmet",
-      "domain":"Engineering",
-      "expireDate":"3/7/2021",
+      "challengeDomain":["Health","Engineering"],
+      "expiryDate":"5/7/2021",
       "id": 4
     },
     {
       
-      "title": "Smart helmet",
+      "challengeTitle": "Smart helmet",
       "description": "to provide all the mandotory safety requirements in this helmet",
-      "domain":"Aerospace",
-      "expireDate":"3/7/2021",
+      "challengeDomain":["Electricity","Science"],
+      "expiryDate":"3/7/2021",
       "id": 5
     }
 
