@@ -56,6 +56,7 @@ public class ChallengeRepository {
     public Challenge insertChallenge(Challenge challenge) {
         challenge.setChallengeId(UUID.randomUUID().toString());
         Map<String, Object> dataMap = objectMapper.convertValue(challenge, Map.class);
+//        IndexRequest indexRequest = new IndexRequest(INDEX, TYPE, challenge.getChallengeId()).source(dataMap);
         IndexRequest indexRequest = new IndexRequest(INDEX, TYPE, challenge.getChallengeId()).source(dataMap);
         try {
             IndexResponse response = restHighLevelClient.index(indexRequest);
