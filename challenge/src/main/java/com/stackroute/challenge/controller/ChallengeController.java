@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "*")
@@ -25,5 +26,17 @@ public class ChallengeController {
         challenge.setChallengeId(uuid);
         Challenge savedChallenge=challengeService.save(challenge);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/challenges")
+    public ResponseEntity<List<Challenge>> getChallenges(@RequestParam(name = "domain", required = false) List<String> domain) {
+        List<Challenge> challenges =  challengeService.getDomainChallenges(domain);
+        return new ResponseEntity<>(challenges, HttpStatus.OK);
+    }
+
+    @GetMapping("/getMessage")
+    public String getMessage() {
+        System.out.println("got a request from recommend");
+        return "hai from challenge service";
     }
 }

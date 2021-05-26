@@ -19,8 +19,8 @@ public class Challenge {
     private UUID challengeId;
     private String challengerName;
     private String[] challengeDomain;
-    private String challengeTitle;
-    private String challengeAbstract; //I make capital (Abstract) due to abstract keyword predefined in java
-    private String description;
-    private String rules;
+//    private String challengeTitle;
+//    private String challengeAbstract; //I make capital (Abstract) due to abstract keyword predefined in java
+//    private String description;
+//    private String rules;
 }
