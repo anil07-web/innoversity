@@ -2,6 +2,7 @@ package com.stackroute.recommendationservice.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.stackroute.recommendationservice.model.Domain;
+import com.stackroute.recommendationservice.model.ProxyChallenge;
 import com.stackroute.recommendationservice.model.User;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,11 @@ public interface RecommendationService {
 
     void createDomainNode(String[] interestedDomain);
 
-    List<Domain> getAllRecommendation(String emailId);
+
+//    List<Domain> getAllRecommendation(String email);
+
+    List<ProxyChallenge> getAllRecommendation(String email);
+
+    String getMessageFromProxy();
+
 }
