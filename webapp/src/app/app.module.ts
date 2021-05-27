@@ -51,7 +51,7 @@ import { SolutionAnalysisComponent } from './components/solution-analysis/soluti
     MatInputModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [],
+  providers: [DashboardComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

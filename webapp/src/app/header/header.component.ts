@@ -1,5 +1,7 @@
 import { Component,Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
+import { DashboardService } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router , private searchservice: DashboardComponent) { }
   @Input()
   public isLoggedIn;
 
@@ -29,6 +31,11 @@ export class HeaderComponent implements OnInit {
     if(this.isLoggedIn) {
       this.router.navigateByUrl("/dashboard");
     }
+  }
+
+  show(text){
+    console.log(text);
+    this.searchservice.setQuery(text);
   }
 
 }

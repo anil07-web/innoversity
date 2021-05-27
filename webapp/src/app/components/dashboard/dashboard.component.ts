@@ -28,6 +28,18 @@ export class DashboardComponent implements OnInit {
   public electricityIsNull:boolean=true;
   public scienceIsNull:boolean=true;
   public challenge;
+
+
+  public searchresult;
+  setQuery(querytext){
+    this.service.getSearchResult(querytext).subscribe(data=> {
+        this.searchresult = data;
+        console.log(this.searchresult);
+      });
+    }
+  
+
+
   ngOnInit(): void {
     this.getContacts();
     this.getChallenge();
@@ -37,6 +49,7 @@ export class DashboardComponent implements OnInit {
       this.recommended = data;
     });
   }
+
   getChallenge() {
     this.service.getChallenge().subscribe(data => {
        this.challenge = data;
