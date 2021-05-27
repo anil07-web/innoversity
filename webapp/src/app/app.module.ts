@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -17,6 +19,8 @@ import { UploadchallengeComponent } from './components/uploadchallenge/uploadcha
 import { SolutionComponent } from './solution/solution.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { AngularEditorModule } from "@kolkov/angular-editor";
 
 
 @NgModule({
@@ -28,7 +32,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SolutionComponent,
     UploadchallengeComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
-  
+    AngularEditorModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],

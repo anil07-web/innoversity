@@ -18,11 +18,12 @@ import java.util.UUID;
 @Document(collection = "solution")
 public class Solution {
     @Id
-    private UUID id;
+    private UUID solutionId;
     private String solution;
+//    private int challengeId;
 //    private String attachment;
     private String solvedBy=" ";
     private String description;
     private String solStatus="Not reviewed";
-    
+    private Feedback[] feedback;
 }
