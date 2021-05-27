@@ -23,8 +23,8 @@ public class RecommendationController {
     }
 
     @GetMapping("recommend")
-    public List<Domain> getRecommendation(@RequestParam(value = "emailId") String emailId) {
-        List<Domain> allDomains= recommendationService.getAllRecommendation(emailId);
+    public List<Domain> getRecommendation(@RequestParam(value = "email") String email) {
+        List<Domain> allDomains= recommendationService.getAllRecommendation(email);
         return allDomains;
     }
 }

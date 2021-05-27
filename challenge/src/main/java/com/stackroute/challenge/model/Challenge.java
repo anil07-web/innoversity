@@ -22,5 +22,6 @@ public class Challenge {
     private String challengeTitle;
     private String challengeAbstract; //I make capital (Abstract) due to abstract keyword predefined in java
     private String description;
+    private String expiryDate;
     private String rules;
 }

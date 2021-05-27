@@ -21,7 +21,7 @@ public class RecommendationServiceImpl implements RecommendationService {
 
     @Override
     public String createUserNode(User user) {
-        userRepository.createUserNode(user.getEmailId());
+        userRepository.createUserNode(user.getEmail());
         this.createDomainNode(user.getInterestedDomain());
         this.createInterestedRelation(user);
         return "Created user node!!";
@@ -35,17 +35,17 @@ public class RecommendationServiceImpl implements RecommendationService {
     }
 
     public void createInterestedRelation(User user) {
-        String emailId = user.getEmailId();
+        String email = user.getEmail();
         String[] interestedDomain=user.getInterestedDomain();
         for (String domain:interestedDomain) {
-            userRepository.createInterestedRelationship(emailId, domain);
+            userRepository.createInterestedRelationship(email, domain);
         }
-//        userRepository.createInterestedRelationship(emailId, domain);
+//        userRepository.createInterestedRelationship(email, domain);
     }
 
     @Override
-    public List<Domain> getAllRecommendation(String emailId) {
-        List<Domain> recommend = userRepository.getAllRecommendedDomain(emailId);
+    public List<Domain> getAllRecommendation(String email) {
+        List<Domain> recommend = userRepository.getAllRecommendedDomain(email);
         return recommend;
     }
 }

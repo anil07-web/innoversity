@@ -14,5 +14,5 @@ public interface RecommendationService {
 
     void createDomainNode(String[] interestedDomain);
 
-    List<Domain> getAllRecommendation(String emailId);
+    List<Domain> getAllRecommendation(String email);
 }

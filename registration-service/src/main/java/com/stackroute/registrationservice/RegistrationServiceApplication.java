@@ -21,6 +21,9 @@ public class RegistrationServiceApplication {
 	@Value("${spring.rabbitmq.queue}")
 	String queue;
 
+	@Value("${spring.rabbitmq.queue1}")
+	String queue1;
+
 	@Value("${spring.rabbitmq.exchange}")
 	String exchange;
 
@@ -40,6 +43,11 @@ public class RegistrationServiceApplication {
 	@Bean
 	Queue queue() {
 		return new Queue(queue, true);
+	}
+
+	@Bean
+	Queue queue1() {
+		return new Queue(queue1, true);
 	}
 
 	/*A Bean with name exchange is created which routes the info. to the respective Queue.*/

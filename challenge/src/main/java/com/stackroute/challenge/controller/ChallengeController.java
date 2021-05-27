@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "*")
@@ -19,11 +20,15 @@ public class ChallengeController {
     ChallengeService challengeService;
 
     @PostMapping("/Challenge")
-    public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challenge)
-    {
-        UUID uuid=UUID.randomUUID();
+    public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challenge) {
+        UUID uuid = UUID.randomUUID();
         challenge.setChallengeId(uuid);
-        Challenge savedChallenge=challengeService.save(challenge);
+        Challenge savedChallenge = challengeService.save(challenge);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/Challenges")
+    public ResponseEntity<List<Challenge>> getAllChallenges() {
+        return new ResponseEntity<List<Challenge>>((List<Challenge>) challengeService.getAllChallenges(), HttpStatus.OK);
     }
 }
