@@ -8,10 +8,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
->>>>>>> eea26636b3e23658107f3ff0969940c7ffef9770
 import java.util.List;
 
 @Service
@@ -32,7 +30,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 
     public List<Challenge> getAllChallenges() {
         return (List<Challenge>) challengeRespository.findAll();
-
+    }
     public List<Challenge> getDomainChallenges(List<String> domain) {
         List<Challenge> challenges = new ArrayList<>();
         Query query = new Query();

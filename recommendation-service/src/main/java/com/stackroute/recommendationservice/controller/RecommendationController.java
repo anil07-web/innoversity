@@ -25,14 +25,16 @@ public class RecommendationController {
         return saved;
     }
 
+//    @GetMapping("recommend")
+//
+//    public List<Domain> getRecommendation(@RequestParam(value = "email") String email) {
+//        List<Domain> allDomains = recommendationService.getAllRecommendation(email);
+//        return allDomains;
+//    }
+
     @GetMapping("recommend")
-
-    public List<Domain> getRecommendation(@RequestParam(value = "email") String email) {
-        List<Domain> allDomains= recommendationService.getAllRecommendation(email);
-        return allDomains;
-
-    public ResponseEntity<List<ProxyChallenge>> getRecommendation(@RequestParam(value = "emailId") String emailId) {
-        List<ProxyChallenge> recChallenges= recommendationService.getAllRecommendation(emailId);
+    public ResponseEntity<List<ProxyChallenge>> getRecommendation(@RequestParam(value = "email") String email) {
+        List<ProxyChallenge> recChallenges= recommendationService.getAllRecommendation(email);
         return new ResponseEntity<>(recChallenges, HttpStatus.OK);
     }
 
