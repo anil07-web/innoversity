@@ -8,7 +8,6 @@ import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 public class ConsumerService implements RabbitListenerConfigurer {
@@ -27,8 +26,7 @@ public class ConsumerService implements RabbitListenerConfigurer {
     public void receivedMessage(User user) {
 
         logger.info("User received is: " + user);
-        System.out.println(user);
-//        recommendationService.createUserNode(user);
+        recommendationService.createUserNode(user);
     }
 
     @Override
