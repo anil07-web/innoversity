@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Challenge } from 'src/app/models/Challenge';
 import { UploadchallengeService } from 'src/app/services/uploadchallenge.service';
@@ -16,8 +17,10 @@ export class UploadchallengeComponent implements OnInit {
   uploadChallenge: FormGroup;
   public challenge = new Challenge;
   uploadSuccess = false;
+  
   successMessage = 'Challenge uploaded successfully';
   handler:any = null;
+ 
   constructor(private fb:FormBuilder,private service:UploadchallengeService) { }
 
   ngOnInit(): void {
@@ -92,6 +95,11 @@ export class UploadchallengeComponent implements OnInit {
       ['fontSize']
     ]
 };
+
+
+   
+
+   
 
 pay(amount: any) {    
  

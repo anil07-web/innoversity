@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @RestController
 @CrossOrigin(value = "*")
-@RequestMapping("/books")
+@RequestMapping("/challenges")
 public class ChallengeControl {
 
     /**
@@ -46,7 +46,7 @@ public class ChallengeControl {
      *
      * @return
      */
-    @GetMapping("/allbooks")
+    @GetMapping("/allchallenges")
     public Map<String, Object> getAllChallenge() {
         return challengeRepository.getAllChallenge();
     }
@@ -88,7 +88,7 @@ public class ChallengeControl {
     }
 
     /**
-     * This method is used to get the books related to keyword which is passing in
+     * This method is used to get the challenges related to keyword which is passing in
      * this method.
      *
      * @param queries

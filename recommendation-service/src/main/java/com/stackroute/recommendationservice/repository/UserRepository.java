@@ -24,6 +24,13 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     void createInterestedRelationship(String email, String domain);
 
     //get the recommended domain for a user
+
     @Query("MATCH(u1:User {email:$email})-[:interested]->(:Domain)<-[:interested]-(u2:User)-[:interested]->(d:Domain)  WHERE u1<>u2 AND NOT (u1)-[:interested]->(d)  WITH d,count(d) as frequency  ORDER BY frequency DESC  RETURN  d")
     List<Domain> getAllRecommendedDomain(String email);
+
+    @Query("MATCH(u1:User {emailId:$emailId})-[:interested]->(:Domain)<-[:interested]-(u2:User)-[:interested]->(d:Domain)  WHERE u1<>u2 AND NOT (u1)-[:interested]->(d)  WITH d,count(d) as frequency  ORDER BY frequency DESC  RETURN  d")
+    List<Domain> getAllRecommendedDomain(String emailId);
+
+    @Query("MATCH(u:User {emailId:$emailId})-[:interested]->(d:Domain)  RETURN  d")
+    List<Domain> getInterestedDomain(String emailId);
 }
