@@ -25,13 +25,6 @@ public class RecommendationController {
         return saved;
     }
 
-//    @GetMapping("recommend")
-//
-//    public List<Domain> getRecommendation(@RequestParam(value = "email") String email) {
-//        List<Domain> allDomains = recommendationService.getAllRecommendation(email);
-//        return allDomains;
-//    }
-
     @GetMapping("recommend")
     public ResponseEntity<List<ProxyChallenge>> getRecommendation(@RequestParam(value = "email") String email) {
         List<ProxyChallenge> recChallenges= recommendationService.getAllRecommendation(email);
@@ -42,6 +35,5 @@ public class RecommendationController {
     public String getMessageInRecommend() {
         String message = recommendationService.getMessageFromProxy();
         return message;
-
     }
 }

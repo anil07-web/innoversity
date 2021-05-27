@@ -16,5 +16,5 @@ public class User {
     private Long userId;
     @NonNull
     private String email;
-    private String[] domain;
+    private String[] interestedDomain;
 }
