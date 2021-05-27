@@ -29,6 +29,7 @@ public class SolutionController {
         Solution savedDetails = solutionService.saveDetails(solution);
         return new ResponseEntity<>(savedDetails, HttpStatus.CREATED);
     }
+<<<<<<< HEAD
 
     @GetMapping("/solved")
     public List<Solution> getDetails() {
@@ -45,5 +46,10 @@ public class SolutionController {
     public ResponseEntity<Solution> getById(@PathVariable("solutionId") UUID solutionId) {
         Solution solution = this.solutionService.getById(solutionId);
         return new ResponseEntity<Solution>(solution,HttpStatus.OK);
+=======
+    @GetMapping("/getsolution")
+    public ResponseEntity<List<Solution>> getAllUsers(){
+        return new ResponseEntity<List<Solution>>((List<Solution>)solutionService.getAllUsers(),HttpStatus.OK);
+>>>>>>> 096a9d5b604df8bda2c69208ed4e82622844dac0
     }
 }

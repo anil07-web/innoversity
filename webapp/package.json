@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.1.6",
+    "@angular/animations": "^9.1.13",
     "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.1.6",
     "@angular/compiler": "~9.1.6",
@@ -22,7 +22,12 @@
     "@angular/platform-browser-dynamic": "~9.1.6",
     "@angular/router": "~9.1.6",
     "@kolkov/angular-editor": "^1.1.4",
+<<<<<<< HEAD
+=======
+    "json-server": "^0.16.3",
+>>>>>>> 096a9d5b604df8bda2c69208ed4e82622844dac0
     "ng-multiselect-dropdown": "^0.3.4",
+    "ng-pick-datetime": "^7.0.0",
     "npm-check-updates": "^11.5.13",
     "rxjs": "~6.5.4",
     "tslib": "^1.14.1",

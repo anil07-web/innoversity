@@ -12,8 +12,11 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Optional;
 import java.util.UUID;
+=======
+>>>>>>> 096a9d5b604df8bda2c69208ed4e82622844dac0
 
 @Service
 public class SoultionServiceImpl implements SolutionService {
@@ -32,6 +35,7 @@ public class SoultionServiceImpl implements SolutionService {
     }
 
     @Override
+<<<<<<< HEAD
     public List<Solution> getDetails() {
         return solutionRepo.findAll();
     }
@@ -50,5 +54,10 @@ public class SoultionServiceImpl implements SolutionService {
       UpdateResult result = mongoTemplate.upsert(query, updateQuery, "solution");
 //    return mongoTemplate.save(update);
 }
+=======
+    public List<Solution> getAllUsers() {
+        return (List<Solution>) solutionRepo.findAll();
+    }
+>>>>>>> 096a9d5b604df8bda2c69208ed4e82622844dac0
 
 }

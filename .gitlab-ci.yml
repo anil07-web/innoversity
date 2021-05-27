@@ -59,11 +59,5 @@ code_coverage:
 
   script:
     - "mvn clean test"
-    - "mvn jacoco:report"
-    - awk -F"," '{ instructions += $4 + $5; covered += $5 } END { print covered, "/",instructions, "instructions covered"; print 100*covered/instructions, "% covered" }'
-  coverage: '/Code coverage: \d+\.\d+/'
-  artifacts:
-    paths:
-      - target/site/jacoco/
   tags:
     - docker-executer

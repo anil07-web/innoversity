@@ -96,3 +96,10 @@
     outline: none;
     width: 100%
 }
+
+.passicon{
+    display: flex;
+}
+.fa{
+    margin-right:2% ;
+}
