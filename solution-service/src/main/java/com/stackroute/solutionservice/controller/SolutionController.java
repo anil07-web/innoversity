@@ -50,7 +50,7 @@ public class SolutionController {
     }
 
 
-    @PutMapping("/status/{solution}")
+    @PutMapping("/status/{solutionId}")
     public void updateStatus(String solStatus,@PathVariable("solutionId") UUID solutionId) {
         solutionService.updateStatus(solStatus,solutionId);
     }

@@ -22,12 +22,8 @@ import { UploadchallengeComponent } from './components/uploadchallenge/uploadcha
 import { SolutionComponent } from './solution/solution.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-<<<<<<< HEAD
 import { FeedbackComponent } from './components/feedback/feedback.component';
-import { AngularEditorModule } from "@kolkov/angular-editor";
-=======
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
->>>>>>> 096a9d5b604df8bda2c69208ed4e82622844dac0
 
 
 @NgModule({
@@ -40,11 +36,8 @@ import { SolutionAnalysisComponent } from './components/solution-analysis/soluti
     UploadchallengeComponent,
     LoginComponent,
     DashboardComponent,
-<<<<<<< HEAD
-    FeedbackComponent
-=======
+    FeedbackComponent,
     SolutionAnalysisComponent
->>>>>>> 096a9d5b604df8bda2c69208ed4e82622844dac0
   ],
   imports: [
     BrowserModule,
@@ -55,14 +48,11 @@ import { SolutionAnalysisComponent } from './components/solution-analysis/soluti
     BrowserAnimationsModule,
     MatIconModule,
     AngularEditorModule,
-<<<<<<< HEAD
-=======
     MatDatepickerModule,
     MatFormFieldModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     MatInputModule,
->>>>>>> 096a9d5b604df8bda2c69208ed4e82622844dac0
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [DashboardComponent],
