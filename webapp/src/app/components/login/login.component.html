@@ -14,7 +14,7 @@
        <form class="sign-in-form" #loginform="ngForm" (ngSubmit)="addUserCredentials(loginform)">
          <div class="form-group">
            <i class="far fa-envelope"></i>
-           <input type="text" name="email" #email="ngModel" class="form-control" [(ngModel)]="login.email"
+            <input type="text" name="email" #email="ngModel" class="form-control" [(ngModel)]="login.email"
              placeholder="Enter your mail id">
            <div class="text-danger" *ngIf="email.dirty && email.invalid">
              Mail id is required

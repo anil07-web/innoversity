@@ -11,4 +11,8 @@ export class SolutionAnalysisService {
   getSolution(){
     return this.http.get('http://localhost:8900/api/v1/getsolution');
   }
+
+  updateStatus(solutionId,solStatus){
+    return this.http.put(`http://localhost:8900/solve/${solutionId}`,solStatus);
+  }
 }

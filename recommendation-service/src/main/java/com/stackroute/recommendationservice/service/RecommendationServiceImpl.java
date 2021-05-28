@@ -50,10 +50,6 @@ public class RecommendationServiceImpl implements RecommendationService {
     }
 
     @Override
-    public List<Domain> getAllRecommendation(String email) {
-        List<Domain> recommend = userRepository.getAllRecommendedDomain(email);
-        return recommend;
-
     public List<ProxyChallenge> getAllRecommendation(String email) {
         List<Domain> recommend = userRepository.getAllRecommendedDomain(email);
         System.out.println("recommended:"+recommend);
@@ -69,7 +65,6 @@ public class RecommendationServiceImpl implements RecommendationService {
 //        }
         List<ProxyChallenge> recommendedChallenge= challengeServiceProxy.getChallenges(recommendedDomain).getBody();
         return recommendedChallenge;
-
     }
 
     @Override

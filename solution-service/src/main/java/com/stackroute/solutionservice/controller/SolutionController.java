@@ -16,14 +16,17 @@ import java.util.UUID;
 public class SolutionController {
     private SolutionService solutionService;
 
-@Autowired
+
+
+    @Autowired
     public SolutionController(SolutionService solutionService) {
         this.solutionService = solutionService;
     }
+
     @PostMapping("/solve")
     public ResponseEntity<Solution> saveDetails(@RequestBody Solution solution){
-    UUID uuid=UUID.randomUUID();
-    solution.setId(uuid);
+        UUID uuid = UUID.randomUUID();
+        solution.setSolutionId(uuid);
         Solution savedDetails =solutionService.saveDetails(solution);
         return new ResponseEntity<>(savedDetails, HttpStatus.CREATED);
     }
@@ -31,4 +34,11 @@ public class SolutionController {
     public ResponseEntity<List<Solution>> getAllUsers(){
         return new ResponseEntity<List<Solution>>((List<Solution>)solutionService.getAllUsers(),HttpStatus.OK);
     }
+
+    @PutMapping("/solve/{solutionId}")
+    public String updateStatus(String solStatus,@PathVariable("solutionId") UUID solutionId) {
+        solutionService.updateStatus(solStatus,solutionId);
+        return "Hello";
+    }
+
 }

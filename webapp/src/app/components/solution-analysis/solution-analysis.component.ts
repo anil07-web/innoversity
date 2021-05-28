@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { defaultMaxListeners } from 'events';
 import { SolutionAnalysisService } from 'src/app/services/solution-analysis.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class SolutionAnalysisComponent implements OnInit {
   constructor(private service : SolutionAnalysisService) { }
 
   public solutionDetails;
+  public accept;
   ngOnInit(): void {
     this.getSolution();
   }
@@ -22,4 +24,13 @@ export class SolutionAnalysisComponent implements OnInit {
       this.solutionDetails=data;
     });
   }
-}
+
+  updateStatus(details){
+    this.service.updateStatus(details.solutionId,{
+        solStatus:details.solStatus?"accepted":"rejected",
+      }).subscribe(data=>{
+        this.getSolution();
+        console.log(data);
+      })
+    }
+  }

@@ -7,14 +7,12 @@
         <div class="card mx-2" style="width: 18rem;" *ngFor="let details of solutionDetails">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">{{details.description}}</p>
-                <p class="card-text">{{details.description}}</p>
-                <p class="card-text">{{details.description}}</p>
+                <h2 class="card-title">Challenge Name: "{{details.solution}}"</h2>
+                <p class="card-text">Solved by : {{details.solvedBy}}</p>
                 <p class="card-text">{{details.description}}</p>
                 <div class="d-flex flex-row">
-                    <a href="#" class="btn btn-success mx-2">Accept</a>
-                    <a href="#" class="btn btn-danger">Reject</a>
+                    <a  class="btn btn-success mx-2" #accept (click)=updateStatus(details)>Accept</a>
+                    <a  class="btn btn-danger" #reject>Reject</a>
                 </div>
             </div>
         </div>
