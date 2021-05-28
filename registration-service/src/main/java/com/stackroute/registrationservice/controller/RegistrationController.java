@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(value = "*")
+@RequestMapping("/api/v1/register")
 public class RegistrationController {
     RegistrationService registrationService;
     RabbitMqSender rabbitMqSender;
@@ -18,7 +20,6 @@ public class RegistrationController {
         this.registrationService=registrationService;
         this.rabbitMqSender= rabbitMqSender;
     }
-    @CrossOrigin(origins = "*")
     @PostMapping("/registered")
     public User saveUser(@RequestBody User user){
         User userobj=null;

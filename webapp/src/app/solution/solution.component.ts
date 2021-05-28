@@ -20,6 +20,9 @@ export class SolutionComponent implements OnInit {
   }
   onsubmit(form:NgForm){
     if(form.valid){
+      const loggedInUser = localStorage.getItem("userName");
+      console.log("Solved by:", loggedInUser);
+      this.innovator.solvedBy = loggedInUser;
     this.service.addDetails(this.innovator).subscribe(data=>{
      this.isEdit="Data Stored Successfully";
     });

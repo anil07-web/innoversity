@@ -6,13 +6,15 @@
     <div class="row">
         <div class="card mx-2" style="width: 18rem;" *ngFor="let details of solutionDetails">
             <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body" >
                 <h2 class="card-title">Challenge Name: "{{details.solution}}"</h2>
                 <p class="card-text">Solved by : {{details.solvedBy}}</p>
                 <p class="card-text">{{details.description}}</p>
                 <div class="d-flex flex-row">
-                    <a  class="btn btn-success mx-2" #accept (click)=updateStatus(details)>Accept</a>
-                    <a  class="btn btn-danger" #reject>Reject</a>
+                    <!-- <a  class="btn btn-success mx-2" #accept (click)=solAccepted(details,true)>Accept</a>
+                    <a  class="btn btn-danger" #reject (click)=solAccepted(details,false)>Reject</a> -->
+                    <a ><button class="button button1" (click)=solAccepted(details,true)>Accept</button></a>
+                    <a ><button class="button button2" (click)=solAccepted(details,true) [disabled]="btnDisabled" >Reject</button></a>
                 </div>
             </div>
         </div>

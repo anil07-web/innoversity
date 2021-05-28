@@ -5,6 +5,8 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
+import java.util.UUID;
+
 @NodeEntity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,8 +15,8 @@ import org.neo4j.ogm.annotation.NodeEntity;
 public class User {
     @Id
     @GeneratedValue
-    private Long userId;
+    private UUID userId;
     @NonNull
     private String email;
-    private String[] interestedDomain;
+    private String[] domain;
 }
