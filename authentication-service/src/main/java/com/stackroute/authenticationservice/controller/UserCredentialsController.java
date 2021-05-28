@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/autheticate")
 public class UserCredentialsController {
 
     private UserCredentialsServiceImpl userCredentialsService;

@@ -4,10 +4,12 @@ import com.stackroute.solutionservice.model.Solution;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
 import java.util.UUID;
 
+
 @Repository
-public interface SolutionRepo extends MongoRepository<Solution,UUID> {
+public interface SolutionRepo extends MongoRepository<Solution, UUID> {
 
 }
+
+

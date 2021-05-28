@@ -2,6 +2,7 @@ package com.stackroute.solutionservice.controller;
 
 import com.stackroute.solutionservice.model.Feedback;
 import com.stackroute.solutionservice.model.Solution;
+import com.stackroute.solutionservice.model.SolutionStatus;
 import com.stackroute.solutionservice.service.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,9 +14,10 @@ import java.util.UUID;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/solution")
 public class SolutionController {
     private SolutionService solutionService;
+
 
     @Autowired
     public SolutionController(SolutionService solutionService) {
@@ -26,14 +28,9 @@ public class SolutionController {
     public ResponseEntity<Solution> saveDetails(@RequestBody Solution solution) {
         UUID uuid = UUID.randomUUID();
         solution.setSolutionId(uuid);
+        solution.setSolStatus(SolutionStatus.NotReviewed);
         Solution savedDetails = solutionService.saveDetails(solution);
         return new ResponseEntity<>(savedDetails, HttpStatus.CREATED);
-    }
-<<<<<<< HEAD
-
-    @GetMapping("/solved")
-    public List<Solution> getDetails() {
-        return solutionService.getDetails();
     }
 
     @PutMapping("/solve/{solutionId}")
@@ -45,11 +42,23 @@ public class SolutionController {
     @GetMapping("/solve/{solutionId}")
     public ResponseEntity<Solution> getById(@PathVariable("solutionId") UUID solutionId) {
         Solution solution = this.solutionService.getById(solutionId);
-        return new ResponseEntity<Solution>(solution,HttpStatus.OK);
-=======
+        return new ResponseEntity<Solution>(solution, HttpStatus.OK);
+    }
+
     @GetMapping("/getsolution")
     public ResponseEntity<List<Solution>> getAllUsers(){
         return new ResponseEntity<List<Solution>>((List<Solution>)solutionService.getAllUsers(),HttpStatus.OK);
->>>>>>> 096a9d5b604df8bda2c69208ed4e82622844dac0
+
     }
+
+
+    @PutMapping("/status/{solutionId}")
+    public void updateStatus(String solStatus,@PathVariable("solutionId") UUID solutionId) {
+        System.out.println("Solution Status:"+solStatus);
+        solutionService.updateStatus(solStatus,solutionId);
+    }
+
 }
+
+
+

@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @RestController
 @CrossOrigin(value = "*")
-@RequestMapping("/challenges")
+@RequestMapping("/api/v1/search")
 public class ChallengeControl {
 
     /**

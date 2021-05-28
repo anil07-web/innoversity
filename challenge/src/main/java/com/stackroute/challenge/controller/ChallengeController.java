@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 import java.util.UUID;
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/challenge")
 public class ChallengeController {
     @Autowired
     ChallengeService challengeService;
@@ -18,6 +20,12 @@ public class ChallengeController {
     public ChallengeController(RabbitMqSender rabbitMqSender){
         this.rabbitMqSender=rabbitMqSender;
     }
+
+    @PostMapping("/file/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
+    }
+
     @PostMapping("/Challenge")
     public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challenge)
     {
