@@ -27,7 +27,7 @@ public class RecommendationServiceImpl implements RecommendationService {
 
     @Override
     public String createUserNode(User user) {
-        userRepository.createUserNode(user.getEmailId());
+        userRepository.createUserNode(user.getEmail());
         this.createDomainNode(user.getInterestedDomain());
         this.createInterestedRelation(user);
         return "Created user node!!";
@@ -41,19 +41,19 @@ public class RecommendationServiceImpl implements RecommendationService {
     }
 
     public void createInterestedRelation(User user) {
-        String emailId = user.getEmailId();
+        String email = user.getEmail();
         String[] interestedDomain=user.getInterestedDomain();
         for (String domain:interestedDomain) {
-            userRepository.createInterestedRelationship(emailId, domain);
+            userRepository.createInterestedRelationship(email, domain);
         }
-//        userRepository.createInterestedRelationship(emailId, domain);
+//        userRepository.createInterestedRelationship(email, domain);
     }
 
     @Override
-    public List<ProxyChallenge> getAllRecommendation(String emailId) {
-        List<Domain> recommend = userRepository.getAllRecommendedDomain(emailId);
+    public List<ProxyChallenge> getAllRecommendation(String email) {
+        List<Domain> recommend = userRepository.getAllRecommendedDomain(email);
         System.out.println("recommended:"+recommend);
-        List<Domain> interestedDomain = userRepository.getInterestedDomain(emailId);
+        List<Domain> interestedDomain = userRepository.getInterestedDomain(email);
         System.out.println("interested domain:"+interestedDomain);
         recommend.addAll(interestedDomain);
         List<String> recommendedDomain = new ArrayList<>();

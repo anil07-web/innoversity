@@ -54,10 +54,8 @@
       </div>
        
         <div class="mt-2">
-          <div class="input-group">
-            <input type="text" #amt class="form-control" formControlName="prize"  placeholder="Reward Prize" >
-            <button  (click)="pay(amt.value)"  class="btn btn-primary btn-block">Pay </button>
-          </div>
+          <input type="number" #amt class="form-control" formControlName="prize"  placeholder="Reward Prize" >
+          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
         </div>
        
         <!-- <div class="side">

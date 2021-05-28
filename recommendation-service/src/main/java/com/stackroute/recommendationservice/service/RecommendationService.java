@@ -15,7 +15,7 @@ public interface RecommendationService {
 
     void createDomainNode(String[] interestedDomain);
 
-    List<ProxyChallenge> getAllRecommendation(String emailId);
+    List<ProxyChallenge> getAllRecommendation(String email);
 
     String getMessageFromProxy();
 }

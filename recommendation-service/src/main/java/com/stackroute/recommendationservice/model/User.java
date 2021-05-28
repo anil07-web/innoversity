@@ -15,6 +15,6 @@ public class User {
     @GeneratedValue
     private Long userId;
     @NonNull
-    private String emailId;
+    private String email;
     private String[] interestedDomain;
 }

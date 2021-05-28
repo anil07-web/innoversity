@@ -13,9 +13,13 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+=======
+
+>>>>>>> 8d445f13ed3f598098e333182ead6997c17b351a
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +43,10 @@ public class ChallengeServiceImpl implements ChallengeService {
     }
 
     @Override
+
+    public List<Challenge> getAllChallenges() {
+        return (List<Challenge>) challengeRespository.findAll();
+    }
     public List<Challenge> getDomainChallenges(List<String> domain) {
         List<Challenge> challenges = new ArrayList<>();
         Query query = new Query();

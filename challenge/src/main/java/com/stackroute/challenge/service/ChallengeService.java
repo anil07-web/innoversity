@@ -7,11 +7,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+
 @Service
 
 public interface ChallengeService {
 
     public Challenge save(Challenge challenge);
+     List<Challenge> getAllChallenges();
 
     public List<Challenge> getDomainChallenges(List<String> domain);
 

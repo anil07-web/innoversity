@@ -1,6 +1,26 @@
 <app-header [isLoggedIn]="true"></app-header>
 
 <div class="row">
+    <h1 class="text-center" >Search Result</h1>
+    <div class="col-md-3" *ngFor="let c of searchresult">
+        <div class="card" style="width: 18rem;">
+            <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title text-center">Title :{{c.challengeTitle}} </h3>
+                <p class="card-text">Name : {{c.challengerName}}.</p>
+                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <!-- <p class="card-text">Domain : {{c.description}}.</p> -->
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="row">
     <h1 class="text-center" > Recommended Challenges</h1>
     <div class="col-md-3" *ngFor="let c of recommended">
         <div class="card" style="width: 18rem;">

@@ -26,8 +26,8 @@ public class RecommendationController {
     }
 
     @GetMapping("recommend")
-    public ResponseEntity<List<ProxyChallenge>> getRecommendation(@RequestParam(value = "emailId") String emailId) {
-        List<ProxyChallenge> recChallenges= recommendationService.getAllRecommendation(emailId);
+    public ResponseEntity<List<ProxyChallenge>> getRecommendation(@RequestParam(value = "email") String email) {
+        List<ProxyChallenge> recChallenges= recommendationService.getAllRecommendation(email);
         return new ResponseEntity<>(recChallenges, HttpStatus.OK);
     }
 

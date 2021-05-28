@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
@@ -25,6 +26,7 @@ public class Challenge {
     private String challengeTitle;
     private String challengeAbstract; //I make capital (Abstract) due to abstract keyword predefined in java
     private String description;
+    private String expiryDate;
     private String rules;
 
     LocalDate localDate = LocalDate.now(); // used in java 8
