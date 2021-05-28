@@ -9,4 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface SolutionRepo extends MongoRepository<Solution, UUID> {
+
 }
+
+

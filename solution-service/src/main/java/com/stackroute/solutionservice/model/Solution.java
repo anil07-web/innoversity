@@ -21,8 +21,11 @@ public class Solution {
     @Id
     private UUID solutionId;
     private String solution;
+//    private int challengeId;
 //    private String attachment;
     private String solvedBy=" ";
     private String description;
     private String solStatus="Not Reviewed";
+    private Feedback[] feedback;
+
 }

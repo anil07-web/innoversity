@@ -23,7 +23,6 @@ public class ConsumerService implements RabbitListenerConfigurer {
         this.challengeRepository = challengeRepository;
     }
 
-    /*This method will save the Registered users  to MYSQL-DB*/
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
     public void receivedMessage(Challenge challenge) {
 

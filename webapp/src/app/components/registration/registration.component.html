@@ -1,3 +1,5 @@
+<app-header [isLoggedIn]="false"></app-header>
+
 <div class="main-container d-flex flex-wrap p-5">
   <div class="main">
     <div class="side">
@@ -6,7 +8,7 @@
       <form [formGroup]="registerForm">
         <div class="mt-2">
           <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
-          <div class="text-danger" *ngIf="picture?.invalid">
+          <div class="text-danger" *ngIf="picture?.touched && picture?.invalid">
             Profile pic is required
           </div>
         </div>
@@ -33,13 +35,15 @@
           </div>
         </div>
         <div class="mt-4">
+          <div class="passicon">
           <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Password">
-          <i class="fa"
+             <i class="fa"
                   [ngClass]="{
                     'fa-eye-slash': !showPassword,
                     'fa-eye': showPassword
                   }"
                   (click)="togglePassword()"></i>
+                  </div>
           <div class="text-danger" *ngIf="password?.dirty && password?.invalid">
             Password is required
           </div>
@@ -55,7 +59,7 @@
             [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems"
             (onSelect)="onItemSelect($event)">
           </ng-multiselect-dropdown>
-          <div class="text-danger" *ngIf="domain?.invalid">
+          <div class="text-danger" *ngIf="domain?.touched && domain?.invalid">
             Domain is required
           </div>
         </div>
@@ -84,19 +88,19 @@
               </label>
             </div>
           </div>
-          <div class="text-danger" *ngIf="gender?.invalid">
+          <div class="text-danger" *ngIf="gender?.touched && gender?.invalid">
             Gender is required
           </div>
         </div>
         <button class="btnRegister">Register</button>
         <div [ngStyle]="mystyle" class="text-success">{{msg}}</div>
       </form>
-      <p class="forgot-link">
+      <!-- <p class="forgot-link">
         Already registered?<a routerLink="/login"> Login Here</a>
       </p>
       <p class="forgot-link">
         Have you visited our<a routerLink="/"> Landing Page</a>
-      </p>
+      </p> -->
     </div>
   </div>
 </div>
