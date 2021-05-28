@@ -12,7 +12,7 @@ export class RegistrationService {
   constructor(private http :HttpClient) { }
 
    registerUser(user : User):Observable<any>{
-    return this.http.post<any>('http://localhost:8085/registered',user);
+    return this.http.post<any>('api/v1/register/registered',user);
   }
 
 }

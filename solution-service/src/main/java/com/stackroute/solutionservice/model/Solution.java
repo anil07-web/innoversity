@@ -23,9 +23,9 @@ public class Solution {
     private String solution;
 //    private int challengeId;
 //    private String attachment;
-    private String solvedBy=" ";
+    private String solvedBy;
     private String description;
-    private String solStatus="Not Reviewed";
+    private SolutionStatus solStatus;
     private Feedback[] feedback;
 
 }

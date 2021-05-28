@@ -15,13 +15,13 @@ export class DashboardService {
     return this.http.get('http://localhost:3000/recommended');
   }
   getChallenge()  {
-    return this.http.get('http://localhost:8095/api/v1/Challenges');
+    return this.http.get('/api/v1/challenge/Challenges');
   }
 
 
 
   getSearchResult(queryvalue){
-    return this.http.get(`http://localhost:8087/challenges/search/${queryvalue}`);
+    return this.http.get(`/api/v1/search/search/${queryvalue}`);
   }
  
  

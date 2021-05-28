@@ -11,8 +11,8 @@
                 <p class="card-text">Solved by : {{details.solvedBy}}</p>
                 <p class="card-text">{{details.description}}</p>
                 <div class="d-flex flex-row">
-                    <a  class="btn btn-success mx-2" #accept (click)=updateStatus(details)>Accept</a>
-                    <a  class="btn btn-danger" #reject>Reject</a>
+                    <a  class="btn btn-success mx-2" #accept (click)=solAccepted(details,true)>Accept</a>
+                    <a  class="btn btn-danger" #reject (click)=solAccepted(details,false)>Reject</a>
                 </div>
             </div>
         </div>

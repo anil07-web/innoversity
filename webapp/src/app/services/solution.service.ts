@@ -8,15 +8,15 @@ export class SolutionService {
 
   constructor(private http:HttpClient) { }
   addDetails(innovator){
-    return this.http.post("http://localhost:8900/api/v1/solve",innovator);
+    return this.http.post("/api/v1/solution/solve",innovator);
   }
   addfeed(feedback,id){
-    return this.http.put(`http://localhost:8900/api/v1/solve/${id}`,feedback);
+    return this.http.put(`/api/v1/solution/solve/${id}`,feedback);
   }
   getDetails(){
-    return this.http.get("http://localhost:8900/api/v1/solved");
+    return this.http.get("/api/v1/solution/solved");
   }
   getByid(id){
-    return this.http.get(`http://localhost:8900/api/v1/solved/${id}`);
+    return this.http.get(`/api/v1/solution/solved/${id}`);
   }
 }

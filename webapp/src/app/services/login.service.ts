@@ -10,6 +10,6 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   addUserCredentials(login){
-    return this.http.post(`http://localhost:8090/api/v1/login/user`,login);
+    return this.http.post(`/api/v1/autheticate/login/user`,login);
   } 
 }

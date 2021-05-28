@@ -27,10 +27,16 @@ export class SolutionAnalysisComponent implements OnInit {
 
   updateStatus(details){
     this.service.updateStatus(details.solutionId,{
-        solStatus:details.solStatus?"accepted":"rejected",
+        solStatus:details.solStatus?"Accepted":"Rejected",
       }).subscribe(data=>{
         this.getSolution();
         console.log(data);
       })
+    }
+
+    solAccepted(details, value) {
+      const status = value?"Accepted":"Rejected";
+      this.service.updateStatus(details.solutionId, status).subscribe(data => {this.getSolution()})
+
     }
   }
