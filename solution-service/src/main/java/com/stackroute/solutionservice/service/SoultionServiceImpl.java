@@ -62,6 +62,7 @@ public class SoultionServiceImpl implements SolutionService {
 
     @Override
     public void updateStatus(String solStatus, UUID solutionId) {
+        System.out.println(getDetails());
         Query query = new Query(Criteria.where("solutionId").is(solutionId));
         Update updateQuery = new Update();
         updateQuery.set("solStatus",solStatus);

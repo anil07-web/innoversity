@@ -14,6 +14,8 @@ export class SolutionAnalysisComponent implements OnInit {
 
   public solutionDetails;
   public accept;
+  public btnDisabled=false;
+  public isClicked=false;
   ngOnInit(): void {
     this.getSolution();
   }
@@ -23,6 +25,10 @@ export class SolutionAnalysisComponent implements OnInit {
       console.log(data);
       this.solutionDetails=data;
     });
+  }
+
+  buttonClick(){
+    this.btnDisabled=true;
   }
 
   updateStatus(details){
