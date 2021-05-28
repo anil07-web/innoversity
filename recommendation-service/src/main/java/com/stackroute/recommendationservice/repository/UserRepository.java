@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends Neo4jRepository<User, Long> {
+public interface UserRepository extends Neo4jRepository<User, Integer> {
 
     //Create a node for a user
     @Query("Merge(u:User {email:$email}) Return u")
