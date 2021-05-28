@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,7 +25,10 @@ public class ChallengeController {
         this.rabbitMqSender=rabbitMqSender;
     }
 
-
+    @PostMapping("/file/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
+    }
 
     @PostMapping("/Challenge")
     public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challenge)
