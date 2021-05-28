@@ -26,6 +26,7 @@ import { AngularEditorModule } from "@kolkov/angular-editor";
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

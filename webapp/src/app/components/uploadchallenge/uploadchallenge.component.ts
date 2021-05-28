@@ -17,7 +17,6 @@ export class UploadchallengeComponent implements OnInit {
   uploadChallenge: FormGroup;
   public challenge = new Challenge;
   uploadSuccess = false;
-  
   successMessage = 'Challenge uploaded successfully';
   handler:any = null;
  
