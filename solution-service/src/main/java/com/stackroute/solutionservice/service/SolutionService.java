@@ -12,5 +12,5 @@ public interface SolutionService {
      public void updateStatus(String solStatus, UUID solutionID) ;
      public List<Solution> getDetails();
     Solution getById(UUID solutionId);
-    public void  updateSol(Feedback[] feedback, UUID solutionId);
+    public void  updateSol(Feedback feedback, UUID solutionId);
 }

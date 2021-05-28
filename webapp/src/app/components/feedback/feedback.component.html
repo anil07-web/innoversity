@@ -1,62 +1,36 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <form [formGroup]="feedback" (ngSubmit)="onFeed()">
-<div class="mt-2">
-    <input type="text" formControlName="comment" required class="form-control"  placeholder="comment">
-    
-    <div class="text-danger" *ngIf="comment.dirty && comment.invalid">
-        Please Enter Details
-    </div>
-</div>
-<div class="mt-2">
-    <input type="commentedBy" formControlName="commentedBy" required class="form-control" placeholder="commentedBy">
-    
-    <div class="text-danger" *ngIf="commentedBy.dirty && commentedBy.invalid">
-        Please Enter Details
-    </div>
-</div>
-<div class="mt-2">
-    <button class="btn btn-secondary">Submit</button>
-</div>
-            </form>
-        </div>
-    </div>
-</div> -->
-
+<!-- <div class="col-md-6" *ngFor="let details of info"> -->
 <div class="container">
     <div class="row" >
-        <div class="col-md-6" *ngFor="let details of info">
           <div class="card mt-3" class="p-3 mb-2 bg-secondary text-white" >
             <div class="card-body">
-              <h5 class="card-title">{{details.solutionId}}</h5>
-              <p class="card-text">Solution:{{details.solution}}</p>
-              
+              <h5 class="card-title">Solution Id:{{num}}</h5>
+              <p class="card-text">Solution Description:{{obj}}</p>
+              <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
+        <div class="mt-2">
+            <input type="text" #comment="ngModel" name="comment" required  class="form-control" [(ngModel)]="feed.comment" placeholder="Write comments">
+        <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
+            Please Enter Details
+        </div>
+        </div>
+        <div class="mt-2">
+            <input type="text" #commentedBy="ngModel" name="commentedBy" required class="form-control" [(ngModel)]="feed.commentedBy" placeholder="commentedby">
+            <div class="text-danger" *ngIf="commentedBy.dirty && commentedBy.errors?.required">
+                Please Enter Details
+            </div>
+        </div>
+        
+        <div class="mt-2">
+            <button class="btn btn-secondary"  >Submit</button>
+        </div>
+                    </form>
+                </div>
+            </div>
             </div>
           </div>
-        </div>
       </div>
-      <p>{{num}}</p>
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
-<div class="mt-2">
-    <input type="text" #comment="ngModel" name="comment" required  class="form-control" [(ngModel)]="feed.comment" placeholder="Write comments">
-<div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
-    Please Enter Details
+    
 </div>
-</div>
-<div class="mt-2">
-    <input type="text" #commentedBy="ngModel" name="commentedBy" required class="form-control" [(ngModel)]="feed.commentedBy" placeholder="commentedby">
-    <div class="text-danger" *ngIf="commentedBy.dirty && commentedBy.errors?.required">
-        Please Enter Details
-    </div>
-</div>
-
-<div class="mt-2">
-    <button class="btn btn-secondary">Submit</button>
-</div>
-            </form>
-        </div>
-    </div>
-</div>
+<!-- <input type="text" [(ngModel)]="comment">
+<input type="text" [(ngModel)]="commentedBy"> -->
