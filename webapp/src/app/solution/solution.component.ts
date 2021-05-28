@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+
 import { InnovatorProperties } from '../models/InnovatorProperties';
 import { SolutionService } from '../services/solution.service';
 
@@ -26,4 +28,38 @@ export class SolutionComponent implements OnInit {
       this.isEdit="Please Enter Correct Details!!";
     }
 }
+
+// config: AngularEditorConfig = {
+//   editable: true,
+//   spellcheck: true,
+//   height: '2rem',
+//   minHeight: '2rem',
+//   width: '25rem',
+//     minWidth: '25rem',
+//   placeholder: 'Enter text here...',
+//   translate: 'yes',
+//     enableToolbar: false,
+//     showToolbar: false,
+//   defaultParagraphSeparator: 'p',
+//   defaultFontName: 'Arial',
+//   toolbarHiddenButtons: [
+//     ['bold']
+//     ],
+//   customClasses: [
+//     {
+//       name: "quote",
+//       class: "quote",
+//     },
+//     {
+//       name: 'redText',
+//       class: 'redText'
+//     },
+//     {
+//       name: "titleText",
+//       class: "titleText",
+//       tag: "h1",
+//     },
+//   ],
+  
+// };
 }

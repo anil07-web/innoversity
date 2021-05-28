@@ -1,7 +1,9 @@
 package com.stackroute.challenge.service;
 
 import com.stackroute.challenge.model.Challenge;
+
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -14,5 +16,7 @@ public interface ChallengeService {
      List<Challenge> getAllChallenges();
 
     public List<Challenge> getDomainChallenges(List<String> domain);
+
+    public String uploadFile(MultipartFile file);
 
 }

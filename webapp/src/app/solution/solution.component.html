@@ -23,18 +23,21 @@
                         Please enter the details
                     </div>
                 </div>
-                <!-- <div class="mt-2">
-                    <input type="text" #attachment="ngModel" name="attachment" required class="form-control"  class="form-control" [(ngModel)]="innovator.attachment" placeholder="Provide Attachment">
-                    <div class="text-danger" *ngIf="attachment.dirty && attachment.errors?.required"> 
-                        Please enter the details
-                    </div>
-                </div> -->
-                <div  class="edit">
-                    <input type="text" #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" placeholder="Brief Desc of Solution">
+                <div class ="edit">
+                    <!-- <input type="text" #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" placeholder="Brief Desc of Solution">
                     <div class="text-danger" *ngIf="description.dirty && description.errors?.required"> 
+                        Please enter the details
+                    </div> -->
+                   
+                    <!-- <angular-editor placeholder="description" formControlName="description" [config]="config" [(ngModel)]="innovator.description"></angular-editor> -->
+                    <!-- <angular-editor type="text" #description="ngModel" name="description" required class="form-control" [config]="config" [(ngModel)]="innovator.description" placeholder="Brief Desc of Solution"> </angular-editor> -->
+                    <textarea #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" id="forms" rows="4" placeholder="Write brief Description for solution" spellcheck="false"></textarea>
+                    <div class="text-danger" *ngIf="description.dirty && description.errors?.required">
                         Please enter the details
                     </div>
                 </div>
+                
+               
                 <div class="mt-2">
                     <button class="btnLogin" >Submit</button>
                 <p class="valid">{{isEdit}}</p>
