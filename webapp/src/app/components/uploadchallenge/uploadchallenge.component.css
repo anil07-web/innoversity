@@ -103,3 +103,11 @@
 .my{
     color: #c5ecfd;
 }
+
+.fa-calendar {
+  color: rgb(250, 234, 234);
+}
+
+.my1{
+  display: flex;
+}
