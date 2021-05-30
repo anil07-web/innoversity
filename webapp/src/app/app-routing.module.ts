@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'solution',component:SolutionComponent},
   {path:'challenge',component:UploadchallengeComponent},
   {path:'solutionAnalysis',component:SolutionAnalysisComponent},
-  {path:'feedbackComponent',component:FeedbackComponent}
+  {path:'feedback',component:FeedbackComponent}
 ]
 
 @NgModule({

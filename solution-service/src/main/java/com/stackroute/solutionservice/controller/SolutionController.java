@@ -34,7 +34,7 @@ public class SolutionController {
     }
 
     @PutMapping("/solve/{solutionId}")
-    public void updatesol(@RequestBody Feedback[] feedback, @PathVariable("solutionId") UUID
+    public void updatesol(@RequestBody Feedback feedback, @PathVariable("solutionId") UUID
             solutionId) {
         solutionService.updateSol(feedback, solutionId);
     }
@@ -61,3 +61,8 @@ public class SolutionController {
 
 
 
+//    @GetMapping("/getsolution")
+//    public List<Solution>  getAllUsers(){
+//        return  solutionService.getAllUsers();
+//
+//    }
