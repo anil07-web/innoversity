@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
@@ -14,15 +15,17 @@ export class SolutionComponent implements OnInit {
   public innovator=new InnovatorProperties;
   public challenge="Smart Helmet";
   public isEdit:any;
+ 
+  public loggedInUser;
   constructor(private service:SolutionService) { }
 
   ngOnInit(): void {
   }
   onsubmit(form:NgForm){
     if(form.valid){
-      const loggedInUser = localStorage.getItem("userName");
-      console.log("Solved by:", loggedInUser);
-      this.innovator.solvedBy = loggedInUser;
+       this.loggedInUser = localStorage.getItem("userName");
+      console.log("Solved by:", this.loggedInUser);
+      this.innovator.solvedBy = this.loggedInUser;
     this.service.addDetails(this.innovator).subscribe(data=>{
      this.isEdit="Data Stored Successfully";
     });
