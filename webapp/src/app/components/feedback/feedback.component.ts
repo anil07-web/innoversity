@@ -18,11 +18,15 @@ public info;
 public num;
 public obj;
 public isEdit:any;
-@Input()
 datas:string;
   ngOnInit(): void {
     this.getinfo();
    console.log(this.datas);
+  }
+  getLog(text:any)
+  {
+this.datas=text;
+// console.log(this.datas);
   }
   getinfo() {
     this.service.getDetails().subscribe(data => {
