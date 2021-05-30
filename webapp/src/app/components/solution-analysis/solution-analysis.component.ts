@@ -13,9 +13,11 @@ export class SolutionAnalysisComponent implements OnInit {
   constructor(private service : SolutionAnalysisService) { }
 
   public solutionDetails;
-  public accept;
+  public accept=true;
   public btnDisabled=false;
-  public isClicked=false;
+  public isClicked=true;
+  public isAccepted=true;
+
   ngOnInit(): void {
     this.getSolution();
   }
@@ -29,20 +31,23 @@ export class SolutionAnalysisComponent implements OnInit {
 
   buttonClick(){
     this.btnDisabled=true;
+    this.isAccepted=false;
   }
 
-  updateStatus(details){
-    this.service.updateStatus(details.solutionId,{
-        solStatus:details.solStatus?"Accepted":"Rejected",
-      }).subscribe(data=>{
-        this.getSolution();
-        console.log(data);
-      })
-    }
+  // updateStatus(details){
+  //   this.service.updateStatus(details.solutionId,{
+  //       solStatus:details.solStatus?"Accepted":"Rejected",
+  //     }).subscribe(data=>{
+  //       this.getSolution();
+  //       console.log(data);
+  //     })
+  //   }
 
     solAccepted(details, value) {
+      this.btnDisabled=true;
+      this.isAccepted=false;
+      this.accept=false;
       const status = value?"Accepted":"Rejected";
       this.service.updateStatus(details.solutionId, status).subscribe(data => {this.getSolution()})
-
     }
   }

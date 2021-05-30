@@ -48,7 +48,6 @@ public class SolutionController {
     @GetMapping("/getsolution")
     public ResponseEntity<List<Solution>> getAllUsers(){
         return new ResponseEntity<List<Solution>>((List<Solution>)solutionService.getAllUsers(),HttpStatus.OK);
-
     }
 
 
