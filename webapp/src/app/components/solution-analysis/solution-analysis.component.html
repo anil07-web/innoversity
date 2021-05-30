@@ -11,9 +11,9 @@
                 <p class="card-text">Solved by : {{details.solvedBy}}</p>
                 <p class="card-text">Description: {{details.description}}</p>
                 <div class="d-flex flex-row" >
-                    <a ><button class="button button1" (click)="solAccepted(details,true)" (click)="buttonClick()" *ngIf="accept">Accept</button></a>
-                    <a ><button class="button button2" (click)="solAccepted(details,false)" [disabled]="btnDisabled" *ngIf="isAccepted">Reject</button></a>
-                    <a ><button class="button button1" *ngIf="!accept">View More</button></a>
+                    <a ><button class="button button1" (click)="solAccepted(details,true)" *ngIf="details.solStatus == 'NotReviewed'">Accept</button></a>
+                    <a ><button class="button button1" (click)="solAccepted(details,true)" *ngIf="details.solStatus == 'NotReviewed'">Reject</button></a>
+                    <a routerLink="/feedback"><button class="button button1" *ngIf="details.solStatus=='Accepted'">View More</button></a>
                 </div>
             </div>
         </div>
