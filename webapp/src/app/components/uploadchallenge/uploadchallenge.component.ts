@@ -79,7 +79,7 @@ export class UploadchallengeComponent implements OnInit {
       // placeholder: 'Enter  Challenge description here...',
       defaultParagraphSeparator: '',
       defaultFontName: 'Times New Roman',
-      defaultFontSize: '12',
+      defaultFontSize: '6',
       fonts: [
         {class: 'arial', name: 'Arial'},
         {class: 'times-new-roman', name: 'Times New Roman'},
