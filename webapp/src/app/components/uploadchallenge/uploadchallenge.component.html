@@ -54,6 +54,14 @@
       </div>
        
         <div class="mt-2">
+          <div class="input-group"> 
+          <input type="number" #amt class="form-control" formControlName="prize"  placeholder="Reward Prize" >
+          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
+        </div>
+        </div>
+       
+        <div class="side">
+          <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
           <input type="number" #amt class="input" formControlName="prize"  placeholder="Reward Prize" >
           <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
         </div> -->
@@ -103,11 +111,13 @@
         </div>
         <div class="input-group">
           <input type="textarea" formControlName="attachments" class="input" placeholder="Attachment..">
-          <button class="btn btn-primary">Upload</button>
+          <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
+          <button class="btn btn-primary" (click)="upload()">Upload</button>
         </div>
         <div class="input-group">
           <input type="textarea" formControlName="challengeArtifacts" class="input" placeholder="Artifacts">
-          <button class="btn btn-primary"> Upload</button>
+          <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
+          <button class="btn btn-primary" (click)="upload()"> Upload</button>
         </div>
 
         <div class="input-group">
