@@ -1,16 +1,24 @@
 <!-- <div class="col-md-6" *ngFor="let details of info"> -->
-<div class="container">
+    <app-header [isLoggedIn]="true"></app-header>
+    <div class="container1">
+        <div class="wrapper">
+            <div class="title">
+              <h1>Comment Section!!</h1>   
+              <!-- Parent says{{datas}} -->
+            </div>
     <div class="row" >
-          <div class="card mt-3" class="p-3 mb-2 bg-secondary text-white" >
+          <!-- <div class="card mt-3" class="p-3 mb-2 bg-secondary text-white" > -->
             <div class="card-body">
-              <h5 class="card-title">Solution Id:{{num}}</h5>
+              <!-- <h5 class="card-title">Solution Id:{{num}}</h5> -->
               <p class="card-text">Solution Description:{{obj}}</p>
               <div class="row">
                 <div class="col-md-4 offset-md-4">
                     <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
         <div class="mt-2">
-            <input type="text" #comment="ngModel" name="comment" required  class="form-control" [(ngModel)]="feed.comment" placeholder="Write comments">
-        <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
+            <!-- <input type="text" #comment="ngModel" name="comment" required  class="form-control" [(ngModel)]="feed.comment" placeholder="Write comments"> -->
+            <textarea name="comment" #comment="ngModel" id="styled" required  class="form-control" [(ngModel)]="feed.comment" onfocus="this.value='';  setbg('#e5fff3');" onblur="setbg('white')" placeholder="Enter your Comments
+            "></textarea>
+            <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
             Please Enter Details
         </div>
         </div>
@@ -22,15 +30,58 @@
         </div>
         
         <div class="mt-2">
-            <button class="btn btn-secondary"  >Submit</button>
+            <button class="btn btn-success">Post Comment</button>
+            <p class="valid">{{isEdit}}</p>
         </div>
                     </form>
                 </div>
             </div>
             </div>
-          </div>
+          <!-- </div> -->
       </div>
-    
+    </div>
 </div>
-<!-- <input type="text" [(ngModel)]="comment">
-<input type="text" [(ngModel)]="commentedBy"> -->
+<script>
+  function setbg(color)
+{
+document.getElementById("styled").style.background=color
+}
+    </script>
+<!-- <app-header [isLoggedIn]="true"></app-header>
+<div class="container-fluid">
+    <div class="row">
+        <p class="content" style="background-image: url('assets/images/solution1.gif');">Solvers are at the heart of everything we do,<br>supplying the innovative solutions to everyones’<br> problems and needs.</p>
+    </div>
+    <div class="row">
+        <div class="card mx-2" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body" >
+                <h5 class="card-title">Solution Id:{{num}}</h5>
+                <p class="card-text">Solution Description:{{obj}}</p>
+                <div class="d-flex flex-row">
+                   
+                    <div class="col-md-4 offset-md-4">
+                        <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
+            <div class="mt-2">
+                <input type="text" #comment="ngModel" name="comment" required  class="form-control" [(ngModel)]="feed.comment" placeholder="Write comments">
+            <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
+                Please Enter Details
+            </div>
+            </div>
+            <div class="mt-2">
+                <input type="text" #commentedBy="ngModel" name="commentedBy" required class="form-control" [(ngModel)]="feed.commentedBy" placeholder="commentedby">
+                <div class="text-danger" *ngIf="commentedBy.dirty && commentedBy.errors?.required">
+                    Please Enter Details
+                </div>
+            </div>
+            
+            <div class="mt-2">
+                <button class="btn btn-secondary"  >Submit</button>
+            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

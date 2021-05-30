@@ -17,6 +17,7 @@ export class SolutionComponent implements OnInit {
   public isEdit:any;
  
   public loggedInUser;
+ logg="Hi Arshad";
   constructor(private service:SolutionService) { }
 
   ngOnInit(): void {
