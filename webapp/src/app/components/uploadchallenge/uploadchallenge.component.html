@@ -1,70 +1,78 @@
-<app-header [isLoggedIn]="true"></app-header>
+<!-- <app-header [isLoggedIn]="true"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-4 offset-md-4">
-      <form class="upload-in-form" [formGroup]="uploadChallenge" (ngSubmit)="onSubmit()">
-        <!-- <div class="mt-2">
-          <input type="text" formControlName="challengerName" class="form-control" placeholder="Challenger Name">
+      <form class="upload-in-form" [formGroup]="uploadChallenge" (ngSubmit)="onSubmit()"> -->
+<!-- <div class="mt-2">
+          <input type="text" formControlName="challengerName" class="input" placeholder="Challenger Name">
           
         </div> -->
-        <div class="mt-2">
-          <input type="text" formControlName="challengeTitle" class="form-control" placeholder="Challenge Title">
+<!-- <div class="mt-2">
+          <input type="text" formControlName="challengeTitle" class="input" placeholder="Challenge Title">
           
         </div>
         <div class="mt-2">
-          <ng-multiselect-dropdown formControlName="challengeDomain" class="form-control"
+          <ng-multiselect-dropdown formControlName="challengeDomain" class="input"
             [placeholder]="'Challenge Domain'" [settings]="dropdownSettings" [data]="dropdownList"
             [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
           </ng-multiselect-dropdown>
           
         </div>
-        <div class="mt-2">
-          <!-- <input type="textarea" formControlName="challengeAbstract" class="form-control" placeholder="Abstract"> -->
-          <angular-editor formControlName="challengeAbstract" [config]="editorConfig" placeholder="Abstract"></angular-editor>
-          
+        <div class="mt-2"> -->
+<!-- <input type="textarea" formControlName="challengeAbstract" class="input" placeholder="Abstract"> -->
+<!-- <angular-editor formControlName="challengeAbstract" [config]="editorConfig" placeholder="Abstract"></angular-editor> -->
+
+<!-- </div>
+        <div class="mt-2"> -->
+<!-- <input type="textarea" formControlName="description" class="input" placeholder="Description"> -->
+<!-- <angular-editor formControlName="description" [config]="editorConfig" placeholder="Enter Challenge Description"></angular-editor> -->
+<!--         
         </div>
-        <div class="mt-2">
-          <!-- <input type="textarea" formControlName="description" class="form-control" placeholder="Description"> -->
-          <angular-editor formControlName="description" [config]="editorConfig" placeholder="Enter Challenge Description"></angular-editor>
-        
-        </div>
-        <div class="mt-2">
-          <!-- <input type="textarea" formControlName="rules" class="form-control" placeholder="Rules"> -->
-          <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Rules"> ></angular-editor> 
+        <div class="mt-2"> -->
+<!-- <input type="textarea" formControlName="rules" class="input" placeholder="Rules"> -->
+<!-- <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Rules"> ></angular-editor> 
         </div>
         <div class="mt-2">
           <div class="input-group"> 
-            <input type="textarea" formControlName="attachments" class="form-control" placeholder="Attachment..">
+            <input type="textarea" formControlName="attachments" class="input" placeholder="Attachment..">
             <button class="btn btn-primary">Upload</button>
           </div>
         </div>
         <div class="mt-2">
           <div class="input-group">
-            <input type="textarea" formControlName="challengeArtifacts" class="form-control" placeholder="Artifacts">
+            <input type="textarea" formControlName="challengeArtifacts" class="input" placeholder="Artifacts">
             <button class="btn btn-primary"> Upload</button>
           </div>
-        </div>
-       
-      <div class="mt-2">
+        </div> -->
+
+<!-- <div class="mt-2">
         <div class="input-group">
-          <input [owlDateTime]="dt2" class="form-control" placeholder="Challenge Expiration Date">
+          <input [owlDateTime]="dt2" class="input" placeholder="Challenge Expiration Date">
           <span [owlDateTimeTrigger]="dt2" ><i  class="fa fa-calendar"></i></span>
          <owl-date-time #dt2></owl-date-time>
         </div>
       </div>
        
         <div class="mt-2">
+          <div class="input-group"> 
           <input type="number" #amt class="form-control" formControlName="prize"  placeholder="Reward Prize" >
           <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
         </div>
+        </div>
        
-        <!-- <div class="side">
+        <div class="side">
           <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
+          <input type="number" #amt class="input" formControlName="prize"  placeholder="Reward Prize" >
+          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
+        </div> -->
+
+<!-- <div class="side">
+          <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="input">
           <div class="text-danger" *ngIf="picture?.invalid">
             Image is required
           </div>
       </div> -->
-        <div class="mt-2">
+<!-- <div class="mt-2">
           <button class="btn btn-primary">Upload Challenge</button>
         </div>
         <div class="mt-2" *ngIf="uploadSuccess">
@@ -73,4 +81,88 @@
       </form>
     </div>
   </div>
+</div> -->
+
+
+
+<app-header [isLoggedIn]="true"></app-header>
+<div class="container1">
+  <div class="wrapper">
+    <div class="title">
+      <h1>Please ! Upload Your Challenge Here</h1>
+    </div>
+    <form class="upload-in-form" [formGroup]="uploadChallenge" (ngSubmit)="onSubmit()">
+
+      <div class="input-fields">
+        <input type="text" formControlName="challengeTitle" class="input" placeholder="Challenge Title">
+
+        <ng-multiselect-dropdown formControlName="challengeDomain" class="input" [placeholder]="'Challenge Domain'"
+          [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems"
+          (onSelect)="onItemSelect($event)">
+        </ng-multiselect-dropdown>
+
+        <div class="my">
+          <angular-editor formControlName="challengeAbstract" [config]="editorConfig" placeholder="Abstract">
+          </angular-editor>
+          <angular-editor formControlName="description" [config]="editorConfig"
+            placeholder="Enter Challenge Description"></angular-editor>
+
+          <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Rules"> ></angular-editor>
+        </div>
+        <div class="input-group">
+          <input type="textarea" formControlName="attachments" class="input" placeholder="Attachment..">
+          <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
+          <button class="btn btn-primary" (click)="upload()">Upload</button>
+        </div>
+        <div class="input-group">
+          <input type="textarea" formControlName="challengeArtifacts" class="input" placeholder="Artifacts">
+          <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
+          <button class="btn btn-primary" (click)="upload()"> Upload</button>
+        </div>
+
+          <div class="my1">
+          <input [owlDateTime]="dt2" class="input" placeholder="Challenge Expiration Date">
+          <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span>
+          <owl-date-time #dt2></owl-date-time>
+          </div>
+
+
+        <div class="input-group">
+          <input type="number" #amt class="input" formControlName="prize" placeholder="Reward Prize">
+          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
+        </div>
+
+      </div>
+      <div class="uploadbtn">
+        <div class="mt-2">
+          <button class="btn btn-primary">Upload Challenge</button>
+        </div>
+        <div class="mt-2" *ngIf="uploadSuccess">
+          <p class="successMsg">{{successMessage}}</p>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
+
+
+<!-- <div class="wrapper">
+  <div class="title">
+    <h1>contact us form</h1>
+  </div>
+  <div class="contact-form">
+    <div class="input-fields">
+      <input type="text" class="input" placeholder="Name">
+      <input type="text" class="input" placeholder="Email Address">
+      <input type="text" class="input" placeholder="Phone">
+      <input type="text" class="input" placeholder="Subject">
+    </div>
+    <div class="msg">
+      <textarea placeholder="Message"></textarea>
+      <div class="btn">send</div>
+    </div>
+  </div>
+</div>
+	
+</body>
+</html>  -->
