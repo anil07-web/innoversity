@@ -17,11 +17,16 @@ public feed:feedback=new feedback();
 public info;
 public num;
 public obj;
-@Input()
-data:string;
+public isEdit:any;
+datas:string;
   ngOnInit(): void {
     this.getinfo();
-   
+   console.log(this.datas);
+  }
+  getLog(text:any)
+  {
+this.datas=text;
+// console.log(this.datas);
   }
   getinfo() {
     this.service.getDetails().subscribe(data => {
@@ -44,14 +49,13 @@ console.log(this.obj);
   onsubmit(form:NgForm){
     if(form.valid){
       console.log(this.num);
-      debugger;
       this.service.addfeed(this.num,this.feed).subscribe(data=>{
 
-        alert("Data Stored Successfully");
+        this.isEdit="Comment Posted!!!!!";
        });
       }
       else{
-        alert("Invalid");
+        this.isEdit="Please Enter Correct Details!!";
       }
   }
 }

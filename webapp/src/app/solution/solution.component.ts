@@ -2,6 +2,7 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { FeedbackComponent } from '../components/feedback/feedback.component';
 
 import { InnovatorProperties } from '../models/InnovatorProperties';
 import { SolutionService } from '../services/solution.service';
@@ -17,9 +18,13 @@ export class SolutionComponent implements OnInit {
   public isEdit:any;
  
   public loggedInUser;
-  constructor(private service:SolutionService) { }
-
+ logg="Hi Arshad";
+  constructor(private service:SolutionService,private feedservice:FeedbackComponent) { }
+setLog(){
+  this.feedservice.getLog(this.logg);
+}
   ngOnInit(): void {
+    this.setLog();
   }
   onsubmit(form:NgForm){
     if(form.valid){

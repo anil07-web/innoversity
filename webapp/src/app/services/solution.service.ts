@@ -14,7 +14,7 @@ export class SolutionService {
   //   return this.http.put(`/api/v1/solution/solved/${id}`,feedback, { responseType: 'text' });
   // }
   addfeed(id,feedback){
-    return this.http.put(`/api/v1/solution/solved/${id}`,feedback);
+    return this.http.put(`/api/v1/solution/solve/${id}`,feedback);
   }
   // addfeed(id,feedback){
   //   return this.http.put('/api/v1/solution/solved/'+id,feedback);
