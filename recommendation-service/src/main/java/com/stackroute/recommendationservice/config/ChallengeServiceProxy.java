@@ -14,6 +14,6 @@ public interface ChallengeServiceProxy {
     @GetMapping("/api/v1/getMessage")
     String getMessage();
 
-    @GetMapping("/api/v1/challenges")
+    @GetMapping("/api/v1/challenge/challenges")
     public ResponseEntity<List<ProxyChallenge>> getChallenges(@RequestParam(name = "domain", required = false) List<String> domain);
     }

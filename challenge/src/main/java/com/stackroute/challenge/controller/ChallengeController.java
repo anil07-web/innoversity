@@ -21,10 +21,10 @@ public class ChallengeController {
         this.rabbitMqSender=rabbitMqSender;
     }
 
-    @PostMapping("/file/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
-        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
-    }
+//    @PostMapping("/file/upload")
+//    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+//        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
+//    }
 
     @PostMapping("/Challenge")
     public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challenge)

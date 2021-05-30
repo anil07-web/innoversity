@@ -21,4 +21,5 @@ public class Challenge {
     @NonNull
     private String challengerName;
     private String[] challengeDomain;
+
 }

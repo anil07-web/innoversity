@@ -11,11 +11,11 @@ import { Challenge } from '../models/Challenge';
 export class DashboardService {
 
   constructor(private http: HttpClient) { }
-  getContacts()  {
-    return this.http.get('http://localhost:3000/recommended');
+  getContacts(email)  {
+    return this.http.get(`api/v1/recommendation/recommend?email=${email}`);
   }
   getChallenge()  {
-    return this.http.get('/api/v1/challenge/Challenges');
+    return this.http.get('/api/v1/challenge/challenges');
   }
 
 

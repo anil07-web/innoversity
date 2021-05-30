@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   public electricityIsNull:boolean=true;
   public scienceIsNull:boolean=true;
   public challenge;
+  public email;
 
 
   public searchresult;
@@ -45,7 +46,10 @@ export class DashboardComponent implements OnInit {
     this.getChallenge();
   }
   getContacts() {
-    this.service.getContacts().subscribe(data => {
+    this.email="vikhil@gmail.com";
+    this.service.getContacts(this.email).subscribe(data => {
+    //  this.email=data;
+    //  console.log(this.email.map(m=>console.log(m)));
       this.recommended = data;
     });
   }
