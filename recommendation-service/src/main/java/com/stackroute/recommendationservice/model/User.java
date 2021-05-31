@@ -15,7 +15,7 @@ import java.util.UUID;
 public class User {
     @Id
     @GeneratedValue
-    private UUID userId;
+    private Long id;
     @NonNull
     private String email;
     private String[] domain;

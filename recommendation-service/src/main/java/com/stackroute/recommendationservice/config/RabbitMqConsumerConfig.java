@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMqConsumerConfig {
 
-    @Value("${spring.rabbitmq.queue}")
+    @Value("${spring.rabbitmq.recommendationqueue}")
     private String queue;
 
-    @Value("${spring.rabbitmq.exchange}")
+    @Value("${spring.rabbitmq.recommendationexchange}")
     private String exchange;
 
     @Value("${spring.rabbitmq.username}")
@@ -28,7 +28,7 @@ public class RabbitMqConsumerConfig {
     @Value("${spring.rabbitmq.host}")
     private String host;
 
-    @Value("${spring.rabbitmq.routingkey}")
+    @Value("${spring.rabbitmq.recommendationroutingkey}")
     private String routingkey;
 
     /*A Bean with name Queue is created, where the information from the exchange and sent to consumer */

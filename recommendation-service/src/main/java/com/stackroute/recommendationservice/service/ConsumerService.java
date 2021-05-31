@@ -23,10 +23,10 @@ public class ConsumerService implements RabbitListenerConfigurer {
     }
 
     /*This method will save the Registered users  to MYSQL-DB*/
-    @RabbitListener(queues = "${spring.rabbitmq.queue}")
+    @RabbitListener(queues = "${spring.rabbitmq.recommendationqueue}")
     public void receivedMessage(User user) {
 
-        logger.info("User received is: " + user.getEmail());
+        logger.info("User received is: " + user);
         recommendationService.createUserNode(user);
     }
 

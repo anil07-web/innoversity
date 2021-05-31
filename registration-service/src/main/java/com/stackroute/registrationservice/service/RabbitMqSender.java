@@ -23,10 +23,21 @@ public class RabbitMqSender {
     @Value("${spring.rabbitmq.routingkey}")
     String routingKey;
 
+    @Value("${spring.rabbitmq.recommendationexchange}")
+    String exchange2;
+
+    @Value("${spring.rabbitmq.recommendationroutingkey}")
+    String routingKey2;
+
     /*This method sends the user data along with routing key to the queue.*/
     public void send(User user) {
         System.out.println("User sent:"+user);
         rabbitTemplate.convertAndSend(exchange, routingKey, user);
+    }
+
+    public void sendToRecommendation(User user) {
+        System.out.println("User sent:"+user);
+        rabbitTemplate.convertAndSend(exchange2, routingKey2, user);
     }
 
 }

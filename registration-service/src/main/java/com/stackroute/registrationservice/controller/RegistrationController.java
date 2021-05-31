@@ -27,6 +27,7 @@ public class RegistrationController {
         user.setUserId(uuid);
         userobj=registrationService.saveUser(user);
         rabbitMqSender.send(user);
+        rabbitMqSender.sendToRecommendation(user);
         return userobj;
     }
 
