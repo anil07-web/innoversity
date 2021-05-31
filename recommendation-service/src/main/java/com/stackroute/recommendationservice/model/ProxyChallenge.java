@@ -17,4 +17,7 @@ public class ProxyChallenge {
     private UUID challengeId;
     private String challengerName;
     private String[] challengeDomain;
+    private String  description;
+    private String challengeTitle;
+    private String expiryDate;
 }

@@ -3,7 +3,7 @@ package com.stackroute.authenticationservice.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class UserCredentials {
 
     @Id

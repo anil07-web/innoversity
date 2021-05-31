@@ -17,7 +17,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableRabbit
-
 //@ComponentScan("com.stackroute.challenge.repository")
 public class ChallengeApplication {
 

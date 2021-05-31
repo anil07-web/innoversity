@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Challenge } from 'src/app/models/Challenge';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
@@ -9,7 +10,8 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private service: DashboardService) { }
+  constructor(private service: DashboardService, private router: Router) { }
+  public loggedInUser: String;
   public recommended;
   public health:Array<any>=[];
   public engineering:Array<string>=[];
@@ -28,6 +30,7 @@ export class DashboardComponent implements OnInit {
   public electricityIsNull:boolean=true;
   public scienceIsNull:boolean=true;
   public challenge;
+  public email;
 
 
   public searchresult;
@@ -43,9 +46,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getContacts();
     this.getChallenge();
+    this.loggedInUser=localStorage.getItem("userName");
   }
   getContacts() {
-    this.service.getContacts().subscribe(data => {
+    this.email="vikhil@gmail.com";
+    this.service.getContacts(this.email).subscribe(data => {
+    //  this.email=data;
+    //  console.log(this.email.map(m=>console.log(m)));
       this.recommended = data;
     });
   }
@@ -124,5 +131,17 @@ export class DashboardComponent implements OnInit {
         this.environmentIsNull=false;
       }
     });
+  }
+
+  solution(challenge) {
+    console.log("User clicked on:", challenge.challengeId);
+    if (this.loggedInUser == challenge.challengerName) {
+      console.log("move to solution analysis");
+      this.router.navigateByUrl(`/solutionAnalysis/${challenge.challengeId}`)
+    } else{
+      console.log("move to upload solution");
+      this.router.navigateByUrl(`/solution/${challenge.challengeId}`);
+
+    }
   }
 }

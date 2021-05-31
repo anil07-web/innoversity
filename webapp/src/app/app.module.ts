@@ -21,9 +21,10 @@ import { UploadchallengeComponent } from './components/uploadchallenge/uploadcha
 import { SolutionComponent } from './solution/solution.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FeedbackComponent } from './components/feedback/feedback.component';
 import { AngularEditorModule } from "@kolkov/angular-editor";
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import { SolutionAnalysisComponent } from './components/solution-analysis/soluti
     MatInputModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [DashboardComponent],
+  providers: [DashboardComponent, FeedbackComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

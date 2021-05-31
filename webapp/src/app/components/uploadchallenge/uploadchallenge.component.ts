@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
@@ -11,13 +11,14 @@ import { UploadchallengeService } from 'src/app/services/uploadchallenge.service
   styleUrls: ['./uploadchallenge.component.css']
 })
 export class UploadchallengeComponent implements OnInit {
+  selectedFiles: FileList;
+  currentFileUpload: File;
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
   uploadChallenge: FormGroup;
   public challenge = new Challenge;
   uploadSuccess = false;
-  
   successMessage = 'Challenge uploaded successfully';
   handler:any = null;
  
@@ -43,11 +44,15 @@ export class UploadchallengeComponent implements OnInit {
      challengeDomain: [''],
      challengeAbstract: [''],
      description: [''],
-     rules: ['']
+     rules: [''],
+     rewardPrize: [''],
+     expiryDate: ['']
     
    });
  }
   onSubmit( ){
+    const loggedInUser = localStorage.getItem("userName");
+    this.uploadChallenge.value.challengerName=loggedInUser;
    
     this.service.addChallenge(this.uploadChallenge.value).subscribe(data => {
       this.uploadSuccess= true;
@@ -80,7 +85,7 @@ export class UploadchallengeComponent implements OnInit {
       // placeholder: 'Enter  Challenge description here...',
       defaultParagraphSeparator: '',
       defaultFontName: 'Times New Roman',
-      defaultFontSize: '12',
+      defaultFontSize: '4',
       fonts: [
         {class: 'arial', name: 'Arial'},
         {class: 'times-new-roman', name: 'Times New Roman'},
@@ -96,8 +101,29 @@ export class UploadchallengeComponent implements OnInit {
     ]
 };
 
+onSelectFile(e) {
+  if (e.target.files) {
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = (event: any) => {
+      this.selectedFiles = event.target.files;
+    }
+  }
+}
+upload() {
+  
 
-   
+  this.currentFileUpload = this.selectedFiles.item(0);
+  this.service.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+    if (event.type === HttpEventType.UploadProgress) {
+      // this.progress.percentage = Math.round(100 * event.loaded / event.total);
+    } else if (event instanceof HttpResponse) {
+      console.log('File is completely uploaded!');
+    }
+  });
+
+  this.selectedFiles = undefined;
+}
 
    
 

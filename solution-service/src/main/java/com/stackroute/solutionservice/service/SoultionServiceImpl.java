@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -46,14 +48,22 @@ public class SoultionServiceImpl implements SolutionService {
         return solution.get();
     }
     @Override
-    public void updateSol(Feedback[] feedback, UUID solutionId) {
+    public void updateSol(Feedback feedback, UUID solutionId) {
+        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
+        System.out.println("solution extracted:"+solution);
         Query query = new Query(Criteria.where("solutionId").is(solutionId));
         Update updateQuery = new Update();
-        updateQuery.set("comment","Nice job" );
-        updateQuery.set("commentedBy","Arshad Anees");
-      UpdateResult result = mongoTemplate.upsert(query, updateQuery, "solution");
-//    return mongoTemplate.save(update);
-}
+        List<Feedback> existingFeed = solution.get(0).getFeedback();
+        if (existingFeed == null) {
+            List<Feedback> feedbackList = new ArrayList<>();
+            feedbackList.add(feedback);
+            updateQuery.set("feedback", feedbackList);
+        } else {
+            existingFeed.add(feedback);
+            updateQuery.set("feedback", existingFeed);
+        }
+        UpdateResult result = mongoTemplate.upsert(query, updateQuery, "solution");
+    }
 
     public List<Solution> getAllUsers() {
         return (List<Solution>) solutionRepo.findAll();

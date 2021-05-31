@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -21,11 +23,11 @@ public class Solution {
     @Id
     private UUID solutionId;
     private String solution;
-//    private int challengeId;
+    private UUID challengeId;
 //    private String attachment;
     private String solvedBy;
     private String description;
     private SolutionStatus solStatus;
-    private Feedback[] feedback;
+    private List<Feedback> feedback=new ArrayList<Feedback>();
 
 }

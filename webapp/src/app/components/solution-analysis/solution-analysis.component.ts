@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { defaultMaxListeners } from 'events';
 import { SolutionAnalysisService } from 'src/app/services/solution-analysis.service';
 
@@ -10,13 +10,16 @@ import { SolutionAnalysisService } from 'src/app/services/solution-analysis.serv
 })
 export class SolutionAnalysisComponent implements OnInit {
 
-  constructor(private service : SolutionAnalysisService) { }
+  constructor(private service : SolutionAnalysisService, private activateRoute: ActivatedRoute,
+              private router: Router) { }
 
   public solutionDetails;
-  public accept;
-  public btnDisabled=false;
-  public isClicked=false;
+  public challengeId;
+
+
   ngOnInit(): void {
+    this.challengeId = this.activateRoute.snapshot.params.challengeId;
+    console.log("challenge Id:", this.challengeId);
     this.getSolution();
   }
 
@@ -26,23 +29,22 @@ export class SolutionAnalysisComponent implements OnInit {
       this.solutionDetails=data;
     });
   }
-
-  buttonClick(){
-    this.btnDisabled=true;
-  }
-
-  updateStatus(details){
-    this.service.updateStatus(details.solutionId,{
-        solStatus:details.solStatus?"Accepted":"Rejected",
-      }).subscribe(data=>{
-        this.getSolution();
-        console.log(data);
-      })
-    }
+  // updateStatus(details){
+  //   this.service.updateStatus(details.solutionId,{
+  //       solStatus:details.solStatus?"Accepted":"Rejected",
+  //     }).subscribe(data=>{
+  //       this.getSolution();
+  //       console.log(data);
+  //     })
+  //   }
 
     solAccepted(details, value) {
       const status = value?"Accepted":"Rejected";
       this.service.updateStatus(details.solutionId, status).subscribe(data => {this.getSolution()})
+    }
 
+    feedbackView(details) {
+      console.log("solution Id:", details.solutionId);
+      this.router.navigateByUrl(`feedback/${details.solutionId}`);
     }
   }
