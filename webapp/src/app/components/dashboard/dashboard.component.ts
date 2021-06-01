@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Challenge } from 'src/app/models/Challenge';
 import { DashboardService } from 'src/app/services/dashboard.service';
+import { MdChipsModule } from '@angular/material';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -31,6 +34,9 @@ export class DashboardComponent implements OnInit {
   public scienceIsNull:boolean=true;
   public challenge;
   public email;
+
+
+  
 
 
   public searchresult;
@@ -145,3 +151,5 @@ export class DashboardComponent implements OnInit {
     }
   }
 }
+
+export class ChipsOverviewExample {}

@@ -24,6 +24,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AngularEditorModule } from "@kolkov/angular-editor";
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { MdChipsModule } from '@angular/material';
 
 
 
@@ -54,7 +55,8 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     MatInputModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    MdChipsModule
   ],
   providers: [DashboardComponent, FeedbackComponent],
   bootstrap: [AppComponent]

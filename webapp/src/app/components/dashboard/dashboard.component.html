@@ -30,7 +30,8 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">{{c.description}}.</p>
                 <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <p class="card-text">ExpiryDate : {{c.date}}.</p>
+                <p class="card-text">ExpiryDate : {{c.expiryDate}}.</p>
+                <p class="card-text">ExpiryDate : {{c.rewardPrize}}.</p>
                 <a href="#" class="btn btn-primary">Challenge</a>
             </div>
         </div>
@@ -59,7 +60,10 @@
             <div class="card-body">
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <!-- <p class="card-text" *ngFor="let a of c.challengeDomain">          </p> -->
+                <mat-chip-list>
+                    <mat-chip>apple</mat-chip>
+                  </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate}}.</p>
                 <a href="#" class="btn btn-primary">Challenge</a>
             </div>
