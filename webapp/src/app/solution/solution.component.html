@@ -4,9 +4,12 @@
     <div class="main">
         <div class="side">
             <h1 class="sign-in-heading">Challenge details</h1>
-            <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
-                Perferendis aliquid error quidem, placeat nisi adipisci explicabo ab ducimus impedit commodi
-                reiciendis, voluptatem quos voluptatibus sunt dolores.</p>
+         <h3>Challenge Abstract:"{{info.challengeAbstract}}"</h3>
+         <h3>Challenge Description:"{{info.description}}"</h3>
+         <h3>Expiration Date:"{{info.expiryDate}}"</h3>
+         <h3>Uploaded On:"{{info.uploadedOn}}"</h3>
+         <h3>Rules:"{{info.rules}}"</h3>
+         <h3>Prize Amount:"{{info.rewardPrize}}"</h3>
         </div>
     <div class="row">
        
@@ -14,8 +17,8 @@
          
         <div class="frm">
             <form #uploadsolution="ngForm" (ngSubmit)="onsubmit(uploadsolution)">
-                <div class="mt-2">
-                   <p><strong>Challenge Name: {{challenge}}</strong></p>
+                <div class="mt-2" >
+                   <p><strong>Challenge Name: "{{info.challengeTitle}}"</strong></p>
                 </div>
                 <div  class="edit">
                     <input type="text" #solution="ngModel" name="solution"  class="form-control" required  [(ngModel)]="innovator.solution" placeholder="Provide Solution">

@@ -64,7 +64,11 @@ public class ChallengeController {
         rabbitMqSender.send(challenge);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
-
+    @GetMapping("/challenge/{challengeId}")
+    public ResponseEntity<Challenge> getById(@PathVariable("challengeId") UUID challengeId) {
+        Challenge challenge = this.challengeService.getById(challengeId);
+        return new ResponseEntity<Challenge>(challenge, HttpStatus.OK);
+    }
     @GetMapping("/challenges")
     public ResponseEntity<List<Challenge>> getChallenges(@RequestParam(name = "domain", required = false) List<String> domain) {
         List<Challenge> challenges = challengeService.getDomainChallenges(domain);
