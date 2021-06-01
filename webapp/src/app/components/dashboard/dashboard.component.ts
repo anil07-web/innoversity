@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Challenge } from 'src/app/models/Challenge';
 import { DashboardService } from 'src/app/services/dashboard.service';
-import { MdChipsModule } from '@angular/material';
+
 
 
 
@@ -151,5 +150,3 @@ export class DashboardComponent implements OnInit {
     }
   }
 }
-
-export class ChipsOverviewExample {}

@@ -7,10 +7,20 @@
         <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h3 class="card-title text-center">Title :{{c.challengeTitle}} </h3>
+                <h2 class="card-title text-center">Title :{{c.challengeTitle}} </h2>
+                <p class="card-text">Name : {{c.challengerName}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 <p class="card-text">Domain : {{c.challengeDomain}}.</p>
                 <!-- <p class="card-text">Domain : {{c.description}}.</p> -->
+                   <mat-chip-list aria-label="Fish selection" >
+                    <h3>Domain :</h3>
+                    <div>
+                    <mat-chip color="accent" selected>{{c.challengeDomain[0]}}</mat-chip>
+                    <mat-chip color="primary" selected>{{c.challengeDomain[1]}}</mat-chip> 
+                </div>               
+                  </mat-chip-list>              
+                <p class="card-text">Description : {{c.description}}.</p>
+                <p class="card-text">ExpiryDate : {{c.expiryDate | date}} .</p>
                 <a href="#" class="btn btn-primary">Challenge</a>
             </div>
         </div>

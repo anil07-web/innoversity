@@ -7,6 +7,7 @@ import com.stackroute.registrationservice.service.RegistrationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -29,6 +30,10 @@ public class RegistrationController {
         rabbitMqSender.send(user);
         rabbitMqSender.sendToRecommendation(user);
         return userobj;
+    }
+    @GetMapping("/users/{email}")
+    public List<User> getUser(@PathVariable("email") String email){
+        return registrationService.getUserByEmail(email);
     }
 
 }
