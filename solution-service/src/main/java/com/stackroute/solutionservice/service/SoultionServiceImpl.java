@@ -40,23 +40,12 @@ public class  SoultionServiceImpl implements SolutionService {
     public List<Solution> getDetails() {
         return solutionRepo.findAll();
     }
-<<<<<<< HEAD
-
 //    @Override
-//    public Solution getById(UUID challengeId) {
-//        Optional<Solution> solution = solutionRepo.findById(challengeId);
+//    public Solution getById(UUID solutionId) {
+//        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
 //        System.out.println(solution);
-//        return solution.get();
+//        return solution.get(0);
 //    }
-
-=======
-    @Override
-    public Solution getById(UUID solutionId) {
-        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
-        System.out.println(solution);
-        return solution.get(0);
-    }
->>>>>>> c2c8a6fa318ca10d3abc494f5560c213eb617c43
     @Override
     public void updateSol(Feedback feedback, UUID solutionId) {
         List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
@@ -81,6 +70,12 @@ public class  SoultionServiceImpl implements SolutionService {
         query.addCriteria(Criteria.where("challengeId").is(challengeId));
         List<Solution> solution=mongoTemplate.find(query,Solution.class);
         return solution;
+    }
+
+    @Override
+    public Solution getSolutionBySolutionId(UUID solutionId) {
+        List<Solution> solutionList = solutionRepo.findBySolutionId(solutionId);
+        return solutionList.get(0);
     }
 
     public List<Solution> getAllUsers() {

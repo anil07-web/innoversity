@@ -11,6 +11,7 @@
                 <h2 class="card-title">Solution: "{{details.solution}}"</h2>
                 <p class="card-text">Solved by : {{details.solvedBy}}</p>
                 <p class="card-text">Description: {{details.description}}</p>
+                <p class="card-text">Status: {{details.solStatus}}</p>
                 <div class="d-flex flex-row" >
                     <a ><button class="button button1" (click)="solAccepted(details,true)" *ngIf="details.solStatus == 'NotReviewed'">Accept</button></a>
                     <a ><button class="button button2" (click)="solAccepted(details,false)" *ngIf="details.solStatus == 'NotReviewed'">Reject</button></a>

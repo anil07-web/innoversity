@@ -30,13 +30,13 @@
     height: 145vh;
   }
   .wrapper{
-    position: absolute;
-    top: 85%;
+    position: relative;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
     max-width: 1000px;
-    background: rgba(107, 103, 107, 0.8);
+    background: rgba(37, 37, 37, 0.932);
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(42, 45, 80, 0.3);
@@ -60,4 +60,12 @@
 .valid{
   margin-top: 10px;
   
+}
+
+.solDetails {
+  margin-left: 5%;
+}
+
+.feed-text {
+  color: rgb(247, 94, 94);
 }

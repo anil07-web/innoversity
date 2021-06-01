@@ -43,6 +43,7 @@ export class SolutionComponent implements OnInit {
       console.log('Solved by:', this.loggedInUser);
       this.innovator.solvedBy = this.loggedInUser;
       this.innovator.challengeId = this.challengeId;
+      this.innovator.challengeTitle = this.info.challengeTitle;
       this.service.addDetails(this.innovator).subscribe((data) => {
         this.isEdit = 'Data Stored Successfully';
       });
@@ -56,6 +57,7 @@ export class SolutionComponent implements OnInit {
       // debugger;
       // let list = [];
       this.info = data;
+      console.log("challenge Info:", this.info);
       // console.log("Data is"+data);
       // console.log("tHE CHALLENGE DETAILS"+this.info);/
       // list = this.info;
