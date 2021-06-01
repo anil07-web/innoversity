@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
@@ -23,9 +22,10 @@ public class Solution {
     @Id
     private UUID solutionId;
     private String solution;
-    private UUID challengeId;
 //    private String attachment;
     private String solvedBy;
+    private UUID challengeId;
+    private String challengeTitle;
     private String description;
     private SolutionStatus solStatus;
     private List<Feedback> feedback=new ArrayList<Feedback>();

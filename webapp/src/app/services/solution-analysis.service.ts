@@ -15,4 +15,8 @@ export class SolutionAnalysisService {
   updateStatus(solutionId,solStatus){
     return this.http.put(`/api/v1/solution/status/${solutionId}?solStatus=${solStatus}`, { responseType: 'text' });
   }
+
+  getSolutionByChallengeId(challengeId){
+    return this.http.get(`/api/v1/solution/solve/${challengeId}`);
+  }
 }

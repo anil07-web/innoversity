@@ -15,18 +15,27 @@ export class SolutionAnalysisComponent implements OnInit {
 
   public solutionDetails;
   public challengeId;
-
-
+  public challengeTitle;
+  public solutionDetailsBychallenge;
+  
   ngOnInit(): void {
     this.challengeId = this.activateRoute.snapshot.params.challengeId;
     console.log("challenge Id:", this.challengeId);
-    this.getSolution();
+    // this.getSolution();
+    this.getSolutionByChallengeId(this.challengeId);
   }
 
   getSolution(){
     this.service.getSolution().subscribe(data=>{
       console.log(data);
       this.solutionDetails=data;
+    });
+  }
+
+  getSolutionByChallengeId(challengeId){
+    this.service.getSolutionByChallengeId(this.challengeId).subscribe(data=>{
+      // console.log(data);
+      this.solutionDetailsBychallenge=data;
     });
   }
   // updateStatus(details){
@@ -39,8 +48,8 @@ export class SolutionAnalysisComponent implements OnInit {
   //   }
 
     solAccepted(details, value) {
-      const status = value?"Accepted":"Rejected";
-      this.service.updateStatus(details.solutionId, status).subscribe(data => {this.getSolution()})
+        const status = value?"Accepted":"Rejected";
+        this.service.updateStatus(details.solutionId, status).subscribe(data => {this.getSolutionByChallengeId(this.challengeId)});
     }
 
     feedbackView(details) {

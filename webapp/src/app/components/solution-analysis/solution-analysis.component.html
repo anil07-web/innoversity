@@ -4,21 +4,21 @@
         <p class="content" style="background-image: url('assets/images/solution1.gif');">Solvers are at the heart of everything we do,<br>supplying the innovative solutions to everyones’<br> problems and needs.</p>
     </div>
     <div class="row">
-        <div class="card mx-2" style="width: 18rem;" *ngFor="let details of solutionDetails">
+        <div class="card mx-2 mt-2" style="width: 18rem;" *ngFor="let details of solutionDetailsBychallenge">
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <div class="card-body" >
-                <h2 class="card-title">Challenge Name: "{{details.solution}}"</h2>
+                <h2 class="card-title">Challenge Name: "{{details.challengeTitle}}"</h2>
+                <h2 class="card-title">Solution: "{{details.solution}}"</h2>
                 <p class="card-text">Solved by : {{details.solvedBy}}</p>
                 <p class="card-text">Description: {{details.description}}</p>
                 <div class="d-flex flex-row" >
                     <a ><button class="button button1" (click)="solAccepted(details,true)" *ngIf="details.solStatus == 'NotReviewed'">Accept</button></a>
-                    <a ><button class="button button1" (click)="solAccepted(details,false)" *ngIf="details.solStatus == 'NotReviewed'">Reject</button></a>
+                    <a ><button class="button button2" (click)="solAccepted(details,false)" *ngIf="details.solStatus == 'NotReviewed'">Reject</button></a>
                     <a ><button class="button button1" (click)="feedbackView(details)" *ngIf="details.solStatus=='Accepted'">View More</button></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 
