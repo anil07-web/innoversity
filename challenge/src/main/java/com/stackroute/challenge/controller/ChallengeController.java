@@ -6,6 +6,7 @@ import com.stackroute.challenge.model.Challenge;
 import com.stackroute.challenge.service.ChallengeService;
 import com.stackroute.challenge.service.RabbitMqSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,29 +29,30 @@ public class ChallengeController {
         this.rabbitMqSender = rabbitMqSender;
     }
 
+   
 
-//    @PostMapping("/file/upload")
-//    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
-//        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
-//    }
-//
-//    @PostMapping("/upload")
-//    public ResponseEntity<Challenge> uploadFile(@RequestParam(value = "file") MultipartFile file,
-//                                                @RequestParam(value = "image") MultipartFile image, @RequestParam("item") String item) throws IOException {
-//
-//        Challenge ChallengeObj = new ObjectMapper().readValue(item, Challenge.class);
-//        ChallengeObj.setFileByte(file.getBytes());
-//        ChallengeObj.setFile(file.getOriginalFilename());
-//        ChallengeObj.setImageByte(image.getBytes());
-//        ChallengeObj.setImage(image.getOriginalFilename());
-//        ChallengeObj.setType(image.getContentType());
-//        ChallengeObj.setUploadedOn(new Date(System.currentTimeMillis()));
-//        String fileUrl = challengeService.uploadFile(file);
-//        final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
-//        ChallengeObj.setUploadUrl(fileUrl);
-//        Challenge savedChallenge = challengeService.save(ChallengeObj);
-//        return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
-//    }
+    @PostMapping("/file/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<Challenge> uploadFile(@RequestParam(value = "file") MultipartFile file,
+                                                @RequestParam(value = "image") MultipartFile image, @RequestParam("item") String item) throws IOException {
+
+        Challenge ChallengeObj = new ObjectMapper().readValue(item, Challenge.class);
+        ChallengeObj.setFileByte(file.getBytes());
+        ChallengeObj.setFile(file.getOriginalFilename());
+        ChallengeObj.setImageByte(image.getBytes());
+        ChallengeObj.setImage(image.getOriginalFilename());
+        ChallengeObj.setType(image.getContentType());
+
+        String fileUrl = challengeService.uploadFile(file);
+        final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
+        ChallengeObj.setUploadUrl(fileUrl);
+        Challenge savedChallenge = challengeService.save(ChallengeObj);
+        return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
+    }
 
     @PostMapping("/Challenge")
     public ResponseEntity<Challenge> saveChallenge(@RequestBody Challenge challenge) {

@@ -109,16 +109,16 @@
 
           <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Rules"> ></angular-editor>
         </div>
-        <!-- <div class="input-group">
+        <div class="input-group">
           <input type="textarea" formControlName="attachments" class="input" placeholder="Attachment..">
-          <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
+          <input type="file" (change)="onSelectFile($event)" formControlName="attachments" class="form-control">
           <button class="btn btn-primary" (click)="upload()">Upload</button>
-        </div> -->
-        <!-- <div class="input-group">
+        </div>
+        <div class="input-group">
           <input type="textarea" formControlName="challengeArtifacts" class="input" placeholder="Artifacts">
-          <input type="file" (change)="onSelectFile($event)" formControlName="picture" class="form-control">
+          <input type="file" (change)="onSelectFile($event)" formControlName="challengeArtifacts" class="form-control">
           <button class="btn btn-primary" (click)="upload()"> Upload</button>
-        </div> -->
+        </div>
 
           <div class="my1">
           <input [owlDateTimeTrigger]="sdt" [owlDateTime]="sdt"
