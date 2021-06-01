@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Challenge } from '../models/Challenge';
+import { Search } from '../models/Search';
 // import { Observable } from 'rxjs';
 // import { Contact } from '../models/contact';
 
@@ -20,8 +21,8 @@ export class DashboardService {
 
 
 
-  getSearchResult(queryvalue){
-    return this.http.get(`/api/v1/search/search/${queryvalue}`);
+  getSearchResult(queryvalue):Observable<Search>{
+    return this.http.get<Search>(`/api/v1/search/search/${queryvalue}`);
   }
  
  

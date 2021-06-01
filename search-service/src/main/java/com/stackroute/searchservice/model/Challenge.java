@@ -22,5 +22,6 @@ public class Challenge {
     private String challengerName;
     private String[] challengeDomain;
     private String description;
+    private Date expiryDate;
 
 }

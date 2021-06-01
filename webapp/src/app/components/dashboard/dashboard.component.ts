@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Challenge } from 'src/app/models/Challenge';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -32,12 +33,19 @@ export class DashboardComponent implements OnInit {
   public challenge;
   public email;
 
+  
+
+  // public domain:String[];
+    // public domain: Array<String>;
+
 
   public searchresult;
   setQuery(querytext){
     this.service.getSearchResult(querytext).subscribe(data=> {
         this.searchresult = data;
         console.log(this.searchresult);
+        // this.domain=data.challengeDomain;
+        // console.log(this.domain)
       });
     }
   
