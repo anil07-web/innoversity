@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -17,7 +18,17 @@ public class ProxyChallenge {
     private UUID challengeId;
     private String challengerName;
     private String[] challengeDomain;
-    private String  description;
     private String challengeTitle;
-    private String expiryDate;
+    private String challengeAbstract;
+    private String description;
+    private Date expiryDate;
+    private String rules;
+    private String file;
+    private byte[] fileByte;
+    private String image;
+    private byte[] imageByte;
+    private String uploadUrl;
+    private String type;
+    private Date uploadedOn;
+    private Integer rewardPrize;
 }

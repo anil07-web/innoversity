@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 
 
 
@@ -24,9 +24,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AngularEditorModule } from "@kolkov/angular-editor";
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
-
-
-
+import { MatChipsModule } from "@angular/material/chips";
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +36,7 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     LoginComponent,
     DashboardComponent,
     FeedbackComponent,
-    SolutionAnalysisComponent
+    SolutionAnalysisComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +52,7 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     MatInputModule,
+    MatChipsModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [DashboardComponent, FeedbackComponent],

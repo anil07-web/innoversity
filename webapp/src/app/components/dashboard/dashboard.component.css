@@ -1,5 +1,5 @@
 .card-body{
-    background-color: rgb(180, 144, 144);
+    background-color: rgb(161, 146, 146);
 }
 .card{
     text-align: center;
@@ -18,3 +18,17 @@
 .btn:hover{
     width: 180px;
 }
+
+
+
+/* 
+mat-list-item {
+  height: auto !important
+} */
+
+.card:hover{
+    color: rgb(227, 233, 233);
+    background: rgb(248, 214, 214);
+}
+
+
