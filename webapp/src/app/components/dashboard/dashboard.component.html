@@ -7,11 +7,22 @@
         <div  class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h3 class="card-title text-center">Title :{{c.challengeTitle}} </h3>
+                <h2 class="card-title text-center">Title :{{c.challengeTitle}} </h2>
+                <p class="card-text">Name : {{c.challengerName}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 <p class="card-text">Domain : {{c.challengeDomain}}.</p>
                 <!-- <p class="card-text">Domain : {{c.description}}.</p> -->
                 <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                   <mat-chip-list aria-label="Fish selection" >
+                    <h3>Domain :</h3>
+                    <div>
+                    <mat-chip color="accent" selected>{{c.challengeDomain[0]}}</mat-chip>
+                    <mat-chip color="primary" selected>{{c.challengeDomain[1]}}</mat-chip> 
+                </div>               
+                  </mat-chip-list>              
+                <p class="card-text">Description : {{c.description}}.</p>
+                <p class="card-text">ExpiryDate : {{c.expiryDate | date}} .</p>
+                <a href="#" class="btn btn-primary">Challenge</a>
             </div>
         </div>
     </div>
@@ -30,8 +41,14 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">{{c.description}}.</p>
                 <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+<<<<<<< HEAD
                 <p class="card-text">ExpiryDate : {{c.date}}.</p>
                 <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+=======
+                <p class="card-text">ExpiryDate : {{c.expiryDate}}.</p>
+                <p class="card-text">ExpiryDate : {{c.rewardPrize}}.</p>
+                <a href="#" class="btn btn-primary">Challenge</a>
+>>>>>>> ac4047e994e37095060db87361cfaab0c46b6e6c
             </div>
         </div>
     </div>
@@ -59,7 +76,10 @@
             <div class="card-body">
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <!-- <p class="card-text" *ngFor="let a of c.challengeDomain">          </p> -->
+                <mat-chip-list>
+                    <mat-chip>apple</mat-chip>
+                  </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate}}.</p>
                 <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
             </div>

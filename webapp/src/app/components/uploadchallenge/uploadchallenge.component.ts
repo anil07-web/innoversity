@@ -46,7 +46,9 @@ export class UploadchallengeComponent implements OnInit {
      description: [''],
      rules: [''],
      rewardPrize: [''],
-     expiryDate: ['']
+     expiryDate: [''],
+     attachments:[''],
+     challengeArtifacts:['']
     
    });
  }
@@ -84,8 +86,8 @@ export class UploadchallengeComponent implements OnInit {
       showToolbar: false,
       // placeholder: 'Enter  Challenge description here...',
       defaultParagraphSeparator: '',
-      defaultFontName: 'Times New Roman',
-      defaultFontSize: '4',
+      // defaultFontName: 'Times New Roman',
+      // defaultFontSize: '4',
       fonts: [
         {class: 'arial', name: 'Arial'},
         {class: 'times-new-roman', name: 'Times New Roman'},
@@ -112,7 +114,6 @@ onSelectFile(e) {
 }
 upload() {
   
-
   this.currentFileUpload = this.selectedFiles.item(0);
   this.service.pushFileToStorage(this.currentFileUpload).subscribe(event => {
     if (event.type === HttpEventType.UploadProgress) {

@@ -15,7 +15,7 @@ public interface ChallengeService {
 
     public List<Challenge> getDomainChallenges(List<String> domain);
 
-//    String uploadFile(MultipartFile multipartFile);
+    String uploadFile(MultipartFile multipartFile);
 
 
 //    public String uploadFile(MultipartFile file);
