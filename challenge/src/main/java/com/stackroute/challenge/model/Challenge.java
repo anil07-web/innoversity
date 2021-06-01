@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.util.Date;
@@ -15,8 +15,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 @Document(collection = "challenge")
+
 public class Challenge {
-    @Id
+    @Indexed(unique = true)
     private UUID challengeId;
     private String challengerName;
     private String[] challengeDomain;
@@ -33,7 +34,8 @@ public class Challenge {
     private String uploadUrl;
     private String type;
     private Date uploadedOn;
-    LocalDate localDate = LocalDate.now(); // used in java 8
-    Date date =new Date();
+    private Integer rewardPrize;
+//    LocalDate localDate = LocalDate.now(); // used in java 8
+//    Date date =new Date();
 
 }

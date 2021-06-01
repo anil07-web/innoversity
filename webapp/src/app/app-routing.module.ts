@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 import { UploadchallengeComponent } from './components/uploadchallenge/uploadchallenge.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { LandingComponent } from './landing/landing.component';
 import { SolutionComponent } from './solution/solution.component';
 
@@ -16,10 +17,11 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'landing',component:LandingComponent},
-  {path:'solution',component:SolutionComponent},
+  {path:'solution/:challengeId',component:SolutionComponent},
   {path:'challenge',component:UploadchallengeComponent},
-  {path:'solutionAnalysis',component:SolutionAnalysisComponent},
-  {path:'feedback',component:FeedbackComponent}
+  {path:'solutionAnalysis/:challengeId',component:SolutionAnalysisComponent},
+  {path:'feedback/:solutionId',component:FeedbackComponent},
+  {path:'userProfile',component:UserprofileComponent}
 ]
 
 @NgModule({

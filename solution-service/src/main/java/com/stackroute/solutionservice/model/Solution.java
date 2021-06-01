@@ -23,7 +23,7 @@ public class Solution {
     @Id
     private UUID solutionId;
     private String solution;
-//    private int challengeId;
+    private UUID challengeId;
 //    private String attachment;
     private String solvedBy;
     private String description;

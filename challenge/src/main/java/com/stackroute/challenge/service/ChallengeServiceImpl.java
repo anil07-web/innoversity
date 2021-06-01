@@ -1,17 +1,13 @@
 package com.stackroute.challenge.service;
-<<<<<<< HEAD
 
-//import com.amazonaws.services.s3.AmazonS3;
-//import com.amazonaws.services.s3.model.PutObjectRequest;
-=======
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.PutObjectRequest;
->>>>>>> ba3796cf002653a0ae2b9edb3c023577be12d9c1
 import com.stackroute.challenge.model.Challenge;
 import com.stackroute.challenge.repository.ChallengeRespository;
 
@@ -34,14 +30,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-@Service
 
+@Service
 public class ChallengeServiceImpl implements ChallengeService {
 
-    @Autowired
-    private AmazonS3 s3Client;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ChallengeServiceImpl.class);
+    private AmazonS3 s3client;
 
     @Autowired
     ChallengeRespository challengeRespository;
@@ -49,9 +43,13 @@ public class ChallengeServiceImpl implements ChallengeService {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public Challenge save(Challenge challenge){
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChallengeServiceImpl.class);
+
+
+    public Challenge save(Challenge challenge) {
         return challengeRespository.save(challenge);
     }
+
     @Value("${aws.s3.bucket}")
     private String bucketName;
 
@@ -65,18 +63,18 @@ public class ChallengeServiceImpl implements ChallengeService {
     @Value("${aws.s3.region}")
     private String region;
 
-    private AmazonS3 s3client;
 
     @PostConstruct
     private void initializeAmazon() {
 
         BasicAWSCredentials creds = new BasicAWSCredentials(accessKeyId, secretAccessKey);
-        this.s3client=  AmazonS3ClientBuilder
+        this.s3client = AmazonS3ClientBuilder
                 .standard()
                 .withRegion(Regions.fromName(region))
                 .withCredentials(new AWSStaticCredentialsProvider(creds))
                 .build();
     }
+
     @Override
     public List<Challenge> getAllChallenges() {
         return (List<Challenge>) challengeRespository.findAll();
@@ -94,36 +92,20 @@ public class ChallengeServiceImpl implements ChallengeService {
     }
 
 
-    @Override
-    public String uploadFile(MultipartFile file) {
-        File fileObj = convertMultiPartFileToFile(file);
-        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
-        fileObj.delete();
-        return "File uploaded : " + fileName;
-    }
-    private File convertMultiPartFileToFile(MultipartFile file) {
-        File convertedFile = new File(file.getOriginalFilename());
-        try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
-            fos.write(file.getBytes());
-        } catch (IOException e) {
-            log.error("Error converting multipartFile to file", e);
-        }
-        return convertedFile;
-      }
+
 
     @Override
     @Async
     public String uploadFile(MultipartFile multipartFile) {
         LOGGER.info("File upload in progress.");
-        String fileUrl="";
+        String fileUrl = "";
         try {
             final File file = convertMultiPartFileToFile(multipartFile);
             String fileName = generateFileName(multipartFile);
             fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
             uploadFileToS3Bucket(fileName, file);
             LOGGER.info("File upload is completed.");
-            file.delete();	// To remove the file locally created in the project folder.
+            file.delete();    // To remove the file locally created in the project folder.
         } catch (final AmazonServiceException ex) {
             LOGGER.info("File upload is failed.");
         }
@@ -134,6 +116,7 @@ public class ChallengeServiceImpl implements ChallengeService {
         return new Date().getTime() + "-" + multiPart.getOriginalFilename()
                 .replace(" ", "_");
     }
+
     private File convertMultiPartFileToFile(final MultipartFile multipartFile) {
         LOGGER.info("converting");
         final File file = new File(multipartFile.getOriginalFilename());
@@ -141,7 +124,7 @@ public class ChallengeServiceImpl implements ChallengeService {
             outputStream.write(multipartFile.getBytes());
         } catch (final IOException ex) {
             LOGGER.error("Error converting the multi-part file to file= ");
-        } catch(Exception exception) {
+        } catch (Exception exception) {
             LOGGER.info("Caught exception while converting");
         }
         return file;
@@ -150,14 +133,14 @@ public class ChallengeServiceImpl implements ChallengeService {
 
     private void uploadFileToS3Bucket(final String fileName, final File file) {
         try {
-            LOGGER.info("Uploading file:"+fileName);
+            LOGGER.info("Uploading file:" + fileName);
             final PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, fileName, file);
-              LOGGER.info("putObject:"+putObjectRequest);
+//            LOGGER.info("putObject:" + putObjectRequest);
             s3client.putObject(putObjectRequest);
             LOGGER.info("file Uploaded");
         } catch (Exception exc) {
-            LOGGER.info("Exception caught:"+exc);
-            LOGGER.info("Exception caught will uploading"+exc.getMessage());
+            LOGGER.info("Exception caught:" + exc);
+            LOGGER.info("Exception caught will uploading" + exc.getMessage());
         }
     }
 

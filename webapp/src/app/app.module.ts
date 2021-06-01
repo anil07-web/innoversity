@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 
 
 
@@ -21,9 +21,13 @@ import { UploadchallengeComponent } from './components/uploadchallenge/uploadcha
 import { SolutionComponent } from './solution/solution.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FeedbackComponent } from './components/feedback/feedback.component';
 import { AngularEditorModule } from "@kolkov/angular-editor";
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { MatChipsModule } from "@angular/material/chips";
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
+
+
 
 
 
@@ -38,7 +42,8 @@ import { SolutionAnalysisComponent } from './components/solution-analysis/soluti
     LoginComponent,
     DashboardComponent,
     FeedbackComponent,
-    SolutionAnalysisComponent
+    SolutionAnalysisComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +59,10 @@ import { SolutionAnalysisComponent } from './components/solution-analysis/soluti
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     MatInputModule,
+    MatChipsModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [DashboardComponent],
+  providers: [DashboardComponent, FeedbackComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

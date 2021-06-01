@@ -44,11 +44,17 @@ export class UploadchallengeComponent implements OnInit {
      challengeDomain: [''],
      challengeAbstract: [''],
      description: [''],
-     rules: ['']
+     rules: [''],
+     rewardPrize: [''],
+     expiryDate: [''],
+     attachments:[''],
+     challengeArtifacts:['']
     
    });
  }
   onSubmit( ){
+    const loggedInUser = localStorage.getItem("userName");
+    this.uploadChallenge.value.challengerName=loggedInUser;
    
     this.service.addChallenge(this.uploadChallenge.value).subscribe(data => {
       this.uploadSuccess= true;
@@ -80,8 +86,8 @@ export class UploadchallengeComponent implements OnInit {
       showToolbar: false,
       // placeholder: 'Enter  Challenge description here...',
       defaultParagraphSeparator: '',
-      defaultFontName: 'Times New Roman',
-      defaultFontSize: '6',
+      // defaultFontName: 'Times New Roman',
+      // defaultFontSize: '4',
       fonts: [
         {class: 'arial', name: 'Arial'},
         {class: 'times-new-roman', name: 'Times New Roman'},
@@ -108,7 +114,6 @@ onSelectFile(e) {
 }
 upload() {
   
-
   this.currentFileUpload = this.selectedFiles.item(0);
   this.service.pushFileToStorage(this.currentFileUpload).subscribe(event => {
     if (event.type === HttpEventType.UploadProgress) {
