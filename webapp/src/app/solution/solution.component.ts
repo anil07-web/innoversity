@@ -17,21 +17,24 @@ export class SolutionComponent implements OnInit {
   public innovator = new InnovatorProperties();
   public challenge = 'Smart Helmet';
   public isEdit: any;
-
+  public info;
+  public challengeName;
+// public challengeInfo=[];
   public loggedInUser;
   public challengeId;
-  logg = 'Hi Arshad';
+  // logg = 'Hi Arshad';
   constructor(
     private service: SolutionService,
     private feedservice: FeedbackComponent,
     private activateRoute: ActivatedRoute
   ) {}
-  setLog() {
-    this.feedservice.getLog(this.logg);
-  }
+  // setLog() {
+  //   this.feedservice.getLog(this.logg);
+  // }
   ngOnInit(): void {
     this.challengeId = this.activateRoute.snapshot.params.challengeId;
-    console.log("challenge Id:", this.challengeId);
+    // console.log("challenge Id:", this.challengeId);
+    this.getinfo();
     // this.setLog();
   }
   onsubmit(form: NgForm) {
@@ -46,6 +49,20 @@ export class SolutionComponent implements OnInit {
     } else {
       this.isEdit = 'Please Enter Correct Details!!';
     }
+  }
+  getinfo(){
+    
+    this.service.getinfo(this.challengeId).subscribe((data) => {
+      // debugger;
+      // let list = [];
+      this.info = data;
+      // console.log("Data is"+data);
+      // console.log("tHE CHALLENGE DETAILS"+this.info);/
+      // list = this.info;
+      // list.forEach((a) => {
+        // this.challengeName = a.challengeTitle;
+    // });
+    });
   }
 
   // config: AngularEditorConfig = {

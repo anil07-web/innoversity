@@ -8,8 +8,7 @@ import com.stackroute.challenge.repository.ChallengeRespository;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +22,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 
 @Service
 public class ChallengeServiceImpl implements ChallengeService {
@@ -73,7 +71,12 @@ public class ChallengeServiceImpl implements ChallengeService {
     public List<Challenge> getAllChallenges() {
         return (List<Challenge>) challengeRespository.findAll();
     }
-
+    @Override
+    public Challenge getById(UUID challengeId) {
+        List<Challenge> challenge = challengeRespository.findByChallengeId(challengeId);
+        System.out.println(challenge);
+        return challenge.get(0);
+    }
     @Override
     public List<Challenge> getDomainChallenges(List<String> domain) {
         List<Challenge> challenges = new ArrayList<>();

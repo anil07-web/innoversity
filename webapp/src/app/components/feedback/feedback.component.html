@@ -4,13 +4,13 @@
         <div class="wrapper">
             <div class="title">
               <h1>Comment Section!!</h1>   
-              <!-- Parent says{{datas}} -->
             </div>
     <div class="row" >
           <!-- <div class="card mt-3" class="p-3 mb-2 bg-secondary text-white" > -->
             <div class="card-body">
               <!-- <h5 class="card-title">Solution Id:{{num}}</h5> -->
-              <p class="card-text">Solution Description:{{obj}}</p>
+              <p class="card-text">Solution Description:{{info1.description}}</p>
+              <p class="card-text">Solution Description:{{info1.feedback}}</p>
               <div class="row">
                 <div class="col-md-4 offset-md-4">
                     <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">

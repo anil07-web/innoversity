@@ -15,39 +15,48 @@ export class FeedbackComponent implements OnInit {
   // public commentedBy;
   public feed: feedback = new feedback();
   public info;
+  public info1;
   public num;
+  public comments;
+  public commentedby;
   public obj;
   public isEdit: any;
   public solutionId: any;
   public loggedInUser: string;
-  datas: string;
   ngOnInit(): void {
-    this.getinfo();
-    console.log(this.datas);
+    // this.getinfo();
     this.solutionId = this.activatedRoute.snapshot.params.solutionId;
-    console.log("solutionId:", this.solutionId);
+    // console.log("solutionId:", this.solutionId);
     this.loggedInUser=localStorage.getItem("userName");
-  }
-  getLog(text: any) {
-    this.datas = text;
-    // console.log(this.datas);
+    this.getByid();
   }
   getinfo() {
     this.service.getDetails().subscribe((data) => {
+      
       let list = [];
       this.info = data;
       list = this.info;
       list.forEach((a) => {
-        this.num = a.solutionId;
+        // this.num = a.solutionId;
         this.obj = a.solution;
         console.log(this.obj);
       });
     });
   }
-  submit() {
-    this.feed;
-    this.num;
-  }
+getByid(){
+  let list=[];
+  this.service.getByid(this.solutionId).subscribe((data)=>{
+// debugger;
+this.info1=data;
+console.log("The information is" +this.info1);
+list=this.info1.feedback;
+console.log("the feedback is" +list);
+list.forEach((a)=>{
+this.comments=a.comment;
+this.commentedby=a.commentedBy;
+});
+  });
+}
 
   onsubmit(form: NgForm) {
     if (form.valid) {

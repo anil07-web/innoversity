@@ -20,11 +20,14 @@ export class SolutionService {
   //   return this.http.put('/api/v1/solution/solved/'+id,feedback);
 
   // }
+  getinfo(id){
+    return this.http.get(`/api/v1/challenge/challenge/${id}`);
+  }
   getDetails(){
     return this.http.get('/api/v1/solution/getsolution');
   }
   getByid(id){
-    return this.http.get(`/api/v1/solution/solved/${id}`);
+    return this.http.get(`/api/v1/solution/solve/${id}`);
   }
  
 }

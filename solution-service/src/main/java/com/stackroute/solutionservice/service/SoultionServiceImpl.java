@@ -43,9 +43,9 @@ public class SoultionServiceImpl implements SolutionService {
     }
     @Override
     public Solution getById(UUID solutionId) {
-        Optional<Solution> solution = solutionRepo.findById(solutionId);
+        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
         System.out.println(solution);
-        return solution.get();
+        return solution.get(0);
     }
     @Override
     public void updateSol(Feedback feedback, UUID solutionId) {
