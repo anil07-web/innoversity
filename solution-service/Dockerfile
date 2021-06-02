@@ -1,7 +1,7 @@
-FROM openjdk:11-jre-slim
+FROM openjdk:11
 
-ADD ./target/solution-service-0.0.1-SNAPSHOT.jar /usr/src/solution-service-0.0.1-SNAPSHOT.jar
+EXPOSE 8900
 
-WORKDIR usr/src
+ADD ./target/solution-service-0.0.1-SNAPSHOT.jar solution-service-0.0.1-SNAPSHOT.jar
 
-ENTRYPOINT ["java","-jar", "solution-service-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar", "/solution-service-0.0.1-SNAPSHOT.jar"]
