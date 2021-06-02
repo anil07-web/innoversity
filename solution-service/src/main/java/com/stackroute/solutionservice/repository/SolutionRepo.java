@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface SolutionRepo extends MongoRepository<Solution, UUID> {
-    List<Solution> findBySolutionId(UUID challengeId);
+    List<Solution> findBySolutionId(UUID solutionId);
 }
 
 

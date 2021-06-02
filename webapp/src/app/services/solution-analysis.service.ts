@@ -17,6 +17,6 @@ export class SolutionAnalysisService {
   }
 
   getSolutionByChallengeId(challengeId){
-    return this.http.get(`/api/v1/solution/solve/${challengeId}`);
+    return this.http.get(`/api/v1/solution/challenge/${challengeId}`);
   }
 }

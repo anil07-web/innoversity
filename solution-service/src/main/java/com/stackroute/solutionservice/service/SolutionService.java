@@ -20,4 +20,6 @@ public interface SolutionService {
     public void updateSol(Feedback feedback, UUID solutionId);
 
     public List<Solution> getSolutionByChallengeId(UUID challengeId);
+
+    public Solution getSolutionBySolutionId(UUID solutionId);
 }

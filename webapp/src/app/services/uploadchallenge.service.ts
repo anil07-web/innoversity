@@ -17,7 +17,7 @@ export class UploadchallengeService {
 
     formdata.append('file', file);
 
-    const req = new HttpRequest('POST', '/api/v1/upload', formdata, {
+    const req = new HttpRequest('POST', '/api/v1/challenge/upload', formdata, {
       reportProgress: true,
       responseType: 'text'
     });

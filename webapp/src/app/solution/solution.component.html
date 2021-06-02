@@ -6,8 +6,8 @@
             <h1 class="sign-in-heading">Challenge details</h1>
          <h3>Challenge Abstract:"{{info.challengeAbstract}}"</h3>
          <h3>Challenge Description:"{{info.description}}"</h3>
-         <h3>Expiration Date:"{{info.expiryDate}}"</h3>
-         <h3>Uploaded On:"{{info.uploadedOn}}"</h3>
+         <h3>Expiration Date:"{{info.expiryDate | date}}"</h3>
+         <h3>Uploaded On:"{{info.uploadedOn | date}}"</h3>
          <h3>Rules:"{{info.rules}}"</h3>
          <h3>Prize Amount:"{{info.rewardPrize}}"</h3>
         </div>

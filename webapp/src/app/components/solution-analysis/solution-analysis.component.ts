@@ -36,6 +36,7 @@ export class SolutionAnalysisComponent implements OnInit {
     this.service.getSolutionByChallengeId(this.challengeId).subscribe(data=>{
       // console.log(data);
       this.solutionDetailsBychallenge=data;
+      console.log("solution details:", this.solutionDetailsBychallenge);
     });
   }
   // updateStatus(details){

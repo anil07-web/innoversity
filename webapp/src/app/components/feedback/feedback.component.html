@@ -1,16 +1,30 @@
 <!-- <div class="col-md-6" *ngFor="let details of info"> -->
     <app-header [isLoggedIn]="true"></app-header>
     <div class="container1">
+        <div class="solDetails">
+            <p class="card-text">Challenge Title:{{info1.challengeTitle}}</p>
+            <p class="card-text">Solution Title:{{info1.solution}}</p>
+            <p class="card-text">Solution Description:{{info1.description}}</p>
+            <p class="card-text">Solved By:{{info1.solvedBy}}</p>
+        </div>
+
         <div class="wrapper">
             <div class="title">
-              <h1>Comment Section!!</h1>   
+              <h1>FeedBack</h1>   
             </div>
     <div class="row" >
           <!-- <div class="card mt-3" class="p-3 mb-2 bg-secondary text-white" > -->
             <div class="card-body">
               <!-- <h5 class="card-title">Solution Id:{{num}}</h5> -->
-              <p class="card-text">Solution Description:{{info1.description}}</p>
-              <p class="card-text">Solution Description:{{info1.feedback}}</p>
+              <!-- <p class="card-text">Solution Description:{{info1.description}}</p> -->
+              <!-- <p class="feed-text">Solution Description:{{info1.feedback}}</p> -->
+              <!-- <p class="feed-text">Solution Description:{{list}}</p> -->
+
+              <div *ngFor="let feedBack of feedBackList">
+                <!-- <p class="feed-text">Solution Description:{{feedBack.comment}}</p>
+                <p class="feed-text">Solution Description:{{feedBack.commentedBy}}</p> -->
+                <p class="feed-text"><strong>{{feedBack.commentedBy}}</strong> commented <strong>{{feedBack.comment | titlecase}}</strong></p>
+              </div>
               <div class="row">
                 <div class="col-md-4 offset-md-4">
                     <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
