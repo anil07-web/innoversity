@@ -31,10 +31,10 @@ public class ChallengeController {
 
    
 
-    @PostMapping("/file/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
-        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
-    }
+//    @PostMapping("/file/upload")
+//    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+//        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
+//    }
 
     @PostMapping("/upload")
     public ResponseEntity<Challenge> uploadFile(@RequestParam(value = "file") MultipartFile file,
@@ -46,11 +46,11 @@ public class ChallengeController {
         ChallengeObj.setImageByte(image.getBytes());
         ChallengeObj.setImage(image.getOriginalFilename());
         ChallengeObj.setType(image.getContentType());
-
         String fileUrl = challengeService.uploadFile(file);
         final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
         ChallengeObj.setUploadUrl(fileUrl);
         Challenge savedChallenge = challengeService.save(ChallengeObj);
+//        rabbitMqSender.send(ChallengeObj);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
 

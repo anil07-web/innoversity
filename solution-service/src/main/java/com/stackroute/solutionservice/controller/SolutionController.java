@@ -36,14 +36,16 @@ public class SolutionController {
     @PutMapping("/solve/{solutionId}")
     public void updatesol(@RequestBody Feedback feedback, @PathVariable("solutionId") UUID
             solutionId) {
+        System.out.println("feedback:"+feedback);
+        System.out.println("solutionId"+solutionId+"class:"+solutionId.getClass());
         solutionService.updateSol(feedback, solutionId);
     }
 
-    @GetMapping("/solve/{solutionId}")
-    public ResponseEntity<Solution> getById(@PathVariable("solutionId") UUID solutionId) {
-        Solution solution = this.solutionService.getById(solutionId);
-        return new ResponseEntity<Solution>(solution, HttpStatus.OK);
-    }
+//    @GetMapping("/solve/{challengeId}")
+//    public ResponseEntity<Solution> getById(@PathVariable("challengeId") UUID challengeId) {
+//        Solution solution = this.solutionService.getById(challengeId);
+//        return new ResponseEntity<Solution>(solution, HttpStatus.OK);
+//    }
 
     @GetMapping("/getsolution")
     public ResponseEntity<List<Solution>> getAllUsers(){
@@ -57,12 +59,15 @@ public class SolutionController {
         solutionService.updateStatus(solStatus,solutionId);
     }
 
+    @GetMapping("/challenge/{challengeId}")
+    public ResponseEntity<Solution> getSolutionByChallengeId(@PathVariable("challengeId") UUID challengeId){
+        System.out.println("Hello");
+        return new ResponseEntity((List<Solution>) solutionService.getSolutionByChallengeId(challengeId),HttpStatus.OK);
+    }
+
+    @GetMapping("/solve/{solutionId}")
+    public ResponseEntity<Solution> getSolutionBySolutionId(@PathVariable("solutionId") UUID solutionId){
+        System.out.println("Hello");
+        return new ResponseEntity(solutionService.getSolutionBySolutionId(solutionId),HttpStatus.OK);
+    }
 }
-
-
-
-//    @GetMapping("/getsolution")
-//    public List<Solution>  getAllUsers(){
-//        return  solutionService.getAllUsers();
-//
-//    }

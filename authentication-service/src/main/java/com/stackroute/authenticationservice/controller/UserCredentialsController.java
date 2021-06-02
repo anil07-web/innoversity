@@ -3,7 +3,6 @@ package com.stackroute.authenticationservice.controller;
 import com.stackroute.authenticationservice.config.JWTTokenGenerator;
 import com.stackroute.authenticationservice.exception.UserNotFoundException;
 import com.stackroute.authenticationservice.model.UserCredentials;
-import com.stackroute.authenticationservice.service.UserCredentialsService;
 import com.stackroute.authenticationservice.service.UserCredentialsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

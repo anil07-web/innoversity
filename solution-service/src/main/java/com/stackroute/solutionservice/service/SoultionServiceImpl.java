@@ -18,9 +18,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class SoultionServiceImpl implements SolutionService {
+public class  SoultionServiceImpl implements SolutionService {
     private SolutionRepo solutionRepo;
-
     private Solution solution;
 
     @Autowired
@@ -41,12 +40,12 @@ public class SoultionServiceImpl implements SolutionService {
     public List<Solution> getDetails() {
         return solutionRepo.findAll();
     }
-    @Override
-    public Solution getById(UUID solutionId) {
-        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
-        System.out.println(solution);
-        return solution.get(0);
-    }
+//    @Override
+//    public Solution getById(UUID solutionId) {
+//        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
+//        System.out.println(solution);
+//        return solution.get(0);
+//    }
     @Override
     public void updateSol(Feedback feedback, UUID solutionId) {
         List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
@@ -63,6 +62,20 @@ public class SoultionServiceImpl implements SolutionService {
             updateQuery.set("feedback", existingFeed);
         }
         UpdateResult result = mongoTemplate.upsert(query, updateQuery, "solution");
+    }
+
+    @Override
+    public List<Solution> getSolutionByChallengeId(UUID challengeId) {
+        Query query=new Query();
+        query.addCriteria(Criteria.where("challengeId").is(challengeId));
+        List<Solution> solution=mongoTemplate.find(query,Solution.class);
+        return solution;
+    }
+
+    @Override
+    public Solution getSolutionBySolutionId(UUID solutionId) {
+        List<Solution> solutionList = solutionRepo.findBySolutionId(solutionId);
+        return solutionList.get(0);
     }
 
     public List<Solution> getAllUsers() {

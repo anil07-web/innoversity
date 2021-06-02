@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserCredentialsServiceImpl implements UserCredentialsService{
+public class UserCredentialsServiceImpl implements UserCredentialsService {
     private UserCredentialsRepository userCredentialsRepository;
 
     @Autowired
@@ -19,8 +19,8 @@ public class UserCredentialsServiceImpl implements UserCredentialsService{
 
     @Override
     public UserCredentials findByEmailandPassword(String email, String password) throws UserNotFoundException {
-        UserCredentials authUser=userCredentialsRepository.findByEmailAndPassword(email,password);
-        if(authUser==null){
+        UserCredentials authUser = userCredentialsRepository.findByEmailAndPassword(email, password);
+        if (authUser == null) {
             throw new UserNotFoundException("Invalid Id and password");
         }
         return authUser;
