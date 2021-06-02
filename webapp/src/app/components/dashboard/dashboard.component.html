@@ -41,14 +41,9 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">{{c.description}}.</p>
                 <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-<<<<<<< HEAD
-                <p class="card-text">ExpiryDate : {{c.date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
-=======
                 <p class="card-text">ExpiryDate : {{c.expiryDate}}.</p>
                 <p class="card-text">ExpiryDate : {{c.rewardPrize}}.</p>
                 <a href="#" class="btn btn-primary">Challenge</a>
->>>>>>> ac4047e994e37095060db87361cfaab0c46b6e6c
             </div>
         </div>
     </div>
@@ -134,7 +129,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="habitatIsNull">Habitat</h1>
     <div class="col-md-3" *ngFor="let c of habitat">
-        <div (click)="solution(c)" class="card" style="width: 18rem;">
+            <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>

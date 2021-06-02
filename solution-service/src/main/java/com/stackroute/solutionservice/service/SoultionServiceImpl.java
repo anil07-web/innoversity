@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -40,7 +39,6 @@ public class  SoultionServiceImpl implements SolutionService {
     public List<Solution> getDetails() {
         return solutionRepo.findAll();
     }
-<<<<<<< HEAD
 
 //    @Override
 //    public Solution getById(UUID challengeId) {
@@ -49,14 +47,12 @@ public class  SoultionServiceImpl implements SolutionService {
 //        return solution.get();
 //    }
 
-=======
-    @Override
-    public Solution getById(UUID solutionId) {
-        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
-        System.out.println(solution);
-        return solution.get(0);
-    }
->>>>>>> c2c8a6fa318ca10d3abc494f5560c213eb617c43
+//    @Override
+//    public Solution getById(UUID solutionId) {
+//        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
+//        System.out.println(solution);
+//        return solution.get(0);
+//    }
     @Override
     public void updateSol(Feedback feedback, UUID solutionId) {
         List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
