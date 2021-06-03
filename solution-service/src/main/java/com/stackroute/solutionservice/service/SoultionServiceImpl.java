@@ -99,4 +99,13 @@ public class  SoultionServiceImpl implements SolutionService {
         mongoTemplate.upsert(query,updateQuery,"solution");
     }
 
+    @Override
+    public void updateSolution(String description, UUID solutionId) {
+        System.out.println(getDetails());
+        Query query = new Query(Criteria.where("solutionId").is(solutionId));
+        Update updateQuery = new Update();
+        updateQuery.set("description",description);
+        mongoTemplate.upsert(query,updateQuery,"solution");
+    }
+
 }

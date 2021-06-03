@@ -70,4 +70,11 @@ public class SolutionController {
         System.out.println("Hello");
         return new ResponseEntity(solutionService.getSolutionBySolutionId(solutionId),HttpStatus.OK);
     }
+
+    @PutMapping("/description/{solutionId}")
+    public void updateSolution(@RequestBody String description,@PathVariable("solutionId") UUID solutionId) {
+        System.out.println("Description:"+description);
+        solutionService.updateSolution(description,solutionId);
+    }
+
 }

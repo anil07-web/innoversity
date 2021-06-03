@@ -22,4 +22,6 @@ public interface SolutionService {
     public List<Solution> getSolutionByChallengeId(UUID challengeId);
 
     public Solution getSolutionBySolutionId(UUID solutionId);
+
+    public void updateSolution(String description, UUID solutionId);
 }
