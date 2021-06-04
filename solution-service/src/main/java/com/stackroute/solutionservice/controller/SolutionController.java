@@ -75,4 +75,10 @@ public class SolutionController {
     public List<Solution> getUser(@PathVariable("email") String email){
         return solutionService.getSolutionByEmail(email);
     }
+    @PutMapping("/description/{solutionId}")
+    public void updateSolution(@RequestBody String description,@PathVariable("solutionId") UUID solutionId) {
+        System.out.println("Description:"+description);
+        solutionService.updateSolution(description,solutionId);
+    }
+
 }

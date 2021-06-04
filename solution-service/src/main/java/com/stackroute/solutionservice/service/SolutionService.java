@@ -24,4 +24,5 @@ public interface SolutionService {
     public Solution getSolutionBySolutionId(UUID solutionId);
 
     public List<Solution> getSolutionByEmail(String email);
+    public void updateSolution(String description, UUID solutionId);
 }

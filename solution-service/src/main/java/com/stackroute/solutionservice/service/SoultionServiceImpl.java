@@ -107,4 +107,13 @@ public class  SoultionServiceImpl implements SolutionService {
         List<Solution> sol=mongoTemplate.find(query,Solution.class);
         return sol;
     }
+    @Override
+    public void updateSolution(String description, UUID solutionId) {
+        System.out.println(getDetails());
+        Query query = new Query(Criteria.where("solutionId").is(solutionId));
+        Update updateQuery = new Update();
+        updateQuery.set("description",description);
+        mongoTemplate.upsert(query,updateQuery,"solution");
+    }
+
 }

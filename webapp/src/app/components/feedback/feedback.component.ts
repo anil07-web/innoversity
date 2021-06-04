@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { feedback } from 'src/app/models/feedback';
 import { SolutionService } from 'src/app/services/solution.service';
 
@@ -12,7 +12,8 @@ import { SolutionService } from 'src/app/services/solution.service';
 export class FeedbackComponent implements OnInit {
   constructor(
     private service: SolutionService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
   // public comment;
   // public commentedBy;
@@ -70,7 +71,11 @@ export class FeedbackComponent implements OnInit {
       this.isEdit = 'Please Enter Correct Details!!';
     }
   }
+  updateSolution() {
+    this.router.navigateByUrl(`update/${this.solutionId}`);
+  }
 }
-function subscribe(arg0: (data: any) => void) {
-  throw new Error('Function not implemented.');
-}
+  function subscribe(arg0: (data: any) => void) {
+    throw new Error('Function not implemented.');
+  }
+  

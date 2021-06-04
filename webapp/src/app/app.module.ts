@@ -29,6 +29,7 @@ import { CommonModule } from "@angular/common";
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 
+import { UpdatesolutionComponent } from './components/updatesolution/updatesolution.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
     DashboardComponent,
     FeedbackComponent,
     SolutionAnalysisComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    UpdatesolutionComponent,
   ],
   imports: [
     BrowserModule,
