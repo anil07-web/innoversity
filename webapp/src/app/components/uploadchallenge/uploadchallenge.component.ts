@@ -28,7 +28,7 @@ export class UploadchallengeComponent implements OnInit {
   ngOnInit(): void {
     this.loadStripe();
     this.initForm();
-    this.dropdownList = ["Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
+    this.dropdownList = ["Health","Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',

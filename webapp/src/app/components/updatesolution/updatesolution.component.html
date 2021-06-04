@@ -14,23 +14,32 @@
 
 
 <form class="register-in-form" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
-    <p class="Title">
-        <strong>CHALLENGE NAME : {{info.challengeTitle}}</strong>
-        <strong>SOLUTION NAME : {{info.solution}}</strong>
-    </p>
-    <div class="mt-2">
-        <textarea formControlName="description" class="form-control"></textarea>
+  <p class="Title">
+    <strong>CHALLENGE NAME : {{info.challengeTitle}}</strong>
+    <strong>SOLUTION NAME : {{info.solution}}</strong>
+  </p>
+  <div *ngIf="fileName">
+      <p>Uploaded file: {{fileName}}</p>
+      <button (click)="openFile()">open</button>
     </div>
+  <div class="mt-2">
+    <textarea formControlName="description" class="form-control"></textarea>
+  </div>
 
-    <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px" accept=".pdf" (change)="onFileChanged($event)"/>
+  <!-- <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px" accept=".pdf" (change)="onFileChanged($event)"/>
         <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
         <mat-error *ngIf="f.file.errors.required">is required.</mat-error>
-    </mat-error>
-    <div class="col-sm py-3 offset-sm-5">
-        <button mat-raised-button class="button"  [disabled]="!updateForm.valid" (click)="uploadbook(updateForm)">
-        Update 
-        </button>
-    </div>
+    </mat-error> -->
+  <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px" accept=".pdf"
+    (change)="onFileChanged($event)" />
+  <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
+    <mat-error *ngIf="f.file.errors.required">is required.</mat-error>
+  </mat-error>
+  <div class="col-sm py-3 offset-sm-5">
+    <button mat-raised-button class="button" (click)="checkUpdate()">
+      Update
+    </button>
+  </div>
 </form>
 
 <!-- <div class="container1">

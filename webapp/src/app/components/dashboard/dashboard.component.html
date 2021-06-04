@@ -10,16 +10,11 @@
                 <h2 class="card-title text-center">Title :{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <!-- <p class="card-text">Domain : {{c.description}}.</p> -->
-                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
-                   <mat-chip-list aria-label="Fish selection" >
-                    <h3>Domain :</h3>
-                    <div>
-                    <mat-chip color="accent" selected>{{c.challengeDomain[0]}}</mat-chip>
-                    <mat-chip color="primary" selected>{{c.challengeDomain[1]}}</mat-chip> 
-                </div>               
-                  </mat-chip-list>               -->
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <p class="card-text">Description : {{c.description}}.</p>
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}} .</p>
                 <!-- <a href="#" class="btn btn-primary">Challenge</a> -->
@@ -41,12 +36,20 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
+<<<<<<< HEAD
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
+=======
                 <p class="card-text">Domain : {{c.challengeDomain}}.</p>
 <<<<<<< HEAD
                 <p class="card-text">ExpiryDate : {{c.expiryDate}}.</p>
                 <p class="card-text">ExpiryDate : {{c.rewardPrize}}.</p>
                 <a href="#" class="btn btn-primary">Challenge</a>
 =======
+>>>>>>> 054aeda37da0eb79894fc319c32e69814b7f9a34
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
                 <p class="card-text">Reward Prize : {{c.rewardPrize}}.</p>
                 <!-- <a href="#" class="btn btn-primary">Challenge</a> -->
@@ -64,9 +67,13 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -80,12 +87,13 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
-                <!-- <p class="card-text" *ngFor="let a of c.challengeDomain">          </p> -->
                 <mat-chip-list>
-                    <mat-chip>apple</mat-chip>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
                   </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -99,9 +107,13 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -115,9 +127,13 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -131,9 +147,13 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -147,9 +167,13 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -163,9 +187,13 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" >
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>

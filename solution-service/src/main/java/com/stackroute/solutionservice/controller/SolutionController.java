@@ -86,25 +86,28 @@ public class SolutionController {
         solutionService.updateSolution(description,solutionId);
     }
 
-    @PostMapping("/file/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
-        return new ResponseEntity<>(solutionService.uploadFile(file), HttpStatus.OK);
-    }
+//    @PostMapping("/file/upload")
+//    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+//        return new ResponseEntity<>(solutionService.uploadFile(file), HttpStatus.OK);
+//    }
 
-//    @PostMapping("/upload")
-//    public ResponseEntity<Solution> uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item) throws IOException {
-//
-//        Solution solutionObj = new ObjectMapper().readValue(item, Solution.class);
-////        ChallengeObj.setFileByte(file.getBytes());
+    @PutMapping("/uploadFile/{solutionId}")
+    public void updateSolution(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item, @PathVariable("solutionId") UUID solutionId) throws IOException {
+        System.out.println("description:"+item);
+        System.out.println("file:"+file.getOriginalFilename());
+        String fileUrl = solutionService.uploadFile(file);
+        solutionService.updateSolutionFile(solutionId, item, file, fileUrl);
+
+//        ChallengeObj.setFileByte(file.getBytes());
 //        solutionObj.setFile(file.getOriginalFilename());
-////        ChallengeObj.setImageByte(image.getBytes());
-////        ChallengeObj.setImage(image.getOriginalFilename());
-////        ChallengeObj.setType(image.getContentType());
+//        ChallengeObj.setImageByte(image.getBytes());
+//        ChallengeObj.setImage(image.getOriginalFilename());
+//        ChallengeObj.setType(image.getContentType());
 //        String fileUrl = solutionService.uploadFile(file);
 //        final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
 //        solutionObj.setUploadUrl(fileUrl);
 //        Solution savedChallenge = solutionService.saveDetails(solutionObj);
-////        rabbitMqSender.send(ChallengeObj);
+//        rabbitMqSender.send(ChallengeObj);
 //        return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
-//    }
+    }
 }

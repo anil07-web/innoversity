@@ -1,4 +1,43 @@
+<div class="container">
+    
+    
+    
+</div>
 <div class="container-fluid">
+    <div class="row" > 
+        <div class="col-md-4">
+            <img style="text-align: center;" src="assets/images/logo4.jpg" alt="">
+        </div>
+        <div class="col-md-4 "  *ngFor="let c of user">
+            <h1 style="text-align: center;">{{c.username}}</h1>
+            <h1 >Email : {{c.email}}</h1>
+            <h1>City : {{c.city|uppercase}}</h1>
+            <h1>Gender : {{c.gender|uppercase}}</h1>
+            <h2>Domains : {{c.domain}} </h2>
+        </div>
+        <div class="col-md-4">
+            
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-center">Challenges</h1>
+        <div class="col-md-3" *ngFor="let c of challenge">
+            <div class="card" style="width: 19rem; margin-bottom: 10pt;">
+                <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
+                    <!-- <p class="card-text">Challenged By : {{c.challengerName}}.</p> -->
+                    <mat-chip-list>
+                        <div *ngFor="let a of c.challengeDomain">
+                            <mat-chip>{{a}}</mat-chip>
+                        </div>
+                    </mat-chip-list>
+                    <p class="card-text mt-2">Description : {{c.description}}.</p>
+                    <p class="card-text">ExpiryDate : {{c.expiryDate | date}} .</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="card mx-2 mt-2 card text-white bg-dark mb-3" style="width: 18rem;" *ngFor="let s of solution; let indexOfelement=index">
             <div class="card-body">
