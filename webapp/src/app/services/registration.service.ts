@@ -11,8 +11,8 @@ export class RegistrationService {
 
   constructor(private http :HttpClient) { }
 
-   registerUser(user : User):Observable<any>{
-    return this.http.post<any>('api/v1/register/registered',user);
+   registerUser(data : FormData):Observable<any>{
+    return this.http.post<any>('api/v1/register/register',data);
   }
 
 }

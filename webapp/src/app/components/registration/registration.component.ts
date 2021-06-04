@@ -16,6 +16,8 @@ export class RegistrationComponent implements OnInit {
   dropdownSettings = {};
   registerForm: FormGroup;
   showPassword: boolean = false;
+  public selectedFile;
+  imgURL: any = "./assets/banner1.webp";
 
 
   constructor(private fb: FormBuilder,private service : RegistrationService,
@@ -27,9 +29,10 @@ export class RegistrationComponent implements OnInit {
     password: ['', [Validators.required]],
     city: ['', [Validators.required]],
     domain: ['', [Validators.required]],
-    picture: ['', [Validators.required]],
+    picture: [''],
     gender: ['',[Validators.required]]
   });
+  this.registerForm.get('city').setValue('Bangalore');
 }
 
 
@@ -55,7 +58,11 @@ export class RegistrationComponent implements OnInit {
   msg:any;
   onSubmit() {
     if (this.registerForm.valid) {
-      this.service.registerUser(this.registerForm.value).subscribe(data => {
+      const uploadData = new FormData();
+      const item = this.registerForm.value;
+      uploadData.append('item', JSON.stringify(item));
+      uploadData.append('myfile', this.selectedFile);
+      this.service.registerUser(uploadData).subscribe(data => {
         this.msg="You are registered !";
         this.router.navigateByUrl("/login");
         }
@@ -101,6 +108,16 @@ export class RegistrationComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
+  public onFileChanged(event) {
+    console.log(event);
 
-
+    const file = event.target.files[0]; //takes only one file
+    this.selectedFile = file;
+    // Below part is used to display the selected image
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]); // read the binary data and encode it as base64 data url
+    reader.onload = (event2) => {
+      this.imgURL = reader.result;
+    };
+  }
 }

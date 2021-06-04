@@ -20,5 +20,8 @@ public class User {
     private String city;
     private String[] domain;
     private String picture;
+    private String pictureName;
+    private String pictureType;
+    private byte[] pic;
     private String gender;
 }
