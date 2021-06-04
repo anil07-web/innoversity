@@ -30,6 +30,11 @@ public class ChallengeController {
     }
 
    
+//
+//    @PostMapping("/file/upload")
+//    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+//        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
+//    }
 
     @PostMapping("/file/" +
             "")
