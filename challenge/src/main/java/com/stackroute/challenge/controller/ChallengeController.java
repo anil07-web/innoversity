@@ -29,33 +29,39 @@ public class ChallengeController {
         this.rabbitMqSender = rabbitMqSender;
     }
 
-   
+
+
+//    @PostMapping("/file/upload")
+//    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+//        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
+//    }
+
 //
 //    @PostMapping("/file/upload")
 //    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
 //        return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
 //    }
 
-    @PostMapping("/file/upload")
+
+    @PostMapping("/file/" +"")
     public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
         return new ResponseEntity<>(challengeService.uploadFile(file), HttpStatus.OK);
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<Challenge> uploadFile(@RequestParam(value = "file") MultipartFile file,
-                                                @RequestParam(value = "image") MultipartFile image, @RequestParam("item") String item) throws IOException {
+    public ResponseEntity<Challenge> uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item) throws IOException {
 
-        Challenge ChallengeObj = new ObjectMapper().readValue(item, Challenge.class);
-        ChallengeObj.setFileByte(file.getBytes());
-        ChallengeObj.setFile(file.getOriginalFilename());
-        ChallengeObj.setImageByte(image.getBytes());
-        ChallengeObj.setImage(image.getOriginalFilename());
-        ChallengeObj.setType(image.getContentType());
+        Challenge challengeObj = new ObjectMapper().readValue(item, Challenge.class);
+        System.out.println("challenge name:"+challengeObj.getChallengerName());
+        System.out.println("challenge name:"+challengeObj.getChallengeTitle());
+        System.out.println("file name:"+file.getOriginalFilename());
+        challengeObj.setFileByte(file.getBytes());
+        challengeObj.setFile(file.getOriginalFilename());
         String fileUrl = challengeService.uploadFile(file);
         final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
-        ChallengeObj.setUploadUrl(fileUrl);
-        Challenge savedChallenge = challengeService.save(ChallengeObj);
-//        rabbitMqSender.send(ChallengeObj);
+        challengeObj.setUploadUrl(fileUrl);
+        Challenge savedChallenge = challengeService.save(challengeObj);
+        rabbitMqSender.send(challengeObj);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
 

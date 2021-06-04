@@ -2,6 +2,7 @@ package com.stackroute.solutionservice.service;
 
 import com.stackroute.solutionservice.model.Feedback;
 import com.stackroute.solutionservice.model.Solution;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,4 +26,8 @@ public interface SolutionService {
 
     public List<Solution> getSolutionByEmail(String email);
     public void updateSolution(String description, UUID solutionId);
+
+    String uploadFile(MultipartFile multipartFile);
+
+
 }

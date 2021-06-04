@@ -48,23 +48,31 @@ export class UploadchallengeComponent implements OnInit {
      rules: ['',[Validators.required]],
      rewardPrize: ['',[Validators.required]],
      expiryDate: ['',[Validators.required]],
-     attachments:['',[Validators.required]],
-     challengeArtifacts:['',[Validators.required]]
+    //  attachments:['',[Validators.required]],
+    //  challengeArtifacts:['',[Validators.required]],
+     file: new FormControl('', [Validators.required]),
     
    });
  }
+
+ public onFileChanged(event) {
+  const file = event.target.files[0];
+  this.selectedFile = file;
+}
+
   onSubmit(submitForm: FormGroup ){
     const loggedInUser = localStorage.getItem("userName");
     this.uploadChallenge.value.challengerName=loggedInUser;
 
     const item = submitForm.value;
     const uploadFileData = new FormData();
+    console.log("file:", this.selectedFile);
     uploadFileData.append('item', JSON.stringify(item));
     uploadFileData.append('file', this.selectedFile);
 
     if(this.uploadChallenge.valid)
     {
-      this.service.addChallenge(this.uploadChallenge.value).subscribe(data => {
+      this.service.addChallenge(uploadFileData).subscribe(data => {
         console.log(this.uploadChallenge.value);
     });
     this.uploadSuccess= true;
@@ -131,10 +139,7 @@ export class UploadchallengeComponent implements OnInit {
 //   // }
   
 // }
-public onFileChanged(event) {
-  const file = event.target.files[0];
-  this.selectedFile = file;
-}
+
 // upload() {
   
 //   this.currentFileUpload = this.selectedFiles.item(0);
@@ -191,6 +196,10 @@ pay(amount: any) {
        
       window.document.body.appendChild(s);
     }
+  }
+
+  get f() {
+    return this.uploadChallenge.controls;
   }
 }
 

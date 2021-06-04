@@ -10,7 +10,9 @@ export class UploadchallengeService {
 
   constructor(private http: HttpClient) { }
   addChallenge(Challenge) {
-    return this.http.post( '/api/v1/challenge/Challenge',Challenge);
+    return this.http.post( '/api/v1/challenge/upload',Challenge, {
+      observe: 'response',
+    });
   }
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();

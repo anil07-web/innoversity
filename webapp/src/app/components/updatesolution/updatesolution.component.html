@@ -1,27 +1,65 @@
-    <!-- <form #updatesolution="ngForm" (ngSubmit)="onsubmit(updatesolution)">
-    <div class ="edit">
-        <p class="Title">
-            <strong>{{info.challengeTitle}}</strong>
-        </p>
-        <textarea #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" id="forms" rows="4" placeholder="Write brief Description for solution" spellcheck="false"></textarea>
-        <div class="text-danger" *ngIf="description.dirty && description.errors?.required">
-            Please enter the details
-        </div>
-        <button >Submit</button>
+<!-- <form #updatesolution="ngForm" (ngSubmit)="onsubmit(updatesolution)">
+<div class ="edit">
+    <p class="Title">
+        <strong>{{info.challengeTitle}}</strong>
+    </p>
+    <textarea #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" id="forms" rows="4" placeholder="Write brief Description for solution" spellcheck="false"></textarea>
+    <div class="text-danger" *ngIf="description.dirty && description.errors?.required">
+        Please enter the details
     </div>
-    </form> -->
+    <button >Submit</button>
+</div>
+</form> -->
 
-    
-      <!-- <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
-                Perferendis aliquid error quidem, placeat nisi adipisci explicabo ab ducimus impedit commodi
-                reiciendis, voluptatem quos voluptatibus sunt dolores.</p> -->
-      <!-- <img [src]="url" width="30%" alt=""> -->
-      <form class="register-in-form" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
-        <p class="Title">
-            <strong>{{info.challengeTitle}}</strong>
-        </p>
-        <div class="mt-2">
-          <textarea formControlName="description" class="form-control"></textarea>
-          <button class="btnRegister">Submit</button>
+
+
+<form class="register-in-form" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <p class="Title">
+        <strong>CHALLENGE NAME : {{info.challengeTitle}}</strong>
+        <strong>SOLUTION NAME : {{info.solution}}</strong>
+    </p>
+    <div class="mt-2">
+        <textarea formControlName="description" class="form-control"></textarea>
+    </div>
+
+    <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px" accept=".pdf" (change)="onFileChanged($event)"/>
+        <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
+        <mat-error *ngIf="f.file.errors.required">is required.</mat-error>
+    </mat-error>
+    <div class="col-sm py-3 offset-sm-5">
+        <button mat-raised-button class="button"  [disabled]="!updateForm.valid" (click)="uploadbook(updateForm)">
+        Update 
+        </button>
+    </div>
+</form>
+
+<!-- <div class="container1">
+    <div class="main">
+        <div class="side">
+            <h1 class="sign-in-heading">Details</h1>
+         <h3>CHALLENGE NAME : {{info.challengeTitle}}</h3>
+         <h3>SOLUTION NAME : {{info.solution}}</h3>
         </div>
-      </form>
+    <div class="row">
+        <img src="/assets/images/idea.svg" width="50%"  alt="">
+        <div class="frm">
+                <div  class="edit">
+                    <input type="text" #solution="ngModel" name="solution"  class="form-control" required  [(ngModel)]="innovator.solution" placeholder="Provide Solution">
+                    <div class="text-danger" *ngIf="solution.dirty && solution.errors?.required"> 
+                        Please enter the details
+                    </div>
+                </div>
+                <div class ="edit">
+                    <textarea formControlName="description" class="form-control" spellcheck="false"></textarea>
+                </div>
+                
+               
+                <div class="mt-2">
+                    <button class="btnLogin" >Submit</button>
+                <p class="valid">{{isEdit}}</p>
+                </div>
+           
+    </div>
+    </div>
+</div>
+</div> -->
