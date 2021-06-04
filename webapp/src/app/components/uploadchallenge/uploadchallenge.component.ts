@@ -14,6 +14,7 @@ export class UploadchallengeComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
   dropdownList = [];
+  selectedFile: File;
   selectedItems = [];
   dropdownSettings = {};
   uploadChallenge: FormGroup;
@@ -40,28 +41,40 @@ export class UploadchallengeComponent implements OnInit {
   initForm() {
     this.uploadChallenge = this.fb.group({
      challengerName: [''],
-     challengeTitle: [''],
-     challengeDomain: [''],
-     challengeAbstract: [''],
-     description: [''],
-     rules: [''],
-     rewardPrize: [''],
-     expiryDate: [''],
-     attachments:[''],
-     challengeArtifacts:['']
+     challengeTitle: ['',[Validators.required]],
+     challengeDomain: ['',[Validators.required]],
+     challengeAbstract: ['',[Validators.required]],
+     description: ['',[Validators.required]],
+     rules: ['',[Validators.required]],
+     rewardPrize: ['',[Validators.required]],
+     expiryDate: ['',[Validators.required]],
+     attachments:['',[Validators.required]],
+     challengeArtifacts:['',[Validators.required]]
     
    });
  }
-  onSubmit( ){
+  onSubmit(submitForm: FormGroup ){
     const loggedInUser = localStorage.getItem("userName");
     this.uploadChallenge.value.challengerName=loggedInUser;
-   
-    this.service.addChallenge(this.uploadChallenge.value).subscribe(data => {
-      this.uploadSuccess= true;
+
+    const item = submitForm.value;
+    const uploadFileData = new FormData();
+    uploadFileData.append('item', JSON.stringify(item));
+    uploadFileData.append('file', this.selectedFile);
+
+    if(this.uploadChallenge.valid)
+    {
+      this.service.addChallenge(this.uploadChallenge.value).subscribe(data => {
+        console.log(this.uploadChallenge.value);
     });
-      console.log(this.uploadChallenge.value);
-      this.uploadSuccess= true;
-   
+    this.uploadSuccess= true;
+    // var buttonName = document.activeElement.getAttribute("Name");
+    }
+      else{
+        // alert("form is invalid");
+        console.log("form is invalid");
+        // this.uploadSuccess=false;
+      }
    
   }
   onItemSelect($event) {
@@ -73,7 +86,10 @@ export class UploadchallengeComponent implements OnInit {
   get challengeAbstract() { return this.uploadChallenge.get('challengeAbstract') }
   get description() { return this.uploadChallenge.get('description') }
   get rules() { return this.uploadChallenge.get('rules') }
-  
+  get attachments(){return this.uploadChallenge.get('attachments')}
+  get rewardPrize(){return this.uploadChallenge.get('rewardPrize')}
+  get challengeArtifacts(){return this.uploadChallenge.get('challengeArtifacts')}
+  get expiryDate(){return this.uploadChallenge.get('expiryDate')}
   editorConfig: AngularEditorConfig = {
     editable: true,
       spellcheck: true,
@@ -103,28 +119,35 @@ export class UploadchallengeComponent implements OnInit {
     ]
 };
 
-onSelectFile(e) {
-  if (e.target.files) {
-    var reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = (event: any) => {
-      this.selectedFiles = event.target.files;
-    }
-  }
-}
-upload() {
+// onSelectFile(event) {
+//   const file = event.target.files[0];
+//     this.selectedFile = file;
+//   // if (e.target.files) {
+//   //   var reader = new FileReader();
+//   //   reader.readAsDataURL(e.target.files[0]);
+//   //   reader.onload = (event: any) => {
+//   //     this.selectedFiles = event.target.files;
+//   //   }
+//   // }
   
-  this.currentFileUpload = this.selectedFiles.item(0);
-  this.service.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-    if (event.type === HttpEventType.UploadProgress) {
-      // this.progress.percentage = Math.round(100 * event.loaded / event.total);
-    } else if (event instanceof HttpResponse) {
-      console.log('File is completely uploaded!');
-    }
-  });
-
-  this.selectedFiles = undefined;
+// }
+public onFileChanged(event) {
+  const file = event.target.files[0];
+  this.selectedFile = file;
 }
+// upload() {
+  
+//   this.currentFileUpload = this.selectedFiles.item(0);
+//   this.service.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+//     if (event.type === HttpEventType.UploadProgress) {
+//       // this.progress.percentage = Math.round(100 * event.loaded / event.total);
+//     } else if (event instanceof HttpResponse) {
+//       console.log('File is completely uploaded!');
+//     }
+//   });
+
+//   this.selectedFiles = undefined;
+// }
 
    
 
