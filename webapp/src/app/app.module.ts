@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { Component, NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 
 
 
@@ -25,12 +26,8 @@ import { AngularEditorModule } from "@kolkov/angular-editor";
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MatChipsModule } from "@angular/material/chips";
-import { CommonModule } from "@angular/common";
-import { UserprofileComponent } from './components/userprofile/userprofile.component';
-
-
-import { UpdatesolutionComponent } from './components/updatesolution/updatesolution.component';
-
+import { UserprofileComponent} from './components/userprofile/userprofile.component';
+import { UpdatesolutionComponent} from './components/updatesolution/updatesolution.component'
 @NgModule({
   declarations: [
     AppComponent,

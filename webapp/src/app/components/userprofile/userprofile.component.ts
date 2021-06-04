@@ -13,18 +13,27 @@ export class UserprofileComponent implements OnInit {
   constructor(private service:UserprofileService, private router: Router) { }
 
  public user; 
- public solution; 
 
+ public challenge;
+ public solution; 
   ngOnInit(): void {
     this.getUser();
+    this.getChallenge();
     this.getSolutions();
-  }
+   }
 
    getUser(){
-    return this.service.getUserDate().subscribe(data=>{
+    return this.service.getUserData().subscribe(data=>{
       this.user=data;
       console.log(this.user);
     })
+  }
+
+    getChallenge(){
+      return this.service.getChallenge().subscribe(data=>{
+        this.challenge=data;
+        console.log(this.challenge);
+      })
    }
 
 
