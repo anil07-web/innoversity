@@ -22,4 +22,7 @@ public interface SolutionService {
     public List<Solution> getSolutionByChallengeId(UUID challengeId);
 
     public Solution getSolutionBySolutionId(UUID solutionId);
+
+    public List<Solution> getSolutionByEmail(String email);
+    public void updateSolution(String description, UUID solutionId);
 }

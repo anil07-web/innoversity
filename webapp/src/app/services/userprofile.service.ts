@@ -18,4 +18,10 @@ export class UserprofileService {
     return this.http.get(`/api/v1/challenge/getChallenge/${this.email}`);
   }
 
+
+  getUserSolution(){
+    return this.http.get(`api/v1/solution/solutions/${this.email}`)
+  }
+
+
 }

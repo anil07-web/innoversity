@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -46,6 +45,14 @@ public class  SoultionServiceImpl implements SolutionService {
 //        System.out.println(solution);
 //        return solution.get(0);
 //    }
+
+//    @Override
+//    public Solution getById(UUID solutionId) {
+//        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
+//        System.out.println(solution);
+//        return solution.get(0);
+//    }
+
     @Override
     public void updateSol(Feedback feedback, UUID solutionId) {
         List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
@@ -89,6 +96,23 @@ public class  SoultionServiceImpl implements SolutionService {
         Query query = new Query(Criteria.where("solutionId").is(solutionId));
         Update updateQuery = new Update();
         updateQuery.set("solStatus",solStatus);
+        mongoTemplate.upsert(query,updateQuery,"solution");
+    }
+
+
+    @Override
+    public List<Solution> getSolutionByEmail(String email) {
+        Query query=new Query();
+        query.addCriteria(Criteria.where("solvedBy").is(email));
+        List<Solution> sol=mongoTemplate.find(query,Solution.class);
+        return sol;
+    }
+    @Override
+    public void updateSolution(String description, UUID solutionId) {
+        System.out.println(getDetails());
+        Query query = new Query(Criteria.where("solutionId").is(solutionId));
+        Update updateQuery = new Update();
+        updateQuery.set("description",description);
         mongoTemplate.upsert(query,updateQuery,"solution");
     }
 

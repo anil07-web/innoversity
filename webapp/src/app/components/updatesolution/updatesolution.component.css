@@ -1,0 +1,16 @@
+.edit{
+    width:max-content;
+    margin-top: 20px;
+}
+
+.form-control {
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgb(240, 24, 107);
+    outline: none;
+}
+
+#forms{
+    width: 300px;
+   
+}

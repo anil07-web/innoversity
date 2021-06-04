@@ -36,14 +36,24 @@
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
                 <p class="card-text">Challenged By : {{c.challengerName}}.</p>
                 <p class="card-text">{{c.description}}.</p>
+<<<<<<< HEAD
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" >
                     <mat-chip>{{a}}</mat-chip>
                      </div>
                   </mat-chip-list>
+=======
+                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
+<<<<<<< HEAD
+                <p class="card-text">ExpiryDate : {{c.expiryDate}}.</p>
+                <p class="card-text">ExpiryDate : {{c.rewardPrize}}.</p>
+                <a href="#" class="btn btn-primary">Challenge</a>
+=======
+>>>>>>> 054aeda37da0eb79894fc319c32e69814b7f9a34
                 <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
                 <p class="card-text">Reward Prize : {{c.rewardPrize}}.</p>
                 <!-- <a href="#" class="btn btn-primary">Challenge</a> -->
+>>>>>>> c59f2ee3a5a1e85a34f654c9374bf99841f4af87
             </div>
         </div>
     </div>
@@ -151,7 +161,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="habitatIsNull">Habitat</h1>
     <div class="col-md-3" *ngFor="let c of habitat">
-        <div (click)="solution(c)" class="card" style="width: 18rem;">
+            <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center">{{c.challengeTitle}} </h2>

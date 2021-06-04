@@ -91,48 +91,72 @@
     <div class="title">
       <h1>Please ! Upload Your Challenge Here</h1>
     </div>
-    <form class="upload-in-form" [formGroup]="uploadChallenge" (ngSubmit)="onSubmit()">
+    <form class="upload-in-form" [formGroup]="uploadChallenge" (ngSubmit)="onSubmit(uploadChallenge)">
 
       <div class="input-fields">
         <input type="text" formControlName="challengeTitle" class="input" placeholder="Challenge Title">
-
+        <div class="text-danger" *ngIf="challengeTitle?.dirty && challengeTitle?.invalid">
+           Challenge Name is required
+        </div>
         <ng-multiselect-dropdown formControlName="challengeDomain" class="input" [placeholder]="'Challenge Domain'"
           [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems"
           (onSelect)="onItemSelect($event)">
         </ng-multiselect-dropdown>
+        <div class="text-danger" *ngIf="challengeDomain?.touched && challengeDomain?.invalid">
+           Challenge Domain is required
+        </div>
 
         <div class="my">
           <angular-editor formControlName="challengeAbstract" [config]="editorConfig" placeholder="Abstract">
           </angular-editor>
+          <div class="text-danger" *ngIf="challengeAbstract?.dirty && challengeAbstract?.invalid">
+             Challenge Abstract is required
+          </div>
           <angular-editor formControlName="description" [config]="editorConfig"
             placeholder="Enter Challenge Description"></angular-editor>
+            <div class="text-danger" *ngIf="description?.dirty && description?.invalid">
+               Challenge description is required
+            </div>
 
           <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Rules"> ></angular-editor>
+          <div class="text-danger" *ngIf="rules?.dirty && rules?.invalid">
+             Challenge rules are required
+          </div>
         </div>
-        <!-- <div class="input-group">
+        <div class="input-group">
           <input type="textarea" formControlName="attachments" class="input" placeholder="Attachment..">
-          <input type="file" (change)="onSelectFile($event)" formControlName="attachments" class="form-control">
-          <button class="btn btn-primary" (click)="upload()">Upload</button>
+          <!-- <input type="file" (change)=" onFileChanged($event)" formControlName="attachments" class="form-control">
+          <button class="btn btn-primary" (click)="upload()">Upload</button> -->
+          <div class="text-danger" *ngIf="attachments?.dirty && attachments?.invalid">
+            Attachments required 
+         </div>
         </div>
         <div class="input-group">
           <input type="textarea" formControlName="challengeArtifacts" class="input" placeholder="Artifacts">
-          <input type="file" (change)="onSelectFile($event)" formControlName="challengeArtifacts" class="form-control">
-          <button class="btn btn-primary" (click)="upload()"> Upload</button>
-        </div> -->
+          <input type="file" (change)=" onFileChanged($event)" formControlName="challengeArtifacts" accept=".pdf,.docx" class="form-control">
+          <!-- <button class="btn btn-primary" (click)="upload()"> Upload</button> -->
+          <div class="text-danger" *ngIf="challengeArtifacts?.dirty && challengeArtifacts?.invalid">
+            Challenge Artifacts are required
+         </div>
+        </div>
+
+        <div class="input-group">
+          <input type="number" #amt class="input" formControlName="rewardPrize" placeholder="Reward Prize">
+          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
+          <div class="text-danger" *ngIf="rewardPrize?.dirty && rewardPrize?.invalid">
+            Challenge Rewards to be filled either 0 or some value
+         </div>
+        </div>
 
           <div class="my1">
           <input [owlDateTimeTrigger]="sdt" [owlDateTime]="sdt"
            class="input" placeholder="Challenge Expiration Date" formControlName="expiryDate" readonly>
           <!-- <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span> -->
           <owl-date-time #sdt></owl-date-time>
+          <div class="text-danger" *ngIf="expiryDate?.dirty && expiryDate?.invalid">
+            Challenge Expiry Date is required
+         </div>
           </div>
-
-
-        <div class="input-group">
-          <input type="number" #amt class="input" formControlName="rewardPrize" placeholder="Reward Prize">
-          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
-        </div>
-
       </div>
       <div class="uploadbtn">
         <div class="mt-2">
