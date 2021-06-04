@@ -29,8 +29,9 @@ public class Solution {
     private String description;
     private SolutionStatus solStatus;
     private String file;
-    private String image;
+    private byte[] fileByte;
     private String uploadUrl;
+    private String image;
     private List<Feedback> feedback=new ArrayList<Feedback>();
 
 }

@@ -34,4 +34,8 @@ export class SolutionService {
     return this.http.put(`/api/v1/solution/description/${id}`,description);
   }
 
+  updateSolution(id, data) {
+    return this.http.put(`/api/v1/solution/uploadFile/${id}`, data);
+  }
+
 }

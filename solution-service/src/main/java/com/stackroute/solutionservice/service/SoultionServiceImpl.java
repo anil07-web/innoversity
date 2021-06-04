@@ -91,6 +91,8 @@ public class  SoultionServiceImpl implements SolutionService {
         return fileUrl;
     }
 
+
+
     private String generateFileName(MultipartFile multiPart) {
         return new Date().getTime() + "-" + multiPart.getOriginalFilename()
                 .replace(" ", "_");
@@ -207,10 +209,20 @@ public class  SoultionServiceImpl implements SolutionService {
     }
     @Override
     public void updateSolution(String description, UUID solutionId) {
-        System.out.println(getDetails());
         Query query = new Query(Criteria.where("solutionId").is(solutionId));
         Update updateQuery = new Update();
         updateQuery.set("description",description);
+        mongoTemplate.upsert(query,updateQuery,"solution");
+    }
+
+    @Override
+    public void updateSolutionFile(UUID solutionID, String description, MultipartFile file, String url) throws IOException {
+        Query query = new Query(Criteria.where("solutionId").is(solutionID));
+        Update updateQuery = new Update();
+        updateQuery.set("description",description);
+        updateQuery.set("file",file.getOriginalFilename());
+        updateQuery.set("fileByte",file.getBytes());
+        updateQuery.set("uploadUrl",url);
         mongoTemplate.upsert(query,updateQuery,"solution");
     }
 
