@@ -25,6 +25,10 @@ import { AngularEditorModule } from "@kolkov/angular-editor";
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MatChipsModule } from "@angular/material/chips";
+import { CommonModule } from "@angular/common";
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
+
+
 import { UpdatesolutionComponent } from './components/updatesolution/updatesolution.component';
 
 @NgModule({
@@ -39,6 +43,7 @@ import { UpdatesolutionComponent } from './components/updatesolution/updatesolut
     DashboardComponent,
     FeedbackComponent,
     SolutionAnalysisComponent,
+    UserprofileComponent,
     UpdatesolutionComponent,
   ],
   imports: [
@@ -56,6 +61,7 @@ import { UpdatesolutionComponent } from './components/updatesolution/updatesolut
     OwlNativeDateTimeModule,
     MatInputModule,
     MatChipsModule,
+    CommonModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [DashboardComponent, FeedbackComponent],

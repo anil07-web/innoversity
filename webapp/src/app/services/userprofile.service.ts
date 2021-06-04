@@ -13,4 +13,10 @@ export class UserprofileService {
     console.log(this.email);
     return this.http.get(`api/v1/register/users/${this.email}`)
   }
+
+  getUserSolution(){
+    return this.http.get(`api/v1/solution/solutions/${this.email}`)
+  }
+
+
 }
