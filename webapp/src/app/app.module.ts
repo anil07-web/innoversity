@@ -26,6 +26,7 @@ import { SolutionAnalysisComponent } from './components/solution-analysis/soluti
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MatChipsModule } from "@angular/material/chips";
 import { UpdatesolutionComponent } from './components/updatesolution/updatesolution.component';
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -28,6 +28,9 @@ public class Solution {
     private String challengeTitle;
     private String description;
     private SolutionStatus solStatus;
+    private String file;
+    private String image;
+    private String uploadUrl;
     private List<Feedback> feedback=new ArrayList<Feedback>();
 
 }
