@@ -162,12 +162,12 @@ pay(amount: any) {
     locale: 'auto',
     token: function (token: any) {
       console.log(token.id)
-      alert('Token Created!!');
+     
       
     }
   });
   handler.open({
-    name: 'Demo Site',
+    name: 'Innoversity',
     description: '2 widgets',
     amount: amount * 100
   });
