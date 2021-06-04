@@ -51,7 +51,6 @@ export class UploadchallengeComponent implements OnInit {
     //  attachments:['',[Validators.required]],
     //  challengeArtifacts:['',[Validators.required]],
      file: new FormControl('', [Validators.required]),
-    
    });
  }
 
