@@ -19,6 +19,8 @@ public interface ChallengeService {
 
     String uploadFile(MultipartFile multipartFile);
 
+    List<Challenge> getChallengeByName(String name);
+
 
 //    public String uploadFile(MultipartFile file);
 

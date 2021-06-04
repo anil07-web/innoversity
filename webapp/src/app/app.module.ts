@@ -25,6 +25,7 @@ import { AngularEditorModule } from "@kolkov/angular-editor";
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MatChipsModule } from "@angular/material/chips";
+import { UserprofileComponent} from './components/userprofile/userprofile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { MatChipsModule } from "@angular/material/chips";
     DashboardComponent,
     FeedbackComponent,
     SolutionAnalysisComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,

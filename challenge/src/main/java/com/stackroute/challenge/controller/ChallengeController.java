@@ -80,4 +80,9 @@ public class ChallengeController {
         System.out.println("got a request from recommend");
         return "hai from challenge service";
     }
+    @GetMapping("/getChallenge/{challengerName}")
+    public List<Challenge> getChallengeByName(@PathVariable("challengerName") String challengerName ){
+        System.out.println("hello");
+        return this.challengeService.getChallengeByName(challengerName);
+    }
 }
