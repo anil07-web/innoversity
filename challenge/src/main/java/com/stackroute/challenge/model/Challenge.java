@@ -29,8 +29,6 @@ public class Challenge {
     private String rules;
     private String file;
     private byte[] fileByte;
-    private String image;
-    private byte[] imageByte;
     private String uploadUrl;
     private String type;
     private Date uploadedOn;

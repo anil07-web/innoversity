@@ -6,6 +6,12 @@
             <p class="card-text">Solution Title:{{info1.solution}}</p>
             <p class="card-text">Solution Description:{{info1.description}}</p>
             <p class="card-text">Solved By:{{info1.solvedBy}}</p>
+            <p class="card-text">Solution Id:{{info1.solutionId}}</p>
+            <div *ngIf="fileName">
+                <p>Uploaded file: {{fileName}}</p>
+                <button (click)="openFile()">open</button>
+            </div>
+            <a ><button *ngIf="showUpdate" class="button button1" (click)="updateSolution()">Update Solution</button></a>
         </div>
 
         <div class="wrapper">
@@ -42,7 +48,6 @@
                 Please Enter Details
             </div>
         </div> -->
-        
         <div class="mt-2">
             <button class="btn btn-success">Post Comment</button>
             <p class="valid">{{isEdit}}</p>
@@ -51,7 +56,6 @@
                 </div>
             </div>
             </div>
-          <!-- </div> -->
       </div>
     </div>
 </div>

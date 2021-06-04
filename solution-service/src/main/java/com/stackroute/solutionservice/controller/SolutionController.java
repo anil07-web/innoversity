@@ -1,5 +1,6 @@
 package com.stackroute.solutionservice.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.solutionservice.model.Feedback;
 import com.stackroute.solutionservice.model.Solution;
 import com.stackroute.solutionservice.model.SolutionStatus;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,13 +19,15 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/solution")
 public class SolutionController {
+
+    @Autowired
     private SolutionService solutionService;
 
 
-    @Autowired
-    public SolutionController(SolutionService solutionService) {
-        this.solutionService = solutionService;
-    }
+//    @Autowired
+//    public SolutionController(SolutionService solutionService) {
+//        this.solutionService = solutionService;
+//    }
 
     @PostMapping("/solve")
     public ResponseEntity<Solution> saveDetails(@RequestBody Solution solution) {
@@ -69,5 +74,40 @@ public class SolutionController {
     public ResponseEntity<Solution> getSolutionBySolutionId(@PathVariable("solutionId") UUID solutionId){
         System.out.println("Hello");
         return new ResponseEntity(solutionService.getSolutionBySolutionId(solutionId),HttpStatus.OK);
+    }
+
+    @GetMapping("/solutions/{email}")
+    public List<Solution> getUser(@PathVariable("email") String email){
+        return solutionService.getSolutionByEmail(email);
+    }
+    @PutMapping("/description/{solutionId}")
+    public void updateSolution(@RequestBody String description,@PathVariable("solutionId") UUID solutionId) {
+        System.out.println("Description:"+description);
+        solutionService.updateSolution(description,solutionId);
+    }
+
+//    @PostMapping("/file/upload")
+//    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
+//        return new ResponseEntity<>(solutionService.uploadFile(file), HttpStatus.OK);
+//    }
+
+    @PutMapping("/uploadFile/{solutionId}")
+    public void updateSolution(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item, @PathVariable("solutionId") UUID solutionId) throws IOException {
+        System.out.println("description:"+item);
+        System.out.println("file:"+file.getOriginalFilename());
+        String fileUrl = solutionService.uploadFile(file);
+        solutionService.updateSolutionFile(solutionId, item, file, fileUrl);
+
+//        ChallengeObj.setFileByte(file.getBytes());
+//        solutionObj.setFile(file.getOriginalFilename());
+//        ChallengeObj.setImageByte(image.getBytes());
+//        ChallengeObj.setImage(image.getOriginalFilename());
+//        ChallengeObj.setType(image.getContentType());
+//        String fileUrl = solutionService.uploadFile(file);
+//        final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
+//        solutionObj.setUploadUrl(fileUrl);
+//        Solution savedChallenge = solutionService.saveDetails(solutionObj);
+//        rabbitMqSender.send(ChallengeObj);
+//        return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
 }

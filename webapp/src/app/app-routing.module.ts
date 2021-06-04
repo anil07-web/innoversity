@@ -5,6 +5,7 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SolutionAnalysisComponent } from './components/solution-analysis/solution-analysis.component';
+import { UpdatesolutionComponent } from './components/updatesolution/updatesolution.component';
 import { UploadchallengeComponent } from './components/uploadchallenge/uploadchallenge.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { LandingComponent } from './landing/landing.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path:'challenge',component:UploadchallengeComponent},
   {path:'solutionAnalysis/:challengeId',component:SolutionAnalysisComponent},
   {path:'feedback/:solutionId',component:FeedbackComponent},
-  {path:'userProfile',component:UserprofileComponent}
+  {path:'userProfile',component:UserprofileComponent},
+  {path:'update/:solutionId',component:UpdatesolutionComponent}
 ]
 
 @NgModule({

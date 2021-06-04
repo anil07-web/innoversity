@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.dropdownList = ["Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
+    this.dropdownList = ["Health","Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',

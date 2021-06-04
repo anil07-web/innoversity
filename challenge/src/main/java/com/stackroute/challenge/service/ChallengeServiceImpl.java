@@ -115,6 +115,15 @@ public class ChallengeServiceImpl implements ChallengeService {
         return fileUrl;
     }
 
+    @Override
+    public List<Challenge> getChallengeByName(String name) {
+        Query query=new Query();
+        query.addCriteria(Criteria.where("challengerName").is(name));
+        List<Challenge> user=mongoTemplate.find(query,Challenge.class);
+        System.out.println(user);
+        return user;
+    }
+
     private String generateFileName(MultipartFile multiPart) {
         return new Date().getTime() + "-" + multiPart.getOriginalFilename()
                 .replace(" ", "_");

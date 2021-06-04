@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { feedback } from 'src/app/models/feedback';
 import { SolutionService } from 'src/app/services/solution.service';
 
@@ -12,7 +12,8 @@ import { SolutionService } from 'src/app/services/solution.service';
 export class FeedbackComponent implements OnInit {
   constructor(
     private service: SolutionService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
   // public comment;
   // public commentedBy;
@@ -27,6 +28,9 @@ export class FeedbackComponent implements OnInit {
   public solutionId: any;
   public loggedInUser: string;
   public feedBackList: Array<any>[];
+  public fileName;
+  public showUpdate= false;
+
   ngOnInit(): void {
     // this.getinfo();
     this.solutionId = this.activatedRoute.snapshot.params.solutionId;
@@ -53,6 +57,13 @@ export class FeedbackComponent implements OnInit {
       console.log('The information is', this.info1);
       this.feedBackList = this.info1.feedback;
       console.log('the feedback is', this.feedBackList);
+      if (this.info1.file !=null) {
+        this.fileName = this.info1.file;
+        console.log("filename:", this.fileName);
+      }
+      if (this.loggedInUser == this.info1.solvedBy) {
+        this.showUpdate = true;
+      }
     });
   }
 
@@ -70,7 +81,16 @@ export class FeedbackComponent implements OnInit {
       this.isEdit = 'Please Enter Correct Details!!';
     }
   }
+  updateSolution() {
+    this.router.navigateByUrl(`update/${this.solutionId}`);
+  }
+
+  openFile() {
+    console.log("open file here");
+    window.open(this.info1.uploadUrl, "_blank");
+  }
 }
-function subscribe(arg0: (data: any) => void) {
-  throw new Error('Function not implemented.');
-}
+  function subscribe(arg0: (data: any) => void) {
+    throw new Error('Function not implemented.');
+  }
+  

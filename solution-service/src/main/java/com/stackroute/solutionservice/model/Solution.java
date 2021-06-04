@@ -28,6 +28,10 @@ public class Solution {
     private String challengeTitle;
     private String description;
     private SolutionStatus solStatus;
+    private String file;
+    private byte[] fileByte;
+    private String uploadUrl;
+    private String image;
     private List<Feedback> feedback=new ArrayList<Feedback>();
 
 }

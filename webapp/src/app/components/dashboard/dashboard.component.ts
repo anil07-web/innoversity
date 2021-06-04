@@ -57,7 +57,6 @@ export class DashboardComponent implements OnInit {
     this.email="vikhil@gmail.com";
     this.service.getContacts(this.email).subscribe(data => {
     //  this.email=data;
-    //  console.log(this.email.map(m=>console.log(m)));
       this.recommended = data;
     });
   }
@@ -104,13 +103,6 @@ export class DashboardComponent implements OnInit {
       });
       });
       
-      console.log(this.health);
-      console.log(this.engineering);
-      console.log(this.science);
-      console.log(this.electricity);
-      console.log(this.aerospace);
-      console.log(this.habitat);
-      console.log(this.environment);
 
 
       if(this.engineering.length==0){

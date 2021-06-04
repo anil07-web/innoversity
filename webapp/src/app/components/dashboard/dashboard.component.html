@@ -4,24 +4,20 @@
 <div class="row">
     <h1 class="text-center" >Search Result</h1>
     <div class="col-md-3" *ngFor="let c of searchresult">
-        <div  class="card" style="width: 18rem;">
+        <div  (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">Title :{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <!-- <p class="card-text">Domain : {{c.description}}.</p> -->
-                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
-                   <mat-chip-list aria-label="Fish selection" >
-                    <h3>Domain :</h3>
-                    <div>
-                    <mat-chip color="accent" selected>{{c.challengeDomain[0]}}</mat-chip>
-                    <mat-chip color="primary" selected>{{c.challengeDomain[1]}}</mat-chip> 
-                </div>               
-                  </mat-chip-list>               -->
-                <p class="card-text">Description : {{c.description}}.</p>
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}} .</p>
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <!-- <a href="#" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
@@ -38,19 +34,20 @@
         <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
-                <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-<<<<<<< HEAD
-                <p class="card-text">ExpiryDate : {{c.expiryDate}}.</p>
-                <p class="card-text">ExpiryDate : {{c.rewardPrize}}.</p>
-                <a href="#" class="btn btn-primary">Challenge</a>
-=======
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <p class="card-text">Reward Prize : {{c.rewardPrize}}.</p>
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
+                <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
                 <!-- <a href="#" class="btn btn-primary">Challenge</a> -->
->>>>>>> c59f2ee3a5a1e85a34f654c9374bf99841f4af87
             </div>
         </div>
     </div>
@@ -61,12 +58,20 @@
         <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
-                <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
+                <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -77,15 +82,20 @@
         <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
-                <p class="card-text">{{c.description}}.</p>
-                <!-- <p class="card-text" *ngFor="let a of c.challengeDomain">          </p> -->
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
+                <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize| currency:'USD'}}</p>
+
                 <mat-chip-list>
-                    <mat-chip>apple</mat-chip>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
                   </mat-chip-list>
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -96,12 +106,20 @@
         <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
-                <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
+                <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}} </p>
+
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -112,12 +130,20 @@
         <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
-                <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
+                <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -128,12 +154,20 @@
         <div (click)="solution(c)"  class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
-                <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
+                <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -144,12 +178,20 @@
             <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
-                <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
+                <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>
@@ -160,12 +202,20 @@
         <div (click)="solution(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-                <p class="card-text">Challenged By : {{c.challengerName}}.</p>
-                <p class="card-text">{{c.description}}.</p>
-                <p class="card-text">Domain : {{c.challengeDomain}}.</p>
-                <p class="card-text">ExpiryDate : {{c.expiryDate | date}}.</p>
-                <a (click)="solution(c)" class="btn btn-primary">Challenge</a>
+                <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
+                <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
+                
+                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                    <mat-chip>{{a}}</mat-chip>
+                     </div>
+                  </mat-chip-list>
+                <!-- <a (click)="solution(c)" class="btn btn-primary">Challenge</a> -->
             </div>
         </div>
     </div>

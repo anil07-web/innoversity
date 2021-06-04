@@ -5,8 +5,10 @@
 }
 .navbar-brand{
     font-family: 'Goblin One', cursive;
+    align-items: center;
 }
 
 .nav-item {
     padding-right: 2%;
+    align-items: center;
 }

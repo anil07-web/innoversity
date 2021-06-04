@@ -1,7 +1,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FeedbackComponent } from '../components/feedback/feedback.component';
 
@@ -26,7 +26,8 @@ export class SolutionComponent implements OnInit {
   constructor(
     private service: SolutionService,
     private feedservice: FeedbackComponent,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) {}
   // setLog() {
   //   this.feedservice.getLog(this.logg);
@@ -46,6 +47,7 @@ export class SolutionComponent implements OnInit {
       this.innovator.challengeTitle = this.info.challengeTitle;
       this.service.addDetails(this.innovator).subscribe((data) => {
         this.isEdit = 'Data Stored Successfully';
+        this.router.navigateByUrl("/dashboard");
       });
     } else {
       this.isEdit = 'Please Enter Correct Details!!';

@@ -15,11 +15,14 @@ public interface ChallengeService {
     public List<Challenge> getAllChallenges();
 
     public List<Challenge> getDomainChallenges(List<String> domain);
+
     Challenge getById(UUID challengeId);
 
     String uploadFile(MultipartFile multipartFile);
 
 
-//    public String uploadFile(MultipartFile file);
+    List<Challenge> getChallengeByName(String name);
 
+    
+//    public String uploadFile(MultipartFile file);
 }

@@ -8,28 +8,29 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/challenge">Upload Challenge</a>
-                </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" routerLink="/solution">Upload Solution</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/solutionAnalysis">Solution analysis</a>
-                </li>
+                </li> -->
                 
                 <li class="nav-item ">
                
-                    <input type="search" #name class="form-control rounded " placeholder="Search"/>
+                    <!-- <input type="search" #name class="form-control rounded " placeholder="Search"/> -->
                     
+                    <input type="search" [(ngModel)]="searchData" class="form-control rounded " placeholder="Search"/>
                 </li>
+                
                 <li class="nav-item  ml-1">
                  
                     <button class="btn btn-outline-info"(click)="openSearchDialog()"><i class="fas fa-microphone"></i></button>
                 </li>
                 <li class="nav-item  ml-1">
                  
-                    <button class="btn btn-outline-info"(click)="show(name.value)"><i class="fab fa-searchengin"></i></button>
+                    <!-- <button class="btn btn-outline-info"(click)="show(name.value)"><i class="fab fa-searchengin"></i></button> -->
+                    <button class="btn btn-outline-info"(click)="show()"><i class="fab fa-searchengin"></i></button>
+
                 </li>
 
             </ul>
@@ -44,6 +45,9 @@
                 </li>
             </ul>
             <ul class="navbar-nav" *ngIf="isLoggedIn">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/challenge"><span>Upload Challenge</span></a>
+                </li>
                 <li class="nav-item">
                     <a routerLink="/userProfile" class="nav-link">Welcome, {{loggedInUser}} <i  class="fas fa-user"></i></a>
                 </li>

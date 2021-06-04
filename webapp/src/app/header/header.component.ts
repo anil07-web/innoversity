@@ -18,12 +18,13 @@ export class HeaderComponent implements OnInit {
 
   email: String;
   loggedInUser: String;
+  searchData: string;
   ngOnInit(): void {
     if (this.isLoggedIn) {
-      // this.email=localStorage.getItem("userName");
-      // const splitUsername = this.email.split("@");
-      // this.loggedInUser = splitUsername[0];
-      // console.log("Logged in user:", this.loggedInUser);
+      this.email=localStorage.getItem("userName");
+      const splitUsername = this.email.split("@");
+      this.loggedInUser = splitUsername[0];
+      console.log("Logged in user:", this.loggedInUser);
     }
     
   }
@@ -35,9 +36,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  show(text){
-    console.log(text);
-    this.searchservice.setQuery(text);
+  show(){
+    console.log(this.searchData);
+    this.searchservice.setQuery(this.searchData);
   }
 
   openSearchDialog(){
@@ -51,6 +52,8 @@ export class HeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log("result from dialog:", result.voiceText);
+      this.searchData = result.voiceText;
+      this.show();
       // this.searchData = result.voiceText;
       // this.getSearchData();
     });

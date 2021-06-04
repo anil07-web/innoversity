@@ -29,5 +29,13 @@ export class SolutionService {
   getByid(id){
     return this.http.get(`/api/v1/solution/solve/${id}`);
   }
- 
+  
+  updateDescription(id,description){
+    return this.http.put(`/api/v1/solution/description/${id}`,description);
+  }
+
+  updateSolution(id, data) {
+    return this.http.put(`/api/v1/solution/uploadFile/${id}`, data);
+  }
+
 }

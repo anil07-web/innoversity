@@ -1,6 +1,7 @@
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Challenge } from 'src/app/models/Challenge';
 import { UploadchallengeService } from 'src/app/services/uploadchallenge.service';
@@ -14,6 +15,7 @@ export class UploadchallengeComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
   dropdownList = [];
+  selectedFile: File;
   selectedItems = [];
   dropdownSettings = {};
   uploadChallenge: FormGroup;
@@ -22,12 +24,12 @@ export class UploadchallengeComponent implements OnInit {
   successMessage = 'Challenge uploaded successfully';
   handler:any = null;
  
-  constructor(private fb:FormBuilder,private service:UploadchallengeService) { }
+  constructor(private fb:FormBuilder,private service:UploadchallengeService, private router:Router) { }
 
   ngOnInit(): void {
     this.loadStripe();
     this.initForm();
-    this.dropdownList = ["Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
+    this.dropdownList = ["Health","Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
@@ -40,28 +42,48 @@ export class UploadchallengeComponent implements OnInit {
   initForm() {
     this.uploadChallenge = this.fb.group({
      challengerName: [''],
-     challengeTitle: [''],
-     challengeDomain: [''],
-     challengeAbstract: [''],
-     description: [''],
-     rules: [''],
-     rewardPrize: [''],
-     expiryDate: [''],
-     attachments:[''],
-     challengeArtifacts:['']
-    
+     challengeTitle: ['',[Validators.required]],
+     challengeDomain: ['',[Validators.required]],
+     challengeAbstract: ['',[Validators.required]],
+     description: ['',[Validators.required]],
+     rules: ['',[Validators.required]],
+     rewardPrize: ['',[Validators.required]],
+     expiryDate: ['',[Validators.required]],
+    //  attachments:['',[Validators.required]],
+    //  challengeArtifacts:['',[Validators.required]],
+     file: new FormControl('', [Validators.required])
    });
  }
-  onSubmit( ){
+
+ public onFileChanged(event) {
+  const file = event.target.files[0];
+  this.selectedFile = file;
+}
+
+  onSubmit(submitForm: FormGroup ){
     const loggedInUser = localStorage.getItem("userName");
     this.uploadChallenge.value.challengerName=loggedInUser;
-   
-    this.service.addChallenge(this.uploadChallenge.value).subscribe(data => {
-      this.uploadSuccess= true;
+
+    const item = submitForm.value;
+    const uploadFileData = new FormData();
+    console.log("file:", this.selectedFile);
+    uploadFileData.append('item', JSON.stringify(item));
+    uploadFileData.append('file', this.selectedFile);
+
+    if(this.uploadChallenge.valid)
+    {
+      this.service.addChallenge(uploadFileData).subscribe(data => {
+        console.log(this.uploadChallenge.value);
+        this.uploadSuccess= true;
+        this.router.navigateByUrl("/dashboard")
     });
-      console.log(this.uploadChallenge.value);
-      this.uploadSuccess= true;
-   
+    // var buttonName = document.activeElement.getAttribute("Name");
+    }
+      else{
+        // alert("form is invalid");
+        console.log("form is invalid");
+        // this.uploadSuccess=false;
+      }
    
   }
   onItemSelect($event) {
@@ -73,7 +95,10 @@ export class UploadchallengeComponent implements OnInit {
   get challengeAbstract() { return this.uploadChallenge.get('challengeAbstract') }
   get description() { return this.uploadChallenge.get('description') }
   get rules() { return this.uploadChallenge.get('rules') }
-  
+  get attachments(){return this.uploadChallenge.get('attachments')}
+  get rewardPrize(){return this.uploadChallenge.get('rewardPrize')}
+  get challengeArtifacts(){return this.uploadChallenge.get('challengeArtifacts')}
+  get expiryDate(){return this.uploadChallenge.get('expiryDate')}
   editorConfig: AngularEditorConfig = {
     editable: true,
       spellcheck: true,
@@ -103,28 +128,32 @@ export class UploadchallengeComponent implements OnInit {
     ]
 };
 
-onSelectFile(e) {
-  if (e.target.files) {
-    var reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = (event: any) => {
-      this.selectedFiles = event.target.files;
-    }
-  }
-}
-upload() {
+// onSelectFile(event) {
+//   const file = event.target.files[0];
+//     this.selectedFile = file;
+//   // if (e.target.files) {
+//   //   var reader = new FileReader();
+//   //   reader.readAsDataURL(e.target.files[0]);
+//   //   reader.onload = (event: any) => {
+//   //     this.selectedFiles = event.target.files;
+//   //   }
+//   // }
   
-  this.currentFileUpload = this.selectedFiles.item(0);
-  this.service.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-    if (event.type === HttpEventType.UploadProgress) {
-      // this.progress.percentage = Math.round(100 * event.loaded / event.total);
-    } else if (event instanceof HttpResponse) {
-      console.log('File is completely uploaded!');
-    }
-  });
+// }
 
-  this.selectedFiles = undefined;
-}
+// upload() {
+  
+//   this.currentFileUpload = this.selectedFiles.item(0);
+//   this.service.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+//     if (event.type === HttpEventType.UploadProgress) {
+//       // this.progress.percentage = Math.round(100 * event.loaded / event.total);
+//     } else if (event instanceof HttpResponse) {
+//       console.log('File is completely uploaded!');
+//     }
+//   });
+
+//   this.selectedFiles = undefined;
+// }
 
    
 
@@ -135,12 +164,12 @@ pay(amount: any) {
     locale: 'auto',
     token: function (token: any) {
       console.log(token.id)
-      alert('Token Created!!');
+     
       
     }
   });
   handler.open({
-    name: 'Demo Site',
+    name: 'Innoversity',
     description: '2 widgets',
     amount: amount * 100
   });
@@ -168,6 +197,10 @@ pay(amount: any) {
        
       window.document.body.appendChild(s);
     }
+  }
+
+  get f() {
+    return this.uploadChallenge.controls;
   }
 }
 

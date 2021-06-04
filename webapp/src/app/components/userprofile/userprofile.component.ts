@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserprofileService } from 'src/app/services/userprofile.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-userprofile',
@@ -8,18 +10,52 @@ import { UserprofileService } from 'src/app/services/userprofile.service';
 })
 export class UserprofileComponent implements OnInit {
 
-  constructor(private service:UserprofileService) { }
+  constructor(private service:UserprofileService, private router: Router) { }
 
  public user; 
 
+ public challenge;
+ public solution; 
+ public pic;
   ngOnInit(): void {
     this.getUser();
-  }
+    this.getChallenge();
+    this.getSolutions();
+   }
 
    getUser(){
-    return this.service.getUserDate().subscribe(data=>{
+    return this.service.getUserData().subscribe(data=>{
       this.user=data;
       console.log(this.user);
+      this.pic = this.user[0].pic;
+    })
+  }
+
+    getChallenge(){
+      return this.service.getChallenge().subscribe(data=>{
+        this.challenge=data;
+        console.log(this.challenge);
+      })
+   }
+
+
+   getSolutions(){
+    return this.service.getUserSolution().subscribe(data=>{
+      this.solution=data;
+      console.log(this.solution);
     })
    }
+
+
+   feedbackView(details) {
+    console.log("solution Id:", details.solutionId);
+    this.router.navigateByUrl(`feedback/${details.solutionId}`);
+  }
+
+  solutionAnalysis(challenge) {
+    console.log("move to solution analysis");
+    this.router.navigateByUrl(`/solutionAnalysis/${challenge.challengeId}`)
+  }
+
+
 }

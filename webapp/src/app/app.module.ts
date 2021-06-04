@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { Component, NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 
 
 
@@ -26,6 +27,8 @@ import { SolutionAnalysisComponent } from './components/solution-analysis/soluti
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MatChipsModule } from "@angular/material/chips";
 import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
+import { UserprofileComponent} from './components/userprofile/userprofile.component';
+import { UpdatesolutionComponent} from './components/updatesolution/updatesolution.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +42,8 @@ import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
     FeedbackComponent,
     SolutionAnalysisComponent,
     SpeechDialogComponent,
+    UserprofileComponent,
+    UpdatesolutionComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
     OwlNativeDateTimeModule,
     MatInputModule,
     MatChipsModule,
+    CommonModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [DashboardComponent, FeedbackComponent],
