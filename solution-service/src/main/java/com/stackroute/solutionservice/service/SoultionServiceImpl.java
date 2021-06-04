@@ -99,4 +99,12 @@ public class  SoultionServiceImpl implements SolutionService {
         mongoTemplate.upsert(query,updateQuery,"solution");
     }
 
+
+    @Override
+    public List<Solution> getSolutionByEmail(String email) {
+        Query query=new Query();
+        query.addCriteria(Criteria.where("solvedBy").is(email));
+        List<Solution> sol=mongoTemplate.find(query,Solution.class);
+        return sol;
+    }
 }
