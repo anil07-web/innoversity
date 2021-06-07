@@ -4,7 +4,7 @@
 <div class="row">
     <h1 class="text-center" >Search Result</h1>
     <div class="col-md-3" *ngFor="let c of searchresult">
-        <div  (click)="solution(c)" class="card" style="width: 18rem;">
+        <div  (click)="getChallengeById(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
@@ -31,7 +31,7 @@
 <div class="row">
     <h1 class="text-center" > Recommended Challenges</h1>
     <div class="col-md-3 " *ngFor="let c of recommended">
-        <div (click)="solution(c)" class="card" style="width: 18rem;">
+        <div (click)="getChallengeById(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
@@ -55,7 +55,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="healthIsNull">Health</h1>
     <div cliclass="col-md-3" *ngFor="let c of health">
-        <div (click)="solution(c)" class="card" style="width: 18rem;">
+        <div (click)="getChallengeById(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
@@ -79,7 +79,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="engineeringIsNull">Engineering</h1>
     <div class="col-md-3" *ngFor="let c of engineering">
-        <div (click)="solution(c)" class="card" style="width: 18rem;">
+        <div (click)="getChallengeById(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
@@ -103,7 +103,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="electricityIsNull">Electricity</h1>
     <div class="col-md-3" *ngFor="let c of electricity">
-        <div (click)="solution(c)" class="card" style="width: 18rem;">
+        <div (click)="getChallengeById(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
@@ -127,7 +127,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="scienceIsNull">Science</h1>
     <div class="col-md-3" *ngFor="let c of science">
-        <div (click)="solution(c)" class="card" style="width: 18rem;">
+        <div (click)="getChallengeById(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
@@ -151,7 +151,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="aerospaceIsNull">Aerospace</h1>
     <div class="col-md-3" *ngFor="let c of aerospace">
-        <div (click)="solution(c)"  class="card" style="width: 18rem;">
+        <div (click)="getChallengeById(c)"  class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
@@ -175,7 +175,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="habitatIsNull">Habitat</h1>
     <div class="col-md-3" *ngFor="let c of habitat">
-            <div (click)="solution(c)" class="card" style="width: 18rem;">
+            <div (click)="getChallengeById(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
@@ -199,7 +199,7 @@
 <div class="row">
     <h1 class="text-center" *ngIf="environmentIsNull">Environment</h1>
     <div class="col-md-3" *ngFor="let c of environment">
-        <div (click)="solution(c)" class="card" style="width: 18rem;">
+        <div (click)="getChallengeById(c)" class="card" style="width: 18rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>

@@ -28,7 +28,8 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MatChipsModule } from "@angular/material/chips";
 import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
 import { UserprofileComponent} from './components/userprofile/userprofile.component';
-import { UpdatesolutionComponent} from './components/updatesolution/updatesolution.component'
+import { UpdatesolutionComponent} from './components/updatesolution/updatesolution.component';
+import { DetailedChallengeDesComponent } from './components/detailed-challenge-des/detailed-challenge-des.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { UpdatesolutionComponent} from './components/updatesolution/updatesoluti
     SpeechDialogComponent,
     UserprofileComponent,
     UpdatesolutionComponent,
+    DetailedChallengeDesComponent,
   ],
   imports: [
     BrowserModule,
