@@ -122,8 +122,8 @@ public class ChallengeControl {
     List<String> result=new ArrayList<>();
     String url="http://localhost:8087/api/v1/search/search/";
 
-    @GetMapping(value = "/filter")
-    public ResponseEntity<?> nlpFilter(@RequestBody final String input, @RequestParam("type") String type) {
+    @GetMapping("/filter/{input}")
+    public ResponseEntity<?> nlpFilter(@PathVariable final String input, @RequestParam("type") String type) {
         // String query=capitalizeWord(input);
         System.out.println("\n\n\nIn NLP Service Controller(Your inputs) : \nInput : "+input+"\nType : "+type);
         CoreDocument coreDocument = new CoreDocument(input);

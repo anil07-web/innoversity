@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private service: DashboardService, private router: Router) { }
   public loggedInUser: String;
-  public recommended:Array<string> = [];
+  public recommended: Array<string> = [];
   public recomChallenge;
   public challengerName;
   public recomChallenger;
@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
   public scienceIsNull: boolean = true;
   public challenge;
   public email;
+  public count;
 
 
 
@@ -44,13 +45,19 @@ export class DashboardComponent implements OnInit {
 
   public searchresult;
   setQuery(querytext) {
-    this.service.getSearchResult(querytext).subscribe(data => {
-      this.searchresult = data;
-      console.log(this.searchresult);
-      if (this.searchresult == null) {
-        this.searchIsNull = true ;
-      }
-    });
+    this.count = querytext.split(' ').length;
+    if (this.count == 1) {
+      this.service.getSearchResult(querytext).subscribe(data => {
+        this.searchresult = data;
+        console.log(this.searchresult);
+      });
+    }
+    else {
+      this.service.getSearchResultByNLP(querytext).subscribe(data => {
+        this.searchresult = data;
+        console.log(this.searchresult);
+      });
+    }
   }
 
 
@@ -63,15 +70,14 @@ export class DashboardComponent implements OnInit {
   getContacts() {
     this.email = this.loggedInUser;
     this.service.getContacts(this.email).subscribe(data => {
-      this.recomChallenge=data;
-      this.recomChallenge.map(m=>{
-        this.recomChallenger=m.challengerName;
-        if (this.recomChallenger!=this.loggedInUser )
-        { 
+      this.recomChallenge = data;
+      this.recomChallenge.map(m => {
+        this.recomChallenger = m.challengerName;
+        if (this.recomChallenger != this.loggedInUser) {
           this.recommended.push(m);
         }
       });
-      
+
     });
   }
 
@@ -81,10 +87,9 @@ export class DashboardComponent implements OnInit {
       console.log(this.challenge);
       console.log(this.loggedInUser);
       this.challenge.map(d => {
-        this.challengerName=d.challengerName;
+        this.challengerName = d.challengerName;
         console.log(this.challengerName);
-        if (this.challengerName!=this.loggedInUser )
-        { 
+        if (this.challengerName != this.loggedInUser) {
           d.challengeDomain.map(m => {
             if (m == "Health") {
               this.health.push(d);
@@ -110,7 +115,7 @@ export class DashboardComponent implements OnInit {
 
           });
         }
-        });
+      });
 
       if (this.health.length == 0) {
         this.healthIsNull = false;
@@ -153,6 +158,6 @@ export class DashboardComponent implements OnInit {
   // }
   getChallengeById(challengeId) {
     console.log("User clicked on:", challengeId.challengeId);
-      this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
+    this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
   }
 }
