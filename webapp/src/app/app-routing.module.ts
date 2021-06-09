@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DetailedChallengeDesComponent } from './components/detailed-challenge-des/detailed-challenge-des.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'solutionAnalysis/:challengeId',component:SolutionAnalysisComponent},
   {path:'feedback/:solutionId',component:FeedbackComponent},
   {path:'userProfile',component:UserprofileComponent},
-  {path:'update/:solutionId',component:UpdatesolutionComponent}
+  {path:'update/:solutionId',component:UpdatesolutionComponent},
+  {path:'challengeDes/:challengeId',component:DetailedChallengeDesComponent}
 ]
 
 @NgModule({
