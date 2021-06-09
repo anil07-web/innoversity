@@ -14,131 +14,145 @@ export class DashboardComponent implements OnInit {
 
   constructor(private service: DashboardService, private router: Router) { }
   public loggedInUser: String;
-  public recommended;
-  public health:Array<any>=[];
-  public engineering:Array<string>=[];
-  public electricity:Array<string>=[];
-  public science:Array<string>=[];
-  public aerospace:Array<string>=[];
-  public habitat:Array<string>=[];
-  public environment:Array<string>=[];
-  public temp:Array<string>=[];
+  public recommended:Array<string> = [];
+  public recomChallenge;
+  public challengerName;
+  public recomChallenger;
+  public health: Array<any> = [];
+  public engineering: Array<string> = [];
+  public electricity: Array<string> = [];
+  public science: Array<string> = [];
+  public aerospace: Array<string> = [];
+  public habitat: Array<string> = [];
+  public environment: Array<string> = [];
+  public temp: Array<string> = [];
 
-  public healthIsNull:boolean=true;
-  public engineeringIsNull:boolean=true;
-  public aerospaceIsNull:boolean=true;
-  public habitatIsNull:boolean=true;
-  public environmentIsNull:boolean=true;
-  public electricityIsNull:boolean=true;
-  public scienceIsNull:boolean=true;
+  public healthIsNull: boolean = true;
+  public engineeringIsNull: boolean = true;
+  public aerospaceIsNull: boolean = true;
+  public habitatIsNull: boolean = true;
+  public environmentIsNull: boolean = true;
+  public electricityIsNull: boolean = true;
+  public searchIsNull: boolean = false;
+  public scienceIsNull: boolean = true;
   public challenge;
   public email;
 
 
-  
+
 
 
   public searchresult;
-  setQuery(querytext){
-    this.service.getSearchResult(querytext).subscribe(data=> {
-        this.searchresult = data;
-        console.log(this.searchresult);
-      });
-    }
-  
+  setQuery(querytext) {
+    this.service.getSearchResult(querytext).subscribe(data => {
+      this.searchresult = data;
+      console.log(this.searchresult);
+      if (this.searchresult == null) {
+        this.searchIsNull = true ;
+      }
+    });
+  }
+
 
 
   ngOnInit(): void {
     this.getContacts();
     this.getChallenge();
-    this.loggedInUser=localStorage.getItem("userName");
+    this.loggedInUser = localStorage.getItem("userName");
   }
   getContacts() {
-    this.email="vikhil@gmail.com";
+    this.email = this.loggedInUser;
     this.service.getContacts(this.email).subscribe(data => {
-    //  this.email=data;
-      this.recommended = data;
+      this.recomChallenge=data;
+      this.recomChallenge.map(m=>{
+        this.recomChallenger=m.challengerName;
+        if (this.recomChallenger!=this.loggedInUser )
+        { 
+          this.recommended.push(m);
+        }
+      });
+      
     });
   }
 
   getChallenge() {
     this.service.getChallenge().subscribe(data => {
-       this.challenge = data;
-      
-      // this.health=this.challenge.filter(d=>d.challengeDomain.filter(m=>m=="Health"));
-      // if(this.health.length==0){
-      //   this.healthIsNull=false;
-      // }
-      this.challenge.map(d=>{
-        d.challengeDomain.map(m=>{
-        if(m=="Health")
-        {
-          this.health.push(d);
-        }
-        if(m=="Engineering")
-        {
-          this.engineering.push(d);
-        }
-        if(m=="Science")
-        {
-          this.science.push(d);
-        }
-        if(m=="Electricity")
-        {
-          this.electricity.push(d);
-        }
-        if(m=="Aerospace")
-        {
-          this.aerospace.push(d);
-        }
-        if(m=="Habitat")
-        {
-          this.habitat.push(d);
-        }
-        if(m=="Environment")
-        {
-          this.environment.push(d);
-        }       
-        
-      });
-      });
-      
+      this.challenge = data;
+      console.log(this.challenge);
+      console.log(this.loggedInUser);
+      this.challenge.map(d => {
+        this.challengerName=d.challengerName;
+        console.log(this.challengerName);
+        if (this.challengerName!=this.loggedInUser )
+        { 
+          d.challengeDomain.map(m => {
+            if (m == "Health") {
+              this.health.push(d);
+            }
+            if (m == "Engineering") {
+              this.engineering.push(d);
+            }
+            if (m == "Science") {
+              this.science.push(d);
+            }
+            if (m == "Electricity") {
+              this.electricity.push(d);
+            }
+            if (m == "Aerospace") {
+              this.aerospace.push(d);
+            }
+            if (m == "Habitat") {
+              this.habitat.push(d);
+            }
+            if (m == "Environment") {
+              this.environment.push(d);
+            }
 
+          });
+        }
+        });
 
-      if(this.engineering.length==0){
-        this.engineeringIsNull=false;
+      if (this.health.length == 0) {
+        this.healthIsNull = false;
       }
-      if(this.science.length==0){
-        this.scienceIsNull=false;
+      if (this.engineering.length == 0) {
+        this.engineeringIsNull = false;
       }
-     
-      if(this.electricity.length==0){
-        this.electricityIsNull=false;
-      }
-     
-      if(this.aerospace.length==0){
-        this.aerospaceIsNull=false;
-      }
-     
-      if(this.habitat.length==0){
-        this.habitatIsNull=false;
+      if (this.science.length == 0) {
+        this.scienceIsNull = false;
       }
 
-      if(this.environment.length==0){
-        this.environmentIsNull=false;
+      if (this.electricity.length == 0) {
+        this.electricityIsNull = false;
+      }
+
+      if (this.aerospace.length == 0) {
+        this.aerospaceIsNull = false;
+      }
+
+      if (this.habitat.length == 0) {
+        this.habitatIsNull = false;
+      }
+
+      if (this.environment.length == 0) {
+        this.environmentIsNull = false;
       }
     });
   }
 
-  solution(challenge) {
-    console.log("User clicked on:", challenge.challengeId);
-    if (this.loggedInUser == challenge.challengerName) {
-      console.log("move to solution analysis");
-      this.router.navigateByUrl(`/solutionAnalysis/${challenge.challengeId}`)
-    } else{
-      console.log("move to upload solution");
-      this.router.navigateByUrl(`/solution/${challenge.challengeId}`);
+  // solution(challenge) {
+  //   console.log("User clicked on:", challenge.challengeId);
+  //   if (this.loggedInUser == challenge.challengerName) {
+  //     console.log("move to solution analysis");
+  //     this.router.navigateByUrl(`/solutionAnalysis/${challenge.challengeId}`)
+  //   } else {
+  //     console.log("move to upload solution");
+  //     this.router.navigateByUrl(`/solution/${challenge.challengeId}`);
 
-    }
+  //   }
+  // }
+  getChallengeById(challengeId) {
+    console.log("User clicked on:", challengeId.challengeId);
+      this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
   }
 }

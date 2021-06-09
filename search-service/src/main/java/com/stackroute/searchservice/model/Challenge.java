@@ -8,10 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 import java.util.UUID;
 
-/***
- * This is a model of the search-services. Here the schema are same as in the
- * book services. All the data are coming from the book-service via RabbitMQ.
- */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
