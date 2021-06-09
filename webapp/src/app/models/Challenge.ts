@@ -5,7 +5,7 @@ export class Challenge{
     public expirydate:Date;
     public attachments:string;
     public challengeArtifacts:string;
-    public rewardPrize:number;
+    public rewardPrize:string=null;
     public challengeAbstract: string;
     public description: string;
     public rules:string

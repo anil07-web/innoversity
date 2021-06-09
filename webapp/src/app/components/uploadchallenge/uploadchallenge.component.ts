@@ -23,13 +23,14 @@ export class UploadchallengeComponent implements OnInit {
   uploadSuccess = false;
   successMessage = 'Challenge uploaded successfully';
   handler:any = null;
- 
+  public isSelected:boolean;
+  htmlMode=false;
   constructor(private fb:FormBuilder,private service:UploadchallengeService, private router:Router) { }
 
   ngOnInit(): void {
     this.loadStripe();
     this.initForm();
-    this.dropdownList = ["Health","Science","Engineering", "Aerospace","Habitat","Electricity","Power Sources","Environment"];
+    this.dropdownList = ["Health","Science","Engineering","Aerospace","Habitat","Electricity","Power Sources","Environment"];
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
@@ -47,18 +48,22 @@ export class UploadchallengeComponent implements OnInit {
      challengeAbstract: ['',[Validators.required]],
      description: ['',[Validators.required]],
      rules: ['',[Validators.required]],
-     rewardPrize: ['',[Validators.required]],
+     rewardPrize: ['0'],
      expiryDate: ['',[Validators.required]],
     //  attachments:['',[Validators.required]],
     //  challengeArtifacts:['',[Validators.required]],
      file: new FormControl('', [Validators.required])
    });
- }
+  }
 
- public onFileChanged(event) {
-  const file = event.target.files[0];
-  this.selectedFile = file;
-}
+  public onFileChanged(event) {
+    const file = event.target.files[0];
+    this.selectedFile = file;
+  }
+
+  onItemChange(value){
+    this.isSelected=value?true:false;
+  }
 
   onSubmit(submitForm: FormGroup ){
     const loggedInUser = localStorage.getItem("userName");
@@ -87,14 +92,13 @@ export class UploadchallengeComponent implements OnInit {
    
   }
   onItemSelect($event) {
-
   }
   get challengeName() { return this.uploadChallenge.get('challengeName') }
   get challengeTitle() { return this.uploadChallenge.get('challengeTitle') }
   get challengeDomain() { return this.uploadChallenge.get('challengeDomain') }
   get challengeAbstract() { return this.uploadChallenge.get('challengeAbstract') }
   get description() { return this.uploadChallenge.get('description') }
-  get rules() { return this.uploadChallenge.get('rules') }
+  get rules() { return this.uploadChallenge.get('rules')}
   get attachments(){return this.uploadChallenge.get('attachments')}
   get rewardPrize(){return this.uploadChallenge.get('rewardPrize')}
   get challengeArtifacts(){return this.uploadChallenge.get('challengeArtifacts')}
@@ -102,8 +106,8 @@ export class UploadchallengeComponent implements OnInit {
   editorConfig: AngularEditorConfig = {
     editable: true,
       spellcheck: true,
-      height: '4rem',
-      minHeight: '4rem',
+      height: '15rem',
+      // minHeight: '4rem',
       maxHeight: 'auto',
       width: 'auto',
       minWidth: '0',
@@ -126,7 +130,7 @@ export class UploadchallengeComponent implements OnInit {
       ['bold', 'italic'],
       ['fontSize']
     ]
-};
+  };
 
 // onSelectFile(event) {
 //   const file = event.target.files[0];
@@ -138,11 +142,8 @@ export class UploadchallengeComponent implements OnInit {
 //   //     this.selectedFiles = event.target.files;
 //   //   }
 //   // }
-  
 // }
-
 // upload() {
-  
 //   this.currentFileUpload = this.selectedFiles.item(0);
 //   this.service.pushFileToStorage(this.currentFileUpload).subscribe(event => {
 //     if (event.type === HttpEventType.UploadProgress) {
@@ -155,28 +156,24 @@ export class UploadchallengeComponent implements OnInit {
 //   this.selectedFiles = undefined;
 // }
 
-   
+  pay(amount: number) {
+    if(amount>0){
+      var handler = (<any>window).StripeCheckout.configure({
+        key: 'pk_test_51Itz8xSEYEK3dxaT6Wxv2YqSd5P57ZM40EWFx2j9uUIes3FqIzrw6j3ihg1iMozBLQv4isCoCw8wx4750he7t65D00h7ccJVas',
+        locale: 'auto',
+        token: function (token: any) {
+          console.log(token.id)
+        }
+      });
+      handler.open({
+        name: 'Innoversity',
+        description: '2 widgets',
+        amount: amount * 100
+      });
+    }  
+  }
 
-pay(amount: any) {    
- 
-  var handler = (<any>window).StripeCheckout.configure({
-    key: 'pk_test_51Itz8xSEYEK3dxaT6Wxv2YqSd5P57ZM40EWFx2j9uUIes3FqIzrw6j3ihg1iMozBLQv4isCoCw8wx4750he7t65D00h7ccJVas',
-    locale: 'auto',
-    token: function (token: any) {
-      console.log(token.id)
-     
-      
-    }
-  });
-  handler.open({
-    name: 'Innoversity',
-    description: '2 widgets',
-    amount: amount * 100
-  });
-
-}
   loadStripe() {
-     
     if(!window.document.getElementById('stripe-script')) {
       var s = window.document.createElement("script");
       s.id = "stripe-script";
@@ -194,7 +191,6 @@ pay(amount: any) {
           }
         });
       }
-       
       window.document.body.appendChild(s);
     }
   }
@@ -202,5 +198,6 @@ pay(amount: any) {
   get f() {
     return this.uploadChallenge.controls;
   }
+
 }
 
