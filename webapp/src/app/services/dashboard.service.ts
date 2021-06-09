@@ -12,16 +12,14 @@ import { Search } from '../models/Search';
 export class DashboardService {
 
   constructor(private http: HttpClient) { }
-  getContacts(email)  {
+  getContacts(email) {
     return this.http.get(`api/v1/recommendation/recommend?email=${email}`);
   }
-  getChallenge()  {
+  getChallenge() {
     return this.http.get('/api/v1/challenge/challenges');
   }
 
-
-
-  getSearchResult(queryvalue):Observable<Search>{
+  getSearchResult(queryvalue): Observable<Search> {
     return this.http.get<Search>(`/api/v1/search/search/${queryvalue}`);
   }
 

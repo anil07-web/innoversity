@@ -32,7 +32,7 @@ public class Challenge {
     private String uploadUrl;
     private String type;
     private Date uploadedOn;
-    private Integer rewardPrize;
+    private String rewardPrize=null;
 //    LocalDate localDate = LocalDate.now(); // used in java 8
 //    Date date =new Date();
 
