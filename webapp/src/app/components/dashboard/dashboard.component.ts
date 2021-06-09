@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   public email;
 
 
+  public searchIsNull: boolean = false;
   
 
 
@@ -43,6 +44,9 @@ export class DashboardComponent implements OnInit {
     this.service.getSearchResult(querytext).subscribe(data=> {
         this.searchresult = data;
         console.log(this.searchresult);
+        if (this.searchresult.length == 0) {
+          this.searchIsNull = true ;
+        }
       });
     }
   
