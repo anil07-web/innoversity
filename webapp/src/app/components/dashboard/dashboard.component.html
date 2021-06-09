@@ -11,8 +11,8 @@
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 
-                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
-                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
+                <!-- <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p> -->
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
                     <mat-chip>{{a}}</mat-chip>
@@ -22,6 +22,7 @@
             </div>
         </div>
     </div>
+    <div *ngIf="searchIsNull" >No Search result Found</div>
 </div>
 
 
@@ -38,9 +39,9 @@
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 
-                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <!-- <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
                 <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
-                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p> -->
 
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
@@ -62,9 +63,9 @@
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 
-                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <!-- <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
                 <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
-                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p> -->
 
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
@@ -86,9 +87,9 @@
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 
-                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <!-- <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
                 <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
-                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize| currency:'USD'}}</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize| currency:'USD'}}</p> -->
 
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
@@ -109,10 +110,10 @@
                 <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
-                
+<!--                 
                 <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
                 <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
-                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}} </p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}} </p> -->
 
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
@@ -134,9 +135,9 @@
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 
-                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <!-- <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
                 <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
-                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p> -->
 
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
@@ -158,9 +159,9 @@
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 
-                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <!-- <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
                 <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
-                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p> -->
 
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
@@ -182,9 +183,9 @@
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 
-                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <!-- <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
                 <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
-                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p> -->
 
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
@@ -206,10 +207,10 @@
                 <p class="card-text"><strong>Challenged By: </strong>{{c.challengerName | titlecase}}.</p>
                 <!-- <p class="card-text">Name : {{c.challengerName}}.</p> -->
                 
-                <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
+                <!-- <div class="card-text"><strong>Description: </strong> {{c.description}}.</div>
                 <p class="card-text"><strong>Expires on: </strong> {{c.expiryDate | date}} .</p>
-                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p>
-
+                <p class="card-text"><strong>Reward: </strong> {{c.rewardPrize | currency:'USD'}}</p> -->
+                <div style="font-weight: bold;font-size: 15pt;">Domain </div>
                 <mat-chip-list>
                     <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
                     <mat-chip>{{a}}</mat-chip>

@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit {
   public habitatIsNull: boolean = true;
   public environmentIsNull: boolean = true;
   public electricityIsNull: boolean = true;
+  public searchIsNull: boolean = false;
   public scienceIsNull: boolean = true;
   public challenge;
   public email;
@@ -46,6 +47,9 @@ export class DashboardComponent implements OnInit {
     this.service.getSearchResult(querytext).subscribe(data => {
       this.searchresult = data;
       console.log(this.searchresult);
+      if (this.searchresult == null) {
+        this.searchIsNull = true ;
+      }
     });
   }
 
