@@ -12,19 +12,18 @@ import { Search } from '../models/Search';
 export class DashboardService {
 
   constructor(private http: HttpClient) { }
-  getContacts(email)  {
+  getContacts(email) {
     return this.http.get(`api/v1/recommendation/recommend?email=${email}`);
   }
-  getChallenge()  {
+  getChallenge() {
     return this.http.get('/api/v1/challenge/challenges');
   }
 
-
-
-  getSearchResult(queryvalue):Observable<Search>{
+  getSearchResult(queryvalue): Observable<Search> {
     return this.http.get<Search>(`/api/v1/search/search/${queryvalue}`);
   }
 
+<<<<<<< HEAD
   getUpdatedChallenge(challengeId){
     return this.http.get(`/api/v1/challenge/update/${challengeId}`);
   }
@@ -34,6 +33,11 @@ export class DashboardService {
   }
 
 
+=======
+  getSearchResultByNLP(queryvalue):Observable<any>{
+    return this.http.get<any>(`/api/v1/search/filter/${queryvalue}?type=NN`);
+  }
+>>>>>>> ea622c18ccadc7aeca6d19d2d85a1caf42def6a6
  
  
 

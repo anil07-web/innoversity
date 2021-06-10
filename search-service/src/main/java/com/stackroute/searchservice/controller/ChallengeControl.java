@@ -1,13 +1,24 @@
 package com.stackroute.searchservice.controller;
 
 import com.stackroute.searchservice.model.Challenge;
+import com.stackroute.searchservice.model.Type;
 import com.stackroute.searchservice.repository.ChallengeRepository;
 
+import edu.stanford.nlp.ling.CoreAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.pipeline.CoreDocument;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This is the controller of the search service.
@@ -23,6 +34,11 @@ public class ChallengeControl {
      */
     @Autowired
     private ChallengeRepository challengeRepository;
+    @Autowired
+    private StanfordCoreNLP stanfordCoreNLP;
+    @Autowired
+    private RestTemplate restTemplate;
+
 
     public ChallengeControl(ChallengeRepository challengeRepository) {
         this.challengeRepository = challengeRepository;
@@ -101,5 +117,69 @@ public class ChallengeControl {
         System.out.println("\n\nReturnning back to challengequery service");
         return challengeRepository.findChallenge(queries);
     }
+
+
+    List<String> result=new ArrayList<>();
+    String url="http://localhost:8087/api/v1/search/search/";
+
+    @GetMapping("/filter/{input}")
+    public ResponseEntity<?> nlpFilter(@PathVariable final String input, @RequestParam("type") String type) {
+        // String query=capitalizeWord(input);
+        System.out.println("\n\n\nIn NLP Service Controller(Your inputs) : \nInput : "+input+"\nType : "+type);
+        CoreDocument coreDocument = new CoreDocument(input);
+        stanfordCoreNLP.annotate(coreDocument);
+        List<CoreLabel> coreLabels = coreDocument.tokens();
+        List<String> typeList = null;
+
+        if (!(type == null || type.isEmpty())) {
+            type = type.trim();
+            typeList = Arrays.asList(type.split(","));
+            result=collectList(coreLabels, typeList);
+            System.out.println("\n\nFilter Result of NLP service   : "+result);
+
+            List<Challenge> challenges= restTemplate.exchange(url+result, HttpMethod.GET, null,new ParameterizedTypeReference<List<Challenge>>(){}).getBody();
+
+//            List<Challenge> challenges=null;
+//            for(String res:result) {
+//                 challenges.addAll(challengeRepository.findChallenge(res));
+//            }
+
+            if(challenges==null || challenges.isEmpty()){
+                System.out.println("\n\n\nBack in Nlp,Return from Search Service(keyword method) is Null or empty");
+                return new ResponseEntity<String>("No challenges found", HttpStatus.NOT_FOUND);
+            }else{
+                return new ResponseEntity<List<Challenge>>(challenges,HttpStatus.OK);
+            }
+        }
+        else
+        {
+            String error="challenge not found";
+            return new ResponseEntity<String>(error, HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+    private List<String> collectList(List<CoreLabel> coreLabels, List<String> type1) {
+        List<Type> entity=new ArrayList<>();
+        for(String w:type1)
+        {
+            entity.add(Type.valueOf(w));
+        }
+        List<String> keys=new ArrayList<>();
+        for(Type t:entity){
+            keys.addAll(coreLabels
+                    .stream()
+                    .filter(coreLabel -> t.getName().equalsIgnoreCase(coreLabel.get(CoreAnnotations.PartOfSpeechAnnotation.class)))
+                    .map(CoreLabel::originalText)
+                    .collect(Collectors.toList()));
+        }
+        return keys;}
+
+
+
+
+
+
+
 }
 

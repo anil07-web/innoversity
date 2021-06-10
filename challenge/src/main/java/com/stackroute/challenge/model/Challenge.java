@@ -32,6 +32,7 @@ public class Challenge {
     private String uploadUrl;
     private String type;
     private Date uploadedOn;
+
     private Integer rewardPrize;
     private Integer views;
     private Integer attempt;

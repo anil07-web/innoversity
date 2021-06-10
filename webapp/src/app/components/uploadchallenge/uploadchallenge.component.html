@@ -106,7 +106,8 @@
           Challenge Domain is required
         </div>
 
-        <div class="my">
+        <!-- ABSTRACT DESCRIPTION RULES -->
+        <!-- <div class="my">
           <angular-editor formControlName="challengeAbstract" [config]="editorConfig" placeholder="Abstract">
           </angular-editor>
           <div class="text-danger" *ngIf="challengeAbstract?.dirty && challengeAbstract?.invalid">
@@ -122,7 +123,31 @@
           <div class="text-danger" *ngIf="rules?.dirty && rules?.invalid">
             Challenge rules are required
           </div>
-        </div>
+        </div> -->
+        <mat-tab-group animationDuration="0ms">
+          <mat-tab label="Abstract"> 
+            <!-- <angular-editor formControlName="challengeAbstract" [config]="editorConfig" [disabled]="htmlMode" placeholder="Abstract">
+            </angular-editor> -->
+            <textarea formControlName="challengeAbstract" rows="13" placeholder="Enter challenge description"></textarea>
+            <div class="text-danger" *ngIf="challengeAbstract?.dirty && challengeAbstract?.invalid">
+              Challenge Abstract is required
+            </div>
+          </mat-tab>
+          <mat-tab label="Description">
+            <!-- <angular-editor formControlName="description" [config]="editorConfig" [disabled]="htmlMode" placeholder="Enter Challenge Description"></angular-editor> -->
+            <textarea formControlName="description" rows="13" placeholder="Enter challenge description"></textarea>
+            <div class="text-danger" *ngIf="description?.dirty && description?.invalid">
+              Challenge description is required
+            </div>
+          </mat-tab>
+          <mat-tab label="Rules">
+            <!-- <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Provide rules for the challenge"> ></angular-editor> -->
+            <textarea formControlName="rules" rows="13" placeholder="Provide rules for the challenge"></textarea>
+            <div class="text-danger" *ngIf="rules?.dirty && rules?.invalid">
+            Challenge rules are required
+          </div>
+          </mat-tab>
+        </mat-tab-group>
         <!-- <div class="input-group">
           <input type="textarea" formControlName="attachments" class="input" placeholder="Attachment..">
           <input type="file" (change)=" onFileChanged($event)" formControlName="attachments" class="form-control">
@@ -144,26 +169,31 @@
         <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px" accept=".pdf"
           (change)="onFileChanged($event)" />
         <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
-          <mat-error *ngIf="f.file.errors.required">is required.</mat-error>
+          <mat-error *ngIf="f.file.errors.required">Challenge artifact is required.</mat-error>
         </mat-error>
-
-        <div class="input-group">
-          <input type="number" #amt class="input" formControlName="rewardPrize" placeholder="Reward Prize">
-          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay </button>
-          <div class="text-danger" *ngIf="rewardPrize?.dirty && rewardPrize?.invalid">
-            Challenge Rewards to be filled either 0 or some value
-          </div>
-        </div>
 
         <div class="my1">
           <input [owlDateTimeTrigger]="sdt" [owlDateTime]="sdt" class="input" placeholder="Challenge Expiration Date"
             formControlName="expiryDate" readonly>
-          <!-- <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span> -->
           <owl-date-time #sdt></owl-date-time>
           <div class="text-danger" *ngIf="expiryDate?.dirty && expiryDate?.invalid">
             Challenge Expiry Date is required
           </div>
         </div>
+
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1" (change)="onItemChange(true)">Reward</mat-radio-button>
+          <mat-radio-button value="2" (change)="onItemChange(false)">Free</mat-radio-button>
+        </mat-radio-group>
+
+        <div class="input-group" *ngIf="isSelected">
+          <input type="number" #amt class="input" formControlName="rewardPrize" placeholder="Reward Prize">
+          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay</button>
+          <!-- <div class="text-danger" *ngIf="rewardPrize?.dirty && rewardPrize?.invalid">
+            Challenge Rewards cannot have 0 dollars
+          </div> -->
+        </div>
+        
         <div class="uploadbtn">
           <div class="mt-2">
             <button class="btn btn-primary">Upload Challenge</button>
@@ -172,6 +202,7 @@
             <p class="successMsg">{{successMessage}}</p>
           </div>
         </div>
+        
       </div>
     </form>
   </div>
