@@ -6,6 +6,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FeedbackComponent } from '../components/feedback/feedback.component';
 
 import { InnovatorProperties } from '../models/InnovatorProperties';
+import { DashboardService } from '../services/dashboard.service';
 import { SolutionService } from '../services/solution.service';
 
 @Component({
@@ -19,12 +20,15 @@ export class SolutionComponent implements OnInit {
   public isEdit: any;
   public info;
   public challengeName;
+  selectedFile: File;
 // public challengeInfo=[];
   public loggedInUser;
   public challengeId;
+  public uploadSuccess=false;
   // logg = 'Hi Arshad';
   constructor(
     private service: SolutionService,
+    private service1:DashboardService,
     private feedservice: FeedbackComponent,
     private activateRoute: ActivatedRoute,
     private router: Router
@@ -38,23 +42,46 @@ export class SolutionComponent implements OnInit {
     this.getinfo();
     // this.setLog();
   }
+
+
   onsubmit(form: NgForm) {
-    if (form.valid) {
+    if (form) {
       this.loggedInUser = localStorage.getItem('userName');
       console.log('Solved by:', this.loggedInUser);
-      this.innovator.solvedBy = this.loggedInUser;
-      this.innovator.challengeId = this.challengeId;
-      this.innovator.challengeTitle = this.info.challengeTitle;
-      this.service.addDetails(this.innovator).subscribe((data) => {
-        this.isEdit = 'Data Stored Successfully';
-        this.router.navigateByUrl("/dashboard");
-      });
-    } else {
-      this.isEdit = 'Please Enter Correct Details!!';
+      form.value.solvedBy = this.loggedInUser;
+      form.value.challengeId = this.challengeId;
+      form.value.challengeTitle = this.info.challengeTitle;
+      const item = form.value;
+      const uploadFileData = new FormData();
+      console.log("file:", this.selectedFile);
+      uploadFileData.append('item', JSON.stringify(item));
+      uploadFileData.append('file', this.selectedFile);
+      if(form.valid)
+    {
+      this.service.addDetails(uploadFileData).subscribe(data => {
+        console.log(form.value);
+        this.uploadSuccess= true;
+        this.service1.getUpdatedAttempt(this.innovator.challengeId).subscribe(data=>{
+          console.log(data);
+        })
+        this.router.navigateByUrl("/dashboard")
+    });
+    }
+      else{
+        console.log("form is invalid");
+      }
+      
+    //   this.service.addDetails(uploadFileData).subscribe((data) => {
+    //   this.isEdit = 'Data Stored Successfully';
+      
+    //   this.router.navigateByUrl("/dashboard");
+    //   });
+    // } else {
+    //   this.isEdit = 'Please Enter Correct Details!!';
+    // }
     }
   }
   getinfo(){
-    
     this.service.getinfo(this.challengeId).subscribe((data) => {
       // debugger;
       // let list = [];
@@ -69,37 +96,10 @@ export class SolutionComponent implements OnInit {
     });
   }
 
-  // config: AngularEditorConfig = {
-  //   editable: true,
-  //   spellcheck: true,
-  //   height: '2rem',
-  //   minHeight: '2rem',
-  //   width: '25rem',
-  //     minWidth: '25rem',
-  //   placeholder: 'Enter text here...',
-  //   translate: 'yes',
-  //     enableToolbar: false,
-  //     showToolbar: false,
-  //   defaultParagraphSeparator: 'p',
-  //   defaultFontName: 'Arial',
-  //   toolbarHiddenButtons: [
-  //     ['bold']
-  //     ],
-  //   customClasses: [
-  //     {
-  //       name: "quote",
-  //       class: "quote",
-  //     },
-  //     {
-  //       name: 'redText',
-  //       class: 'redText'
-  //     },
-  //     {
-  //       name: "titleText",
-  //       class: "titleText",
-  //       tag: "h1",
-  //     },
-  //   ],
+  public onFileChanged(event) {
+    const file = event.target.files[0];
+    this.selectedFile = file;
+  }
 
-  // };
+  
 }

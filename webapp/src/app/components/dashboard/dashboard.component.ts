@@ -38,11 +38,6 @@ export class DashboardComponent implements OnInit {
   public challenge;
   public email;
   public count;
-
-
-
-
-
   public searchresult;
   setQuery(querytext) {
     this.count = querytext.split(' ').length;
@@ -59,9 +54,7 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
-
-
-
+  
   ngOnInit(): void {
     this.getContacts();
     this.getChallenge();
@@ -158,6 +151,9 @@ export class DashboardComponent implements OnInit {
   // }
   getChallengeById(challengeId) {
     console.log("User clicked on:", challengeId.challengeId);
-    this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
+      this.service.getUpdatedChallenge(challengeId.challengeId).subscribe(data=>{
+        console.log(data);
+      })
+      this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
   }
 }

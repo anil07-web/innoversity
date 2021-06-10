@@ -35,7 +35,14 @@
                         Please enter the details
                     </div>
                 </div>
-                               
+                <div class="edit1">
+                    <p style="color: black; margin-top: 2%;">Upload Files</p>
+                    <input type="file" class="form-control" [(ngModel)]="innovator.uploadFile" id="file" style="padding: 4px" accept=".pdf"
+                        (change)="onFileChanged($event)" />
+                    <!-- <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
+                    <mat-error *ngIf="f.file.errors.required">Challenge artifact is required.</mat-error>
+                    </mat-error>    -->
+                </div>          
                 <div class="mt-2">
                     <button class="btnLogin" >Submit</button>
                     <p class="valid">{{isEdit}}</p>

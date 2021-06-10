@@ -23,6 +23,10 @@ public interface ChallengeService {
 
     List<Challenge> getChallengeByName(String name);
 
+    List<Challenge> updateChallenge(UUID challengeId);
+
+    List<Challenge> updateAttempt(UUID challengeId);
+
     
 //    public String uploadFile(MultipartFile file);
 }

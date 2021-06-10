@@ -21,7 +21,6 @@ public class Challenge {
     private UUID challengeId;
     private String challengerName;
     private String[] challengeDomain;
-
     private String challengeTitle;
     private String challengeAbstract; //I make capital (Abstract) due to abstract keyword predefined in java
     private String description;
@@ -32,7 +31,9 @@ public class Challenge {
     private String uploadUrl;
     private String type;
     private Date uploadedOn;
-    private String rewardPrize=null;
+    private Integer rewardPrize;
+    private Integer views;
+    private Integer attempt;
 //    LocalDate localDate = LocalDate.now(); // used in java 8
 //    Date date =new Date();
 

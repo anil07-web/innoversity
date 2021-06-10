@@ -23,6 +23,15 @@ export class DashboardService {
     return this.http.get<Search>(`/api/v1/search/search/${queryvalue}`);
   }
 
+  getUpdatedChallenge(challengeId){
+    return this.http.get(`/api/v1/challenge/update/${challengeId}`);
+  }
+
+  getUpdatedAttempt(challengeId){
+    return this.http.get(`/api/v1/challenge/update/attempt/${challengeId}`);
+  }
+
+
   getSearchResultByNLP(queryvalue):Observable<any>{
     return this.http.get<any>(`/api/v1/search/filter/${queryvalue}?type=NN`);
   }

@@ -34,5 +34,4 @@ public interface SolutionService {
 
     public void updateSolutionFile(UUID solutionID, String description, MultipartFile file, String url) throws IOException;
 
-
 }

@@ -7,6 +7,7 @@ export class InnovatorProperties {
     public solvedBy: String;
     public solStatus: String;
     public feedback: any;
+    public uploadFile:File;
     private file:String; 
     private image:String;
     private uploadUrl: String;

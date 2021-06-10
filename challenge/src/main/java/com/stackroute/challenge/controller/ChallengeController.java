@@ -99,4 +99,12 @@ public class ChallengeController {
         System.out.println("hello");
         return this.challengeService.getChallengeByName(challengerName);
     }
+    @GetMapping("/update/{challengeId}")
+    public List<Challenge> updateChallenge(@PathVariable("challengeId") UUID challengeId){
+        return this.challengeService.updateChallenge(challengeId);
+    }
+    @GetMapping("/update/attempt/{challengeId}")
+    public List<Challenge> updateAttempt(@PathVariable("challengeId") UUID challengeId){
+        return this.challengeService.updateAttempt(challengeId);
+    }
 }

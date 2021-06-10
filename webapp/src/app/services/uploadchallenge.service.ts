@@ -14,6 +14,7 @@ export class UploadchallengeService {
       observe: 'response',
     });
   }
+  
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
 
@@ -26,6 +27,7 @@ export class UploadchallengeService {
 
     return this.http.request(req);
   }
+
   getChallengeById(challengeId){
    return this.http.get(`/api/v1/challenge/challenge/${challengeId}`);
   }

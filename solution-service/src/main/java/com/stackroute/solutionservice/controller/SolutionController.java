@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,6 +38,29 @@ public class SolutionController {
         solution.setSolStatus(SolutionStatus.NotReviewed);
         Solution savedDetails = solutionService.saveDetails(solution);
         return new ResponseEntity<>(savedDetails, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<Solution> uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item) throws IOException {
+
+        Solution challengeObj = new ObjectMapper().readValue(item, Solution.class);
+//        System.out.println("challenge name:"+solutionObj.getChallengerName());
+//        System.out.println("challenge name:"+challengeObj.getChallengeTitle());
+//        System.out.println("file name:"+file.getOriginalFilename());
+        UUID uuid = UUID.randomUUID();
+//        challengeObj.setChallengeId(uuid);
+        challengeObj.setSolutionId(uuid);
+        challengeObj.setSolStatus(SolutionStatus.NotReviewed);
+////        challengeObj.setUploadedOn(new Date());
+        challengeObj.setFileByte(file.getBytes());
+        challengeObj.setFile(file.getOriginalFilename());
+        String fileUrl = solutionService.uploadFile(file);
+        final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
+        challengeObj.setUploadUrl(fileUrl);
+        Solution savedChallenge = solutionService.saveDetails(challengeObj);
+//        rabbitMqSender.send(challengeObj);
+//        System.out.println(challengeObj);
+        return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
 
     @PutMapping("/solve/{solutionId}")
@@ -93,12 +117,11 @@ public class SolutionController {
 //    }
 
     @PutMapping("/uploadFile/{solutionId}")
-    public void updateSolution(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item, @PathVariable("solutionId") UUID solutionId) throws IOException {
-        System.out.println("description:"+item);
+    public void updateSolution(@RequestParam(value = "file") MultipartFile file /*@RequestParam("item") String item*/, @PathVariable("solutionId") UUID solutionId) throws IOException {
+//        System.out.println("description:"+item);
         System.out.println("file:"+file.getOriginalFilename());
-        String fileUrl = solutionService.uploadFile(file);
-        solutionService.updateSolutionFile(solutionId, item, file, fileUrl);
-
+//        String fileUrl = solutionService.uploadFile(file);
+//        solutionService.updateSolutionFile(solutionId, item, file, fileUrl);
 //        ChallengeObj.setFileByte(file.getBytes());
 //        solutionObj.setFile(file.getOriginalFilename());
 //        ChallengeObj.setImageByte(image.getBytes());

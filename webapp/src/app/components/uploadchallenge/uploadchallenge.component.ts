@@ -50,6 +50,8 @@ export class UploadchallengeComponent implements OnInit {
      rules: ['',[Validators.required]],
      rewardPrize: ['0'],
      expiryDate: ['',[Validators.required]],
+     views:['0'],
+     attempt:['0'],
     //  attachments:['',[Validators.required]],
     //  challengeArtifacts:['',[Validators.required]],
      file: new FormControl('', [Validators.required])
