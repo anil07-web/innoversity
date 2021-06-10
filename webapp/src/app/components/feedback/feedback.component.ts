@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { feedback } from 'src/app/models/feedback';
+import { SolutionAnalysisService } from 'src/app/services/solution-analysis.service';
 import { SolutionService } from 'src/app/services/solution.service';
 
 @Component({
@@ -29,6 +30,7 @@ export class FeedbackComponent implements OnInit {
   public loggedInUser: string;
   public feedBackList: Array<any>[];
   public fileName;
+  public value=false;
   public showUpdate= false;
 
   ngOnInit(): void {
@@ -73,10 +75,11 @@ export class FeedbackComponent implements OnInit {
       console.log('logged In user:', this.loggedInUser);
       this.feed.commentedBy = this.loggedInUser;
       this.service.addfeed(this.solutionId, this.feed).subscribe((data) => {
-        this.isEdit = 'Comment Posted!!!!!';
-        console.log("comment posted");
-        this.getByid;
+        // this.refreshPage();
+        this.getByid();
+        
       });
+      
     } else {
       this.isEdit = 'Please Enter Correct Details!!';
     }
@@ -84,11 +87,28 @@ export class FeedbackComponent implements OnInit {
   updateSolution() {
     this.router.navigateByUrl(`update/${this.solutionId}`);
   }
+hireInnovator(){
+  // const status = value?"Hired":"Rejected";
+  // if(value=="true"){
+  //   const status="Hired";
+  // }
 
+  this.value=true;
+  
+  const status = this.value?"Hired":"Accepted";
+        this.service.updateStatus(this.solutionId, status).subscribe(data => {
+          alert("Innovator is Hired");
+        });
+
+}
   openFile() {
     console.log("open file here");
     window.open(this.info1.uploadUrl, "_blank");
   }
+  // refreshPage(){
+  //   this.router.navigateByUrl(`feedback/${this.solutionId}`);
+  //    window.location.reload()
+  // }
 }
   function subscribe(arg0: (data: any) => void) {
     throw new Error('Function not implemented.');

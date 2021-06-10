@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SolutionService } from 'src/app/services/solution.service';
 
 @Component({
@@ -22,7 +22,8 @@ export class UpdatesolutionComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private service: SolutionService,
     private fb: FormBuilder,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) {}
   public solutionId: any;
   public desc;
@@ -66,7 +67,7 @@ export class UpdatesolutionComponent implements OnInit {
     this.fileChanged = true;
   }
 
-  onSubmit() {
+  onSubmit(updateForm: FormGroup) {
     // console.log(this.updateForm.get('description').value);
     // const item = this.updateForm.get('description').value;
     // const uploadFileData = new FormData();
@@ -74,7 +75,14 @@ export class UpdatesolutionComponent implements OnInit {
     // uploadFileData.append('file', this.selectedFile);
     // this.service.updateSolution(this.solutionId, uploadFileData).subscribe((data) => {
     //     console.log(this.solutionId);
-    //   });
+    //   });\
+    if(this.updateForm.valid){
+      this.router.navigateByUrl(`feedback/${this.solutionId}`);
+    }
+    else{
+      console.log("The form is invalid");
+    }
+    
   }
 
   checkUpdate() {
@@ -87,6 +95,7 @@ export class UpdatesolutionComponent implements OnInit {
       uploadFileData.append('file', this.selectedFile);
       this.service.updateSolution(this.solutionId, uploadFileData).subscribe((data) => {
           console.log(this.solutionId);
+         
         });
     } else {
       console.log('update description');
