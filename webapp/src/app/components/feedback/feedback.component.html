@@ -2,18 +2,24 @@
     <app-header [isLoggedIn]="true"></app-header>
     <div class="container1">
         <div class="solDetails">
-            <p class="card-text">Challenge Title:{{info1.challengeTitle}}</p>
-            <p class="card-text">Solution Title:{{info1.solution}}</p>
-            <p class="card-text">Solution Description:{{info1.description}}</p>
-            <p class="card-text">Solved By:{{info1.solvedBy}}</p>
-            <p class="card-text">Solution Id:{{info1.solutionId}}</p>
+            <p class="card-text"><strong>Challenge Title: </strong>{{info1.challengeTitle}}</p>
+            <p class="card-text"><strong>Solution Title: </strong>{{info1.solution}}</p>
+            <p class="card-text"><strong>Solution Description: </strong>{{info1.description}}</p>
+            <p class="card-text"><strong>Solved By: </strong>{{info1.solvedBy}}</p>
+            <p class="card-text"><strong>Status is: </strong>{{info1.solStatus}}</p>
+            <!-- <button (click)="updateSolution()">Update Solution </button> -->
             <div *ngIf="fileName">
-                <p>Uploaded file: {{fileName}}</p>
+                <p class="card-text"><strong>Uploaded file: </strong>{{fileName}}</p>
                 <button (click)="openFile()">open</button>
+                <button (click)="openFile()">Download</button>
             </div>
-            <a ><button *ngIf="showUpdate" class="button button1" (click)="updateSolution()">Update Solution</button></a>
+            <div>
+            <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()">Update Solution</button></a>
+            <a ><button [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" class="button button1" (click)="hireInnovator()">Hire</button></a>
+            </div>
         </div>
-
+    </div>
+    <div class="container2">
         <div class="wrapper">
             <div class="title">
               <h1>FeedBack</h1>   
@@ -21,19 +27,17 @@
     <div class="row" >
           <!-- <div class="card mt-3" class="p-3 mb-2 bg-secondary text-white" > -->
             <div class="card-body">
-              <!-- <h5 class="card-title">Solution Id:{{num}}</h5> -->
-              <!-- <p class="card-text">Solution Description:{{info1.description}}</p> -->
-              <!-- <p class="feed-text">Solution Description:{{info1.feedback}}</p> -->
-              <!-- <p class="feed-text">Solution Description:{{list}}</p> -->
+              
 
               <div *ngFor="let feedBack of feedBackList">
-                <!-- <p class="feed-text">Solution Description:{{feedBack.comment}}</p>
-                <p class="feed-text">Solution Description:{{feedBack.commentedBy}}</p> -->
                 <p class="feed-text"><strong>{{feedBack.commentedBy}}</strong> commented <strong>{{feedBack.comment | titlecase}}</strong></p>
               </div>
               <div class="row">
                 <div class="col-md-4 offset-md-4">
                     <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
+                        <!-- <div *ngFor="let feedBack of feedBackList">
+                            <p class="feed-text"><strong>{{feedBack.commentedBy}}</strong> commented <strong>{{feedBack.comment | titlecase}}</strong></p>
+                          </div> -->
         <div class="mt-2">
             <!-- <input type="text" #comment="ngModel" name="comment" required  class="form-control" [(ngModel)]="feed.comment" placeholder="Write comments"> -->
             <textarea name="comment" #comment="ngModel" id="styled" required  class="form-control" [(ngModel)]="feed.comment" onfocus="this.value='';  setbg('#e5fff3');" onblur="setbg('white')" placeholder="Enter your Comments
@@ -49,7 +53,8 @@
             </div>
         </div> -->
         <div class="mt-2">
-            <button class="btn btn-success">Post Comment</button>
+            <!-- <button class="btn btn-success"> <a href="/feedback" > Post Comment</a> </button> -->
+            <button class="btn btn-success">Post Comment </button>
             <p class="valid">{{isEdit}}</p>
         </div>
                     </form>
@@ -65,6 +70,7 @@
 document.getElementById("styled").style.background=color
 }
     </script>
+    <!-- (click)="refreshPafge()" -->
 <!-- <app-header [isLoggedIn]="true"></app-header>
 <div class="container-fluid">
     <div class="row">

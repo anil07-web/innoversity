@@ -1,9 +1,12 @@
 package com.stackroute.solutionservice.controller;
 
 
+import com.amazonaws.services.personalize.model.Solution;
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.stackroute.solutionservice.model.Feedback;
-import com.stackroute.solutionservice.model.Solution;
 import com.stackroute.solutionservice.model.SolutionStatus;
 import com.stackroute.solutionservice.service.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -134,4 +137,19 @@ public class SolutionController {
 //        rabbitMqSender.send(ChallengeObj);
 //        return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
+    @GetMapping("/download/{solutionId}")
+    public ResponseEntity<byte[]> getFile(@PathVariable UUID solutionId) throws IOException{
+        Solution solDB = solutionService.getSolutionBySolutionId(solutionId);
+        System.out.println("The details are"+solDB.getfile());
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + solDB.getfile() + "\"")
+                .body(solDB.getfileByte());
+    }
+//    @GetMapping("/download/{bookTitle}")
+//    public ResponseEntity<byte[]> getFile(@PathVariable String bookTitle) throws BookNotFound{
+//        Book fileDB = bookService.getBookDetails(bookTitle);
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getFile() + "\"")
+//                .body(fileDB.getFileByte());
+//    }
 }

@@ -25,21 +25,28 @@
     display: grid;
 } */
 .container1{
-    background: url("/assets/images/feedback2.jpg") no-repeat top center;
+    background: url("/assets/images/feed4.jpg") no-repeat top center;
     background-size: cover;
-    height: 145vh;
+    height: 75vh;
   }
+  /* .container2{ */
+    /* background: url("/assets/images/feed20.jpg") no-repeat top center;
+    background-size: cover; */
+    /* margin-bottom: 5000px; */
+  /* } */
   .wrapper{
     position: relative;
-    top: 25%;
+    top: 1%;
+    bottom: 45%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-500px, 25px);
     width: 100%;
     max-width: 1000px;
-    background: rgba(37, 37, 37, 0.932);
+    /* background: rgba(37, 37, 37, 0.932); */
+    background: rgb(33 103 136 / 93%);
     padding: 30px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(42, 45, 80, 0.3);
+    box-shadow: 0 0 10px rgba(80, 42, 64, 0.3);
   } 
   
   .wrapper .title h1{
@@ -59,13 +66,22 @@
 }
 .valid{
   margin-top: 10px;
-  
+  color: rgb(208, 27, 40);
+}
+.card-text{
+  /* margin-top: 5px; */
+  padding-top: 15px;
+  color: rgb(102, 98, 98);
 }
 
 .solDetails {
   margin-left: 5%;
 }
 
+
 .feed-text {
-  color: rgb(247, 94, 94);
+  color: rgb(235, 206, 213);
 }
+/* .btn2{
+
+} */

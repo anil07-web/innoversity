@@ -15,7 +15,7 @@
                 <div class="d-flex flex-row" >
                     <a ><button class="button button1" (click)="solAccepted(details,true)" *ngIf="details.solStatus == 'NotReviewed'">Accept</button></a>
                     <a ><button class="button button2" (click)="solAccepted(details,false)" *ngIf="details.solStatus == 'NotReviewed'">Reject</button></a>
-                    <a ><button class="button button1" (click)="feedbackView(details)" *ngIf="details.solStatus=='Accepted'">View More</button></a>
+                    <a ><button class="button button1" (click)="feedbackView(details)" *ngIf="details.solStatus=='Accepted' || details.solStatus=='Hired'" >View More</button></a>
                 </div>
             </div>
         </div>

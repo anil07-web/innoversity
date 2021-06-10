@@ -38,5 +38,8 @@ export class SolutionService {
   updateSolution(id, data) {
     return this.http.put(`/api/v1/solution/uploadFile/${id}`, data);
   }
+  updateStatus(solutionId,solStatus){
+    return this.http.put(`/api/v1/solution/status/${solutionId}?solStatus=${solStatus}`, { responseType: 'text' });
+  }
 
 }
