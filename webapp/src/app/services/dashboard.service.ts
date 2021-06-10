@@ -24,6 +24,16 @@ export class DashboardService {
   getSearchResult(queryvalue):Observable<Search>{
     return this.http.get<Search>(`/api/v1/search/search/${queryvalue}`);
   }
+
+  getUpdatedChallenge(challengeId){
+    return this.http.get(`/api/v1/challenge/update/${challengeId}`);
+  }
+
+  getUpdatedAttempt(challengeId){
+    return this.http.get(`/api/v1/challenge/update/attempt/${challengeId}`);
+  }
+
+
  
  
 

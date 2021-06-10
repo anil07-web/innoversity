@@ -4,7 +4,7 @@
         <div class="title">
             <h1> {{challenge?.challengeTitle|uppercase}}</h1>
         </div>
-        <div class="row" style="border: solid;border-radius: 2%;">
+        <div class="row" style="border: solid;border-radius: 3%;">
             <div class="col-md-3">
                 <img src="assets/images/logo4.jpg" alt="">
             </div>
@@ -20,22 +20,6 @@
         <div style="margin-top: 8pt"><strong>Challenge ExpiryDate : </strong><span>{{challenge?.expiryDate|date}}</span></div>
         </div>
 
-        </div>
-        <!-- <div style="margin-top: 5pt;"> <strong>Challenge Title : </strong><span> </span></div> -->
-        <!-- <div  style="margin-top: 8pt; "> <strong>Challenger Name : </strong><span> {{challenge?.challengerName}}</span></div>
-        <div style="margin-top: 8pt;"><strong >Challenge Domain : </strong></div>
-        <mat-chip-list>
-            <div *ngFor="let a of challenge.challengeDomain" matTooltip="Domains">
-                <mat-chip>{{a}}</mat-chip>
-            </div>
-        </mat-chip-list> -->
-        <div class="row" style="background-color: rgb(175, 175, 201);">
-            <div class="col-md-3 mt-3" >
-                <strong style="align-items: center;">ChallengeAbstract </strong>
-            </div>
-            <div class="col-md-9" style="text-align: justify;">
-                <div style="margin-top: 8pt;margin-bottom: 8pt;"><div> {{challenge?.challengeAbstract}}</div></div>
-            </div>
         </div>
         <div style="margin-top: 8pt;margin-bottom: 8pt;"><strong>ChallengeAbstract : </strong><div> {{challenge?.challengeAbstract}}</div></div>
         <div style="margin-top: 8pt"><strong>Challenge Description : </strong><div>{{challenge?.description}}</div></div>

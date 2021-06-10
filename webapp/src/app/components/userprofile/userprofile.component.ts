@@ -15,6 +15,8 @@ export class UserprofileComponent implements OnInit {
  public user; 
 
  public challenge;
+ public challengeIsNull:boolean=false;
+ public solutionIsNull:boolean=false;
  public solution; 
  public pic;
   ngOnInit(): void {
@@ -35,6 +37,10 @@ export class UserprofileComponent implements OnInit {
       return this.service.getChallenge().subscribe(data=>{
         this.challenge=data;
         console.log(this.challenge);
+        if(this.challenge.length==0){
+          this.challengeIsNull=true;
+        }
+        console.log(this.challengeIsNull);
       })
    }
 
@@ -43,6 +49,9 @@ export class UserprofileComponent implements OnInit {
     return this.service.getUserSolution().subscribe(data=>{
       this.solution=data;
       console.log(this.solution);
+      if(this.solution.length==0){
+        this.solutionIsNull=true;
+      }
     })
    }
 

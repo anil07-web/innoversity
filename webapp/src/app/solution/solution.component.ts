@@ -6,6 +6,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FeedbackComponent } from '../components/feedback/feedback.component';
 
 import { InnovatorProperties } from '../models/InnovatorProperties';
+import { DashboardService } from '../services/dashboard.service';
 import { SolutionService } from '../services/solution.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class SolutionComponent implements OnInit {
   // logg = 'Hi Arshad';
   constructor(
     private service: SolutionService,
+    private service1:DashboardService,
     private feedservice: FeedbackComponent,
     private activateRoute: ActivatedRoute,
     private router: Router
@@ -47,6 +49,9 @@ export class SolutionComponent implements OnInit {
       this.innovator.challengeTitle = this.info.challengeTitle;
       this.service.addDetails(this.innovator).subscribe((data) => {
         this.isEdit = 'Data Stored Successfully';
+        this.service1.getUpdatedAttempt(this.innovator.challengeId).subscribe(data=>{
+          console.log(data);
+        })
         this.router.navigateByUrl("/dashboard");
       });
     } else {
@@ -69,37 +74,5 @@ export class SolutionComponent implements OnInit {
     });
   }
 
-  // config: AngularEditorConfig = {
-  //   editable: true,
-  //   spellcheck: true,
-  //   height: '2rem',
-  //   minHeight: '2rem',
-  //   width: '25rem',
-  //     minWidth: '25rem',
-  //   placeholder: 'Enter text here...',
-  //   translate: 'yes',
-  //     enableToolbar: false,
-  //     showToolbar: false,
-  //   defaultParagraphSeparator: 'p',
-  //   defaultFontName: 'Arial',
-  //   toolbarHiddenButtons: [
-  //     ['bold']
-  //     ],
-  //   customClasses: [
-  //     {
-  //       name: "quote",
-  //       class: "quote",
-  //     },
-  //     {
-  //       name: 'redText',
-  //       class: 'redText'
-  //     },
-  //     {
-  //       name: "titleText",
-  //       class: "titleText",
-  //       tag: "h1",
-  //     },
-  //   ],
-
-  // };
+  
 }

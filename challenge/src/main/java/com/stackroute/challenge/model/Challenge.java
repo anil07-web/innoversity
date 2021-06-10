@@ -33,6 +33,8 @@ public class Challenge {
     private String type;
     private Date uploadedOn;
     private Integer rewardPrize;
+    private Integer views;
+    private Integer attempt;
 //    LocalDate localDate = LocalDate.now(); // used in java 8
 //    Date date =new Date();
 
