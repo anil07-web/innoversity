@@ -23,4 +23,10 @@ export class DashboardService {
     return this.http.get<Search>(`/api/v1/search/search/${queryvalue}`);
   }
 
+  getSearchResultByNLP(queryvalue):Observable<any>{
+    return this.http.get<any>(`/api/v1/search/filter/${queryvalue}?type=NN`);
+  }
+ 
+ 
+
 }
