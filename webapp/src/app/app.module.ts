@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Component, NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 
-
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatRadioModule} from '@angular/material/radio';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -28,7 +28,9 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MatChipsModule } from "@angular/material/chips";
 import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
 import { UserprofileComponent} from './components/userprofile/userprofile.component';
-import { UpdatesolutionComponent} from './components/updatesolution/updatesolution.component'
+import { UpdatesolutionComponent} from './components/updatesolution/updatesolution.component';
+import { DetailedChallengeDesComponent } from './components/detailed-challenge-des/detailed-challenge-des.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,7 @@ import { UpdatesolutionComponent} from './components/updatesolution/updatesoluti
     SpeechDialogComponent,
     UserprofileComponent,
     UpdatesolutionComponent,
+    DetailedChallengeDesComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,9 @@ import { UpdatesolutionComponent} from './components/updatesolution/updatesoluti
     MatInputModule,
     MatChipsModule,
     CommonModule,
-    NgMultiSelectDropDownModule.forRoot()
+    MatRadioModule,
+    MatTabsModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [DashboardComponent, FeedbackComponent],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 package com.stackroute.solutionservice.service;
 
+
 import com.stackroute.solutionservice.model.Feedback;
 import com.stackroute.solutionservice.model.Solution;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,6 +33,5 @@ public interface SolutionService {
     String uploadFile(MultipartFile multipartFile);
 
     public void updateSolutionFile(UUID solutionID, String description, MultipartFile file, String url) throws IOException;
-
 
 }

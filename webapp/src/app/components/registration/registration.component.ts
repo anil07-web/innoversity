@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
     picture: [''],
     gender: ['',[Validators.required]]
   });
-  this.registerForm.get('city').setValue('Bangalore');
+  // this.registerForm.get('city').setValue('Bangalore');
 }
 
 

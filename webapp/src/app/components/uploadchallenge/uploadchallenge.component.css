@@ -4,7 +4,7 @@
 }
 
 .container1{
-  background: url("/assets/images/challengebackground.jpg") no-repeat top center;
+  /* background: url("/assets/images/challengebackground.jpg") no-repeat top center; */
   background-size: cover;
   height: 145vh;
 }
@@ -104,4 +104,29 @@
 
 .my1{
   display: flex;
+}
+
+.mat-radio-button  {
+  margin-left: 16px;
+  color: white;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+  color:  #c5ecfd;
+}
+
+.mat-tab text{
+  color: #c5ecfd;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+color:#c5ecfd;
+}
+
+textarea{
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.3);
 }

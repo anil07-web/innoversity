@@ -11,6 +11,7 @@
             <div *ngIf="fileName">
                 <p class="card-text"><strong>Uploaded file: </strong>{{fileName}}</p>
                 <button (click)="openFile()">open</button>
+                <button (click)="openFile()">Download</button>
             </div>
             <div>
             <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()">Update Solution</button></a>

@@ -8,6 +8,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.mongodb.client.result.UpdateResult;
 import com.stackroute.challenge.model.Challenge;
 import com.stackroute.challenge.repository.ChallengeRespository;
 
@@ -23,6 +24,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -123,6 +125,44 @@ public class ChallengeServiceImpl implements ChallengeService {
         System.out.println(user);
         return user;
     }
+
+    @Override
+    public List<Challenge> updateChallenge(UUID challengeId) {
+        List<Challenge> challenge = challengeRespository.findByChallengeId(challengeId);
+        Query query = new Query(Criteria.where("challengeId").is(challengeId));
+        Update updateQuery = new Update();
+        int views = challenge.get(0).getViews() + 1;
+        updateQuery.set("views", views);
+        UpdateResult result = mongoTemplate.upsert(query, updateQuery, "challenge");
+        return challenge;
+    }
+
+    @Override
+    public List<Challenge> updateAttempt(UUID challengeId) {
+        List<Challenge> challenge = challengeRespository.findByChallengeId(challengeId);
+        Query query = new Query(Criteria.where("challengeId").is(challengeId));
+        Update updateQuery = new Update();
+        int attempt = challenge.get(0).getAttempt() + 1;
+        updateQuery.set("attempt", attempt);
+        UpdateResult result = mongoTemplate.upsert(query, updateQuery, "challenge");
+        return challenge;
+    }
+
+
+//        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
+//        System.out.println("solution extracted:"+solution);
+//        Query query = new Query(Criteria.where("solutionId").is(solutionId));
+//        Update updateQuery = new Update();
+//        List<Feedback> existingFeed = solution.get(0).getFeedback();
+//        if (existingFeed == null) {
+//            List<Feedback> feedbackList = new ArrayList<>();
+//            feedbackList.add(feedback);
+//            updateQuery.set("feedback", feedbackList);
+//        } else {
+//            existingFeed.add(feedback);
+//            updateQuery.set("feedback", existingFeed);
+//        }
+//        UpdateResult result = mongoTemplate.upsert(query, updateQuery, "solution");
 
     private String generateFileName(MultipartFile multiPart) {
         return new Date().getTime() + "-" + multiPart.getOriginalFilename()

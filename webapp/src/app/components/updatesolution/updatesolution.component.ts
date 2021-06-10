@@ -118,10 +118,8 @@ export class UpdatesolutionComponent implements OnInit {
 
   uploadbook(updateForm: FormGroup) {
     this.isLoading = true;
-
     const item = updateForm.value;
     const uploadFileData = new FormData();
-
     uploadFileData.append('item', JSON.stringify(item));
     uploadFileData.append('file', this.selectedFile);
     this.httpClient
