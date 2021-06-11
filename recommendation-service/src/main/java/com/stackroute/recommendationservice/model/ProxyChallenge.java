@@ -31,4 +31,6 @@ public class ProxyChallenge {
     private String type;
     private Date uploadedOn;
     private Integer rewardPrize;
+    private Integer views;
+    private Integer attempt;
 }

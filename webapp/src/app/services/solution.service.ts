@@ -42,4 +42,8 @@ export class SolutionService {
     return this.http.put(`/api/v1/solution/status/${solutionId}?solStatus=${solStatus}`, { responseType: 'text' });
   }
 
+  getUpdatedHired(challengeId){
+    return this.http.get(`/api/v1/challenge/update/hired/${challengeId}`);
+  }
+
 }
