@@ -15,7 +15,8 @@
             </div>
             <div>
             <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()">Update Solution</button></a>
-            <a ><button [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" class="button button1" (click)="hireInnovator()">Hire</button></a>
+            <div *ngIf="hired">You have Hired maximum number of innoVators</div>
+            <a ><button [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" [disabled]="hired" class="button button1" (click)="hireInnovator()">Hire</button></a>
             </div>
         </div>
     </div>

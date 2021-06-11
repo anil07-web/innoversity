@@ -34,6 +34,7 @@ public class Challenge {
     private Integer rewardPrize;
     private Integer views;
     private Integer attempt;
+    private Integer hired;
 //    LocalDate localDate = LocalDate.now(); // used in java 8
 //    Date date =new Date();
 
