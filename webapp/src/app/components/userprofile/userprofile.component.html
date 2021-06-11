@@ -87,6 +87,7 @@
         </div>
       </div>
     </div>
+    
     <div *ngIf="challengeIsNull" style="text-align: center;font-size: 15pt;">!! No Challenges to display </div>
   </div>
   <div class="row">
@@ -104,10 +105,15 @@
           <a><button class="button button2" type="button" disabled
               *ngIf="s.solStatus == 'NotReviewed'">Reject</button></a>
           <a *ngIf="s.solStatus=='Accepted'"><button class="button button1" (click)="feedbackView(s)">View
-              More</button> <i class="fas fa-check-circle"></i></a>
+              More</button></a>   
+          <h3 *ngIf="s.solStatus=='Hired'"><p>Hired
+          </p><i class="fas fa-check-circle"></i></h3>
+          <a *ngIf="s.solStatus=='Hired'"><button class="button button1" (click)="feedbackView(s)">View
+                More</button> </a>   
         </div>
       </div>
     </div>
     <div *ngIf="solutionIsNull" style="text-align: center;font-size: 15pt;">!! No Solution to display </div>
   </div>
 </div>
+

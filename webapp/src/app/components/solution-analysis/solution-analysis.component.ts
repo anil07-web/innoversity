@@ -34,11 +34,11 @@ export class SolutionAnalysisComponent implements OnInit {
 
   getSolutionByChallengeId(challengeId){
     this.service.getSolutionByChallengeId(this.challengeId).subscribe(data=>{
-      // console.log(data);
       this.solutionDetailsBychallenge=data;
       console.log("solution details:", this.solutionDetailsBychallenge);
     });
   }
+
   // updateStatus(details){
   //   this.service.updateStatus(details.solutionId,{
   //       solStatus:details.solStatus?"Accepted":"Rejected",
@@ -57,4 +57,10 @@ export class SolutionAnalysisComponent implements OnInit {
       console.log("solution Id:", details.solutionId);
       this.router.navigateByUrl(`feedback/${details.solutionId}`);
     }
+
+    // feedbackView1(details) {
+    //   const color=true;
+    //   console.log("solution Id:", details.solutionId);
+    //   this.router.navigateByUrl(`feedback/${details.solutionId}`);
+    // }
   }
