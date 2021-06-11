@@ -3,17 +3,17 @@
  
   <form class="register-in-form" [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm)">
  
-    <p class="card-text"><strong>CHALLENGE NAME : </strong>{{info.challengeTitle}}</p>
-    <p class="card-text"><strong>SOLUTION NAME : </strong>{{info.solution}}</p>
+    <p class="card-text" style="padding-top: 5px;padding-left: 10px;"><strong>CHALLENGE NAME : </strong>{{info.challengeTitle}}</p>
+    <p class="card-text" style="padding-top: 5px;padding-left: 10px;"><strong>SOLUTION NAME : </strong>{{info.solution}}</p>
   
 
   <div *ngIf="fileName">
-    <p class="card-text"><strong>Previously Uploaded file : </strong>{{fileName}}</p>
-      <button (click)="openFile()">open</button>
+    <p class="card-text" style="padding-top: 5px;padding-left: 10px;"><strong>Previously Uploaded file : </strong>{{fileName}}</p>
+      <button (click)="openFile()" class="btn btn-dark btn-sm" style="margin-left: 10px;">open</button>
     </div>
   <div class="desc">
     <!-- <textarea formControlName="description" class="form-control"></textarea> -->
-    <h2>Solution Description</h2>
+    <h1 style="padding-top: 5px;padding-left: 10px;">Solution Description</h1>
     <textarea  rows="20"  id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  formControlName="description" class="form-control"></textarea>
   </div>
 
@@ -30,7 +30,7 @@
     <mat-error *ngIf="f.file.errors.required">is required.</mat-error>
   </mat-error>
   <div class="col-sm py-3 offset-sm-5">
-    <button mat-raised-button class="button" (click)="checkUpdate()">
+    <button mat-raised-button class="btn btn-primary" (click)="checkUpdate()">
       Update
     </button>
   </div>

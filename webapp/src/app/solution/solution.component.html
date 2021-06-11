@@ -3,19 +3,19 @@
     <div class="main">
         <div class="side">
             <h1 class="sign-in-heading">Challenge details</h1>
-         <h3>Challenge Abstract:"{{info.challengeAbstract}}"</h3>
-         <h3>Challenge Description:"{{info.description}}"</h3>
-         <h3>Expiration Date:"{{info.expiryDate | date}}"</h3>
-         <h3>Uploaded On:"{{info.uploadedOn | date}}"</h3>
-         <h3>Rules:"{{info.rules}}"</h3>
-         <h3>Prize Amount:"{{info.rewardPrize}}"</h3>
+         <h3 class="content"><strong>Challenge Abstract: </strong>{{info.challengeAbstract}}</h3>
+         <h3 class="content"><strong>Challenge Description: </strong>{{info.description}}</h3>
+         <h3 class="content"><strong>Expiration Date: </strong>{{info.expiryDate | date}}</h3>
+         <h3 class="content"><strong>Uploaded On: </strong>{{info.uploadedOn | date}}</h3>
+         <h3 class="content"><strong>Rules: </strong>{{info.rules}}</h3>
+         <h3 class="content"><strong>Prize Amount: </strong>{{info.rewardPrize}}</h3>
         </div>
     <div class="row">       
         <img src="/assets/images/idea.svg" width="50%"  alt="">        
         <div class="frm">
             <form #uploadsolution="ngForm" (ngSubmit)="onsubmit(uploadsolution)">
                 <div class="mt-2" >
-                   <p><strong>Challenge Name: "{{info.challengeTitle}}"</strong></p>
+                   <p style="font-size: 20px;"><strong>Challenge Name: </strong>{{info.challengeTitle}}</p>
                 </div>
                 <div  class="edit">
                     <input type="text" #solution="ngModel" name="solution"  class="form-control" required  [(ngModel)]="innovator.solution" placeholder="Provide Solution">
@@ -35,14 +35,21 @@
                         Please enter the details
                     </div>
                 </div>
+                <div  class="edit">
+                    <input type="text" #gitUrl="ngModel" name="gitUrl"  class="form-control" required  [(ngModel)]="innovator.gitUrl" placeholder="Enter github Url">
+                    <div class="text-danger" *ngIf="gitUrl.dirty && gitUrl.errors?.required"> 
+                        Please enter the details
+                    </div>
+                </div>  
                 <div class="edit1">
-                    <p style="color: black; margin-top: 2%;">Upload Files</p>
+                    <p style="color: black; margin-top: 35px;">Upload Files</p>
                     <input type="file" class="form-control" [(ngModel)]="innovator.uploadFile" id="file" style="padding: 4px" accept=".pdf"
                         (change)="onFileChanged($event)" />
                     <!-- <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
                     <mat-error *ngIf="f.file.errors.required">Challenge artifact is required.</mat-error>
                     </mat-error>    -->
-                </div>          
+                </div> 
+                     
                 <div class="mt-2">
                     <button class="btnLogin" >Submit</button>
                     <p class="valid">{{isEdit}}</p>

@@ -26,7 +26,7 @@
 
 .side {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     flex-direction: column;
     background-color: rgb(187, 78, 102);
@@ -84,4 +84,13 @@
 #forms{
     width: 300px;
    
+}
+.content{
+    text-align: start;
+    /* text-transform: lowercase; */
+}
+.sign-in-heading{
+    font-size: 30px;
+    color: #bfc9d4;
+    margin-left: 50px;
 }

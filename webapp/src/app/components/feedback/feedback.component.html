@@ -6,16 +6,16 @@
             <p class="card-text"><strong>Solution Title: </strong>{{info1.solution}}</p>
             <p class="card-text"><strong>Solution Description: </strong>{{info1.description}}</p>
             <p class="card-text"><strong>Solved By: </strong>{{info1.solvedBy}}</p>
-            <p class="card-text"><strong>Status is: </strong>{{info1.solStatus}}</p>
+            <p class="card-text"><strong>Solution is: </strong>{{info1.solStatus}}</p>
             <!-- <button (click)="updateSolution()">Update Solution </button> -->
             <div *ngIf="fileName">
                 <p class="card-text"><strong>Uploaded file: </strong>{{fileName}}</p>
-                <button (click)="openFile()">open</button>
-                <button (click)="openFile()">Download</button>
+                <button (click)="openFile()" class="btn btn-dark btn-sm" >open</button>
+                <button (click)="openFile()" class="btn btn-dark btn-sm" style=" margin-left: 8%;">Download</button>
             </div>
             <div>
-            <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()">Update Solution</button></a>
-            <a ><button [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" class="button button1" (click)="hireInnovator()">Hire</button></a>
+            <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()" style=" margin-top: 3%;">Update Solution</button></a>
+            <a ><button [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" class="btn btn-light" (click)="hireInnovator()" style=" margin-top: 3%;">Hire</button></a>
             </div>
         </div>
     </div>

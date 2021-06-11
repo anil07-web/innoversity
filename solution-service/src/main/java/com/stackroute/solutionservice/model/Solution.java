@@ -33,4 +33,5 @@ public class Solution {
     private String uploadUrl;
     private String image;
     private List<Feedback> feedback=new ArrayList<Feedback>();
+    private String gitUrl;
 }
