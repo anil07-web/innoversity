@@ -128,21 +128,21 @@
           <mat-tab label="Abstract"> 
             <!-- <angular-editor formControlName="challengeAbstract" [config]="editorConfig" [disabled]="htmlMode" placeholder="Abstract">
             </angular-editor> -->
-            <textarea formControlName="challengeAbstract" rows="13"  class="input" placeholder="Enter challenge abstract"></textarea>
+            <textarea formControlName="challengeAbstract" rows="7"  class="input" placeholder="Enter challenge abstract"></textarea>
             <div class="text-danger" *ngIf="challengeAbstract?.dirty && challengeAbstract?.invalid">
               Challenge Abstract is required
             </div>
           </mat-tab>
           <mat-tab label="Description">
             <!-- <angular-editor formControlName="description" [config]="editorConfig" [disabled]="htmlMode" placeholder="Enter Challenge Description"></angular-editor> -->
-            <textarea formControlName="description" rows="13" class="input" placeholder="Enter challenge description"></textarea>
+            <textarea formControlName="description" rows="7" class="input" placeholder="Enter challenge description"></textarea>
             <div class="text-danger" *ngIf="description?.dirty && description?.invalid">
               Challenge description is required
             </div>
           </mat-tab>
           <mat-tab label="Rules">
             <!-- <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Provide rules for the challenge"> ></angular-editor> -->
-            <textarea formControlName="rules" rows="13" class="input" placeholder="Provide rules for the challenge"></textarea>
+            <textarea formControlName="rules" rows="7" class="input" placeholder="Provide rules for the challenge"></textarea>
             <div class="text-danger" *ngIf="rules?.dirty && rules?.invalid">
             Challenge rules are required
           </div>

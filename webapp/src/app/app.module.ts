@@ -30,6 +30,7 @@ import { SpeechDialogComponent } from './speech-dialog/speech-dialog.component';
 import { UserprofileComponent} from './components/userprofile/userprofile.component';
 import { UpdatesolutionComponent} from './components/updatesolution/updatesolution.component';
 import { DetailedChallengeDesComponent } from './components/detailed-challenge-des/detailed-challenge-des.component'
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { DetailedChallengeDesComponent } from './components/detailed-challenge-d
     CommonModule,
     MatRadioModule,
     MatTabsModule,
+    MatTooltipModule,
     NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [DashboardComponent, FeedbackComponent],
