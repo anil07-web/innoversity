@@ -14,8 +14,11 @@
                 <button (click)="openFile()" class="btn btn-dark btn-sm" style=" margin-left: 8%;">Download</button>
             </div>
             <div>
+
             <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()" style=" margin-top: 3%;">Update Solution</button></a>
-            <a ><button [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" class="btn btn-light" (click)="hireInnovator()" style=" margin-top: 3%;">Hire</button></a>
+            <div *ngIf="hired.hired>=3">You have Hired maximum number of innoVators</div>
+            <a ><button [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" [disabled]="hired.hired>=3" class="btn btn-light" (click)="hireInnovator()" style=" margin-top: 3%;">Hire</button></a>
+
             </div>
         </div>
     </div>

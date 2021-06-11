@@ -52,6 +52,7 @@ export class UploadchallengeComponent implements OnInit {
      expiryDate: ['',[Validators.required]],
      views:['0'],
      attempt:['0'],
+     hired:['0'],
     //  attachments:['',[Validators.required]],
     //  challengeArtifacts:['',[Validators.required]],
      file: new FormControl('', [Validators.required])
@@ -159,7 +160,7 @@ export class UploadchallengeComponent implements OnInit {
 // }
 
   pay(amount: number) {
-    if(amount>0){
+    if(amount>0 && this.uploadChallenge.valid){
       var handler = (<any>window).StripeCheckout.configure({
         key: 'pk_test_51Itz8xSEYEK3dxaT6Wxv2YqSd5P57ZM40EWFx2j9uUIes3FqIzrw6j3ihg1iMozBLQv4isCoCw8wx4750he7t65D00h7ccJVas',
         locale: 'auto',

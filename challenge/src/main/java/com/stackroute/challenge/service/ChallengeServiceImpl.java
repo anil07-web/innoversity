@@ -148,6 +148,18 @@ public class ChallengeServiceImpl implements ChallengeService {
         return challenge;
     }
 
+    @Override
+    public List<Challenge> updateHired(UUID challengeId) {
+        List<Challenge> challenge = challengeRespository.findByChallengeId(challengeId);
+        Query query = new Query(Criteria.where("challengeId").is(challengeId));
+        Update updateQuery = new Update();
+        int hired = challenge.get(0).getHired() + 1;
+        updateQuery.set("hired", hired);
+        UpdateResult result = mongoTemplate.upsert(query, updateQuery, "challenge");
+        System.out.println("INcreased");
+        return challenge;
+    }
+
 
 //        List<Solution> solution = solutionRepo.findBySolutionId(solutionId);
 //        System.out.println("solution extracted:"+solution);
