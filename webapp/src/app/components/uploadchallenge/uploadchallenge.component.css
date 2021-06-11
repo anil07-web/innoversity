@@ -3,6 +3,10 @@
     color: green;
 }
 
+.failureMsg {
+  color: red;
+}
+
 .container1{
   /* background: url("/assets/images/challengebackground.jpg") no-repeat top center; */
   background-size: cover;

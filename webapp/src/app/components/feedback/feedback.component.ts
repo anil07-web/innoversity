@@ -30,8 +30,8 @@ export class FeedbackComponent implements OnInit {
   public loggedInUser: string;
   public feedBackList: Array<any>[];
   public fileName;
-  public value=false;
-  public showUpdate= false;
+  public value = false;
+  public showUpdate = false;
 
   ngOnInit(): void {
     // this.getinfo();
@@ -59,9 +59,9 @@ export class FeedbackComponent implements OnInit {
       console.log('The information is', this.info1);
       this.feedBackList = this.info1.feedback;
       console.log('the feedback is', this.feedBackList);
-      if (this.info1.file !=null) {
+      if (this.info1.file != null) {
         this.fileName = this.info1.file;
-        console.log("filename:", this.fileName);
+        console.log('filename:', this.fileName);
       }
       if (this.loggedInUser == this.info1.solvedBy) {
         this.showUpdate = true;
@@ -77,9 +77,7 @@ export class FeedbackComponent implements OnInit {
       this.service.addfeed(this.solutionId, this.feed).subscribe((data) => {
         // this.refreshPage();
         this.getByid();
-        
       });
-      
     } else {
       this.isEdit = 'Please Enter Correct Details!!';
     }
@@ -87,30 +85,47 @@ export class FeedbackComponent implements OnInit {
   updateSolution() {
     this.router.navigateByUrl(`update/${this.solutionId}`);
   }
-hireInnovator(){
-  // const status = value?"Hired":"Rejected";
-  // if(value=="true"){
-  //   const status="Hired";
-  // }
+  hireInnovator() {
+    // const status = value?"Hired":"Rejected";
+    // if(value=="true"){
+    //   const status="Hired";
+    // }
 
-  this.value=true;
-  
-  const status = this.value?"Hired":"Accepted";
-        this.service.updateStatus(this.solutionId, status).subscribe(data => {
-          alert("Innovator is Hired");
-        });
+    this.value = true;
 
-}
+    const status = this.value ? 'Hired' : 'Accepted';
+    this.service.updateStatus(this.solutionId, status).subscribe((data) => {
+      alert('Innovator is Hired');
+    });
+  }
   openFile() {
-    console.log("open file here");
-    window.open(this.info1.uploadUrl, "_blank");
+    console.log('open file here');
+    window.open(this.info1.uploadUrl, '_blank');
+  }
+
+  downloadDocument() {
+    console.log("challengeId:"+this.solutionId);
+    this.service.downloadFile(this.solutionId).subscribe((response) => {
+      let blob: any = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.setAttribute('target', '_blank');
+      link.setAttribute('href', url);
+      link.setAttribute('download', this.fileName);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }),
+      (error) => console.log('Error downloading the file'),
+      () => console.info('File downloaded successfully');
   }
   // refreshPage(){
   //   this.router.navigateByUrl(`feedback/${this.solutionId}`);
   //    window.location.reload()
   // }
 }
-  function subscribe(arg0: (data: any) => void) {
-    throw new Error('Function not implemented.');
-  }
-  
+
+function subscribe(arg0: (data: any) => void) {
+  throw new Error('Function not implemented.');
+}

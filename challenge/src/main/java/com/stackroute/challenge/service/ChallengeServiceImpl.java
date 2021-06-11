@@ -82,7 +82,6 @@ public class ChallengeServiceImpl implements ChallengeService {
     @Override
     public Challenge getById(UUID challengeId) {
         List<Challenge> challenge = challengeRespository.findByChallengeId(challengeId);
-        System.out.println(challenge);
         return challenge.get(0);
     }
     @Override

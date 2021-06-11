@@ -42,4 +42,10 @@ export class SolutionService {
     return this.http.put(`/api/v1/solution/status/${solutionId}?solStatus=${solStatus}`, { responseType: 'text' });
   }
 
+  downloadFile(solutionId): any {
+    return this.http.get(
+      `/api/v1/solution/download/${solutionId}`,
+      { responseType: 'blob' }
+    );
+  }
 }
