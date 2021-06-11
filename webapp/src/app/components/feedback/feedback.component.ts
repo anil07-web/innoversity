@@ -95,10 +95,10 @@ hireInnovator(){
   this.service.getUpdatedHired(this.info1.challengeId).subscribe(data=>{
     console.log(data);
   })
-  const status = this.value?"Hired":"Accepted";
-        this.service.updateStatus(this.solutionId, status).subscribe(data => {
-          alert("Innovator is Hired");
-        });
+    const status = this.value?"Hired":"Accepted";
+    this.service.updateStatus(this.solutionId, status).subscribe(data => {
+    alert("Innovator is Hired");
+  });
 
 }
   openFile() {
