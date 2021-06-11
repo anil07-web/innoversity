@@ -74,16 +74,16 @@
       <div class="card" style="width: 19rem; margin-bottom: 10pt;" (click)="solutionAnalysis(c)">
         <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
         <div class="card-body1">
-          <h2 class="card-title text-center">{{c.challengeTitle}} </h2>
-          <!-- <p class="card-text">Challenged By : {{c.challengerName}}.</p> -->
-          <div>Domain</div>
-          <mat-chip-list>
-            <div *ngFor="let a of c.domain">
-              <mat-chip>{{a}}</mat-chip>
-            </div>
-          </mat-chip-list>
-          <!-- <p class="card-text mt-2">Description : {{c.description}}.</p> -->
-          <p class="card-text">ExpiryDate : {{c.expiryDate | date}} .</p>
+          <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
+                <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
+                        By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></div>
+                <div style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain </div>
+                <mat-chip-list>
+                    <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                        <mat-chip>{{a}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+                <div style="margin-top: 5pt;">{{c.views}} <i class="fas fa-eye"></i><span style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer"></i></span></div>
         </div>
       </div>
     </div>

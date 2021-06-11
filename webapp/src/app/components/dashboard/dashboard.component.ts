@@ -158,13 +158,9 @@ export class DashboardComponent implements OnInit {
   // }
   getChallengeById(challengeId) {
     console.log("User clicked on:", challengeId.challengeId);
-<<<<<<< HEAD
       this.service.getUpdatedChallenge(challengeId.challengeId).subscribe(data=>{
         console.log(data);
       })
       this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
-=======
-    this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
->>>>>>> ea622c18ccadc7aeca6d19d2d85a1caf42def6a6
   }
 }
