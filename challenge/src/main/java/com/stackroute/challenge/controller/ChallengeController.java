@@ -107,4 +107,10 @@ public class ChallengeController {
     public List<Challenge> updateAttempt(@PathVariable("challengeId") UUID challengeId){
         return this.challengeService.updateAttempt(challengeId);
     }
+    @GetMapping("/update/hired/{challengeId}")
+    public List<Challenge> updateHired(@PathVariable("challengeId") UUID challengeId){
+        System.out.println("hired");
+        return this.challengeService.updateHired(challengeId);
+    }
+
 }

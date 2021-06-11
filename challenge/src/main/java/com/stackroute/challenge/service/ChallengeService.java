@@ -27,6 +27,8 @@ public interface ChallengeService {
 
     List<Challenge> updateAttempt(UUID challengeId);
 
+    List<Challenge> updateHired(UUID challengeId);
+
     
 //    public String uploadFile(MultipartFile file);
 }

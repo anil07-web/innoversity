@@ -61,7 +61,7 @@ export class SolutionComponent implements OnInit {
       this.service.addDetails(uploadFileData).subscribe(data => {
         console.log(form.value);
         this.uploadSuccess= true;
-        this.service1.getUpdatedAttempt(this.innovator.challengeId).subscribe(data=>{
+        this.service1.getUpdatedAttempt(this.challengeId).subscribe(data=>{
           console.log(data);
         })
         this.router.navigateByUrl("/dashboard")

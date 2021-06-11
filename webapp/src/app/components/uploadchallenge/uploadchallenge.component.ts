@@ -52,6 +52,7 @@ export class UploadchallengeComponent implements OnInit {
      expiryDate: ['',[Validators.required]],
      views:['0'],
      attempt:['0'],
+     hired:['0'],
     //  attachments:['',[Validators.required]],
     //  challengeArtifacts:['',[Validators.required]],
      file: new FormControl('', [Validators.required])
