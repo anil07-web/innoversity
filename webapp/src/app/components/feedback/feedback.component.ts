@@ -32,7 +32,7 @@ export class FeedbackComponent implements OnInit {
   public fileName;
   public value=false;
   public showUpdate= false;
-  public hired:any=false;
+  public hired:any;
 
   ngOnInit(): void {
     // this.getinfo();
@@ -107,11 +107,11 @@ hireInnovator(){
   }
   getChallenge(challengeId){
     this.service.getinfo(challengeId).subscribe(data=>{
-      const challenge=data;
+      this.hired=data;
       // this.hired=challenge.hired;
-      if(challenge.hired>=3){
-        this.hired=true;
-      }
+      // if(challenge.hired>=3){
+      //   // this.hired=true;
+      // }
       console.log(this.hired);
     })
   }
