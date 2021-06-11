@@ -11,5 +11,6 @@ export class InnovatorProperties {
     private file:String; 
     private image:String;
     private uploadUrl: String;
+    public gitUrl:String;
     // public feedback:Array<string>
 }

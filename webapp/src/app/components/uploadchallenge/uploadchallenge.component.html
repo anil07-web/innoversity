@@ -189,9 +189,9 @@
         <div class="input-group" *ngIf="isSelected">
           <input type="number" #amt class="input" formControlName="rewardPrize" placeholder="Reward Prize">
           <!-- <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay</button> -->
-          <!-- <div class="text-danger" *ngIf="rewardPrize?.dirty && rewardPrize?.invalid">
+          <div class="text-danger" *ngIf="rewardPrize?.dirty && rewardPrize?.invalid">
             Challenge Rewards cannot have 0 dollars
-          </div> -->
+          </div>
         </div>
         
         <div class="uploadbtn">

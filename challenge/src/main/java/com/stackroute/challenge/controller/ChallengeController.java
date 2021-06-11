@@ -107,7 +107,6 @@ public class ChallengeController {
     public List<Challenge> updateAttempt(@PathVariable("challengeId") UUID challengeId){
         return this.challengeService.updateAttempt(challengeId);
     }
-
     @GetMapping("/download/{challengeId}")
     public ResponseEntity<byte[]> getFile(@PathVariable UUID challengeId){
         Challenge fileDB = challengeService.getById(challengeId);
@@ -115,5 +114,10 @@ public class ChallengeController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getFile() + "\"")
                 .body(fileDB.getFileByte());
+    }
+    @GetMapping("/update/hired/{challengeId}")
+    public List<Challenge> updateHired(@PathVariable("challengeId") UUID challengeId){
+        System.out.println("hired");
+        return this.challengeService.updateHired(challengeId);
     }
 }

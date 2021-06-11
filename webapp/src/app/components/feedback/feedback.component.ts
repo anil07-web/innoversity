@@ -30,8 +30,10 @@ export class FeedbackComponent implements OnInit {
   public loggedInUser: string;
   public feedBackList: Array<any>[];
   public fileName;
-  public value = false;
-  public showUpdate = false;
+  public value=false;
+  public showUpdate= false;
+  public hired:any;
+  downloadDisabled= true;
 
   ngOnInit(): void {
     // this.getinfo();
@@ -39,6 +41,7 @@ export class FeedbackComponent implements OnInit {
     // console.log("solutionId:", this.solutionId);
     this.loggedInUser = localStorage.getItem('userName');
     this.getByid();
+    
   }
   getinfo() {
     this.service.getDetails().subscribe((data) => {
@@ -56,7 +59,11 @@ export class FeedbackComponent implements OnInit {
     this.service.getByid(this.solutionId).subscribe((data) => {
       // debugger;
       this.info1 = data;
+      this.getChallenge(this.info1.challengeId);
       console.log('The information is', this.info1);
+      if (this.info1.solStatus == 'Hired') {
+        this.downloadDisabled = false;
+      }
       this.feedBackList = this.info1.feedback;
       console.log('the feedback is', this.feedBackList);
       if (this.info1.file != null) {
@@ -85,18 +92,16 @@ export class FeedbackComponent implements OnInit {
   updateSolution() {
     this.router.navigateByUrl(`update/${this.solutionId}`);
   }
-  hireInnovator() {
-    // const status = value?"Hired":"Rejected";
-    // if(value=="true"){
-    //   const status="Hired";
-    // }
-
-    this.value = true;
-
-    const status = this.value ? 'Hired' : 'Accepted';
-    this.service.updateStatus(this.solutionId, status).subscribe((data) => {
-      alert('Innovator is Hired');
-    });
+hireInnovator(){
+  this.value=true;
+  this.service.getUpdatedHired(this.info1.challengeId).subscribe(data=>{
+    console.log(data);
+    this.getByid();
+  })
+  const status = this.value?"Hired":"Accepted";
+        this.service.updateStatus(this.solutionId, status).subscribe(data => {
+          alert("Innovator is Hired");
+        });
   }
   openFile() {
     console.log('open file here');
@@ -120,12 +125,23 @@ export class FeedbackComponent implements OnInit {
       (error) => console.log('Error downloading the file'),
       () => console.info('File downloaded successfully');
   }
-  // refreshPage(){
-  //   this.router.navigateByUrl(`feedback/${this.solutionId}`);
-  //    window.location.reload()
-  // }
-}
+  getChallenge(challengeId){
+    this.service.getinfo(challengeId).subscribe(data=>{
+      this.hired=data;
+      // this.hired=challenge.hired;
+      // if(challenge.hired>=3){
+      //   // this.hired=true;
+      // }
+      console.log(this.hired);
+    })
+  }
 
-function subscribe(arg0: (data: any) => void) {
-  throw new Error('Function not implemented.');
+  openGit(url) {
+    window.open(url, '_blank');
+
+  }
+  
 }
+  function subscribe(arg0: (data: any) => void) {
+    throw new Error('Function not implemented.');
+  }

@@ -6,16 +6,22 @@
             <p class="card-text"><strong>Solution Title: </strong>{{info1.solution}}</p>
             <p class="card-text"><strong>Solution Description: </strong>{{info1.description}}</p>
             <p class="card-text"><strong>Solved By: </strong>{{info1.solvedBy}}</p>
-            <p class="card-text"><strong>Status is: </strong>{{info1.solStatus}}</p>
+            <p class="card-text"><strong>Solution is: </strong>{{info1.solStatus}}</p>
+            <p class="card-text"><strong>Solution uploaded: </strong>{{info1.gitUrl}} 
+                <i (click)="openGit(info1.gitUrl)" matTooltip="Open git" class="fas fa-external-link-square-alt"></i></p>
+
             <!-- <button (click)="updateSolution()">Update Solution </button> -->
             <div *ngIf="fileName">
                 <p class="card-text"><strong>Uploaded file: </strong>{{fileName}}</p>
-                <button (click)="openFile()">open</button>
-                <button (click)="openFile()">Download</button>
+                <button matTooltip="Open document in new window" (click)="openFile()" class="btn btn-dark btn-sm" >open</button>
+                <button matTooltip="Download document" [disabled]="downloadDisabled" (click)="downloadDocument()" class="btn btn-dark btn-sm" style=" margin-left: 8%;">Download</button>
             </div>
             <div>
-            <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()">Update Solution</button></a>
-            <a ><button [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" class="button button1" (click)="hireInnovator()">Hire</button></a>
+
+            <a ><button *ngIf="showUpdate" class="btn btn-primary" (click)="updateSolution()" style=" margin-top: 3%;">Update Solution</button></a>
+            <div *ngIf="hired.hired>=3">You have Hired maximum number of innoVators</div>
+            <a ><button matTooltip="Hire an innovator to download document" [disabled]="info1.solStatus=='Hired'" *ngIf="!showUpdate" [disabled]="hired.hired>=3" class="btn btn-light" (click)="hireInnovator()" style=" margin-top: 3%;">Hire</button></a>
+
             </div>
         </div>
     </div>

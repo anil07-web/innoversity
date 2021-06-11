@@ -48,4 +48,8 @@ export class SolutionService {
       { responseType: 'blob' }
     );
   }
+  getUpdatedHired(challengeId){
+    return this.http.get(`/api/v1/challenge/update/hired/${challengeId}`);
+  }
+
 }

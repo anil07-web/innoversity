@@ -20,5 +20,8 @@
     border-radius: 10px;
   }
 
-.button1 {background-color: #06a50b;} 
+.button1 {
+  background-color: #06a50b;
+  margin-right: 8px;
+} 
 .button2 {background-color: #d40a0a;} 

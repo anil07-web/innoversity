@@ -64,20 +64,21 @@ export class UploadchallengeComponent implements OnInit {
   }
   initForm() {
     this.uploadChallenge = this.fb.group({
-      challengerName: [''],
-      challengeTitle: ['', [Validators.required]],
-      challengeDomain: ['', [Validators.required]],
-      challengeAbstract: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      rules: ['', [Validators.required]],
-      rewardPrize: ['0'],
-      expiryDate: ['', [Validators.required]],
-      views: ['0'],
-      attempt: ['0'],
-      //  attachments:['',[Validators.required]],
-      //  challengeArtifacts:['',[Validators.required]],
-      file: new FormControl('', [Validators.required]),
-    });
+     challengerName: [''],
+     challengeTitle: ['',[Validators.required]],
+     challengeDomain: ['',[Validators.required]],
+     challengeAbstract: ['',[Validators.required]],
+     description: ['',[Validators.required]],
+     rules: ['',[Validators.required]],
+     rewardPrize: ['0'],
+     expiryDate: ['',[Validators.required]],
+     views:['0'],
+     attempt:['0'],
+     hired:['0'],
+    //  attachments:['',[Validators.required]],
+    //  challengeArtifacts:['',[Validators.required]],
+     file: new FormControl('', [Validators.required])
+   });
   }
 
   public onFileChanged(event) {
