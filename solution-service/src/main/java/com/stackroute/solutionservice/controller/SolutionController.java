@@ -1,9 +1,12 @@
 package com.stackroute.solutionservice.controller;
 
 
+import com.amazonaws.services.personalize.model.Solution;
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.stackroute.solutionservice.model.Feedback;
-import com.stackroute.solutionservice.model.Solution;
 import com.stackroute.solutionservice.model.SolutionStatus;
 import com.stackroute.solutionservice.service.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,6 +41,29 @@ public class SolutionController {
         solution.setSolStatus(SolutionStatus.NotReviewed);
         Solution savedDetails = solutionService.saveDetails(solution);
         return new ResponseEntity<>(savedDetails, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<Solution> uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item) throws IOException {
+
+        Solution challengeObj = new ObjectMapper().readValue(item, Solution.class);
+//        System.out.println("challenge name:"+solutionObj.getChallengerName());
+//        System.out.println("challenge name:"+challengeObj.getChallengeTitle());
+//        System.out.println("file name:"+file.getOriginalFilename());
+        UUID uuid = UUID.randomUUID();
+//        challengeObj.setChallengeId(uuid);
+        challengeObj.setSolutionId(uuid);
+        challengeObj.setSolStatus(SolutionStatus.NotReviewed);
+////        challengeObj.setUploadedOn(new Date());
+        challengeObj.setFileByte(file.getBytes());
+        challengeObj.setFile(file.getOriginalFilename());
+        String fileUrl = solutionService.uploadFile(file);
+        final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
+        challengeObj.setUploadUrl(fileUrl);
+        Solution savedChallenge = solutionService.saveDetails(challengeObj);
+//        rabbitMqSender.send(challengeObj);
+//        System.out.println(challengeObj);
+        return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
 
     @PutMapping("/solve/{solutionId}")
@@ -93,12 +120,11 @@ public class SolutionController {
 //    }
 
     @PutMapping("/uploadFile/{solutionId}")
-    public void updateSolution(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item, @PathVariable("solutionId") UUID solutionId) throws IOException {
-        System.out.println("description:"+item);
+    public void updateSolution(@RequestParam(value = "file") MultipartFile file /*@RequestParam("item") String item*/, @PathVariable("solutionId") UUID solutionId) throws IOException {
+//        System.out.println("description:"+item);
         System.out.println("file:"+file.getOriginalFilename());
-        String fileUrl = solutionService.uploadFile(file);
-        solutionService.updateSolutionFile(solutionId, item, file, fileUrl);
-
+//        String fileUrl = solutionService.uploadFile(file);
+//        solutionService.updateSolutionFile(solutionId, item, file, fileUrl);
 //        ChallengeObj.setFileByte(file.getBytes());
 //        solutionObj.setFile(file.getOriginalFilename());
 //        ChallengeObj.setImageByte(image.getBytes());
@@ -111,4 +137,19 @@ public class SolutionController {
 //        rabbitMqSender.send(ChallengeObj);
 //        return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
     }
+    @GetMapping("/download/{solutionId}")
+    public ResponseEntity<byte[]> getFile(@PathVariable UUID solutionId) throws IOException{
+        Solution solDB = solutionService.getSolutionBySolutionId(solutionId);
+        System.out.println("The details are"+solDB.getfile());
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + solDB.getfile() + "\"")
+                .body(solDB.getfileByte());
+    }
+//    @GetMapping("/download/{bookTitle}")
+//    public ResponseEntity<byte[]> getFile(@PathVariable String bookTitle) throws BookNotFound{
+//        Book fileDB = bookService.getBookDetails(bookTitle);
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getFile() + "\"")
+//                .body(fileDB.getFileByte());
+//    }
 }

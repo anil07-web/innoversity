@@ -20,9 +20,11 @@ export class SolutionComponent implements OnInit {
   public isEdit: any;
   public info;
   public challengeName;
+  selectedFile: File;
 // public challengeInfo=[];
   public loggedInUser;
   public challengeId;
+  public uploadSuccess=false;
   // logg = 'Hi Arshad';
   constructor(
     private service: SolutionService,
@@ -40,26 +42,46 @@ export class SolutionComponent implements OnInit {
     this.getinfo();
     // this.setLog();
   }
+
+
   onsubmit(form: NgForm) {
-    if (form.valid) {
+    if (form) {
       this.loggedInUser = localStorage.getItem('userName');
       console.log('Solved by:', this.loggedInUser);
-      this.innovator.solvedBy = this.loggedInUser;
-      this.innovator.challengeId = this.challengeId;
-      this.innovator.challengeTitle = this.info.challengeTitle;
-      this.service.addDetails(this.innovator).subscribe((data) => {
-        this.isEdit = 'Data Stored Successfully';
+      form.value.solvedBy = this.loggedInUser;
+      form.value.challengeId = this.challengeId;
+      form.value.challengeTitle = this.info.challengeTitle;
+      const item = form.value;
+      const uploadFileData = new FormData();
+      console.log("file:", this.selectedFile);
+      uploadFileData.append('item', JSON.stringify(item));
+      uploadFileData.append('file', this.selectedFile);
+      if(form.valid)
+    {
+      this.service.addDetails(uploadFileData).subscribe(data => {
+        console.log(form.value);
+        this.uploadSuccess= true;
         this.service1.getUpdatedAttempt(this.innovator.challengeId).subscribe(data=>{
           console.log(data);
         })
-        this.router.navigateByUrl("/dashboard");
-      });
-    } else {
-      this.isEdit = 'Please Enter Correct Details!!';
+        this.router.navigateByUrl("/dashboard")
+    });
+    }
+      else{
+        console.log("form is invalid");
+      }
+      
+    //   this.service.addDetails(uploadFileData).subscribe((data) => {
+    //   this.isEdit = 'Data Stored Successfully';
+      
+    //   this.router.navigateByUrl("/dashboard");
+    //   });
+    // } else {
+    //   this.isEdit = 'Please Enter Correct Details!!';
+    // }
     }
   }
   getinfo(){
-    
     this.service.getinfo(this.challengeId).subscribe((data) => {
       // debugger;
       // let list = [];
@@ -72,6 +94,11 @@ export class SolutionComponent implements OnInit {
         // this.challengeName = a.challengeTitle;
     // });
     });
+  }
+
+  public onFileChanged(event) {
+    const file = event.target.files[0];
+    this.selectedFile = file;
   }
 
   

@@ -38,11 +38,6 @@ export class DashboardComponent implements OnInit {
   public challenge;
   public email;
   public count;
-
-
-
-
-
   public searchresult;
   setQuery(querytext) {
     this.count = querytext.split(' ').length;
@@ -59,16 +54,15 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
-
-
-
+  
   ngOnInit(): void {
     this.getContacts();
     this.getChallenge();
     this.loggedInUser = localStorage.getItem("userName");
   }
   getContacts() {
-    this.email = this.loggedInUser;
+    // this.email="vikhil@gmail.com";
+    this.email=this.loggedInUser;
     this.service.getContacts(this.email).subscribe(data => {
       this.recomChallenge = data;
       this.recomChallenge.map(m => {

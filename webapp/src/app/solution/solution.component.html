@@ -1,5 +1,4 @@
 <app-header [isLoggedIn]="true"></app-header>
-
 <div class="container1">
     <div class="main">
         <div class="side">
@@ -11,10 +10,8 @@
          <h3>Rules:"{{info.rules}}"</h3>
          <h3>Prize Amount:"{{info.rewardPrize}}"</h3>
         </div>
-    <div class="row">
-       
-        <img src="/assets/images/idea.svg" width="50%"  alt="">
-         
+    <div class="row">       
+        <img src="/assets/images/idea.svg" width="50%"  alt="">        
         <div class="frm">
             <form #uploadsolution="ngForm" (ngSubmit)="onsubmit(uploadsolution)">
                 <div class="mt-2" >
@@ -30,8 +27,7 @@
                     <!-- <input type="text" #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" placeholder="Brief Desc of Solution">
                     <div class="text-danger" *ngIf="description.dirty && description.errors?.required"> 
                         Please enter the details
-                    </div> -->
-                   
+                    </div> -->                   
                     <!-- <angular-editor placeholder="description" formControlName="description" [config]="config" [(ngModel)]="innovator.description"></angular-editor> -->
                     <!-- <angular-editor type="text" #description="ngModel" name="description" required class="form-control" [config]="config" [(ngModel)]="innovator.description" placeholder="Brief Desc of Solution"> </angular-editor> -->
                     <textarea #description="ngModel" name="description" required class="form-control"  [(ngModel)]="innovator.description" id="forms" rows="4" placeholder="Write brief Description for solution" spellcheck="false"></textarea>
@@ -39,14 +35,20 @@
                         Please enter the details
                     </div>
                 </div>
-                
-               
+                <div class="edit1">
+                    <p style="color: black; margin-top: 2%;">Upload Files</p>
+                    <input type="file" class="form-control" [(ngModel)]="innovator.uploadFile" id="file" style="padding: 4px" accept=".pdf"
+                        (change)="onFileChanged($event)" />
+                    <!-- <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
+                    <mat-error *ngIf="f.file.errors.required">Challenge artifact is required.</mat-error>
+                    </mat-error>    -->
+                </div>          
                 <div class="mt-2">
                     <button class="btnLogin" >Submit</button>
-                <p class="valid">{{isEdit}}</p>
+                    <p class="valid">{{isEdit}}</p>
                 </div>
             </form>
+        </div>
     </div>
     </div>
-</div>
 </div>

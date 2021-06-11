@@ -8,7 +8,8 @@ export class SolutionService {
 
   constructor(private http:HttpClient) { }
   addDetails(innovator){
-    return this.http.post('/api/v1/solution/solve',innovator);
+    return this.http.post('/api/v1/solution/upload',innovator,{
+    observe: 'response'});
   }
   // addfeed(id,feedback){
   //   return this.http.put(`/api/v1/solution/solved/${id}`,feedback, { responseType: 'text' });
@@ -36,6 +37,9 @@ export class SolutionService {
 
   updateSolution(id, data) {
     return this.http.put(`/api/v1/solution/uploadFile/${id}`, data);
+  }
+  updateStatus(solutionId,solStatus){
+    return this.http.put(`/api/v1/solution/status/${solutionId}?solStatus=${solStatus}`, { responseType: 'text' });
   }
 
 }

@@ -14,14 +14,13 @@ public class Pipeline {
     private static StanfordCoreNLP stanfordCoreNLP;
 
     private Pipeline(){
-
     }
 
     static {
         properties = new Properties();
         properties.setProperty("annotators",propertiesName);
-
     }
+
     @Bean(name = "stanfordCoreNLP")
     public static StanfordCoreNLP getPipeline(){
         if(stanfordCoreNLP==null){
