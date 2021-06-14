@@ -7,6 +7,7 @@ import com.stackroute.challenge.service.ChallengeService;
 import com.stackroute.challenge.service.RabbitMqSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -73,7 +74,6 @@ public class ChallengeController {
         UUID uuid = UUID.randomUUID();
         challenge.setChallengeId(uuid);
         challenge.setUploadedOn(new Date());
-        System.out.println("challenge uploaded:"+challenge.toString());
         Challenge savedChallenge = challengeService.save(challenge);
         rabbitMqSender.send(challenge);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
@@ -107,10 +107,17 @@ public class ChallengeController {
     public List<Challenge> updateAttempt(@PathVariable("challengeId") UUID challengeId){
         return this.challengeService.updateAttempt(challengeId);
     }
+    @GetMapping("/download/{challengeId}")
+    public ResponseEntity<byte[]> getFile(@PathVariable UUID challengeId){
+        Challenge fileDB = challengeService.getById(challengeId);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getFile() + "\"")
+                .body(fileDB.getFileByte());
+    }
     @GetMapping("/update/hired/{challengeId}")
     public List<Challenge> updateHired(@PathVariable("challengeId") UUID challengeId){
         System.out.println("hired");
         return this.challengeService.updateHired(challengeId);
     }
-
 }

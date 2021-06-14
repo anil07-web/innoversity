@@ -31,4 +31,11 @@ export class UploadchallengeService {
   getChallengeById(challengeId){
    return this.http.get(`/api/v1/challenge/challenge/${challengeId}`);
   }
+
+  downloadFile(challengeId): any {
+    return this.http.get(
+      `/api/v1/challenge/download/${challengeId}`,
+      { responseType: 'blob' }
+    );
+  }
 }
