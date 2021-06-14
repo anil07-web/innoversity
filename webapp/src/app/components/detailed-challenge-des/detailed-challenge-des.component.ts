@@ -38,4 +38,22 @@ export class DetailedChallengeDesComponent implements OnInit {
       console.log("move to upload solution");
       this.router.navigateByUrl(`/solution/${this.challenge.challengeId}`);
   }
+
+  downloadDocument() {
+    console.log("challengeId:"+this.challengeId);
+    this.service.downloadFile(this.challengeId).subscribe((response) => {
+      let blob: any = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.setAttribute('target', '_blank');
+      link.setAttribute('href', url);
+      link.setAttribute('download', this.fileName);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }),
+      (error) => console.log('Error downloading the file'),
+      () => console.info('File downloaded successfully');
+  }
 }

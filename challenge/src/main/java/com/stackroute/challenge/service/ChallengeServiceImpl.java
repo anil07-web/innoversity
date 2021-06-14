@@ -82,7 +82,6 @@ public class ChallengeServiceImpl implements ChallengeService {
     @Override
     public Challenge getById(UUID challengeId) {
         List<Challenge> challenge = challengeRespository.findByChallengeId(challengeId);
-        System.out.println(challenge);
         return challenge.get(0);
     }
     @Override
@@ -145,6 +144,18 @@ public class ChallengeServiceImpl implements ChallengeService {
         int attempt = challenge.get(0).getAttempt() + 1;
         updateQuery.set("attempt", attempt);
         UpdateResult result = mongoTemplate.upsert(query, updateQuery, "challenge");
+        return challenge;
+    }
+
+    @Override
+    public List<Challenge> updateHired(UUID challengeId) {
+        List<Challenge> challenge = challengeRespository.findByChallengeId(challengeId);
+        Query query = new Query(Criteria.where("challengeId").is(challengeId));
+        Update updateQuery = new Update();
+        int hired = challenge.get(0).getHired() + 1;
+        updateQuery.set("hired", hired);
+        UpdateResult result = mongoTemplate.upsert(query, updateQuery, "challenge");
+        System.out.println("INcreased");
         return challenge;
     }
 

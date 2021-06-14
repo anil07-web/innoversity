@@ -83,26 +83,11 @@
                         <mat-chip>{{a}}</mat-chip>
                     </div>
                 </mat-chip-list>
-                <div style="margin-top: 5pt;">{{c.views}} <i class="fas fa-eye"></i><span style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer"></i></span></div>
+                <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer"></i></span></div>
         </div>
       </div>
     </div>
-    <div class="row">
-        <div class="card mx-2 mt-2 card text-white bg-dark mb-3" style="width: 18rem;" *ngFor="let s of solution; let indexOfelement=index">
-            <div class="card-body">
-                <h2 class="card-title">{{indexOfelement+1}}</h2>
-                <h2 class="card-title">{{s.challengeTitle}}</h2>
-                <h3 class="card-title">Solution: {{s.solution}}</h3>
-                <p class="card-title">Description: {{s.description}}</p>
-                <div class="d-flex flex-row">
-                    <a><button class="button button1" type="button" disabled
-                            *ngIf="s.solStatus == 'NotReviewed'">Accept</button></a>
-                    <a><button class="button button2" type="button" disabled
-                            *ngIf="s.solStatus == 'NotReviewed'">Reject</button></a>
-                    <a *ngIf="s.solStatus=='Accepted' || s.solStatus== 'Hired'"><button class="button button1" (click)="feedbackView(s)">View
-                            More</button> <i class="fas fa-check-circle"></i></a>
-                </div>
-            </div>
+    
     <div *ngIf="challengeIsNull" style="text-align: center;font-size: 15pt;">!! No Challenges to display </div>
   </div>
   <div class="row">
@@ -120,10 +105,15 @@
           <a><button class="button button2" type="button" disabled
               *ngIf="s.solStatus == 'NotReviewed'">Reject</button></a>
           <a *ngIf="s.solStatus=='Accepted'"><button class="button button1" (click)="feedbackView(s)">View
-              More</button> <i class="fas fa-check-circle"></i></a>
+              More</button></a>   
+          <h3 *ngIf="s.solStatus=='Hired'"><p>Hired
+          </p><i class="fas fa-check-circle"></i></h3>
+          <a *ngIf="s.solStatus=='Hired'"><button class="button button1" (click)="feedbackView(s)">View
+                More</button> </a>   
         </div>
       </div>
     </div>
     <div *ngIf="solutionIsNull" style="text-align: center;font-size: 15pt;">!! No Solution to display </div>
   </div>
 </div>
+
