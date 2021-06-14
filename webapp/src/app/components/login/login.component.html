@@ -3,9 +3,9 @@
    <div class="main">
      <div class="side">
        <h1 class="sign-in-heading">Hello, Welcome to Innoversity</h1>
-       <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
+       <h3 class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et fugiat nostrum molestiae.
          Perferendis aliquid error quidem, placeat nisi adipisci explicabo ab ducimus impedit commodi
-         reiciendis, voluptatem quos voluptatibus sunt dolores.</p>
+         reiciendis, voluptatem quos voluptatibus sunt dolores.</h3>
      </div>
      <div class="sign-in">
        <div class="alert alert-danger animate__animated animate__slideInDown" *ngIf="showAlert" role="alert">
@@ -14,7 +14,7 @@
        <img src="assets/images/login.svg" width="40%" alt="">
        <form class="sign-in-form" #loginform="ngForm" (ngSubmit)="addUserCredentials(loginform)">
          <div class="form-group">
-           <i class="far fa-envelope"></i>
+           <i class="fas fa-envelope"></i>
             <input type="text" name="email" #email="ngModel" class="form-control" [(ngModel)]="login.email"
              placeholder="Enter your mail id">
            <div class="text-danger" *ngIf="email.dirty && email.invalid">
