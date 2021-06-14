@@ -1,32 +1,20 @@
 .card-body{
-    background-color: rgb(161, 146, 146);
-}
-
-.btn{
-    width: 120px;
-    height: 40px;
-    background-color: rgb(34, 24, 28);
+    background-color: black;
     color: white;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: 0.5s;
 }
-.btn:hover{
-    width: 180px;
-}
-
-
-
-/* 
-mat-list-item {
-  height: auto !important
-} */
 
 .card:hover{
-    color: rgb(227, 233, 233);
-    background: rgb(248, 214, 214);
+    color: rgb(0, 0, 0);
+    background: rgb(155, 135, 212);
+}
+h1{
+    font-family: Lora;
+}
+.row{
+    font-family: Lora;
+}
+strong{
+    font-family: Lora;
 }
 
 

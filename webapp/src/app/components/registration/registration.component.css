@@ -10,7 +10,7 @@
 
 
 .main-container {
-    background: url("/assets/images/logo2.jpg") top/cover;
+    /* background: url("/assets/images/logo2.jpg") top/cover; */
     width: 100%;
     min-height: 100vh;
   }
@@ -32,6 +32,7 @@
     grid-template-columns: 1fr 1fr;
     margin-left: 10%;
     background-color: beige;
+    font-family: Lora;
 }
 
 .side {
@@ -39,8 +40,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* background-color: rgb(22, 22, 22); */
-    background-image: linear-gradient(to right, rgba(21, 8, 141, 0.781) , rgb(252, 29, 140));
+    background-color:  #202020 ;
     padding: 20px;
     color: white;
 }
@@ -74,9 +74,10 @@
 
 
 .btnRegister {
+    margin-left: 65%;
     width: 120px;
     height: 40px;
-    background-color: rgb(240, 24, 107);
+    background-color: #6e6d6d;
     color: white;
     border-radius: 20px;
     border: none;
@@ -87,13 +88,13 @@
 }
 
 .btnRegister:hover {
-    width: 180px;
+    width: 140px;
 }
 
 .form-control {
     background: none;
     border: none;
-    border-bottom: 2px solid rgb(240, 24, 107);
+    border-bottom: 2px solid  #202020 ;
     outline: none;
     width: 100%
 }
@@ -104,4 +105,10 @@
 .fa{
     margin-right:2% ;
     margin-top:2% ;
+}
+
+
+.sign-up-heading{
+    font-family: Lora;
+    justify-content: center;
 }
