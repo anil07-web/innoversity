@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
   registerForm: FormGroup;
   showPassword: boolean = false;
   public selectedFile;
-  imgURL: any = "./assets/banner1.webp";
+  imgURL: any = "./assets/images/profile.svg";
 
 
   constructor(private fb: FormBuilder,private service : RegistrationService,
@@ -93,7 +93,7 @@ export class RegistrationComponent implements OnInit {
   }
 
 
-  url = "./assets/banner1.webp";
+  url = "./assets/images/profile.svg";
   onSelectFile(e) {
     if (e.target.files) {
       var reader = new FileReader();
