@@ -25,6 +25,7 @@ export class SolutionComponent implements OnInit {
   public loggedInUser;
   public challengeId;
   public uploadSuccess=false;
+  show = false;
   // logg = 'Hi Arshad';
   constructor(
     private service: SolutionService,
