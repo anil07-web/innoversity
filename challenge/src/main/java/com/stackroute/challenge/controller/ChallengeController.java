@@ -1,12 +1,12 @@
 package com.stackroute.challenge.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.challenge.model.Challenge;
 import com.stackroute.challenge.service.ChallengeService;
+import com.stackroute.challenge.service.QRGenerationService;
 import com.stackroute.challenge.service.RabbitMqSender;
+import com.stackroute.challenge.template.QRTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -24,10 +22,12 @@ import java.util.UUID;
 public class ChallengeController {
     @Autowired
     ChallengeService challengeService;
+    QRGenerationService qrService;
     RabbitMqSender rabbitMqSender;
 
-    public ChallengeController(RabbitMqSender rabbitMqSender) {
+    public ChallengeController(RabbitMqSender rabbitMqSender, QRGenerationService qrService) {
         this.rabbitMqSender = rabbitMqSender;
+        this.qrService = qrService;
     }
 
 
@@ -64,6 +64,23 @@ public class ChallengeController {
         String fileUrl = challengeService.uploadFile(file);
         final String response = "[" + file.getOriginalFilename() + "] uploaded successfully.";
         challengeObj.setUploadUrl(fileUrl);
+
+        // QR code generation
+        QRTemplate qrTemplate = new QRTemplate("qrgenerateddata.html");
+        Map<String, String> qrreplacements = new HashMap<String, String>();
+        qrreplacements.put("challengeId", challengeObj.getChallengeId().toString());
+        qrreplacements.put("challengeTitle", challengeObj.getChallengeTitle());
+        qrreplacements.put("challengerName", challengeObj.getChallengerName());
+        qrreplacements.put("challengeAbstract", challengeObj.getChallengeAbstract());
+        qrreplacements.put("expiryDate", challengeObj.getExpiryDate().toString());
+        qrreplacements.put("rewardPrize", challengeObj.getRewardPrize().toString());
+        qrreplacements.put("uploadUrl", challengeObj.getUploadUrl());
+        qrreplacements.put("views", challengeObj.getViews().toString());
+        qrreplacements.put("attempt", challengeObj.getAttempt().toString());
+        String qrMessage=  qrTemplate.getTemplate(qrreplacements);
+        byte[] qrByteArray = this.qrService.generateQR(qrMessage, 1000, 1000);
+        challengeObj.setQrCode(qrByteArray);
+
         Challenge savedChallenge = challengeService.save(challengeObj);
         rabbitMqSender.send(challengeObj);
         return new ResponseEntity<>(savedChallenge, HttpStatus.CREATED);
@@ -96,7 +113,6 @@ public class ChallengeController {
     }
     @GetMapping("/getChallenge/{challengerName}")
     public List<Challenge> getChallengeByName(@PathVariable("challengerName") String challengerName ){
-        System.out.println("hello");
         return this.challengeService.getChallengeByName(challengerName);
     }
     @GetMapping("/update/{challengeId}")

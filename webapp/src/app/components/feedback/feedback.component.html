@@ -1,5 +1,5 @@
-<!-- <div class="col-md-6" *ngFor="let details of info"> -->
-    <app-header [isLoggedIn]="true"></app-header>
+
+    <!-- <app-header [isLoggedIn]="true"></app-header>
     <div class="container1">
         <div class="solDetails">
             <p class="card-text"><strong>Challenge Title: </strong>{{info1.challengeTitle}}</p>
@@ -7,10 +7,7 @@
             <p class="card-text"><strong>Solution Description: </strong>{{info1.description}}</p>
             <p class="card-text"><strong>Solved By: </strong>{{info1.solvedBy}}</p>
             <p class="card-text"><strong>Solution is: </strong>{{info1.solStatus}}</p>
-            <p class="card-text"><strong>Solution uploaded: </strong>{{info1.gitUrl}} 
-                <i (click)="openGit(info1.gitUrl)" matTooltip="Open git" class="fas fa-external-link-square-alt"></i></p>
-
-            <!-- <button (click)="updateSolution()">Update Solution </button> -->
+            
             <div *ngIf="fileName">
                 <p class="card-text"><strong>Uploaded file: </strong>{{fileName}}</p>
                 <button matTooltip="Open document in new window" (click)="openFile()" class="btn btn-dark btn-sm" >open</button>
@@ -31,7 +28,7 @@
               <h1>FeedBack</h1>   
             </div>
     <div class="row" >
-          <!-- <div class="card mt-3" class="p-3 mb-2 bg-secondary text-white" > -->
+          
             <div class="card-body">
               
 
@@ -41,25 +38,18 @@
               <div class="row">
                 <div class="col-md-4 offset-md-4">
                     <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
-                        <!-- <div *ngFor="let feedBack of feedBackList">
-                            <p class="feed-text"><strong>{{feedBack.commentedBy}}</strong> commented <strong>{{feedBack.comment | titlecase}}</strong></p>
-                          </div> -->
+                       
         <div class="mt-2">
-            <!-- <input type="text" #comment="ngModel" name="comment" required  class="form-control" [(ngModel)]="feed.comment" placeholder="Write comments"> -->
+           
             <textarea name="comment" #comment="ngModel" id="styled" required  class="form-control" [(ngModel)]="feed.comment" onfocus="this.value='';  setbg('#e5fff3');" onblur="setbg('white')" placeholder="Enter your Comments
             "></textarea>
             <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
             Please Enter Details
         </div>
         </div>
-        <!-- <div class="mt-2">
-            <input type="text" #commentedBy="ngModel" name="commentedBy" required class="form-control" [(ngModel)]="feed.commentedBy" placeholder="commentedby">
-            <div class="text-danger" *ngIf="commentedBy.dirty && commentedBy.errors?.required">
-                Please Enter Details
-            </div>
-        </div> -->
+   
         <div class="mt-2">
-            <!-- <button class="btn btn-success"> <a href="/feedback" > Post Comment</a> </button> -->
+           
             <button class="btn btn-success">Post Comment </button>
             <p class="valid">{{isEdit}}</p>
         </div>
@@ -75,43 +65,92 @@
 {
 document.getElementById("styled").style.background=color
 }
-    </script>
-    <!-- (click)="refreshPafge()" -->
-<!-- <app-header [isLoggedIn]="true"></app-header>
-<div class="container-fluid">
-    <div class="row">
-        <p class="content" style="background-image: url('assets/images/solution1.gif');">Solvers are at the heart of everything we do,<br>supplying the innovative solutions to everyones’<br> problems and needs.</p>
-    </div>
-    <div class="row">
-        <div class="card mx-2" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body" >
-                <h5 class="card-title">Solution Id:{{num}}</h5>
-                <p class="card-text">Solution Description:{{obj}}</p>
-                <div class="d-flex flex-row">
-                   
-                    <div class="col-md-4 offset-md-4">
-                        <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
-            <div class="mt-2">
-                <input type="text" #comment="ngModel" name="comment" required  class="form-control" [(ngModel)]="feed.comment" placeholder="Write comments">
-            <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
-                Please Enter Details
+    </script> -->
+    <app-header [isLoggedIn]="true"></app-header>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title">
+                <h1> {{info1.challengeTitle|uppercase}}</h1>
             </div>
-            </div>
-            <div class="mt-2">
-                <input type="text" #commentedBy="ngModel" name="commentedBy" required class="form-control" [(ngModel)]="feed.commentedBy" placeholder="commentedby">
-                <div class="text-danger" *ngIf="commentedBy.dirty && commentedBy.errors?.required">
-                    Please Enter Details
+            <div class="row" style="border: solid;border-radius: 3%;height: fit-content;">
+                <div class="col-md-3">
+                    <img src="assets/images/img.jpg" alt="" style="margin-bottom: 8px;" >
                 </div>
+                <div class="col-md-9 mt-3">
+                    <div  style="margin-top: 8pt; "> <strong>Solution Title : </strong><span> {{info1.solution}}</span></div>
+
+            <!-- <div style="margin-top: 8pt"><strong>Solution Description : </strong><span>{{info1.description}}</span></div>     -->
+            <div style="margin-top: 8pt"><strong>Solved By : </strong><span>{{info1.solvedBy}}</span></div>
+            <div style="margin-top: 8pt"><strong>Solution is: </strong><span>{{info1.solStatus}}</span></div>
             </div>
+    
+            </div>
+            <div style="margin-top: 8pt;margin-bottom: 8pt;"><strong>Solution Description : </strong><div> {{info1.description}}</div></div>
+           
+            <!-- <div style="margin-top: 8pt"><strong>Challenge Rules : </strong><div>{{challenge?.rules}}</div></div> -->
             
-            <div class="mt-2">
-                <button class="btn btn-secondary"  >Submit</button>
+            <!-- <div style="margin-top: 8pt"><strong>Challenge RewardPrize : </strong><span>{{challenge?.rewardPrize|currency:'INR'}}</span></div> -->
+            <!-- <div *ngIf="fileName" style="margin-top: 8pt">
+                <strong>Uploaded file: {{fileName}}</strong>
+                <span style="margin-left: 5pt;"><button class="btn btn-secondary" (click)="openFile()">open</button></span>
+              </div> -->
+              <div *ngIf="fileName" style="margin-top: 8pt">
+                <strong>Uploaded file: {{fileName}}</strong>
+                <span style="margin-left: 5pt;"><button (click)="openFile()" class="btn btn-secondary" >open</button></span>
+                <span style="margin-left: 5pt;"><button (click)="downloadDocument()" class="btn btn-secondary" style=" margin-left: 8%;">Download</button></span>
             </div>
-                        </form>
-                    </div>
+            <div>
+
+                <a ><button *ngIf="showUpdate" class="btn btn-secondary" (click)="updateSolution()" style="margin-top: 8pt">Update Solution</button></a>
+                <div *ngIf="hired.hired>=3" style="color: rgb(119, 25, 25);">You have Hired maximum number of Innovators</div>
+                <a ><button  *ngIf="!showUpdate" [disabled]="hired.hired>=3 || info1.solStatus=='Hired'" class="btn btn-secondary" (click)="hireInnovator()" style=" margin-top: 3%;">Hire</button></a>
+    
                 </div>
-            </div>
+                <button (click)="goBack()" class="btn btn-secondary mt-2" >Back</button>
+              <!-- <div style="margin-top: 10pt;text-align: center;"><button class="btn btn-secondary mb-3" (click)="solution()">Attempt</button></div> -->
         </div>
     </div>
-</div> -->
+    <div class="container2">
+        <div class="wrapper1">
+            <div class="title">
+              <h1>FeedBack</h1>   
+            </div>
+    <div class="row" >
+          
+            <div class="card-body">
+              
+
+              <div *ngFor="let feedBack of feedBackList">
+                <p class="feed-text"><strong>{{feedBack.commentedBy}}</strong> commented <strong>{{feedBack.comment | titlecase}}</strong></p>
+              </div>
+              <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <form #feedbackform="ngForm" (ngSubmit)="onsubmit(feedbackform)">
+                       
+        <div class="mt-2">
+           
+            <textarea name="comment" #comment="ngModel" id="styled" required  class="form-control" [(ngModel)]="feed.comment" onfocus="this.value='';  setbg('#e5fff3');" onblur="setbg('white')" placeholder="Enter your Comments
+            "></textarea>
+            <div class="text-danger" *ngIf="comment.dirty && comment.errors?.required"> 
+            Please Enter Details
+        </div>
+        </div>
+   
+        <div class="mt-2">
+           
+            <button class="btn btn-success">Post Comment </button>
+            <p class="valid">{{isEdit}}</p>
+        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+      </div>
+    </div>
+</div>
+<script>
+  function setbg(color)
+{
+document.getElementById("styled").style.background=color
+}
+    </script> 
