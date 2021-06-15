@@ -72,7 +72,8 @@
     <h1 class="text-center">Challenges</h1>
     <div class="col-md-3" *ngFor="let c of challenge">
       <div class="card" style="width: 19rem; margin-bottom: 10pt;" (click)="solutionAnalysis(c)">
-        <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
+        <!-- <img src="assets/images/logo4.jpg" class="card-img-top" alt="..."> -->
+        <img src="data:image/png;base64,{{ c.qrCode }}" class="card-img-top" alt="QRCode">
         <div class="card-body1">
           <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
                 <div class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged

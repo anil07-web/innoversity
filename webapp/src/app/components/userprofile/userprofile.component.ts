@@ -36,7 +36,7 @@ export class UserprofileComponent implements OnInit {
     getChallenge(){
       return this.service.getChallenge().subscribe(data=>{
         this.challenge=data;
-        console.log(this.challenge);
+        console.log("challenge:", this.challenge);
         if(this.challenge.length==0){
           this.challengeIsNull=true;
         }
