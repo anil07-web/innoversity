@@ -16,20 +16,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/authenticationdb?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
     username: root
-<<<<<<< HEAD
-    password: arshad
-
-
-
-
-
-
-
-=======
     password: root
-
-
->>>>>>> 42b8c9c93aa694fbc79a45669f98ad3520969155
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
