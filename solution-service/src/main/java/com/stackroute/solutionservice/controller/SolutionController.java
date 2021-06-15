@@ -1,7 +1,13 @@
 package com.stackroute.solutionservice.controller;
 
+
+
+
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.solutionservice.model.Feedback;
+
 import com.stackroute.solutionservice.model.Solution;
 import com.stackroute.solutionservice.model.SolutionStatus;
 import com.stackroute.solutionservice.service.SolutionService;
@@ -118,7 +124,6 @@ public class SolutionController {
 
     @PutMapping("/uploadFile/{solutionId}")
     public void updateSolution(@RequestParam(value = "file") MultipartFile file, @RequestParam("item") String item, @PathVariable("solutionId") UUID solutionId) throws IOException {
-        System.out.println("description:"+item);
         System.out.println("file:"+file.getOriginalFilename());
         String fileUrl = solutionService.uploadFile(file);
         solutionService.updateSolutionFile(solutionId, item, file, fileUrl);
@@ -142,11 +147,4 @@ public class SolutionController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + solDB.getFile() + "\"")
                 .body(solDB.getFileByte());
     }
-//    @GetMapping("/download/{bookTitle}")
-//    public ResponseEntity<byte[]> getFile(@PathVariable String bookTitle) throws BookNotFound{
-//        Book fileDB = bookService.getBookDetails(bookTitle);
-//        return ResponseEntity.ok()
-//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getFile() + "\"")
-//                .body(fileDB.getFileByte());
-//    }
 }

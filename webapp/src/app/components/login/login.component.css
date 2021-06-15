@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,700&display=swap');
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins';
+    font-family: Lora;
     box-sizing: border-box;
 }
 
@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: rgb(34, 24, 28);
+    background-color: #202020;
     padding: 20px;
     color: white;
 }
@@ -48,6 +48,10 @@
     flex-direction: column;
     width: 100%;
     backdrop-filter: blur(10px);
+}
+
+.sign-in-heading{
+    font-family: Lora;
 }
 
 .sign-in-form {
@@ -99,4 +103,16 @@
 .forgot-link{
     margin-top: 20px;
     align-items: center;
+}
+
+.para{
+    font-family: Lora;
+}
+
+.sign-in-heading ul li{
+    text-align: left;
+}
+
+.font{
+    font-family: Lora;
 }

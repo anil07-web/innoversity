@@ -21,14 +21,15 @@
         </div>
 
         </div>
-        <div style="margin-top: 8pt;margin-bottom: 8pt;"><strong>ChallengeAbstract : </strong><div> {{challenge?.challengeAbstract}}</div></div>
-        <div style="margin-top: 8pt"><strong>Challenge Description : </strong><div>{{challenge?.description}}</div></div>
-        <div style="margin-top: 8pt"><strong>Challenge Rules : </strong><div>{{challenge?.rules}}</div></div>
+        <div style="margin-top: 8pt;margin-bottom: 8pt;"><strong>Challenge Abstract : </strong><h2> {{challenge?.challengeAbstract}}</h2></div>
+        <div style="margin-top: 8pt"><strong>Challenge Description : </strong><h2>{{challenge?.description}}</h2></div>
+        <div style="margin-top: 8pt"><strong>Challenge Rules : </strong><h2>{{challenge?.rules}}</h2></div>
         
         <!-- <div style="margin-top: 8pt"><strong>Challenge RewardPrize : </strong><span>{{challenge?.rewardPrize|currency:'INR'}}</span></div> -->
         <div *ngIf="fileName" style="margin-top: 8pt">
             <strong>Uploaded file: {{fileName}}</strong>
             <span style="margin-left: 5pt;"><button class="btn btn-secondary" (click)="openFile()">open</button></span>
+            <span style="margin-left: 5pt;"><button class="btn btn-secondary" (click)="downloadDocument()">Download Document</button></span>
           </div>
           <div style="margin-top: 10pt;text-align: center;"><button class="btn btn-secondary mb-3" (click)="solution()">Attempt</button></div>
     </div>

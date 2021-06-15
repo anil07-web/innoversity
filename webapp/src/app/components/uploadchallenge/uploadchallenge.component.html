@@ -88,15 +88,15 @@
 <app-header [isLoggedIn]="true"></app-header>
 <div class="container1">
   <div class="wrapper">
-    <div class="title">
+    <div class="title" >
       <h1>Please ! Upload Your Challenge Here</h1>
     </div>
-    <form class="upload-in-form" [formGroup]="uploadChallenge" (ngSubmit)="onSubmit(uploadChallenge)">
+    <form class="upload-in-form" [formGroup]="uploadChallenge" (ngSubmit)="uploadMethod(uploadChallenge)">
 
       <div class="input-fields">
         <input type="text" formControlName="challengeTitle" class="input" placeholder="Challenge Title">
         <div class="text-danger" *ngIf="challengeTitle?.dirty && challengeTitle?.invalid">
-          Challenge Name is required
+          Challenge Title is required
         </div>
         <ng-multiselect-dropdown formControlName="challengeDomain" class="input" [placeholder]="'Challenge Domain'"
           [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems"
@@ -124,27 +124,27 @@
             Challenge rules are required
           </div>
         </div> -->
-        <mat-tab-group animationDuration="0ms">
-          <mat-tab label="Abstract"> 
+        <mat-tab-group animationDuration="0ms" style="font-family: Lora;">
+          <mat-tab class="input" style="color: white;" label="Abstract"  > 
             <!-- <angular-editor formControlName="challengeAbstract" [config]="editorConfig" [disabled]="htmlMode" placeholder="Abstract">
             </angular-editor> -->
-            <textarea formControlName="challengeAbstract" rows="7"  class="input" placeholder="Enter challenge abstract"></textarea>
+            <textarea formControlName="challengeAbstract" rows="7"  class="input" placeholder="Enter The Challenge Abstract"></textarea>
             <div class="text-danger" *ngIf="challengeAbstract?.dirty && challengeAbstract?.invalid">
               Challenge Abstract is required
             </div>
           </mat-tab>
-          <mat-tab label="Description">
+          <mat-tab style="color: white;" label="Description" >
             <!-- <angular-editor formControlName="description" [config]="editorConfig" [disabled]="htmlMode" placeholder="Enter Challenge Description"></angular-editor> -->
-            <textarea formControlName="description" rows="7" class="input" placeholder="Enter challenge description"></textarea>
+            <textarea formControlName="description" rows="7" class="input" placeholder="Enter Challenge Description"></textarea>
             <div class="text-danger" *ngIf="description?.dirty && description?.invalid">
-              Challenge description is required
+              Challenge Description is required
             </div>
           </mat-tab>
-          <mat-tab label="Rules">
+          <mat-tab   style="color: white;" label="Rules">
             <!-- <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Provide rules for the challenge"> ></angular-editor> -->
-            <textarea formControlName="rules" rows="7" class="input" placeholder="Provide rules for the challenge"></textarea>
+            <textarea formControlName="rules" rows="7" class="input" placeholder="Provide Rules For the Challenge"></textarea>
             <div class="text-danger" *ngIf="rules?.dirty && rules?.invalid">
-            Challenge rules are required
+            Challenge Rules are required
           </div>
           </mat-tab>
         </mat-tab-group>
@@ -165,11 +165,11 @@
          </div>
         </div> -->
 
-        <p style="color: aliceblue; margin-top: 2%;">Challenge Artifact</p>
+        <p style="color: aliceblue; margin-top: 2%;font-family:Lora;">Challenge Artifact</p>
         <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px" accept=".pdf"
           (change)="onFileChanged($event)" />
         <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
-          <mat-error *ngIf="f.file.errors.required">Challenge artifact is required.</mat-error>
+          <mat-error *ngIf="f.file.errors.required">Challenge Artifacts are required.</mat-error>
         </mat-error>
 
         <div class="my1">
@@ -188,7 +188,7 @@
 
         <div class="input-group" *ngIf="isSelected">
           <input type="number" #amt class="input" formControlName="rewardPrize" placeholder="Reward Prize">
-          <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay</button>
+          <!-- <button (click)="pay(amt.value)" class="btn btn-primary btn-block">Pay</button> -->
           <div class="text-danger" *ngIf="rewardPrize?.dirty && rewardPrize?.invalid">
             Challenge Rewards cannot have 0 dollars
           </div>
@@ -196,10 +196,13 @@
         
         <div class="uploadbtn">
           <div class="mt-2">
-            <button class="btn btn-primary">Upload Challenge</button>
+            <button class="btn btn-secondary">{{submitButtonName}}</button>
           </div>
           <div class="mt-2" *ngIf="uploadSuccess">
             <p class="successMsg">{{successMessage}}</p>
+          </div>
+          <div class="mt-2" *ngIf="uploadFailed">
+            <p class="failureMsg">Uploading failed. Please check if form is valid</p>
           </div>
         </div>
         
