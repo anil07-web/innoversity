@@ -3,12 +3,12 @@
  
   <form class="register-in-form" [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm)">
  
-    <h1 class="card-text" style="padding-top: 5px;padding-left: 10px; font-family:Lora;"><strong>CHALLENGE NAME : </strong>{{info.challengeTitle}}</h1>
-    <h1 class="card-text" style="padding-top: 5px;padding-left: 10px;font-family:Lora;"><strong>SOLUTION NAME : </strong>{{info.solution}}</h1>
+    <h1 class="card-text" style="padding-top: 5px;padding-left: 20px; font-family:Lora;"><strong>CHALLENGE NAME : </strong>{{info.challengeTitle}}</h1>
+    <h1 class="card-text" style="padding-top: 5px;padding-left: 20px;font-family:Lora;"><strong>SOLUTION NAME : </strong>{{info.solution}}</h1>
   
 
   <div *ngIf="fileName">
-    <h1 class="card-text" style="padding-top: 5px; padding-left: 10px; font-family:Lora;"><strong>Previously Uploaded File : </strong>{{fileName}}</h1>
+    <h1 class="card-text" style="padding-top: 5px; padding-left: 20px; font-family:Lora;"><strong>Previously Uploaded File : </strong>{{fileName}}</h1>
       <button (click)="openFile()" class="btn btn-secondary" style="margin-left: 10px; font-family:Lora;">open</button>
     </div>
 
@@ -19,8 +19,8 @@
 
   <div class="desc">
     <!-- <textarea formControlName="description" class="form-control"></textarea> -->
-    <h1  style="padding-top: 5px;padding-left: 10px;font-family:Lora;"><strong>Solution Description:</strong></h1>
-    <textarea  rows="20"  id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  formControlName="description" class="form-control"></textarea>
+    <h1  style="padding-top: 5px;font-family:Lora;"><strong>Solution Description:</strong></h1>
+    <textarea style="margin-left: 4px;" rows="20"  id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  formControlName="description" class="form-control"></textarea>
   </div>
 
   
@@ -29,8 +29,9 @@
     <img src="/assets/images/updatesolution.jpg" alt="updatesolution">
   </div>
   
+<div style="margin-left: 20px;">
 
-  <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px; width: auto;" accept=".pdf"
+  <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px ; width: auto;" accept=".pdf"
     (change)="onFileChanged($event)" />
     <!-- <input type="file" class="custom-file-input" formControlName="file" id="file" style="padding: 4px" accept=".pdf"
     (change)="onFileChanged($event)"> -->
@@ -42,7 +43,7 @@
   <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
     <mat-error *ngIf="f.file.errors.required">is required.</mat-error>
   </mat-error>
-
+</div>
   <div class="col-sm py-3 offset-sm-5">
     <button mat-raised-button class="btn btn-secondary" (click)="checkUpdate()">
       Update

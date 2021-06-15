@@ -125,7 +125,7 @@
           </div>
         </div> -->
         <mat-tab-group animationDuration="0ms" style="font-family: Lora;">
-          <mat-tab label="Abstract"  > 
+          <mat-tab class="input" style="color: white;" label="Abstract"  > 
             <!-- <angular-editor formControlName="challengeAbstract" [config]="editorConfig" [disabled]="htmlMode" placeholder="Abstract">
             </angular-editor> -->
             <textarea formControlName="challengeAbstract" rows="7"  class="input" placeholder="Enter The Challenge Abstract"></textarea>
@@ -133,14 +133,14 @@
               Challenge Abstract is required
             </div>
           </mat-tab>
-          <mat-tab label="Description" style="color:red;">
+          <mat-tab style="color: white;" label="Description" >
             <!-- <angular-editor formControlName="description" [config]="editorConfig" [disabled]="htmlMode" placeholder="Enter Challenge Description"></angular-editor> -->
             <textarea formControlName="description" rows="7" class="input" placeholder="Enter Challenge Description"></textarea>
             <div class="text-danger" *ngIf="description?.dirty && description?.invalid">
               Challenge Description is required
             </div>
           </mat-tab>
-          <mat-tab label="Rules">
+          <mat-tab   style="color: white;" label="Rules">
             <!-- <angular-editor formControlName="rules" [config]="editorConfig" placeholder="Provide rules for the challenge"> ></angular-editor> -->
             <textarea formControlName="rules" rows="7" class="input" placeholder="Provide Rules For the Challenge"></textarea>
             <div class="text-danger" *ngIf="rules?.dirty && rules?.invalid">
