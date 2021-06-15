@@ -21,9 +21,15 @@
 
 
 .fa-check-circle{
-font-size: x-large;
+font-size:large;
+margin-left: 5px;
 }
-
+.fa-eye{
+  font-size: large;
+}
+.fa-hammer{
+  font-size: large;
+}
 
 .img-top{
   border-radius: 60%;
@@ -91,3 +97,28 @@ body{
 h1{
   font-family:Lora ;
 }
+h2{
+  font-family:Lora ;
+}
+h3{
+  font-family:Lora ;
+}
+h4{
+  font-family:Lora ;
+}
+
+.vm{
+  margin-left: 17%;
+}
+
+.image{
+  width: 60%;
+  height: 80%;
+  margin-left: 27%;
+}
+
+
+.card:hover{
+  background-color: #8fcadd;
+}
+
