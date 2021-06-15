@@ -52,4 +52,8 @@ export class LoginComponent implements OnInit {
     lock() {
       console.log("here is the lock");
     }
+
+    togglePassword() {
+      this.showPass = !this.showPass;
+    }
 }
