@@ -31,12 +31,12 @@ public class RabbitMqSender {
 
     /*This method sends the user data along with routing key to the queue.*/
     public void send(User user) {
-        System.out.println("User sent:"+user);
+        System.out.println("User sent:"+user.getEmail());
         rabbitTemplate.convertAndSend(exchange, routingKey, user);
     }
 
     public void sendToRecommendation(User user) {
-        System.out.println("User sent:"+user);
+        System.out.println("User sent:"+user.getEmail());
         rabbitTemplate.convertAndSend(exchange2, routingKey2, user);
     }
 

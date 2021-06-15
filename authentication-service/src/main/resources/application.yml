@@ -18,7 +18,6 @@ spring:
     username: root
     password: arshad
 
-
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate.ddl-auto: update

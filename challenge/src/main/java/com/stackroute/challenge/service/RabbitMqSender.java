@@ -24,7 +24,7 @@ public class RabbitMqSender {
 
     /*This method sends the challenge data along with routing key to the queue.*/
     public void send(Challenge challenge) {
-        System.out.println("Challenge sent:"+challenge);
+        System.out.println("Challenge sent:"+challenge.getChallengeTitle());
         rabbitTemplate.convertAndSend(exchange, routingKey, challenge);
     }
 

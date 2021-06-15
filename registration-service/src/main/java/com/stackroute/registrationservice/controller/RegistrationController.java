@@ -41,7 +41,6 @@ public class RegistrationController {
         User user = new ObjectMapper().readValue(item, User.class);
         UUID uuid = UUID.randomUUID();
         user.setUserId(uuid);
-        System.out.println("user details:"+user);
         System.out.println("file name:"+myfile.getOriginalFilename());
         user.setPic(myfile.getBytes());
         user.setPictureName(myfile.getOriginalFilename());

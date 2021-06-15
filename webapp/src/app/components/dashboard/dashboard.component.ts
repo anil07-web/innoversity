@@ -34,8 +34,10 @@ export class DashboardComponent implements OnInit {
   public environmentIsNull: boolean = true;
   public electricityIsNull: boolean = true;
   public searchIsNull: boolean = false;
+  public notSearched:boolean=false;
   public scienceIsNull: boolean = true;
   public recomIsNull: boolean = true;
+  public challengeIsNull: boolean = false;
   public challenge;
   public email;
   public count;
@@ -45,7 +47,11 @@ export class DashboardComponent implements OnInit {
     if (this.count == 1) {
       this.service.getSearchResult(querytext).subscribe(data => {
         this.searchresult = data;
+        this.notSearched=true;
         console.log(this.searchresult);
+        if(this.searchresult.length==0){
+          this.searchIsNull=true;
+        }
       });
     }
     else {
@@ -140,6 +146,9 @@ export class DashboardComponent implements OnInit {
 
       if (this.environment.length == 0) {
         this.environmentIsNull = false;
+      }
+      if(!(this.healthIsNull)&&!(this.engineeringIsNull)&&!(this.scienceIsNull)&&!(this.electricityIsNull)&&!(this.aerospaceIsNull)&&!(this.habitatIsNull)&&!(this.environmentIsNull)){
+        this.challengeIsNull=true;
       }
     });
   }
