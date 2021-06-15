@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   public electricityIsNull: boolean = true;
   public searchIsNull: boolean = false;
   public scienceIsNull: boolean = true;
+  public recomIsNull: boolean = true;
   public challenge;
   public email;
   public count;
@@ -61,14 +62,18 @@ export class DashboardComponent implements OnInit {
     this.loggedInUser = localStorage.getItem("userName");
   }
   getContacts() {
-    // this.email="vikhil@gmail.com";
     this.email=this.loggedInUser;
     this.service.getContacts(this.email).subscribe(data => {
       this.recomChallenge = data;
       this.recomChallenge.map(m => {
         this.recomChallenger = m.challengerName;
+        console.log(this.recomChallenge);
         if (this.recomChallenger != this.loggedInUser) {
           this.recommended.push(m);
+        }
+        if(this.recommended.length==0){
+          this.recomIsNull=false;
+          console.log(this.recomIsNull);
         }
       });
 
@@ -138,18 +143,6 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
-  // solution(challenge) {
-  //   console.log("User clicked on:", challenge.challengeId);
-  //   if (this.loggedInUser == challenge.challengerName) {
-  //     console.log("move to solution analysis");
-  //     this.router.navigateByUrl(`/solutionAnalysis/${challenge.challengeId}`)
-  //   } else {
-  //     console.log("move to upload solution");
-  //     this.router.navigateByUrl(`/solution/${challenge.challengeId}`);
-
-  //   }
-  // }
   getChallengeById(challengeId) {
     console.log("User clicked on:", challengeId.challengeId);
       this.service.getUpdatedChallenge(challengeId.challengeId).subscribe(data=>{

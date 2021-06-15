@@ -34,6 +34,9 @@ export class HeaderComponent implements OnInit {
     if(this.isLoggedIn) {
       this.router.navigateByUrl("/dashboard");
     }
+    else{
+      this.router.navigateByUrl("/");
+    }
   }
 
   show(){
