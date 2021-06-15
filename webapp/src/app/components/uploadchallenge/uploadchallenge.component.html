@@ -165,7 +165,7 @@
          </div>
         </div> -->
 
-        <p style="color: aliceblue; margin-top: 2%;font-family:Lora;">Challenge Artifact</p>
+        <p style="color: black; margin-top: 2%;font-family:Lora;">Challenge Artifact</p>
         <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px" accept=".pdf"
           (change)="onFileChanged($event)" />
         <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
@@ -182,8 +182,8 @@
         </div>
 
         <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1" (change)="onItemChange(true)">Reward</mat-radio-button>
-          <mat-radio-button value="2" (change)="onItemChange(false)">Free</mat-radio-button>
+          <mat-radio-button value="1" (change)="onItemChange(true)" style="font-family: Lora;">Reward</mat-radio-button>
+          <mat-radio-button value="2" (change)="onItemChange(false)" style="font-family: Lora;">Free</mat-radio-button>
         </mat-radio-group>
 
         <div class="input-group" *ngIf="isSelected">
