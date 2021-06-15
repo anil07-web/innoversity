@@ -31,12 +31,12 @@ margin-left: 5px;
   font-size: large;
 }
 
-.img-top{
+/* .img-top{
   border-radius: 60%;
   height: 300px;
-}
+} */
 
-
+/* 
 body{
   margin-top:20px;
   color: #1a202c;
@@ -93,7 +93,7 @@ body{
 .col-sm-9{
   font-size: 13pt;
   
-}
+} */
 h1{
   font-family:Lora ;
 }
@@ -112,13 +112,22 @@ h4{
 }
 
 .image{
-  width: 60%;
-  height: 80%;
-  margin-left: 27%;
+  width: 50%;
+  height: 70%;
+  margin-left: 32%;
 }
 
 
 .card:hover{
-  background-color: #8fcadd;
+  background-color: beige;;
 }
+/* .card-img-top:hover{
+  background-color: #8fcadd;
+} */
 
+.row{
+  font-family: Lora;
+}
+strong{
+  font-family: Lora;
+}
