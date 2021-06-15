@@ -118,3 +118,7 @@ h4{
 }
 
 
+.card:hover{
+  background-color: #8fcadd;
+}
+
