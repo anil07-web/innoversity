@@ -33,6 +33,7 @@ export class FeedbackComponent implements OnInit {
   public value=false;
   public showUpdate= false;
   public hired:any;
+  public isHired:boolean=false;
   downloadDisabled= true;
 
   ngOnInit(): void {
@@ -108,7 +109,6 @@ hireInnovator(){
   })
   const status = this.value?"Hired":"Accepted";
         this.service.updateStatus(this.solutionId, status).subscribe(data => {
-          alert("Innovator is Hired");
         });
   }
   openFile() {
