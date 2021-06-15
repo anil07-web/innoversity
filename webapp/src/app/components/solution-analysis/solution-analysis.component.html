@@ -16,7 +16,7 @@
                     <a ><button class="button button2" (click)="solAccepted(details,false)" *ngIf="details.solStatus == 'NotReviewed'">Reject</button></a>
                     <a ><button class="btn btn-secondary" (click)="feedbackView(details)" *ngIf="details.solStatus=='Accepted'">View More</button></a>
                     <a *ngIf="details.solStatus== 'Hired'"><button class="btn btn-secondary"  (click)="feedbackView(details)">View
-                        More</button><i class="fas fa-user-check fa-2x"  style="color: #06a50b;"></i></a>
+                        More</button><i matTooltip="Innovator is hired" class="fas fa-user-check fa-2x"  style="color: #06a50b;"></i></a>
                 </div>
             </div>
         </div>
