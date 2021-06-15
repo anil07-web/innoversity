@@ -43,6 +43,14 @@ export class FeedbackComponent implements OnInit {
     this.getByid();
     
   }
+  goBack() {
+    if(this.loggedInUser == this.info1.solvedBy){
+      this.router.navigateByUrl('userProfile');
+    }
+    else{
+      this.router.navigateByUrl(`solutionAnalysis/${this.info1.challengeId}`)
+    }
+  }
   getinfo() {
     this.service.getDetails().subscribe((data) => {
       let list = [];

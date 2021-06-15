@@ -31,12 +31,12 @@ margin-left: 5px;
   font-size: large;
 }
 
-.img-top{
+/* .img-top{
   border-radius: 60%;
   height: 300px;
-}
+} */
 
-
+/* 
 body{
   margin-top:20px;
   color: #1a202c;
@@ -93,12 +93,14 @@ body{
 .col-sm-9{
   font-size: 13pt;
   
-}
+} */
 h1{
   font-family:Lora ;
+
 }
 h2{
   font-family:Lora ;
+
 }
 h3{
   font-family:Lora ;
@@ -108,17 +110,15 @@ h4{
 }
 
 .vm{
-  margin-left: 17%;
+  margin-left: 24%;
 }
 
 .image{
-  width: 60%;
-  height: 80%;
-  margin-left: 27%;
+  width: 45%;
+  height: 65%;
+  margin-left: 38%;
 }
-
-
 .card:hover{
-  background-color: #8fcadd;
+  background-color: beige;;
 }
 
