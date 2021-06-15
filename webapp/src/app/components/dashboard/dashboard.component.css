@@ -5,10 +5,12 @@
 
 .card:hover{
     color: rgb(0, 0, 0);
-    background: rgb(155, 135, 212);
+    background: rgb(231, 231, 201);
 }
 h1{
     font-family: Lora;
+    text-shadow: 0 0 3px black;
+    background: beige;
 }
 .row{
     font-family: Lora;

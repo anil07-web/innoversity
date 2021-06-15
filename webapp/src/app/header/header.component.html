@@ -39,14 +39,14 @@
                 </li>
             </ul>
             <ul class="navbar-nav" *ngIf="isLoggedIn">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/challenge" style="color: white;"><span>Upload Challenge</span></a>
+                <li class="nav-item mt-1">
+                    <a class="nav-link" routerLink="/challenge" style="color: white;width: 150pt;"><span>Upload Challenge</span></a>
                 </li>
-                <li class="nav-item">
-                    <a routerLink="/userProfile" class="nav-link" style="color: white;">Welcome, {{loggedInUser}} <i
+                <li class="nav-item mt-1">
+                    <a routerLink="/userProfile" class="nav-link" id="username" style="color: white; width: 150pt;">Welcome, {{loggedInUser}} <i
                             class="fas fa-user"></i></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mt-1">
                     <a href="#" class="nav-link" style="color: white;">Logout</a>
                 </li>
             </ul>

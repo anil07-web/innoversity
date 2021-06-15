@@ -20,3 +20,6 @@ a{
 #nav:hover{
     font-size: 16pt;
 }
+#username{
+    /* display: grid; */
+}
