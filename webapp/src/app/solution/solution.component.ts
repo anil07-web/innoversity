@@ -44,7 +44,9 @@ export class SolutionComponent implements OnInit {
     // this.setLog();
   }
 
+  
 
+  showbar:boolean=false;
   onsubmit(form: NgForm) {
     if (form) {
       this.loggedInUser = localStorage.getItem('userName');
@@ -59,13 +61,15 @@ export class SolutionComponent implements OnInit {
       uploadFileData.append('file', this.selectedFile);
       if(form.valid)
     {
+      this.showbar=true;
       this.service.addDetails(uploadFileData).subscribe(data => {
         console.log(form.value);
         this.uploadSuccess= true;
         this.service1.getUpdatedAttempt(this.challengeId).subscribe(data=>{
           console.log(data);
         })
-        this.router.navigateByUrl("/dashboard")
+        // this.showbar=true;
+        this.router.navigateByUrl("/dashboard");
     });
     }
       else{

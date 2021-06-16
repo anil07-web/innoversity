@@ -56,8 +56,10 @@ export class RegistrationComponent implements OnInit {
  
 
   msg:any;
+  showbar:boolean;
   onSubmit() {
     if (this.registerForm.valid) {
+      this.showbar=true;
       const uploadData = new FormData();
       const item = this.registerForm.value;
       uploadData.append('item', JSON.stringify(item));
