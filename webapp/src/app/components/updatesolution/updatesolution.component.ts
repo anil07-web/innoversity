@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { feedback } from 'src/app/models/feedback';
 import { SolutionService } from 'src/app/services/solution.service';
 
 @Component({
@@ -95,8 +96,10 @@ export class UpdatesolutionComponent implements OnInit {
       uploadFileData.append('file', this.selectedFile);
       this.service.updateSolution(this.solutionId, uploadFileData).subscribe((data) => {
           console.log(this.solutionId);
+          this.router.navigateByUrl(`feedback/${this.solutionId}`);
          
         });
+
     } else {
       console.log('update description');
       const item = this.updateForm.get('description').value;
@@ -104,6 +107,8 @@ export class UpdatesolutionComponent implements OnInit {
         .updateDescription(this.solutionId, item)
         .subscribe((data) => {
           console.log(this.solutionId);
+          this.router.navigateByUrl(`feedback/${this.solutionId}`);
+
         });
     }
   }
@@ -151,6 +156,12 @@ export class UpdatesolutionComponent implements OnInit {
     console.log("open file here");
     window.open(this.info.uploadUrl, "_blank");
   }
+
+
+  feedback(){
+    this.router.navigateByUrl(`feedback/${this.solutionId}`);
+  }
+    
 }
 
 // onsubmit(form:NgForm){
@@ -165,3 +176,4 @@ export class UpdatesolutionComponent implements OnInit {
 //     alert("wrong");
 //   }
 // }
+
