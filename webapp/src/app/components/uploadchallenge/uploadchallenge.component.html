@@ -165,7 +165,7 @@
          </div>
         </div> -->
 
-        <p style="color: black; margin-top: 2%;font-family:Lora;">Challenge Artifact</p>
+        <p style="font-size: medium; color: black; margin-top: 2%;font-family:Lora;">Challenge Artifact</p>
         <input type="file" class="form-control" formControlName="file" id="file" style="padding: 4px" accept=".pdf"
           (change)="onFileChanged($event)" />
         <mat-error *ngIf="f.file.touched &amp;&amp; f.file.invalid" class="text-danger">
@@ -209,6 +209,7 @@
       </div>
     </form>
   </div>
+  <mat-progress-bar  mode="indeterminate" *ngIf="showbar"></mat-progress-bar>        
 </div>
 
 
