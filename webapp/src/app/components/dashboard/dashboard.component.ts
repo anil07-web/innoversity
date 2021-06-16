@@ -34,23 +34,26 @@ export class DashboardComponent implements OnInit {
   public environmentIsNull: boolean = true;
   public electricityIsNull: boolean = true;
   public searchIsNull: boolean = false;
-  public notSearched:boolean=false;
+  public notSearched: boolean = false;
   public scienceIsNull: boolean = true;
-  public recomIsNull: boolean = true;
+  public recomIsNull: boolean = false;
   public challengeIsNull: boolean = false;
   public challenge;
   public email;
   public count;
   public searchresult;
+  public date: Date = new Date;
+  public date1: Date;
+  public date2: Date;
   setQuery(querytext) {
     this.count = querytext.split(' ').length;
     if (this.count == 1) {
       this.service.getSearchResult(querytext).subscribe(data => {
         this.searchresult = data;
-        this.notSearched=true;
+        this.notSearched = true;
         console.log(this.searchresult);
-        if(this.searchresult.length==0){
-          this.searchIsNull=true;
+        if (this.searchresult.length == 0) {
+          this.searchIsNull = true;
         }
       });
     }
@@ -61,27 +64,31 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
-  
+
   ngOnInit(): void {
     this.getContacts();
     this.getChallenge();
     this.loggedInUser = localStorage.getItem("userName");
+    console.log(this.date);
   }
   getContacts() {
-    this.email=this.loggedInUser;
+    this.email = this.loggedInUser;
     this.service.getContacts(this.email).subscribe(data => {
       this.recomChallenge = data;
       this.recomChallenge.map(m => {
-        this.recomChallenger = m.challengerName;
-        console.log(this.recomChallenge);
-        if (this.recomChallenger != this.loggedInUser) {
-          this.recommended.push(m);
+        this.date2 = new Date(m.expiryDate);
+        if (this.date2.getTime() > this.date.getTime()) {
+          this.recomChallenger = m.challengerName;
+          console.log(this.recomChallenge);
+          if (this.recomChallenger != this.loggedInUser) {
+            this.recommended.push(m);
+          }
+          if (this.recommended.length != 0) {
+            this.recomIsNull = true;
+            console.log(this.recomIsNull);
+          }
         }
-        if(this.recommended.length==0){
-          this.recomIsNull=false;
-          console.log(this.recomIsNull);
-        }
-      });
+        });
 
     });
   }
@@ -93,32 +100,36 @@ export class DashboardComponent implements OnInit {
       console.log(this.loggedInUser);
       this.challenge.map(d => {
         this.challengerName = d.challengerName;
+        this.date1 = new Date(d.expiryDate);
+        console.log(this.date1.getTime() > this.date.getTime());
         console.log(this.challengerName);
-        if (this.challengerName != this.loggedInUser) {
-          d.challengeDomain.map(m => {
-            if (m == "Health") {
-              this.health.push(d);
-            }
-            if (m == "Engineering") {
-              this.engineering.push(d);
-            }
-            if (m == "Science") {
-              this.science.push(d);
-            }
-            if (m == "Electricity") {
-              this.electricity.push(d);
-            }
-            if (m == "Aerospace") {
-              this.aerospace.push(d);
-            }
-            if (m == "Habitat") {
-              this.habitat.push(d);
-            }
-            if (m == "Environment") {
-              this.environment.push(d);
-            }
+        if (this.date1.getTime() > this.date.getTime()) {
+          if (this.challengerName != this.loggedInUser) {
+            d.challengeDomain.map(m => {
+              if (m == "Health") {
+                this.health.push(d);
+              }
+              if (m == "Engineering") {
+                this.engineering.push(d);
+              }
+              if (m == "Science") {
+                this.science.push(d);
+              }
+              if (m == "Electricity") {
+                this.electricity.push(d);
+              }
+              if (m == "Aerospace") {
+                this.aerospace.push(d);
+              }
+              if (m == "Habitat") {
+                this.habitat.push(d);
+              }
+              if (m == "Environment") {
+                this.environment.push(d);
+              }
 
-          });
+            });
+          }
         }
       });
 
@@ -147,16 +158,16 @@ export class DashboardComponent implements OnInit {
       if (this.environment.length == 0) {
         this.environmentIsNull = false;
       }
-      if(!(this.healthIsNull)&&!(this.engineeringIsNull)&&!(this.scienceIsNull)&&!(this.electricityIsNull)&&!(this.aerospaceIsNull)&&!(this.habitatIsNull)&&!(this.environmentIsNull)){
-        this.challengeIsNull=true;
+      if (!(this.healthIsNull) && !(this.engineeringIsNull) && !(this.scienceIsNull) && !(this.electricityIsNull) && !(this.aerospaceIsNull) && !(this.habitatIsNull) && !(this.environmentIsNull)) {
+        this.challengeIsNull = true;
       }
     });
   }
   getChallengeById(challengeId) {
     console.log("User clicked on:", challengeId.challengeId);
-      this.service.getUpdatedChallenge(challengeId.challengeId).subscribe(data=>{
-        console.log(data);
-      })
-      this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
+    this.service.getUpdatedChallenge(challengeId.challengeId).subscribe(data => {
+      console.log(data);
+    })
+    this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
   }
 }
