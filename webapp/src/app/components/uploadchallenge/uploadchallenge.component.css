@@ -8,7 +8,7 @@
 }
 
 .container1{
-  background: url("/assets/images/challengebackground.jpg") no-repeat top center;
+  background: url("/assets/images/logo3.jpg") no-repeat top center;
   background-size: cover;
   height: 145vh;
 }
@@ -20,14 +20,17 @@
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 1000px;
-  background: rgba(0, 0, 0, 0.938);
+  /* background: rgba(0, 0, 0, 0.938); */
+  /* background: rgba(255, 255, 255, 0.795); */
+  background-color: beige;
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.788);
 }
 
 .wrapper .title h1{
-  color: white;
+  /* color: white; */
+  color: black;
   text-align: center;
   margin-bottom: 25px;
   font-family: Lora;
@@ -54,10 +57,12 @@
   margin: 15px 0;
   background: transparent;
   border: 0px;
-  border-bottom: 2px solid white;
+  border-bottom: 1px solid black;
+  
   padding: 10px;
-  color: white;
+  color: black;
   width: 100%;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.788); */
 }
 
 .msg textarea{
@@ -66,26 +71,27 @@
 
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: white;
+  /* color: white; */
+  color: black;
 }
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: white;
+  color: black;
 }
 :-ms-input-placeholder {
   /* IE 10+ */
-  color: white;
+  color: black;
 }
 
-/* .btn {
-    background: rgba(128, 128, 128, 0.829);
+.btn {
+  background-color: rgb(34, 24, 28);
     text-align: center;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 20px;
     color: #fff;
     cursor: pointer;
     text-transform: uppercase;
-} */
+}
 
 @media screen and (max-width: 600px){
   .contact-form{
@@ -101,11 +107,11 @@
 }
 
 .my{
-  color: white;
+  color: black;
 }
 
 .fa-calendar {
-  color: rgb(250, 234, 234);
+  color: black;
 }
 
 .my1{
@@ -114,37 +120,37 @@
 
 .mat-radio-button  {
   margin-left: 16px;
-  color: white;
+  color: black;
   margin-top: 2%;
   margin-bottom: 2%;
 }
 
 .mat-tab-group {
   margin-bottom: 48px;
-  color: white;
+  color: black;
   font-family:Lora;
 }
 
 .mat-tab text{
   font-family: Lora;
-  color:white;
+  color: black;
 }
 .mat-tab-label{
-  color: white;
+  color: black;
   font-family: Lora;
 }
 
 
 
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-color:white;
+  color: black;
 }
 
 
 textarea{
   width: 100%;
   background-color:black;
-  color:white;
+  color: black;
 }
 
 
