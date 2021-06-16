@@ -1,6 +1,6 @@
 <app-header [isLoggedIn]="true"></app-header>
 <div class="row mb-3">
-    <h1 class="text-center">Search Result</h1>
+    <h1 class="text-center" *ngIf="notSearched">Search Result</h1>
     <div class="col-md-3" *ngFor="let c of searchresult">
         <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
@@ -18,7 +18,8 @@
             </div>
         </div>
     </div>
-    <div *ngIf="searchIsNull">No Search result Found</div>
+    <!-- <div *ngIf="searchIsNull"> <i class="fas fa-times-circle"></i>No Search result Found <img src="assets/images/gif1.gif" alt=""></div> -->
+    <div *ngIf="searchIsNull" style="text-align: center;"><img src="assets/images/gif1.gif" alt=""></div>
 </div>
 <div class="row mb-3">
     <h1 class="text-center" *ngIf="recomIsNull"> Recommended Challenges</h1>
@@ -40,6 +41,7 @@
         </div>
     </div>
 </div>
+<div *ngIf="challengeIsNull" style="text-align: center;font-size: 20pt;">!! <i class="far fa-tired"></i> There are no Challenges in the platform</div>
 <div class="row mb-3">
     <h1 class="text-center" *ngIf="healthIsNull">Health</h1>
     <div cliclass="col-md-3" *ngFor="let c of health">

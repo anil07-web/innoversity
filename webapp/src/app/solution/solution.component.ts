@@ -25,7 +25,7 @@ export class SolutionComponent implements OnInit {
   public loggedInUser;
   public challengeId;
   public uploadSuccess=false;
-  show = false;
+ 
   // logg = 'Hi Arshad';
   constructor(
     private service: SolutionService,
@@ -81,6 +81,9 @@ export class SolutionComponent implements OnInit {
     //   this.isEdit = 'Please Enter Correct Details!!';
     // }
     }
+  }
+  next(){
+    this.router.navigateByUrl(`/challengeDes/${this.challengeId}`);
   }
   getinfo(){
     this.service.getinfo(this.challengeId).subscribe((data) => {
