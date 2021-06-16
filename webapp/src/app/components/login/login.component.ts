@@ -18,10 +18,12 @@ export class LoginComponent implements OnInit {
   public invalid:string;
   public loggedIn:boolean=false;
   showAlert: boolean = false;
+  showbar:boolean;
   ngOnInit(): void {
   }
   addUserCredentials(form:NgForm){
     if(form.valid){
+      this.showbar=true;
       this.logindata.addUserCredentials(this.login).subscribe((data : any)=>{
         console.log(data);
         this.invalid=data?.token;

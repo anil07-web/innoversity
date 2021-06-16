@@ -148,7 +148,7 @@ export class UploadchallengeComponent implements OnInit {
       window.document.body.appendChild(s);
     }
   }
-
+  showbar:boolean;
   onSubmit(submitForm: FormGroup) {
     console.log('uploading a challenge');
     const loggedInUser = localStorage.getItem('userName');
@@ -162,6 +162,7 @@ export class UploadchallengeComponent implements OnInit {
     this.service.addChallenge(uploadFileData).subscribe((data) => {
       console.log(this.uploadChallenge.value);
       this.uploadSuccess = true;
+      this.showbar=true;
       this.router.navigateByUrl('/dashboard');
     });
   }

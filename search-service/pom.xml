@@ -65,7 +65,6 @@
 			<version>6.1.2</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.elasticsearch.client</groupId>
 			<artifactId>elasticsearch-rest-client-sniffer</artifactId>
@@ -79,9 +78,6 @@
 			<version>1.18.16</version>
 			<scope>provided</scope>
 		</dependency>
-
-
-
 
 		<!-- https://mvnrepository.com/artifact/edu.stanford.nlp/stanford-corenlp -->
 		<dependency>
@@ -98,8 +94,11 @@
 			<classifier>models</classifier>
 		</dependency>
 
-
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>3.0.2</version>
+		</dependency>
 
 	</dependencies>
 
