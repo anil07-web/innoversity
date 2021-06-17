@@ -97,13 +97,13 @@ public class SolutionController {
 
     @GetMapping("/challenge/{challengeId}")
     public ResponseEntity<Solution> getSolutionByChallengeId(@PathVariable("challengeId") UUID challengeId){
-        System.out.println("Hello");
+        System.out.println("challenge"+challengeId);
         return new ResponseEntity((List<Solution>) solutionService.getSolutionByChallengeId(challengeId),HttpStatus.OK);
     }
 
     @GetMapping("/solve/{solutionId}")
     public ResponseEntity<Solution> getSolutionBySolutionId(@PathVariable("solutionId") UUID solutionId){
-        System.out.println("Hello");
+
         return new ResponseEntity(solutionService.getSolutionBySolutionId(solutionId),HttpStatus.OK);
     }
 
@@ -121,6 +121,12 @@ public class SolutionController {
     public void updateSolution(@PathVariable("solutionId") UUID solutionId, @PathVariable("rank") Integer rank) {
         System.out.print("solution id:"+solutionId+" and rank"+rank);
         solutionService.updateRank(solutionId,rank);
+    }
+
+    @PutMapping("/rank/clear")
+    public void updateSolution() {
+        System.out.print("clear all");
+        solutionService.clearRank();
     }
 
 //    @PostMapping("/file/upload")

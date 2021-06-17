@@ -15,10 +15,10 @@
     border-radius: 10px;
   }
 
-.button1 {background-color: #06a50b;margin-left: 24%;} 
+.button1 {background-color: #06a50b;margin-left:90pt ;} 
 
 .button3 {background-color: #06a50b;} 
-.button2 {background-color: #d40a0a;margin-left: 28%;} 
+.button2 {background-color: #d40a0a;margin-left:0;} 
 
 
 
@@ -112,7 +112,7 @@ h4{
 }
 
 .vm{
-  margin-left: 24%;
+  margin-left: 35%;
 }
 
 

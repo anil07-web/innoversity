@@ -101,7 +101,7 @@ document.getElementById("styled").style.background=color
             </div>
             <div>
                 <span ><button *ngIf="showUpdate" class="btn btn-dark" (click)="updateSolution()" style="margin-top: 8pt">Update Solution</button></span>
-                <div *ngIf="hired.hired>=3" style="color: rgb(119, 25, 25);">You have Hired maximum number of Innovators</div>
+                <div *ngIf="hired.hired>=3&&!showUpdate&&info1.solStatus=='Accepted'" style="color: rgb(119, 25, 25);">You have Hired maximum number of Innovators</div>
                 <span ><button  *ngIf="!showUpdate" [disabled]="hired.hired>=3 || info1.solStatus=='Hired'" class="btn btn-dark" (click)="hireInnovator()" style=" margin-top: 2%;">Hire</button></span>
                 <!-- <span><button (click)="goBack()" class="btn btn-secondary" style="margin-top: 2%; margin-left: 1%;">Back</button></span> -->
             </div>

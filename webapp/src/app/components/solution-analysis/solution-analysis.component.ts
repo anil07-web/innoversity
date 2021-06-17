@@ -93,6 +93,14 @@ export class SolutionAnalysisComponent implements OnInit {
       });
     }
 
+    clearRankings() {
+      console.log("clear all rankings");
+      this.service.clearRank().subscribe((data) => {
+        console.log("data:"+data);
+        this.getSolutionByChallengeId(this.challengeId);
+      });
+    }
+
     // feedbackView1(details) {
     //   const color=true;
     //   console.log("solution Id:", details.solutionId);

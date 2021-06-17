@@ -223,6 +223,13 @@ public class  SoultionServiceImpl implements SolutionService {
         mongoTemplate.upsert(query,updateQuery,"solution");
     }
 
+    public void clearRank () {
+        Query query = new Query(Criteria.where("solStatus").is("Hired"));
+        Update updateQuery = new Update();
+        updateQuery.set("rank",0);
+        mongoTemplate.updateMulti(query,updateQuery,"solution");
+    }
+
     @Override
     public void updateSolutionFile(UUID solutionID, String description, MultipartFile file, String url) throws IOException {
         Query query = new Query(Criteria.where("solutionId").is(solutionID));

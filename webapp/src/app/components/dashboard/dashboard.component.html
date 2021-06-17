@@ -23,7 +23,7 @@
     <div *ngIf="searchIsNull" style="text-align: center;"><img src="assets/images/gif1.gif" alt=""></div>
 </div>
 <div class="row mb-3">
-    <h1 class="text-center" *ngIf="recomIsNull"> Recommended Challenges</h1>
+    <h1 class="text-center" *ngIf="recomIsNull"> <strong> Recommended Challenges</strong></h1>
     <div class="col-md-3 " *ngFor="let c of recommended">
         <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
@@ -44,7 +44,7 @@
 </div>
 
 <div class="row mb-3">
-    <h1 class="text-center" *ngIf="recomIsNull"> Health</h1>
+    <h1 class="text-center" *ngIf="healthIsNull"> Health</h1>
     <div class="col-md-3 " *ngFor="let c of health">
         <div (click)="getChallengeById(c)" class="card" style="width: 22rem;">
             <img src="assets/images/logo4.jpg" class="card-img-top" alt="...">
