@@ -51,6 +51,7 @@ export class UserprofileComponent implements OnInit {
       console.log(this.solution);
       if(this.solution.length==0){
         this.solutionIsNull=true;
+        console.log(this.solutionIsNull);
       }
     })
    }
