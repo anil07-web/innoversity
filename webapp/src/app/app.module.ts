@@ -31,6 +31,8 @@ import { UserprofileComponent} from './components/userprofile/userprofile.compon
 import { UpdatesolutionComponent} from './components/updatesolution/updatesolution.component';
 import { DetailedChallengeDesComponent } from './components/detailed-challenge-des/detailed-challenge-des.component'
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
+
 import {MatProgressBarModule} from '@angular/material/progress-bar'
 
 @NgModule({
@@ -69,6 +71,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
     MatRadioModule,
     MatTabsModule,
     MatTooltipModule,
+    MatSelectModule,
     MatProgressBarModule,
     NgMultiSelectDropDownModule.forRoot(),
   ],

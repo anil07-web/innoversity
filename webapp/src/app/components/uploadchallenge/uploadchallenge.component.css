@@ -160,3 +160,8 @@ textarea{
   font-weight: 500;
  color: white;
 } */
+
+
+::placeholder { 
+  opacity: .75; 
+}
