@@ -123,6 +123,12 @@ public class SolutionController {
         solutionService.updateRank(solutionId,rank);
     }
 
+    @PutMapping("/rank/clear")
+    public void updateSolution() {
+        System.out.print("clear all");
+        solutionService.clearRank();
+    }
+
 //    @PostMapping("/file/upload")
 //    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
 //        return new ResponseEntity<>(solutionService.uploadFile(file), HttpStatus.OK);

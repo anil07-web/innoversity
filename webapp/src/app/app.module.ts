@@ -34,6 +34,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
     MatTooltipModule,
     MatSelectModule,
     MatProgressBarModule,
+    MatButtonModule,
     NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [DashboardComponent, FeedbackComponent],

@@ -3,7 +3,6 @@
     <div class="row">
         <p class="content" style="background-image: url('assets/images/solution1.gif');">Solvers are at the heart of everything we do,<br>supplying the innovative solutions to everyones’<br> problems and needs.</p>
     </div>
-
 <div class="row mb-3">
     <div class="col-md-4" *ngFor="let details of solutionDetailsBychallenge">
         <div  class="card" >
@@ -32,4 +31,9 @@
             </div>
         </div>
     </div>
+    <!-- <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+      </button> -->
+      <button mat-mini-fab id="sticky" color="primary" class="stickyButton" matTooltip="Clear all rankings" (click)="clearRankings()"><mat-icon>cancel</mat-icon></button>
+
 </div>

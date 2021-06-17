@@ -23,4 +23,8 @@ export class SolutionAnalysisService {
   updateRank(solutionId,rank){
     return this.http.put(`/api/v1/solution/rank/${solutionId}/${rank}`, { responseType: 'text' });
   }
+
+  clearRank(){
+    return this.http.put(`/api/v1/solution/rank/clear`, { responseType: 'text' });
+  }
 }
