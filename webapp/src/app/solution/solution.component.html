@@ -56,22 +56,17 @@
    <div class="main">
      <div class="side">
        <h1 class="sign-in-heading">Challenge details</h1>
-       <h3 class="content" [class.show]="show"><strong>Challenge Abstract: </strong>{{info.challengeAbstract}}</h3>
-       <button (click)="show = !show">{{ show ? 'Show less': 'Show More' }}</button>
-      
-      
-      
-         <h3 class="content"><strong>Challenge Description: </strong>{{info.description}}</h3>
-         <h3 class="content"><strong>Expiration Date: </strong>{{info.expiryDate | date}}</h3>
-         <h3 class="content"><strong>Uploaded On: </strong>{{info.uploadedOn | date}}</h3>
-         <h3 class="content"><strong>Rules: </strong>{{info.rules}}</h3>
-         <h3 class="content"><strong>Prize Amount: </strong>{{info.rewardPrize}}</h3>
-     </div>
+         <h3 class="content"><strong style="font-size: 22px;">Challenged By : </strong>{{info.challengerName}}</h3>
+         <h3 class="content"><strong style="font-size: 22px;">Expiration Date : </strong>{{info.expiryDate | date}}</h3>
+         <h3 class="content"><strong style="font-size: 22px;">Uploaded On : </strong>{{info.uploadedOn | date}}</h3>
+         <h3 class="content"><strong style="font-size: 22px;">Prize Amount : </strong>{{info.rewardPrize}}</h3>
+         <button class="btn btn-secondary" (click)="next()">More Details...</button>
+        </div>
+     
      <div class="sign-in">
-       
         <img src="/assets/images/idea.svg" width="50%"  alt="">
         <form #uploadsolution="ngForm" (ngSubmit)="onsubmit(uploadsolution)">
-            <p style="font-size: 20px;"><strong>Challenge Name: </strong>{{info.challengeTitle}}</p>
+            <p style="font-size: 20px;font-family: Lora;"><strong>Challenge Name: </strong>{{info.challengeTitle}}</p>
          <div class="edit">
            
             <input type="text" #solution="ngModel" name="solution"  class="form-control" required  [(ngModel)]="innovator.solution" placeholder="Provide Solution">
@@ -104,5 +99,6 @@
        </form>
      </div>
    </div>
+   <mat-progress-bar  mode="indeterminate" *ngIf="showbar"></mat-progress-bar>        
  </div>
 

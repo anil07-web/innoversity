@@ -3,14 +3,17 @@
     <div class="row">
         <p class="content" style="background-image: url('assets/images/solution1.gif');">Solvers are at the heart of everything we do,<br>supplying the innovative solutions to everyones’<br> problems and needs.</p>
     </div>
-    <div class="row">
-        <div class="card mx-2 mt-2 card text-white bg-dark" style="width: 18rem;" *ngFor="let details of solutionDetailsBychallenge" >
-            <div class="card-body" >
-                <h1 class="card-title"><strong>Challenge Name</strong>: {{details.challengeTitle}}</h1>
-                <h1 class="card-title"><strong>Solution</strong>: {{details.solution}}</h1>
-                <h3 class="card-text"><strong>Solved by</strong> : {{details.solvedBy}}</h3>
-                <h3 class="card-text"><strong>Description</strong>: {{details.description}}</h3>
-                <h3 class="card-text"><strong>Status</strong>: {{details.solStatus}}</h3>
+
+<div class="row mb-3">
+    <div class="col-md-4" *ngFor="let details of solutionDetailsBychallenge">
+        <div  class="card" >
+            <!-- <img src="assets/images/logo4.jpg" class="card-img-top" alt="..."> -->
+            <div class="card-body text-white bg-dark ">
+                <h1 class="card-title"><strong>Challenge Name</strong>: <h2> {{details.challengeTitle}}</h2></h1>
+                <h1 class="card-title"><strong>Solution</strong>: <h2>  {{details.solution}}</h2> </h1>
+                <h1 class="card-text"><strong>Solved by</strong> :<h2>  {{details.solvedBy}}</h2></h1>
+                <h1 class="card-text"><strong>Description</strong>:<h2>  {{details.description}}</h2></h1>
+                <h1 class="card-text"><strong>Status</strong>:<h2>  {{details.solStatus}}</h2></h1>
                 <div class="d-flex flex-row" >
                     <a ><button class="button button1" (click)="solAccepted(details,true)" *ngIf="details.solStatus == 'NotReviewed'">Accept</button></a>
                     <a ><button class="button button2" (click)="solAccepted(details,false)" *ngIf="details.solStatus == 'NotReviewed'">Reject</button></a>
@@ -30,6 +33,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- [style.background-color]="details.solStatus=='Hired'?'grey':'none'" -->

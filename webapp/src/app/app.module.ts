@@ -33,6 +33,7 @@ import { DetailedChallengeDesComponent } from './components/detailed-challenge-d
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 
+import {MatProgressBarModule} from '@angular/material/progress-bar'
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatTabsModule,
     MatTooltipModule,
     MatSelectModule,
+    MatProgressBarModule,
     NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [DashboardComponent, FeedbackComponent],

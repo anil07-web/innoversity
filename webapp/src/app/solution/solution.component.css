@@ -104,7 +104,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins';
+    font-family: 'Lora';
     box-sizing: border-box;
 }
 
@@ -142,7 +142,7 @@
     padding: 20px;
     color: white;
 }
-
+  
 .sign-in {
     display: flex;
     align-items: center;
@@ -167,12 +167,12 @@
     border: none;
     border-bottom: 2px solid rgb(34, 24, 28);
     outline: none;
-    width: 80%;
+    /* width: 100%; */
     margin-top: 30px;
 }
 .content{
     text-align: start;
-    
+    font-family: 'Lora';
 }
 
 .btnLogin {
@@ -202,9 +202,10 @@
     /* width: 70%; */
 }
 .sign-in-heading{
-    font-size: 40px;
-  
+    font-size: 45px;
+    font-family: 'Lora';
     margin-left: 50px;
+    margin-bottom:40px;
 } 
 /* .form-group {
     display: grid;

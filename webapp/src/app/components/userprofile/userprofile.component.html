@@ -24,39 +24,39 @@
               <div class="col-sm-3">
                 <h1 class="mb-0">Email</h1>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <h2 class="col-sm-9 text-secondary">
                 {{c.email}}
-              </div>
+              </h2>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-3">
                 <h1 class="mb-0">City</h1>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <h2 class="col-sm-9 text-secondary">
                 {{c.city}}
-              </div>
+              </h2>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-3">
                 <h1 class="mb-0">Gender</h1>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <h2 class="col-sm-9 text-secondary">
                 {{c.gender|uppercase}}
-              </div>
+              </h2>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h1 class="mb-0">Intrested Domains</h1>
+                <h1 class="mb-0">Interested Domains</h1>
               </div>
               <!-- <div>{{c.domain}}</div> -->
               <div class="col-sm-9 text-secondary">
                 <mat-chip-list>
-                  <div *ngFor="let a of c.domain">
+                  <h2 *ngFor="let a of c.domain">
                     <mat-chip>{{a}}</mat-chip>
-                  </div>
+                  </h2>
                 </mat-chip-list>
               </div>
             </div>
@@ -74,20 +74,18 @@
       <div class="card" style="width: 22rem;" (click)="solutionAnalysis(c)">
         <!-- <img src="assets/images/logo4.jpg" class="card-img-top" alt="..."> -->
         <img src="data:image/png;base64,{{ c.qrCode }}" class="card-img-top" alt="QRCode">
-        <div class="card text-white bg-dark">
+        <div class="card-body text-white bg-dark">
           <h2 class="card-title text-center"><strong>Title: </strong>{{c.challengeTitle | titlecase}} </h2>
           <h2 class="card-text"><strong style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt;">Challenged
-              By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></h2>
+                  By: </strong><span style="font-size: 15pt;">{{c.challengerName | titlecase}}.</span></h2>
           <h2 style="font-weight: bold;font-size: 15pt; margin-bottom: 5pt; margin-top: 5pt;">Domain: </h2>
           <mat-chip-list>
-            <div *ngFor="let a of c.challengeDomain" matTooltip="Domains">
-              <mat-chip>{{a}}</mat-chip>
-            </div>
+              <h2 *ngFor="let a of c.challengeDomain" matTooltip="Domains">
+                  <mat-chip>{{a}}</mat-chip>
+              </h2>
           </mat-chip-list>
-          <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span
-              matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i
-                class="fas fa-hammer"></i></span></div>
-        </div>
+          <div style="margin-top: 5pt;">{{c.views}} <i matTooltip="No. of people viewed" class="fas fa-eye fa-lg"></i><span matTooltip="No. of people attempted" style="margin-left: 20pt;">{{c.attempt }} <i class="fas fa-hammer fa-lg  "></i></span></div>
+      </div>
       </div>
     </div>
 
