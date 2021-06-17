@@ -66,5 +66,4 @@ export class UserprofileComponent implements OnInit {
     this.router.navigateByUrl(`/solutionAnalysis/${challenge.challengeId}`)
   }
 
-
 }
