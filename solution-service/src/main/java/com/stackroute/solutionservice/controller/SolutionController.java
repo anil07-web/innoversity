@@ -117,6 +117,12 @@ public class SolutionController {
         solutionService.updateSolution(description,solutionId);
     }
 
+    @PutMapping("/rank/{solutionId}/{rank}")
+    public void updateSolution(@PathVariable("solutionId") UUID solutionId, @PathVariable("rank") Integer rank) {
+        System.out.print("solution id:"+solutionId+" and rank"+rank);
+        solutionService.updateRank(solutionId,rank);
+    }
+
 //    @PostMapping("/file/upload")
 //    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
 //        return new ResponseEntity<>(solutionService.uploadFile(file), HttpStatus.OK);

@@ -27,6 +27,8 @@ public interface SolutionService {
 
     public void updateSolution(String description, UUID solutionId);
 
+    public void updateRank (UUID solutionId, Integer rank);
+
     String uploadFile(MultipartFile multipartFile);
 
     public void updateSolutionFile(UUID solutionID, String description, MultipartFile file, String url) throws IOException;

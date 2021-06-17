@@ -216,6 +216,14 @@ public class  SoultionServiceImpl implements SolutionService {
     }
 
     @Override
+    public void updateRank (UUID solutionId, Integer rank) {
+        Query query = new Query(Criteria.where("solutionId").is(solutionId));
+        Update updateQuery = new Update();
+        updateQuery.set("rank",rank);
+        mongoTemplate.upsert(query,updateQuery,"solution");
+    }
+
+    @Override
     public void updateSolutionFile(UUID solutionID, String description, MultipartFile file, String url) throws IOException {
         Query query = new Query(Criteria.where("solutionId").is(solutionID));
         Update updateQuery = new Update();

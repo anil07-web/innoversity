@@ -21,6 +21,14 @@
                     <a *ngIf="details.solStatus== 'Hired'"><button class="btn btn-secondary"  (click)="feedbackView(details)">View
                         More</button><i matTooltip="Innovator is hired" class="fas fa-user-check fa-2x"  style="color: #06a50b;"></i></a>
                 </div>
+                <div *ngIf="details.solStatus== 'Hired'" style="padding-top: 10px;">
+                    <mat-label>Rank this solution</mat-label>
+                    <mat-select [(ngModel)]="details.rank" (ngModelChange)="changeRank($event, details.solutionId)" style="background-color: white;">
+                        <mat-option *ngFor="let rank of ranksDisabling" [value]="rank.rank" [disabled]="rank.disabled">
+                          {{rank.rank}}
+                        </mat-option>
+                      </mat-select>
+                </div>
             </div>
         </div>
     </div>
