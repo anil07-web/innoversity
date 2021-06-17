@@ -97,13 +97,13 @@ public class SolutionController {
 
     @GetMapping("/challenge/{challengeId}")
     public ResponseEntity<Solution> getSolutionByChallengeId(@PathVariable("challengeId") UUID challengeId){
-        System.out.println("Hello");
+        System.out.println("challenge"+challengeId);
         return new ResponseEntity((List<Solution>) solutionService.getSolutionByChallengeId(challengeId),HttpStatus.OK);
     }
 
     @GetMapping("/solve/{solutionId}")
     public ResponseEntity<Solution> getSolutionBySolutionId(@PathVariable("solutionId") UUID solutionId){
-        System.out.println("Hello");
+
         return new ResponseEntity(solutionService.getSolutionBySolutionId(solutionId),HttpStatus.OK);
     }
 
