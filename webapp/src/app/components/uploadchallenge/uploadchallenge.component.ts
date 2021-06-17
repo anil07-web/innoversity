@@ -150,10 +150,10 @@ export class UploadchallengeComponent implements OnInit {
   }
   showbar:boolean;
   onSubmit(submitForm: FormGroup) {
+    this.showbar=true;
     console.log('uploading a challenge');
     const loggedInUser = localStorage.getItem('userName');
     this.uploadChallenge.value.challengerName = loggedInUser;
-
     const item = submitForm.value;
     const uploadFileData = new FormData();
     console.log('file:', this.selectedFile);
@@ -162,7 +162,6 @@ export class UploadchallengeComponent implements OnInit {
     this.service.addChallenge(uploadFileData).subscribe((data) => {
       console.log(this.uploadChallenge.value);
       this.uploadSuccess = true;
-      this.showbar=true;
       this.router.navigateByUrl('/dashboard');
     });
   }

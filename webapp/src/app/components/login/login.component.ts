@@ -23,14 +23,14 @@ export class LoginComponent implements OnInit {
   }
   addUserCredentials(form:NgForm){
     if(form.valid){
-      this.showbar=true;
       this.logindata.addUserCredentials(this.login).subscribe((data : any)=>{
+        this.showbar=true;
         console.log(data);
         this.invalid=data?.token;
         console.log(this.invalid);
-        this.router.navigateByUrl("/dashboard");
         localStorage.setItem('token', data?.token);   
         localStorage.setItem('userName',data?.userName); 
+        this.router.navigateByUrl("/dashboard");
       },
       (error)=> {
         this.showAlert = true;

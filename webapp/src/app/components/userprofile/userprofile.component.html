@@ -102,16 +102,20 @@
         <h2 class="card-title"><strong>Solution:</strong>{{s.solution}}</h2>
         <h3 class="card-title"><strong>Description: </strong>{{s.description}}</h3>
         <div class="d-flex flex-row">
+
+          
           <a><button class="button button1" type="button" disabled
               *ngIf="s.solStatus == 'NotReviewed'">Accept</button></a>
           <a><button class="button button2" type="button" disabled
               *ngIf="s.solStatus == 'NotReviewed'">Reject</button></a>
+
+
           <a *ngIf="s.solStatus=='Rejected'"><img src="./assets/images/reject.png"
               matTooltip="This solution has rejected" class="image" alt=""></a>
           <div class="vm">
-            <a *ngIf="s.solStatus=='Accepted'"><button class="button button1" (click)="feedbackView(s)">View
+            <a *ngIf="s.solStatus=='Accepted'"><button class="button button3" (click)="feedbackView(s)">View
                 More</button></a>
-            <a *ngIf="s.solStatus=='Hired'"><button class="button button1" (click)="feedbackView(s)">View
+            <a *ngIf="s.solStatus=='Hired'"><button class="button button3" (click)="feedbackView(s)">View
                 More</button></a>
           </div>
         </div>
