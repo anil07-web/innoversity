@@ -61,6 +61,11 @@ export class DashboardComponent implements OnInit {
       this.service.getSearchResultByNLP(querytext).subscribe(data => {
         this.searchresult = data;
         console.log(this.searchresult);
+        this.notSearched = true;
+        console.log(this.searchresult);
+        if (this.searchresult.length == 0) {
+          this.searchIsNull = true;
+        }
       });
     }
   }
