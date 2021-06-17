@@ -19,4 +19,8 @@ export class SolutionAnalysisService {
   getSolutionByChallengeId(challengeId){
     return this.http.get(`/api/v1/solution/challenge/${challengeId}`);
   }
+
+  updateRank(solutionId,rank){
+    return this.http.put(`/api/v1/solution/rank/${solutionId}/${rank}`, { responseType: 'text' });
+  }
 }

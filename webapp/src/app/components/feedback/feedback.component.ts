@@ -140,7 +140,7 @@ hireInnovator(){
       // if(challenge.hired>=3){
       //   // this.hired=true;
       // }
-      console.log(this.hired);
+      console.log("challenge:",this.hired);
     })
   }
 
