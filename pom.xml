@@ -29,6 +29,7 @@
         <module>challenge</module>
         <module>recommendation-service</module>
         <module>search-service</module>
+        <module>solution-service</module>
     </modules>
     <dependencies>
 
