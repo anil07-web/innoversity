@@ -100,6 +100,9 @@ document.getElementById("styled").style.background=color
                 <span ><button (click)="downloadDocument()" [disabled]="downloadDisabled" class="btn btn-secondary" style=" margin-left: 1%;">Download</button></span>
             </div>
             <div>
+                <strong>Git URL</strong>:<div style="margin-top: 5pt;">{{info1?.gitUrl}} <i matTooltip="open link in new window" (click)="openGit(info1?.gitUrl)" class="fas fa-external-link-alt"></i></div>
+            </div>
+            <div>
                 <span ><button *ngIf="showUpdate" class="btn btn-dark" (click)="updateSolution()" style="margin-top: 8pt">Update Solution</button></span>
                 <div *ngIf="hired.hired>=3&&!showUpdate&&info1.solStatus=='Accepted'" style="color: rgb(119, 25, 25);">You have Hired maximum number of Innovators</div>
                 <span ><button  *ngIf="!showUpdate" [disabled]="hired.hired>=3 || info1.solStatus=='Hired'" class="btn btn-dark" (click)="hireInnovator()" style=" margin-top: 2%;">Hire</button></span>
