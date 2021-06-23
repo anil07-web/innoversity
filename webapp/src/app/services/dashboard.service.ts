@@ -32,10 +32,13 @@ export class DashboardService {
   }
 
 
+  // getSearchResultByNLP(queryvalue):Observable<any>{
+  //   return this.http.get<any>(`/api/v1/search/filter/${queryvalue}?type=NN`);
+  // }
+ 
   getSearchResultByNLP(queryvalue):Observable<any>{
     return this.http.get<any>(`/api/v1/search/filter/${queryvalue}?type=NN`);
   }
- 
  
 
 }
