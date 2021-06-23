@@ -96,8 +96,8 @@ document.getElementById("styled").style.background=color
               </div> -->
               <div *ngIf="fileName">
                 <strong>Uploaded file</strong>: {{fileName}}
-                <span style="margin-left: 1%;"><button (click)="openFile()" class="btn btn-secondary" >open</button></span>
-                <span ><button (click)="downloadDocument()" [disabled]="downloadDisabled" class="btn btn-secondary" style=" margin-left: 1%;">Download</button></span>
+                <span style="margin-left: 1%;"><button (click)="openFile()" class="btn btn-dark" >open</button></span>
+                <span ><button (click)="downloadDocument()" [disabled]="downloadDisabled" class="btn btn-dark" style=" margin-left: 1%;">Download</button></span>
             </div>
             <div>
                 <strong>Git URL</strong>:<div style="margin-top: 5pt;">{{info1?.gitUrl}} <i matTooltip="open link in new window" (click)="openGit(info1?.gitUrl)" class="fas fa-external-link-alt"></i></div>
