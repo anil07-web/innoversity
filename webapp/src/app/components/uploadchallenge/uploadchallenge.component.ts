@@ -51,7 +51,6 @@ export class UploadchallengeComponent implements OnInit {
       'Aerospace',
       'Habitat',
       'Electricity',
-      'Power Sources',
       'Environment',
     ];
     this.dropdownSettings = {

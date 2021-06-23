@@ -1,14 +1,14 @@
 version: "2"
 
 services:
-  # eureka-server:
-  #   build: eureka-server/
-  #   container_name: eureka-server
-  #   restart: always
-  #   network_mode: "host"
-  #   hostname: localhost
-  #   ports:
-  #     - 8085:8085
+  eureka-server:
+    build: eureka-server/
+    container_name: eureka-server
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8761:8761
 
   api-gateway:
     build: spring-cloud-gateway/
@@ -16,6 +16,8 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    depends_on:
+      - eureka-server
     ports:
       - 8080:8080
 
@@ -25,6 +27,8 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    depends_on:
+      - eureka-server
     ports:
       - 8085:8085
 
@@ -34,6 +38,8 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    depends_on:
+      - eureka-server
     ports:
       - 8090:8090
 
@@ -43,6 +49,8 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    depends_on:
+      - eureka-server
     ports:
       - 8095:8095
 
@@ -52,6 +60,8 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    depends_on:
+      - eureka-server
     ports:
       - 8900:8900
 
@@ -61,6 +71,8 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    depends_on:
+      - eureka-server
     ports:
       - 8905:8905
 
@@ -70,6 +82,8 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    depends_on:
+      - eureka-server
     ports:
       - 8087:8087
 

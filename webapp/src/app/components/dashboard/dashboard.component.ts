@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   constructor(private service: DashboardService, private router: Router) { }
   public loggedInUser: String;
   public recommended: Array<string> = [];
+  public searchedChallenge: Array<string> = [];
   public recomChallenge;
   public challengerName;
   public recomChallenger;
@@ -42,6 +43,7 @@ export class DashboardComponent implements OnInit {
   public email;
   public count;
   public searchresult;
+
   public date: Date = new Date;
   public date1: Date;
   public date2: Date;
@@ -54,6 +56,13 @@ export class DashboardComponent implements OnInit {
         console.log(this.searchresult);
         if (this.searchresult.length == 0) {
           this.searchIsNull = true;
+        } else {
+          this.searchresult.forEach(ele => {
+            console.log("search domain:", ele.challengeDomain[0]);
+            const randomNum = Math.floor((Math.random() * 5) + 1);
+            ele.imageUrl='assets/'+ele.challengeDomain[0]+'/'+randomNum+'.jpg';
+            this.searchedChallenge.push(ele);
+          });
         }
       });
     }
@@ -65,6 +74,13 @@ export class DashboardComponent implements OnInit {
         console.log(this.searchresult);
         if (this.searchresult.length == 0) {
           this.searchIsNull = true;
+        } else {
+          this.searchresult.forEach(ele => {
+            console.log("search domain:", ele.challengeDomain[0]);
+            const randomNum = Math.floor((Math.random() * 5) + 1);
+            ele.imageUrl='assets/'+ele.challengeDomain[0]+'/'+randomNum+'.jpg';
+            this.searchedChallenge.push(ele);
+          });
         }
       });
     }
@@ -86,6 +102,8 @@ export class DashboardComponent implements OnInit {
           this.recomChallenger = m.challengerName;
           console.log(this.recomChallenge);
           if (this.recomChallenger != this.loggedInUser) {
+            const randomNum = Math.floor((Math.random() * 5) + 1);
+            m.imageUrl='assets/'+m.challengeDomain[0]+'/'+randomNum+'.jpg';
             this.recommended.push(m);
           }
           if (this.recommended.length != 0) {
@@ -112,24 +130,38 @@ export class DashboardComponent implements OnInit {
           if (this.challengerName != this.loggedInUser) {
             d.challengeDomain.map(m => {
               if (m == "Health") {
+                const randomNum = Math.floor((Math.random() * 5) + 1);
+                d.imageUrl='assets/Health/'+randomNum+'.jpg';
                 this.health.push(d);
               }
               if (m == "Engineering") {
+                const randomNum = Math.floor((Math.random() * 5) + 1);
+                d.imageUrl='assets/Engineering/'+randomNum+'.jpg';
                 this.engineering.push(d);
               }
               if (m == "Science") {
+                const randomNum = Math.floor((Math.random() * 5) + 1);
+                d.imageUrl='assets/Science/'+randomNum+'.jpg';
                 this.science.push(d);
               }
               if (m == "Electricity") {
+                const randomNum = Math.floor((Math.random() * 5) + 1);
+                d.imageUrl='assets/Electricity/'+randomNum+'.jpg';
                 this.electricity.push(d);
               }
               if (m == "Aerospace") {
+                const randomNum = Math.floor((Math.random() * 5) + 1);
+                d.imageUrl='assets/Aerospace/'+randomNum+'.jpg';
                 this.aerospace.push(d);
               }
               if (m == "Habitat") {
+                const randomNum = Math.floor((Math.random() * 5) + 1);
+                d.imageUrl='assets/Habitat/'+randomNum+'.jpg';
                 this.habitat.push(d);
               }
               if (m == "Environment") {
+                const randomNum = Math.floor((Math.random() * 5) + 1);
+                d.imageUrl='assets/Environment/'+randomNum+'.jpg';
                 this.environment.push(d);
               }
 
@@ -174,5 +206,11 @@ export class DashboardComponent implements OnInit {
       console.log(data);
     })
     this.router.navigateByUrl(`/challengeDes/${challengeId.challengeId}`);
+  }
+
+  getHealthImage() {
+    const randomNum = Math.floor((Math.random() * 5) + 1);
+    console.log("Health domain:", randomNum);
+    return 'assets/Health/'+randomNum+'.jpg';
   }
 }

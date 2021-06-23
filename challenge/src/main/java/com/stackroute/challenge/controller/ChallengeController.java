@@ -72,11 +72,8 @@ public class ChallengeController {
         qrreplacements.put("challengeTitle", challengeObj.getChallengeTitle());
         qrreplacements.put("challengerName", challengeObj.getChallengerName());
         qrreplacements.put("challengeAbstract", challengeObj.getChallengeAbstract());
-        qrreplacements.put("expiryDate", challengeObj.getExpiryDate().toString());
-        qrreplacements.put("rewardPrize", challengeObj.getRewardPrize().toString());
-        qrreplacements.put("uploadUrl", challengeObj.getUploadUrl());
-        qrreplacements.put("views", challengeObj.getViews().toString());
-        qrreplacements.put("attempt", challengeObj.getAttempt().toString());
+        qrreplacements.put("views", "0");
+        qrreplacements.put("attempt", "0");
         String qrMessage=  qrTemplate.getTemplate(qrreplacements);
         byte[] qrByteArray = this.qrService.generateQR(qrMessage, 1000, 1000);
         challengeObj.setQrCode(qrByteArray);
