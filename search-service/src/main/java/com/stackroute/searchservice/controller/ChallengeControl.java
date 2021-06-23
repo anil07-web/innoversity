@@ -146,7 +146,8 @@ public class ChallengeControl {
 
             if(challenges==null || challenges.isEmpty()){
                 System.out.println("\n\n\nBack in Nlp,Return from Search Service(keyword method) is Null or empty");
-                return new ResponseEntity<String>("No challenges found", HttpStatus.NOT_FOUND);
+//                return new ResponseEntity<String>("No challenges found", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<List<Challenge>>(challenges, HttpStatus.OK);
             }else{
                 return new ResponseEntity<List<Challenge>>(challenges,HttpStatus.OK);
             }
