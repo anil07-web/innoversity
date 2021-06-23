@@ -59,7 +59,7 @@
          <h3 class="content"><strong style="font-size: 22px;">Challenged By : </strong>{{info.challengerName}}</h3>
          <h3 class="content"><strong style="font-size: 22px;">Expiration Date : </strong>{{info.expiryDate | date}}</h3>
          <h3 class="content"><strong style="font-size: 22px;">Uploaded On : </strong>{{info.uploadedOn | date}}</h3>
-         <h3 class="content"><strong style="font-size: 22px;">Prize Amount : </strong>{{info.rewardPrize}}</h3>
+         <h3 class="content"><strong style="font-size: 22px;">Prize Amount : </strong>{{info.rewardPrize |currency : 'USD'}}</h3>
          <button class="btn btn-secondary" (click)="next()">More Details...</button>
         </div>
      

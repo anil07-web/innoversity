@@ -40,6 +40,10 @@
   margin-right: 5px;
 }
 
+.fontstyle{
+  font-family: Lora;
+}
+
 .stickyButton{
   position: fixed;
   bottom: 3%;
