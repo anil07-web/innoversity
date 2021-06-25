@@ -2,7 +2,7 @@
 
 .text2{
     margin-left: 20px;
-    font-family:"Lora";
+    font-family:Lora;
     text-align: justify;
 }
 .float-style{
@@ -25,7 +25,7 @@
     margin-right: 5pt;
 }
 .container1{
-    height: 21rem;
+    /* height: 21rem; */
     background-color:black;
     color:white;
     font-family:Lora ;
@@ -44,4 +44,11 @@ h3{
 }
 h2{
     font-family:Lora ;
+}
+
+.brand{
+    margin-left: 20px;
+    font-family:Lora;
+    text-align: justify;
+    margin-bottom: 0px;
 }

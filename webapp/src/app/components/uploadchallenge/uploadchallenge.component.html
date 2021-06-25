@@ -89,7 +89,7 @@
 <div  class="container1">
   <div class="wrapper">
     <div class="title" >
-      <h1>Please ! Upload Your Challenge Here</h1>
+      <h1>Describe Your Challenge Here...!</h1>
     </div>
     <form class="upload-in-form" [formGroup]="uploadChallenge" (ngSubmit)="uploadMethod(uploadChallenge)">
 
@@ -196,7 +196,7 @@
         
         <div class="uploadbtn">
           <div class="mt-2">
-            <button class="btn btn-secondary">{{submitButtonName}}</button>
+            <button class="btn btn-secondary">{{submitButtonName | titlecase}}</button>
           </div>
           <div class="mt-2" *ngIf="uploadSuccess">
             <p class="successMsg">{{successMessage}}</p>
